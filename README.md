@@ -1,9 +1,8 @@
-# nabucco-process
-
-* quick and dirty repo to process nabucco xml-data (taken from [orig-repo](https://github.com/DigitalPasts/nabucco/tree/master/nabucco-xml)) into something more usabel (csv); be aware, to ease the parsing, I manually removed the namespaces from the original files
+# nabucco
+* repo to process nabucco xml-data (taken from [orig-repo](https://github.com/DigitalPasts/nabucco/tree/master/nabucco-xml)) into something more usabel (csv); be aware, to ease the parsing, I manually removed the namespaces from the original files
 * evolved to application repo for generic nabucco app
 
-## install [under construction]
+## install
 
 * install required packages `pip install -r requirements.txt`
 * run `python manage.py migrate && python manage.py runserver` to migrate database and start the dev server
