@@ -21,7 +21,7 @@ PROJECT_NAME = os.environ.get("PROJECT_NAME", "nabucco")
 
 
 ACDH_IMPRINT_URL = "https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID="
-REDMINE_ID = os.environ.get('REDMINE_ID', 18716)
+REDMINE_ID = os.environ.get('REDMINE_ID', 19545)
 
 SHEET_ID = os.environ.get('SHEET_ID', "19tfPPMRiIQf6SPicfhvX3gMQd0Hfb5I6eEeKg2xw3Lc")
 
@@ -111,9 +111,9 @@ DATABASES = {
         'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql_psycopg2'),
         'NAME': os.environ.get('POSTGRES_DB', 'nabucco'),
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 

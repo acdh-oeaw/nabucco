@@ -16,3 +16,11 @@ jobs:
         run: |
           docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}" 
           docker push acdhch/nabucco
+  rancher:
+    needs: push_to_registry
+    name: Deploy to rancher
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rancher Deploy Action
+        run: |
+          curl  --request POST 'https://rancher.acdh-dev.oeaw.ac.at/v3/project/c-zdbh8:p-qdg5b/workloads/deployment:nabucco:nabucco?action=redeploy' --header 'Accept: application/json' --header 'Authorization: Bearer ${{ secrets.RANCHER_BARER_TOKEN }}'
