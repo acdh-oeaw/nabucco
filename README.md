@@ -4,13 +4,17 @@
 
 ## install
 
+* clone the repo `git clone https://github.com/acdh-oeaw/nabucco.git`
+* change into repo-folder `cd nabucco`
+* create a virtualenv, e.g. `virtualenv env` and activate it `source env/bin/activate`
 * install required packages `pip install -r requirements.txt`
-* run `python manage.py migrate && python manage.py runserver` to migrate database and start the dev server
+* create a postgres-db `nabucco` with user and pw `postgres` - or modify `settings.py` or set propper environment variables
+* run `python manage.py makemigrations` then `python manage.py migrate` and  `python manage.py runserver` to migrate database and start the dev server
+* (in another window) run `python import_data` to, well, to import the data
 
 optional:
 
 * run `xml_to_csv.py` (parses xmls in `data/xml` and writes data into `data/csv`, for each class one csv) and rename `data/csv/Archive.csv` to `data/csv/Archiv.csv`
-
 
 ## Docker
 
@@ -21,20 +25,7 @@ optional:
 
 ### running the image
 
-To run the image you should provide an `.env` file to pass in needed environment variables; see example below:
-
-```
-DB_NAME=nabucco
-DB_USER=postgres
-DB_PASSWORD=postgres
-PROJECT_NAME=nabucco
-VOCABS_DEFAULT_PEFIX=nabucco
-VOCABS_DEFAULT_PEFIX=en
-SECRET_KEY=hanna4ever
-DEBUG=True
-REDMINE_ID=19546
-DB_ENGINE=django.contrib.gis.db.backends.postgis
-```
+To run the image you should provide an `.env` file to pass in needed environment variables; see `nabucco/settings.py` for possible varibles:
 
 `docker run -it -p 8020:8020 --rm --env-file .env_dev nabucco:latest`
 
