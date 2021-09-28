@@ -9,8 +9,9 @@
 * create a virtualenv, e.g. `virtualenv env` and activate it `source env/bin/activate`
 * install required packages `pip install -r requirements.txt`
 * create a postgres-db `nabucco` with user and pw `postgres` - or modify `settings.py` or set propper environment variables
+*  --> note that with Windows, PostgreAQL13 seems not to work: use version 12
 * run `python manage.py makemigrations` then `python manage.py migrate` and  `python manage.py runserver` to migrate database and start the dev server
-* (in another window) run `python import_data` to, well, to import the data
+* (in another window) run `python manage.py import_data` to, well, to import the data
 
 optional:
 
