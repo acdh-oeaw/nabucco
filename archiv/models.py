@@ -33,22 +33,22 @@ class Archiv(models.Model):
         max_length=250,
         blank=True,
         verbose_name="name",
-        help_text="whatever",
+        help_text="following GMTR 1",
     ).set_extra(
         is_public=True,
         data_lookup="Archive name",
     )
     part_of = models.ForeignKey(
-        "Archiv",
-        related_name='rvn_archiv_part_of_archiv',
+        "Place",
+        related_name='rvn_archiv_part_of_place',
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         verbose_name="part of",
-        help_text="whatever",
+        help_text="Place of issue",
     ).set_extra(
         is_public=True,
-        data_lookup="Parent id",
+        data_lookup="Is part of",
     )
     alt_name = models.CharField(
         max_length=250,
@@ -68,14 +68,35 @@ class Archiv(models.Model):
         is_public=True,
         data_lookup="Title",
     )
-    related_objects = models.IntegerField(
-        blank=True, null=True,
-        verbose_name="related objects",
-        help_text="TODO",
+    related_tablets = models.ManyToManyField(
+        "Tablet",
+        related_name='rvn_archiv_tablets',
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="related tablets",
+        help_text="whatever",
     ).set_extra(
         is_public=True,
-        data_lookup="Related objects",
     )
+    related_bib_items = models.ManyToManyField(
+        "Bibliography",
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="Bib Item",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )
+    # related_objects = models.IntegerField(
+    #     blank=True, null=True,
+    #     verbose_name="related objects",
+    #     help_text="tablet(s) related to archive",
+    # ).set_extra(
+    #     is_public=True,
+    #     data_lookup="Related objects",
+    # )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
@@ -243,6 +264,44 @@ class Bibliography(models.Model):
         is_public=True,
         data_lookup="Book",
     )
+    related_tablets = models.ManyToManyField(
+        "Tablet",
+        related_name='rvn_bibliography_tablets',
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="related tablets",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )
+    related_bib_items = models.ManyToManyField(
+        "Bibliography",
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="Bib Item",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )    
+    related_objects = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="related objects",
+        help_text="tablets published",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Related objects",
+    )
+    related_publications = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="related_publications",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
@@ -333,7 +392,7 @@ class Glossary(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Label",
-        help_text="whatever",
+        help_text="type of document",
     ).set_extra(
         is_public=True,
         data_lookup="Label",
@@ -347,6 +406,51 @@ class Glossary(models.Model):
         is_public=True,
         data_lookup="Hierarchy",
     )
+    type = models.IntegerField(
+        blank=True, null=True,
+        verbose_name="Type",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Type",
+    )
+    title = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Title",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Title",
+    )
+    related_tablets = models.ManyToManyField(
+        "Tablet",
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="related tablets",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )
+    related_bib_items = models.ManyToManyField(
+        "Bibliography",
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="Bib Item",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )
+    # related_objects = models.IntegerField(
+    #     blank=True, null=True,
+    #     verbose_name="Related objects",
+    #     help_text="whatever",
+    # ).set_extra(
+    #     is_public=True,
+    #     data_lookup="Related objects",
+    # )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
@@ -449,17 +553,47 @@ class Place(models.Model):
         null=True,
         blank=True,
         verbose_name="part of",
+        help_text="larger region",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Parent id",
+    )
+    related_tablets = models.ManyToManyField(
+        "Tablet",
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="related tablets",
         help_text="whatever",
     ).set_extra(
         is_public=True,
     )
-    related_objects = models.IntegerField(
-        blank=True, null=True,
-        verbose_name="related objects",
-        help_text="TODO",
+    related_bib_items = models.ManyToManyField(
+        "Bibliography",
+        #on_delete=models.SET_NULL,
+        #null=True,
+        blank=True,
+        verbose_name="Bib Item",
+        help_text="whatever",
     ).set_extra(
         is_public=True,
-        data_lookup="Related objects",
+    )
+    # related_objects = models.IntegerField(
+    #     blank=True, null=True,
+    #     verbose_name="related objects",
+    #     help_text="whatever",
+    # ).set_extra(
+    #     is_public=True,
+    #     data_lookup="Related objects",
+    # )
+    title = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Title",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Title",
     )
     orig_data_csv = models.TextField(
         blank=True,
@@ -607,6 +741,86 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Archive",
+    )
+    publication_name = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Publication name",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Publication",
+    )
+    period = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Period",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Period",
+    )
+    day = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Babylonian Day",
+        help_text="Day of month",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Day",
+    )
+    month = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Babylonian Month",
+        help_text="Babylonian month (I-XII)",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Month",
+    )
+    year = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Babylonian Year",
+        help_text="Regnal year",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Year",
+    )
+    king = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="King",
+        help_text="King (abbreviated)",
+    ).set_extra(
+        is_public=True,
+        data_lookup="King",
+    )
+    imported = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Imported (Person, date)",
+        help_text="whatever",
+    ).set_extra(
+        is_public=False,
+        data_lookup="Imported",
+    )
+    julian_date_year = models.IntegerField(
+        blank=True, null=True,
+        verbose_name="Year BCE",
+        help_text="Year BCE",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Julian date year",
+    )
+    bibliography = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Bibliography",
+        help_text="Bibliography",
+    ).set_extra(
+        is_public=True,
+        data_lookup="Bibliography (free text)",
     )
     orig_data_csv = models.TextField(
         blank=True,
