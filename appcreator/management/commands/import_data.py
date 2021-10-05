@@ -15,5 +15,5 @@ class Command(BaseCommand):
         run_import(
             'archiv',
             file_class_map_dict=None,
-            limit=False
+            limit=False,
         )

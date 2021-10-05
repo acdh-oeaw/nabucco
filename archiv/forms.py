@@ -92,6 +92,8 @@ class BibliographyFilterFormHelper(FormHelper):
                     'journal',
                     'editor',
                     'book',
+                    'related_objects',
+                    'related_publications',
                     css_id="more"
                     ),
                 AccordionGroup(
@@ -140,6 +142,9 @@ class GlossaryFilterFormHelper(FormHelper):
                     'legacy_pk',
                     'pref_label',
                     'hierarchy',
+                    'type',
+                    'title',
+                    'related_objects',
                     css_id="more"
                     ),
                 AccordionGroup(
@@ -189,6 +194,7 @@ class PlaceFilterFormHelper(FormHelper):
                     'name',
                     'part_of',
                     'related_objects',
+                    'title',
                     css_id="more"
                     ),
                 AccordionGroup(
@@ -241,6 +247,15 @@ class TabletFilterFormHelper(FormHelper):
                     'paraphrase',
                     'transliteration',
                     'archiv',
+                    'publication_name',
+                    'period',
+                    'day',
+                    'month',
+                    'year',
+                    'king',
+                    'imported',
+                    'julian_date_year',
+                    'bibliography',
                     css_id="more"
                     ),
                 AccordionGroup(

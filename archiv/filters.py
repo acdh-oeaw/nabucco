@@ -25,11 +25,11 @@ class ArchivListFilter(django_filters.FilterSet):
         label=Archiv._meta.get_field('name').verbose_name
     )
     part_of = django_filters.ModelMultipleChoiceFilter(
-        queryset=Archiv.objects.all(),
+        queryset=Place.objects.all(),
         help_text=Archiv._meta.get_field('part_of').help_text,
         label=Archiv._meta.get_field('part_of').verbose_name,
         widget=autocomplete.Select2Multiple(
-            url="archiv-ac:archiv-autocomplete",
+            url="archiv-ac:place-autocomplete",
         )
     )
     alt_name = django_filters.CharFilter(
@@ -53,7 +53,9 @@ class ArchivListFilter(django_filters.FilterSet):
             'part_of',
             'alt_name',
             'title',
-            'related_objects',
+            'related_tablets',
+            'related_bib_items',
+            #'related_objects',
             ]
 
 
@@ -108,6 +110,16 @@ class BibliographyListFilter(django_filters.FilterSet):
         help_text=Bibliography._meta.get_field('book').help_text,
         label=Bibliography._meta.get_field('book').verbose_name
     )
+    related_objects = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Bibliography._meta.get_field('related_objects').help_text,
+        label=Bibliography._meta.get_field('related_objects').verbose_name
+    )
+    related_publications = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Bibliography._meta.get_field('related_publications').help_text,
+        label=Bibliography._meta.get_field('related_publications').verbose_name
+    )
 
     class Meta:
         model = Bibliography
@@ -124,6 +136,8 @@ class BibliographyListFilter(django_filters.FilterSet):
             'journal',
             'editor',
             'book',
+            'related_objects',
+            'related_publications',
             ]
 
 
@@ -143,6 +157,11 @@ class GlossaryListFilter(django_filters.FilterSet):
         help_text=Glossary._meta.get_field('hierarchy').help_text,
         label=Glossary._meta.get_field('hierarchy').verbose_name
     )
+    title = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Glossary._meta.get_field('title').help_text,
+        label=Glossary._meta.get_field('title').verbose_name
+    )
 
     class Meta:
         model = Glossary
@@ -152,6 +171,11 @@ class GlossaryListFilter(django_filters.FilterSet):
             'legacy_pk',
             'pref_label',
             'hierarchy',
+            'type',
+            'title',
+            'related_tablets',
+            'related_bib_items',
+            #'related_objects',
             ]
 
 
@@ -174,6 +198,11 @@ class PlaceListFilter(django_filters.FilterSet):
             url="archiv-ac:place-autocomplete",
         )
     )
+    title = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Place._meta.get_field('title').help_text,
+        label=Place._meta.get_field('title').verbose_name
+    )
 
     class Meta:
         model = Place
@@ -183,7 +212,10 @@ class PlaceListFilter(django_filters.FilterSet):
             'legacy_pk',
             'name',
             'part_of',
-            'related_objects',
+            'related_tablets',
+            'related_bib_items',
+            #'related_objects',
+            'title',
             ]
 
 
@@ -232,6 +264,46 @@ class TabletListFilter(django_filters.FilterSet):
             url="archiv-ac:archiv-autocomplete",
         )
     )
+    publication_name = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('publication_name').help_text,
+        label=Tablet._meta.get_field('publication_name').verbose_name
+    )
+    period = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('period').help_text,
+        label=Tablet._meta.get_field('period').verbose_name
+    )
+    day = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('day').help_text,
+        label=Tablet._meta.get_field('day').verbose_name
+    )
+    month = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('month').help_text,
+        label=Tablet._meta.get_field('month').verbose_name
+    )
+    year = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('year').help_text,
+        label=Tablet._meta.get_field('year').verbose_name
+    )
+    king = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('king').help_text,
+        label=Tablet._meta.get_field('king').verbose_name
+    )
+    imported = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('imported').help_text,
+        label=Tablet._meta.get_field('imported').verbose_name
+    )
+    bibliography = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('bibliography').help_text,
+        label=Tablet._meta.get_field('bibliography').verbose_name
+    )
 
     class Meta:
         model = Tablet
@@ -245,6 +317,15 @@ class TabletListFilter(django_filters.FilterSet):
             'paraphrase',
             'transliteration',
             'archiv',
+            'publication_name',
+            'period',
+            'day',
+            'month',
+            'year',
+            'king',
+            'imported',
+            'julian_date_year',
+            'bibliography',
             ]
 
 
