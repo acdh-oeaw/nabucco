@@ -37,8 +37,9 @@ class Command(BaseCommand):
                     archive.related_bib_items.add(rel_bib)
                 except:
                     rel_bib = None
+                
 
-            #print(str(archive.name) + ':' + str(archive.related_bib_item) + ':' + str(archive.related_tablet))
+            print(str(archive.name) + ':' + str(archive.related_bib_items.all()) + ':' + str(archive.related_tablets.all()))
             
             
 
