@@ -39,6 +39,7 @@ class Command(BaseCommand):
                     archive.related_bib_items.add(rel_bib)
                 except:
                     rel_bib = None
+                
 
         for i, row in df_place.iterrows():
             place_id = row['Place id']
