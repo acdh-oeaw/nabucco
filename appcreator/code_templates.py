@@ -375,7 +375,7 @@ class {{ x.model_name }}(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     {%- for y in x.model_fields %}
     {%- if y.field_type == 'DateRangeField' %}
     {{ y.field_name }} = {{ y.field_type}}(
@@ -440,12 +440,12 @@ class {{ x.model_name }}(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        {% if x.model_order == 'nan' %}
+{% if x.model_order == 'nan' %}
         ordering = [
             'id',
         ]
@@ -453,18 +453,18 @@ class {{ x.model_name }}(models.Model):
         ordering = [
             '{{ x.model_order }}',
         ]
-        {%- endif %}
+{%- endif %}
         verbose_name = "{{ x.model_verbose_name }}"
-    {% if x.model_representation == 'nan' %}
+{% if x.model_representation == 'nan' %}
     def __str__(self):
         return "{}".format(self.id)
-    {%- else %}
+{%- else %}
     def __str__(self):
         if self.{{ x.model_representation }}:
             return "{}".format(self.{{ x.model_representation }})
         else:
             return "{}".format(self.legacy_id)
-    {%- endif %}
+{%- endif %}
 
     def field_dict(self):
         return model_to_dict(self)
@@ -472,30 +472,26 @@ class {{ x.model_name }}(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('{{ app_name }}:{{ x.model_name|lower }}_browse')
-    {% if x.source_table %}
+{% if x.source_table %}
     @classmethod
     def get_source_table(self):
-        return "{{ x.source_table }}"
-    {% else %}
+        return "{{ x.source_table }}"{% else %}
     @classmethod
     def get_source_table(self):
         return None
-    {% endif %}
-    {% if x.natural_primary_key %}
+{% endif %}
+{% if x.natural_primary_key %}
     @classmethod
     def get_natural_primary_key(self):
         return "{{ x.natural_primary_key }}"
-    {% else %}
+{% else %}
     @classmethod
     def get_natural_primary_key(self):
         return None
-    {% endif %}
+{% endif %}
     @classmethod
     def get_createview_url(self):
         return reverse('{{ app_name }}:{{ x.model_name|lower }}_create')
-
-    def get_absolute_url(self):
-        return reverse('{{ app_name }}:{{ x.model_name|lower }}_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('{{ app_name }}:{{ x.model_name|lower }}_detail', kwargs={'pk': self.id})
