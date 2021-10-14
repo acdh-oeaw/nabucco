@@ -53,9 +53,6 @@ class ArchivListFilter(django_filters.FilterSet):
             'part_of',
             'alt_name',
             'title',
-            'related_tablets',
-            'related_bib_items',
-            #'related_objects',
             ]
 
 
@@ -110,10 +107,29 @@ class BibliographyListFilter(django_filters.FilterSet):
         help_text=Bibliography._meta.get_field('book').help_text,
         label=Bibliography._meta.get_field('book').verbose_name
     )
-    related_objects = django_filters.CharFilter(
-        lookup_expr='icontains',
-        help_text=Bibliography._meta.get_field('related_objects').help_text,
-        label=Bibliography._meta.get_field('related_objects').verbose_name
+    mentioned_place = django_filters.ModelMultipleChoiceFilter(
+        queryset=Place.objects.all(),
+        help_text=Bibliography._meta.get_field('mentioned_place').help_text,
+        label=Bibliography._meta.get_field('mentioned_place').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:place-autocomplete",
+        )
+    )
+    mentioned_archive = django_filters.ModelMultipleChoiceFilter(
+        queryset=Archiv.objects.all(),
+        help_text=Bibliography._meta.get_field('mentioned_archive').help_text,
+        label=Bibliography._meta.get_field('mentioned_archive').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:archiv-autocomplete",
+        )
+    )
+    mentioned_glossary_item = django_filters.ModelMultipleChoiceFilter(
+        queryset=Glossary.objects.all(),
+        help_text=Bibliography._meta.get_field('mentioned_glossary_item').help_text,
+        label=Bibliography._meta.get_field('mentioned_glossary_item').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:glossary-autocomplete",
+        )
     )
     related_publications = django_filters.CharFilter(
         lookup_expr='icontains',
@@ -136,7 +152,9 @@ class BibliographyListFilter(django_filters.FilterSet):
             'journal',
             'editor',
             'book',
-            'related_objects',
+            'mentioned_place',
+            'mentioned_archive',
+            'mentioned_glossary_item',
             'related_publications',
             ]
 
@@ -173,9 +191,6 @@ class GlossaryListFilter(django_filters.FilterSet):
             'hierarchy',
             'type',
             'title',
-            'related_tablets',
-            'related_bib_items',
-            #'related_objects',
             ]
 
 
@@ -212,9 +227,6 @@ class PlaceListFilter(django_filters.FilterSet):
             'legacy_pk',
             'name',
             'part_of',
-            'related_tablets',
-            'related_bib_items',
-            #'related_objects',
             'title',
             ]
 
@@ -238,10 +250,26 @@ class TabletListFilter(django_filters.FilterSet):
             url="archiv-ac:place-autocomplete",
         )
     )
+    mentioned_place = django_filters.ModelMultipleChoiceFilter(
+        queryset=Place.objects.all(),
+        help_text=Tablet._meta.get_field('mentioned_place').help_text,
+        label=Tablet._meta.get_field('mentioned_place').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:place-autocomplete",
+        )
+    )
     type_content = django_filters.ModelMultipleChoiceFilter(
         queryset=Glossary.objects.all(),
         help_text=Tablet._meta.get_field('type_content').help_text,
         label=Tablet._meta.get_field('type_content').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:glossary-autocomplete",
+        )
+    )
+    key_word = django_filters.ModelMultipleChoiceFilter(
+        queryset=Glossary.objects.all(),
+        help_text=Tablet._meta.get_field('key_word').help_text,
+        label=Tablet._meta.get_field('key_word').verbose_name,
         widget=autocomplete.Select2Multiple(
             url="archiv-ac:glossary-autocomplete",
         )
@@ -262,6 +290,22 @@ class TabletListFilter(django_filters.FilterSet):
         label=Tablet._meta.get_field('archiv').verbose_name,
         widget=autocomplete.Select2Multiple(
             url="archiv-ac:archiv-autocomplete",
+        )
+    )
+    mentioned_archiv = django_filters.ModelMultipleChoiceFilter(
+        queryset=Archiv.objects.all(),
+        help_text=Tablet._meta.get_field('mentioned_archiv').help_text,
+        label=Tablet._meta.get_field('mentioned_archiv').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:archiv-autocomplete",
+        )
+    )
+    mentioned_in_pub = django_filters.ModelMultipleChoiceFilter(
+        queryset=Bibliography.objects.all(),
+        help_text=Tablet._meta.get_field('mentioned_in_pub').help_text,
+        label=Tablet._meta.get_field('mentioned_in_pub').verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:bibliography-autocomplete",
         )
     )
     publication_name = django_filters.CharFilter(
@@ -313,10 +357,14 @@ class TabletListFilter(django_filters.FilterSet):
             'legacy_pk',
             'museum_id',
             'place_of_issue',
+            'mentioned_place',
             'type_content',
+            'key_word',
             'paraphrase',
             'transliteration',
             'archiv',
+            'mentioned_archiv',
+            'mentioned_in_pub',
             'publication_name',
             'period',
             'day',

@@ -20,7 +20,7 @@ class Archiv(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -68,50 +68,21 @@ class Archiv(models.Model):
         is_public=True,
         data_lookup="Title",
     )
-    related_tablets = models.ManyToManyField(
-        "Tablet",
-        related_name='rvn_archiv_tablets',
-        #on_delete=models.SET_NULL,
-        #null=True,
-        blank=True,
-        verbose_name="related tablets",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
-    related_bib_items = models.ManyToManyField(
-        "Bibliography",
-        #on_delete=models.SET_NULL,
-        #null=True,
-        blank=True,
-        verbose_name="Bib Item",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
-    # related_objects = models.IntegerField(
-    #     blank=True, null=True,
-    #     verbose_name="related objects",
-    #     help_text="tablet(s) related to archive",
-    # ).set_extra(
-    #     is_public=True,
-    #     data_lookup="Related objects",
-    # )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'name',
         ]
         verbose_name = "Archiv"
-    
+
     def __str__(self):
         if self.name:
             return "{}".format(self.name)
@@ -124,22 +95,18 @@ class Archiv(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:archiv_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Archiv.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "name"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:archiv_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:archiv_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:archiv_detail', kwargs={'pk': self.id})
@@ -174,7 +141,7 @@ class Bibliography(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -264,35 +231,32 @@ class Bibliography(models.Model):
         is_public=True,
         data_lookup="Book",
     )
-    related_tablets = models.ManyToManyField(
-        "Tablet",
-        related_name='rvn_bibliography_tablets',
-        #on_delete=models.SET_NULL,
-        #null=True,
+    mentioned_place = models.ManyToManyField(
+        "Place",
+        related_name='rvn_bibliography_mentioned_place_place',
         blank=True,
-        verbose_name="related tablets",
+        verbose_name="Place mentioned on Tablet",
         help_text="whatever",
     ).set_extra(
         is_public=True,
     )
-    related_bib_items = models.ManyToManyField(
-        "Bibliography",
-        #on_delete=models.SET_NULL,
-        #null=True,
+    mentioned_archive = models.ManyToManyField(
+        "Archiv",
+        related_name='rvn_bibliography_mentioned_archive_archiv',
         blank=True,
-        verbose_name="Bib Item",
+        verbose_name="Place mentioned on Tablet",
         help_text="whatever",
     ).set_extra(
         is_public=True,
-    )    
-    related_objects = models.CharField(
-        max_length=250,
+    )
+    mentioned_glossary_item = models.ManyToManyField(
+        "Glossary",
+        related_name='rvn_bibliography_mentioned_glossary_item_glossary',
         blank=True,
-        verbose_name="related objects",
-        help_text="tablets published",
+        verbose_name="mentioned_glossary_item",
+        help_text="mentioned_glossary_item",
     ).set_extra(
         is_public=True,
-        data_lookup="Related objects",
     )
     related_publications = models.CharField(
         max_length=250,
@@ -306,17 +270,17 @@ class Bibliography(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'short_title',
         ]
         verbose_name = "Bibliography"
-    
+
     def __str__(self):
         if self.short_title:
             return "{}".format(self.short_title)
@@ -329,22 +293,18 @@ class Bibliography(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:bibliography_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Bibliography.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "short_title"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:bibliography_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:bibliography_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:bibliography_detail', kwargs={'pk': self.id})
@@ -379,7 +339,7 @@ class Glossary(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -423,49 +383,21 @@ class Glossary(models.Model):
         is_public=True,
         data_lookup="Title",
     )
-    related_tablets = models.ManyToManyField(
-        "Tablet",
-        #on_delete=models.SET_NULL,
-        #null=True,
-        blank=True,
-        verbose_name="related tablets",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
-    related_bib_items = models.ManyToManyField(
-        "Bibliography",
-        #on_delete=models.SET_NULL,
-        #null=True,
-        blank=True,
-        verbose_name="Bib Item",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
-    # related_objects = models.IntegerField(
-    #     blank=True, null=True,
-    #     verbose_name="Related objects",
-    #     help_text="whatever",
-    # ).set_extra(
-    #     is_public=True,
-    #     data_lookup="Related objects",
-    # )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'pref_label',
         ]
         verbose_name = "Glossary"
-    
+
     def __str__(self):
         if self.pref_label:
             return "{}".format(self.pref_label)
@@ -478,22 +410,18 @@ class Glossary(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:glossary_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Glossary.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "pref_label"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:glossary_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:glossary_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:glossary_detail', kwargs={'pk': self.id})
@@ -528,7 +456,7 @@ class Place(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -558,34 +486,6 @@ class Place(models.Model):
         is_public=True,
         data_lookup="Parent id",
     )
-    related_tablets = models.ManyToManyField(
-        "Tablet",
-        #on_delete=models.SET_NULL,
-        #null=True,
-        blank=True,
-        verbose_name="related tablets",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
-    related_bib_items = models.ManyToManyField(
-        "Bibliography",
-        #on_delete=models.SET_NULL,
-        #null=True,
-        blank=True,
-        verbose_name="Bib Item",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
-    # related_objects = models.IntegerField(
-    #     blank=True, null=True,
-    #     verbose_name="related objects",
-    #     help_text="whatever",
-    # ).set_extra(
-    #     is_public=True,
-    #     data_lookup="Related objects",
-    # )
     title = models.CharField(
         max_length=250,
         blank=True,
@@ -599,17 +499,17 @@ class Place(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'name',
         ]
         verbose_name = "Place"
-    
+
     def __str__(self):
         if self.name:
             return "{}".format(self.name)
@@ -622,22 +522,18 @@ class Place(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:place_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Place.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "name"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:place_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:place_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:place_detail', kwargs={'pk': self.id})
@@ -672,7 +568,7 @@ class Tablet(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -700,7 +596,15 @@ class Tablet(models.Model):
         help_text="whatever",
     ).set_extra(
         is_public=True,
-        data_lookup="Place of issue",
+    )
+    mentioned_place = models.ManyToManyField(
+        "Place",
+        related_name='rvn_tablet_mentioned_place_place',
+        blank=True,
+        verbose_name="Place mentioned on Tablet",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
     )
     type_content = models.ForeignKey(
         "Glossary",
@@ -713,6 +617,15 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Type and content",
+    )
+    key_word = models.ManyToManyField(
+        "Glossary",
+        related_name='rvn_tablet_key_word_glossary',
+        blank=True,
+        verbose_name="random keyword",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
     )
     paraphrase = models.TextField(
         blank=True, null=True,
@@ -741,6 +654,24 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Archive",
+    )
+    mentioned_archiv = models.ManyToManyField(
+        "Archiv",
+        related_name='rvn_tablet_mentioned_archiv_archiv',
+        blank=True,
+        verbose_name="Archive",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
+    )
+    mentioned_in_pub = models.ManyToManyField(
+        "Bibliography",
+        related_name='rvn_tablet_mentioned_in_pub_bibliography',
+        blank=True,
+        verbose_name="Mentioned in Publication",
+        help_text="whatever",
+    ).set_extra(
+        is_public=True,
     )
     publication_name = models.CharField(
         max_length=250,
@@ -826,17 +757,17 @@ class Tablet(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'id',
         ]
         verbose_name = "Tablet"
-    
+
     def __str__(self):
         if self.museum_id:
             return "{}".format(self.museum_id)
@@ -849,22 +780,18 @@ class Tablet(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:tablet_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Tablet.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "legacy_pk"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:tablet_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:tablet_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:tablet_detail', kwargs={'pk': self.id})

@@ -36,7 +36,6 @@ class ArchivFilterFormHelper(FormHelper):
                     'part_of',
                     'alt_name',
                     'title',
-                    'related_objects',
                     css_id="more"
                     ),
                 AccordionGroup(
@@ -92,7 +91,9 @@ class BibliographyFilterFormHelper(FormHelper):
                     'journal',
                     'editor',
                     'book',
-                    'related_objects',
+                    'mentioned_place',
+                    'mentioned_archive',
+                    'mentioned_glossary_item',
                     'related_publications',
                     css_id="more"
                     ),
@@ -144,7 +145,6 @@ class GlossaryFilterFormHelper(FormHelper):
                     'hierarchy',
                     'type',
                     'title',
-                    'related_objects',
                     css_id="more"
                     ),
                 AccordionGroup(
@@ -193,7 +193,6 @@ class PlaceFilterFormHelper(FormHelper):
                     'legacy_pk',
                     'name',
                     'part_of',
-                    'related_objects',
                     'title',
                     css_id="more"
                     ),
@@ -243,10 +242,14 @@ class TabletFilterFormHelper(FormHelper):
                     'legacy_pk',
                     'museum_id',
                     'place_of_issue',
+                    'mentioned_place',
                     'type_content',
+                    'key_word',
                     'paraphrase',
                     'transliteration',
                     'archiv',
+                    'mentioned_archiv',
+                    'mentioned_in_pub',
                     'publication_name',
                     'period',
                     'day',
