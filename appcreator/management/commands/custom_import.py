@@ -1,13 +1,12 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
-from appcreator.import_utils import run_import
+# from django.conf import settings
+# from appcreator.import_utils import run_import
 
 # imports for custom things
-from tqdm import tqdm
+# from tqdm import tqdm
 import pandas as pd
 
 from archiv.models import Glossary, Place, Bibliography, Archiv, Tablet
-
 
 
 class Command(BaseCommand):
@@ -17,77 +16,84 @@ class Command(BaseCommand):
         df_archive = pd.read_csv('./data/csv/Archiv.csv')
         df_place = pd.read_csv('./data/csv/Place.csv')
         df_glossary = pd.read_csv('./data/csv/Glossary.csv')
-        #df['Related tablets'] = df.apply(lambda _: '', axis=1)
-       
+        df_bib = pd.read_csv('./data/csv/Bibliography.csv')
+        # df['Related tablets'] = df.apply(lambda _: '', axis=1)
         for i, row in df_archive.iterrows():
             archive_id = row['Archive ID']
             related_object_id = row['Related objects']
-            #check if Related Objects refers to Place/Bibliography or else
+            # check if Related Objects refers to Place/Bibliography or else
             try:
-                archive = Archiv.objects.get(legacy_pk=archive_id) 
-            except:
+                archive = Archiv.objects.get(legacy_pk=archive_id)
+            except Archiv.DoesNotExist:
                 continue
             if archive:
                 try:
-                    rel_tab = Tablet.objects.get(legacy_pk=related_object_id)
-                    archive.related_tablets.add(rel_tab)
+                    tablet = Tablet.objects.get(legacy_pk=related_object_id)
+                    tablet.mentioned_archiv.add(archive)
                 except:
-                    rel_tab = None
-                
-                try: 
-                    rel_bib = Bibliography.objects.get(legacy_pk=related_object_id) 
-                    archive.related_bib_items.add(rel_bib)
+                    continue
+                # print(tablet.mentioned_archiv.all())
+                try:
+                    bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
+                    bib_item.mentioned_archive.add(archive)
                 except:
-                    rel_bib = None
-                
+                    continue
+                # print(bib_item.mentioned_archive.all())
 
+        for i, row in df_glossary.iterrows():
+            glossary_id = row['Concept ID']
+            related_object_id = row['Related objects']
+            # check if Related Objects refers to Place/Bibliography or else
+            try:
+                glossary_item = Glossary.objects.get(legacy_pk=glossary_id)
+            except (Glossary.DoesNotExist, ValueError):
+                continue
+            if glossary_item:
+                try:
+                    related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
+                    related_tablet.key_word.add(glossary_item)
+                except:
+                    continue
+                # print(related_tablet.key_word.all())
+                try:
+                    related_bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
+                    related_bib_item.mentioned_glossary_item.add(glossary_item)
+                except:
+                    continue
+                # print(related_bib_item.mentioned_glossary_item.all())
         for i, row in df_place.iterrows():
             place_id = row['Place id']
             related_object_id = row['Related objects']
+            # check if Related Objects refers to Place/Bibliography or else
             try:
-                place = Place.objects.get(legacy_pk=place_id) 
-            except:
+                place = Place.objects.get(legacy_pk=place_id)
+            except Place.DoesNotExist:
                 continue
             if place:
                 try:
-                    rel_tab = Tablet.objects.get(legacy_pk=related_object_id)
-                    place.related_tablets.add(rel_tab)
+                    related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
+                    related_tablet.mentioned_place.add(place)
                 except:
-                    rel_tab = None
-                
-                try: 
-                    rel_bib = Bibliography.objects.get(legacy_pk=related_object_id) 
-                    place.related_bib_items.add(rel_bib)
-                except:
-                    rel_bib = None
-            
-            #print(str(place.name) + ':' + str(place.related_bib_items.all()) + ':' + str(place.related_tablets.all()))
-            
-        for i, row in df_glossary.iterrows():
-            glossary_item_id = row['Concept ID']
-            related_object_id = row['Related objects']
-
-            try:
-                entry = Glossary.objects.get(legacy_pk=glossary_item_id) 
-            except:
-                continue
-            if entry:
+                    continue
+                # print(related_tablet.mentioned_place.all())
                 try:
-                    rel_tab = Tablet.objects.get(legacy_pk=related_object_id)
-                    entry.related_tablets.add(rel_tab)
+                    related_bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
+                    related_bib_item.mentioned_place.add(place)
                 except:
-                    rel_tab = None
-                
-                try: 
-                    rel_bib = Bibliography.objects.get(legacy_pk=related_object_id) 
-                    entry.related_bib_items.add(rel_bib)
+                    continue
+                # print(related_bib_item.mentioned_place.all())
+        for i, row in df_bib.iterrows():
+            bib_id = row['Occurrence ID']
+            related_object_id = row['Related objects']
+            # check if Related Objects refers to Place/Bibliography or else
+            try:
+                bib_item = Bibliography.objects.get(legacy_pk=bib_id)
+            except Bibliography.DoesNotExist:
+                continue
+            if bib_item:
+                try:
+                    related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
+                    related_tablet.mentioned_in_pub.add(bib_item)
                 except:
-                    rel_bib = None
-
-            #print(str(entry.pref_label) + ':' + str(entry.related_bib_items.all()) + ':' + str(entry.related_tablets.all()))
-            
-            
-            
-
-
-            
+                    continue
+                # print(related_tablet.mentioned_in_pub.all())

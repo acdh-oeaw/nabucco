@@ -27,6 +27,9 @@ class BibliographyTable(tables.Table):
 
     id = tables.LinkColumn(verbose_name='ID')
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    mentioned_place = tables.columns.ManyToManyColumn()
+    mentioned_archive = tables.columns.ManyToManyColumn()
+    mentioned_glossary_item = tables.columns.ManyToManyColumn()
 
     class Meta:
         model = Bibliography
@@ -60,6 +63,10 @@ class TabletTable(tables.Table):
 
     id = tables.LinkColumn(verbose_name='ID')
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    mentioned_place = tables.columns.ManyToManyColumn()
+    key_word = tables.columns.ManyToManyColumn()
+    mentioned_archiv = tables.columns.ManyToManyColumn()
+    mentioned_in_pub = tables.columns.ManyToManyColumn()
 
     class Meta:
         model = Tablet
