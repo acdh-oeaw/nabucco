@@ -63,7 +63,7 @@
                 <div class="container-fluid">
                     <!-- Your site title as branding in the menu -->
                     <a href="/" class="navbar-brand custom-logo-link" rel="home" itemprop="url">
-                        <img src="{{ PROJECT_LOGO }}" class="img-fluid" alt="{% projects_metadata 'title' %}" itemprop="{% projects_metadata 'title' %}"/>
+                        <img src="{% static 'img/Logo_NaBuCCo.jpg' %}" style="height:110px" class="img-fluid" alt="{% projects_metadata 'title' %}" itemprop="{% projects_metadata 'title' %}"/>
                     </a><!-- end custom logo -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"/>
@@ -103,6 +103,7 @@
                                         </div>
                                     </li>
                             </ul>
+                            <div> <img src="{% static 'img/handcopy.jpg' %}" style="max-width: 80%; height: auto;"> </div>
                             <ul class="navbar-nav justify-content-end">
                                 {% if user.is_authenticated %}
                                 <li class="nav-item dropdown ml-auto">
@@ -121,6 +122,7 @@
                                 </li>
                                 {% endif %}
                             </ul>
+                            
                         </div>
                         <!-- .collapse navbar-collapse -->
                     </div>

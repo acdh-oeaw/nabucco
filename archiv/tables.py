@@ -14,18 +14,18 @@ from . models import (
 
 class ArchivTable(tables.Table):
 
-    id = tables.LinkColumn(verbose_name='ID')
+    name = tables.LinkColumn(verbose_name='Name')
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
 
     class Meta:
         model = Archiv
-        sequence = ('id',)
+        sequence = ('name', 'alt_name', 'part_of',)
         attrs = {"class": "table table-responsive table-hover"}
 
 
 class BibliographyTable(tables.Table):
 
-    id = tables.LinkColumn(verbose_name='ID')
+    title = tables.LinkColumn()
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
     mentioned_place = tables.columns.ManyToManyColumn()
     mentioned_archive = tables.columns.ManyToManyColumn()
@@ -33,7 +33,7 @@ class BibliographyTable(tables.Table):
 
     class Meta:
         model = Bibliography
-        sequence = ('id',)
+        sequence = ('title', 'short_title', 'publication_year', 'author',)
         attrs = {"class": "table table-responsive table-hover"}
 
 

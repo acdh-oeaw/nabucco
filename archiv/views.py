@@ -26,7 +26,7 @@ class ArchivListView(GenericListView):
     formhelper_class = ArchivFilterFormHelper
     table_class = ArchivTable
     init_columns = [
-        'id', 'name',
+        'name', 'alt_name', 'part_of'
     ]
     enable_merge = True
 
@@ -74,7 +74,7 @@ class BibliographyListView(GenericListView):
     formhelper_class = BibliographyFilterFormHelper
     table_class = BibliographyTable
     init_columns = [
-        'id', 'short_title',
+        'title', 'short_title', 'publication_year', 'author',
     ]
     enable_merge = True
 

@@ -10,7 +10,34 @@ body {
 }
 
 .navbar {
-	border-bottom: 5px solid #254aa5;;
+	border-bottom: 5px solid #254aa5;
+}
+
+.jumbotron {
+    position: relative;
+}
+
+#title-img {
+    opacity: 0.4;
+    border-radius: 50%;
+    max-width:100%;
+    height: auto;
+}
+
+.center {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #254aa5;
+font-weight: bold;
+font-size: 24px;
+text-align: justify;
+}
+
+.center h1 {
+    text-align: center;
+    font-weight: bold;
 }
 
 span.select2-container--default .select2-selection--single .select2-selection__rendered {

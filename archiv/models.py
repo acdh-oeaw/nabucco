@@ -612,6 +612,7 @@ class Tablet(models.Model):
         help_text="whatever",
     ).set_extra(
         is_public=True,
+        data_lookup="Place of issue",
     )
     mentioned_place = models.ManyToManyField(
         "Place",

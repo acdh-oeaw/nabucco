@@ -96,4 +96,4 @@ class Command(BaseCommand):
                     related_tablet.mentioned_in_pub.add(bib_item)
                 except:
                     continue
-                # print(related_tablet.mentioned_in_pub.all())
+                print(related_tablet.mentioned_in_pub.all())
