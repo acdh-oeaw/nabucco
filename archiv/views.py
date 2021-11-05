@@ -26,9 +26,10 @@ class ArchivListView(GenericListView):
     formhelper_class = ArchivFilterFormHelper
     table_class = ArchivTable
     init_columns = [
-        'name', 'alt_name', 'part_of'
+        'name', 'part_of'
     ]
-    enable_merge = True
+    enable_merge = False
+    template_name = 'archiv/generic_list.html'
 
 
 class ArchivDetailView(BaseDetailView):
