@@ -3,9 +3,8 @@
 from django.db import models
 from django.urls import reverse
 
-
 from browsing.browsing_utils import model_to_dict
-
+from mptt.models import MPTTModel, TreeForeignKey
 
 def set_extra(self, **kwargs):
     self.extra = kwargs
@@ -16,7 +15,7 @@ models.Field.set_extra = set_extra
 
 
 class Archiv(models.Model):
-    ### Archiv ###
+    """ Archiv """
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
@@ -141,7 +140,7 @@ class Archiv(models.Model):
 
 
 class Bibliography(models.Model):
-    ### Bibliography ###
+    """ Bibliography """
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
@@ -342,8 +341,8 @@ class Bibliography(models.Model):
         return False
 
 
-class Glossary(models.Model):
-    ### Glossary ###
+class Glossary(MPTTModel):
+    """ Glossary """
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
@@ -365,22 +364,18 @@ class Glossary(models.Model):
         is_public=True,
         data_lookup="Label",
     )
-    hierarchy = models.CharField(
+    glossary_collection = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Hierarchy",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-        data_lookup="Hierarchy",
+        verbose_name="Collection",
+        help_text="Collection to group Glossary entries"
     )
-    type = models.IntegerField(
-        blank=True, null=True,
-        verbose_name="Type",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-        data_lookup="Type",
+    broader_concept = TreeForeignKey(
+        'self',
+        verbose_name="skos:broader",
+        blank=True, null=True, on_delete=models.SET_NULL,
+        related_name="narrower_concepts",
+        help_text="Concept with a broader meaning that this concept inherits from"
     )
     title = models.CharField(
         max_length=250,
@@ -399,8 +394,8 @@ class Glossary(models.Model):
         is_public=True
     )
 
-    class Meta:
-        
+    class MPTTMeta:
+        parent_attr = 'broader_concept'
         ordering = [
             'pref_label',
         ]
@@ -464,7 +459,7 @@ class Glossary(models.Model):
 
 
 class Place(models.Model):
-    ### Place ###
+    """ Place """
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
@@ -580,7 +575,7 @@ class Place(models.Model):
 
 
 class Tablet(models.Model):
-    ### Tablet ###
+    """ Tablet """
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"

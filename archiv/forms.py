@@ -30,7 +30,6 @@ class ArchivFilterFormHelper(FormHelper):
             Accordion(
                 AccordionGroup(
                     'Advanced search',
-                    
                     'legacy_pk',
                     'name',
                     'part_of',
@@ -139,10 +138,9 @@ class GlossaryFilterFormHelper(FormHelper):
             Accordion(
                 AccordionGroup(
                     'Advanced search',
-                    
                     'legacy_pk',
                     'pref_label',
-                    'hierarchy',
+                    'glossary_collection',
                     'type',
                     'title',
                     css_id="more"
