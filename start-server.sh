@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # start-server.sh
-echo "hallo"
+echo "Hallo von Nabucco"
+if [ -n "$MIGRATE" ] ; then
+    (echo "making migrations and running them"
+    python djangobaseproject/manage.py migrate --no-input)
+fi
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] ; then
     (echo "creating superuser ${DJANGO_SUPERUSER_USERNAME}" && python djangobaseproject/manage.py createsuperuser --no-input --noinput --email 'blank@email.com')
 fi
