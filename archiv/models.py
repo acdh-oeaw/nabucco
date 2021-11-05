@@ -6,6 +6,7 @@ from django.urls import reverse
 from browsing.browsing_utils import model_to_dict
 from mptt.models import MPTTModel, TreeForeignKey
 
+
 def set_extra(self, **kwargs):
     self.extra = kwargs
     return self
@@ -19,7 +20,7 @@ class Archiv(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -71,17 +72,17 @@ class Archiv(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'name',
         ]
         verbose_name = "Archiv"
-    
+
     def __str__(self):
         if self.name:
             return "{}".format(self.name)
@@ -94,22 +95,18 @@ class Archiv(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:archiv_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Archiv.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "name"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:archiv_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:archiv_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:archiv_detail', kwargs={'pk': self.id})
@@ -144,7 +141,7 @@ class Bibliography(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -273,17 +270,17 @@ class Bibliography(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'short_title',
         ]
         verbose_name = "Bibliography"
-    
+
     def __str__(self):
         if self.short_title:
             return "{}".format(self.short_title)
@@ -296,22 +293,18 @@ class Bibliography(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:bibliography_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Bibliography.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "short_title"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:bibliography_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:bibliography_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:bibliography_detail', kwargs={'pk': self.id})
@@ -346,7 +339,7 @@ class Glossary(MPTTModel):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -400,7 +393,7 @@ class Glossary(MPTTModel):
             'pref_label',
         ]
         verbose_name = "Glossary"
-    
+
     def __str__(self):
         if self.pref_label:
             return "{}".format(self.pref_label)
@@ -413,22 +406,18 @@ class Glossary(MPTTModel):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:glossary_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Glossary.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "pref_label"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:glossary_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:glossary_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:glossary_detail', kwargs={'pk': self.id})
@@ -463,7 +452,7 @@ class Place(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -506,17 +495,17 @@ class Place(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'name',
         ]
         verbose_name = "Place"
-    
+
     def __str__(self):
         if self.name:
             return "{}".format(self.name)
@@ -529,22 +518,18 @@ class Place(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:place_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Place.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "name"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:place_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:place_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:place_detail', kwargs={'pk': self.id})
@@ -579,7 +564,7 @@ class Tablet(models.Model):
     legacy_id = models.CharField(
         max_length=300, blank=True,
         verbose_name="Legacy ID"
-        )
+    )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
         verbose_name="alt id",
@@ -769,17 +754,17 @@ class Tablet(models.Model):
         blank=True,
         null=True,
         verbose_name="The original data"
-        ).set_extra(
-            is_public=True
-        )
+    ).set_extra(
+        is_public=True
+    )
 
     class Meta:
-        
+
         ordering = [
             'id',
         ]
         verbose_name = "Tablet"
-    
+
     def __str__(self):
         if self.museum_id:
             return "{}".format(self.museum_id)
@@ -792,22 +777,18 @@ class Tablet(models.Model):
     @classmethod
     def get_listview_url(self):
         return reverse('archiv:tablet_browse')
-    
+
     @classmethod
     def get_source_table(self):
         return "./data/csv/Tablet.csv"
-    
-    
+
     @classmethod
     def get_natural_primary_key(self):
         return "legacy_pk"
-    
+
     @classmethod
     def get_createview_url(self):
         return reverse('archiv:tablet_create')
-
-    def get_absolute_url(self):
-        return reverse('archiv:tablet_detail', kwargs={'pk': self.id})
 
     def get_absolute_url(self):
         return reverse('archiv:tablet_detail', kwargs={'pk': self.id})
@@ -835,5 +816,3 @@ class Tablet(models.Model):
                 kwargs={'pk': prev.first().id}
             )
         return False
-
-
