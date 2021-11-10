@@ -16,14 +16,21 @@ class GlossaryAdmin(DraggableMPTTAdmin):
     model = Glossary
 
     list_filter = (
-        ('glossary_collection'),
         ('broader_concept', admin.RelatedOnlyFieldListFilter),
     )
     search_fields = ['pref_label']
     autocomplete_fields = ['broader_concept']
 
+@admin.register(Place)
+class PlaceAdmin(DraggableMPTTAdmin):
+    model = Place
+
+    list_filter = (
+        ('broader_concept', admin.RelatedOnlyFieldListFilter),
+    )
+    search_fields = ['name']
+    autocomplete_fields = ['broader_concept']
 
 admin.site.register(Archiv)
 admin.site.register(Bibliography)
-admin.site.register(Place)
 admin.site.register(Tablet)

@@ -1,3 +1,4 @@
+from os import name
 from django.core.management.base import BaseCommand
 # from django.conf import settings
 # from appcreator.import_utils import run_import
@@ -7,6 +8,7 @@ from django.core.management.base import BaseCommand
 import pandas as pd
 
 from archiv.models import Glossary, Place, Bibliography, Archiv, Tablet
+from archiv.views import PlaceCreate
 
 
 class Command(BaseCommand):
@@ -44,6 +46,8 @@ class Command(BaseCommand):
         for i, row in df_glossary.iterrows():
             glossary_id = row['Concept ID']
             related_object_id = row['Related objects']
+            glossary_type = row['Type']
+            glossary_label = row['Label']
             # check if Related Objects refers to Place/Bibliography or else
             try:
                 glossary_item = Glossary.objects.get(legacy_pk=glossary_id)
@@ -62,6 +66,13 @@ class Command(BaseCommand):
                 except:
                     continue
                 # print(related_bib_item.mentioned_glossary_item.all())
+                try: 
+                    glossary_type == 148
+                    Place.objects.get_or_create(name=glossary_label)
+                    print('success')
+                except:
+                    continue
+                    
         for i, row in df_place.iterrows():
             place_id = row['Place id']
             related_object_id = row['Related objects']

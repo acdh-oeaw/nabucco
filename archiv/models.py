@@ -357,12 +357,6 @@ class Glossary(MPTTModel):
         is_public=True,
         data_lookup="Label",
     )
-    glossary_collection = models.CharField(
-        max_length=250,
-        blank=True,
-        verbose_name="Collection",
-        help_text="Collection to group Glossary entries"
-    )
     broader_concept = TreeForeignKey(
         'self',
         verbose_name="skos:broader",
@@ -447,7 +441,7 @@ class Glossary(MPTTModel):
         return False
 
 
-class Place(models.Model):
+class Place(MPTTModel):
     """ Place """
     legacy_id = models.CharField(
         max_length=300, blank=True,
@@ -491,6 +485,19 @@ class Place(models.Model):
         is_public=True,
         data_lookup="Title",
     )
+    place_collection = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Collection",
+        help_text="Collection to group Place entries"
+    )
+    broader_concept = TreeForeignKey(
+        'self',
+        verbose_name="skos:broader",
+        blank=True, null=True, on_delete=models.SET_NULL,
+        related_name="narrower_concepts",
+        help_text="Concept with a broader meaning that this concept inherits from"
+    )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
@@ -499,8 +506,8 @@ class Place(models.Model):
         is_public=True
     )
 
-    class Meta:
-
+    class MPTTMeta:
+        parent_attr = 'broader_concept'
         ordering = [
             'name',
         ]

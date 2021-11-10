@@ -169,11 +169,6 @@ class GlossaryListFilter(django_filters.FilterSet):
         help_text=Glossary._meta.get_field('pref_label').help_text,
         label=Glossary._meta.get_field('pref_label').verbose_name
     )
-    glossary_collection = django_filters.CharFilter(
-        lookup_expr='icontains',
-        help_text=Glossary._meta.get_field('glossary_collection').help_text,
-        label=Glossary._meta.get_field('glossary_collection').verbose_name
-    )
     title = django_filters.CharFilter(
         lookup_expr='icontains',
         help_text=Glossary._meta.get_field('title').help_text,
@@ -187,7 +182,6 @@ class GlossaryListFilter(django_filters.FilterSet):
             'legacy_id',
             'legacy_pk',
             'pref_label',
-            'glossary_collection',
             'title',
         ]
 
@@ -216,6 +210,11 @@ class PlaceListFilter(django_filters.FilterSet):
         help_text=Place._meta.get_field('title').help_text,
         label=Place._meta.get_field('title').verbose_name
     )
+    place_collection = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Place._meta.get_field('place_collection').help_text,
+        label=Place._meta.get_field('place_collection').verbose_name
+    )
 
     class Meta:
         model = Place
@@ -226,6 +225,7 @@ class PlaceListFilter(django_filters.FilterSet):
             'name',
             'part_of',
             'title',
+            'place_collection',
         ]
 
 
