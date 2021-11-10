@@ -27,11 +27,12 @@ class Command(BaseCommand):
             except Archiv.DoesNotExist:
                 continue
             if archive:
-                try:
-                    tablet = Tablet.objects.get(legacy_pk=related_object_id)
-                    tablet.mentioned_archiv.add(archive)
-                except:
-                    continue
+            # OBSOLETE: 'mentioned' tabletss are simly tablets belonging to the archiv
+            #     try:
+            #         tablet = Tablet.objects.get(legacy_pk=related_object_id)
+            #         tablet.mentioned_archiv.add(archive)
+            #     except:
+            #         continue
                 # print(tablet.mentioned_archiv.all())
                 try:
                     bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
@@ -96,4 +97,4 @@ class Command(BaseCommand):
                     related_tablet.mentioned_in_pub.add(bib_item)
                 except:
                     continue
-                print(related_tablet.mentioned_in_pub.all())
+                # print(related_tablet.mentioned_in_pub.all())

@@ -108,6 +108,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+nabucco/
+.nabucco
 .env
 .venv
 env/

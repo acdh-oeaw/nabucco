@@ -196,6 +196,7 @@ class PlaceListView(GenericListView):
         'id', 'name',
     ]
     enable_merge = True
+    template_name = 'archiv/generic_list.html'
 
 
 class PlaceDetailView(BaseDetailView):
@@ -244,6 +245,7 @@ class TabletListView(GenericListView):
         'id', 'museum_id',
     ]
     enable_merge = True
+    template_name = 'archiv/generic_list.html'
 
 
 class TabletDetailView(BaseDetailView):
