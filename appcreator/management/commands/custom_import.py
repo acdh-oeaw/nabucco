@@ -53,25 +53,24 @@ class Command(BaseCommand):
                 glossary_item = Glossary.objects.get(legacy_pk=glossary_id)
             except (Glossary.DoesNotExist, ValueError):
                 continue
-            if glossary_item:
-                try:
-                    related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
-                    related_tablet.key_word.add(glossary_item)
-                except:
-                    continue
-                # print(related_tablet.key_word.all())
-                try:
-                    related_bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
-                    related_bib_item.mentioned_glossary_item.add(glossary_item)
-                except:
-                    continue
-                # print(related_bib_item.mentioned_glossary_item.all())
-                try: 
-                    glossary_type == 148
-                    Place.objects.get_or_create(name=glossary_label)
-                    print('success')
-                except:
-                    continue
+            if glossary_item and glossary_type == 148:
+                Place.objects.get_or_create(name=glossary_label)
+                glossary_item.delete()
+            else:
+                if glossary_item:
+                    try:
+                        related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
+                        related_tablet.key_word.add(glossary_item)
+                    except:
+                        continue
+                    # print(related_tablet.key_word.all())
+                    try:
+                        related_bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
+                        related_bib_item.mentioned_glossary_item.add(glossary_item)
+                    except:
+                        continue
+                    # print(related_bib_item.mentioned_glossary_item.all())
+
                     
         for i, row in df_place.iterrows():
             place_id = row['Place id']
