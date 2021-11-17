@@ -145,9 +145,10 @@ class GlossaryListView(GenericListView):
     formhelper_class = GlossaryFilterFormHelper
     table_class = GlossaryTable
     init_columns = [
-        'id', 'pref_label',
+        'pref_label', 'broader_concept',
     ]
-    enable_merge = True
+    enable_merge = True,
+    template_name = 'archiv/glossary_list.html'
 
 
 class GlossaryDetailView(BaseDetailView):
@@ -242,7 +243,7 @@ class TabletListView(GenericListView):
     formhelper_class = TabletFilterFormHelper
     table_class = TabletTable
     init_columns = [
-        'id', 'museum_id',
+        'museum_id', 'publication', 'archiv', 'type_content', 'place_of_issue'
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'

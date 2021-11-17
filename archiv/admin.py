@@ -20,6 +20,7 @@ class GlossaryAdmin(DraggableMPTTAdmin):
     )
     search_fields = ['pref_label']
     autocomplete_fields = ['broader_concept']
+    mptt_level_indent = 50
 
 @admin.register(Place)
 class PlaceAdmin(DraggableMPTTAdmin):

@@ -37,13 +37,13 @@ class BibliographyTable(tables.Table):
 
 
 class GlossaryTable(tables.Table):
-
-    id = tables.LinkColumn(verbose_name='ID')
+    pref_label = tables.LinkColumn(verbose_name='Document Type')
+    broader_concept = tables.LinkColumn(verbose_name='Document Class')
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
 
     class Meta:
         model = Glossary
-        sequence = ('id',)
+        sequence = ('pref_label',)
         attrs = {"class": "table table-responsive table-hover"}
 
 
