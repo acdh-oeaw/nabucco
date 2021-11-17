@@ -8,7 +8,6 @@ from django.core.management.base import BaseCommand
 import pandas as pd
 
 from archiv.models import Glossary, Place, Bibliography, Archiv, Tablet
-from archiv.views import PlaceCreate
 
 
 class Command(BaseCommand):
@@ -71,7 +70,6 @@ class Command(BaseCommand):
                         continue
                     # print(related_bib_item.mentioned_glossary_item.all())
 
-                    
         for i, row in df_place.iterrows():
             place_id = row['Place id']
             related_object_id = row['Related objects']
