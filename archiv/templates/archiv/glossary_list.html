@@ -10,12 +10,12 @@
 
 {% recursetree object_list %}
     {% if node.is_leaf_node %}
-    <li class="level_3">
+    <a href="{% url 'archiv:glossary_detail' node.id %}"><li class="level_3">
         {{ node.pref_label }}
-    </li>
+    </li></a>
     {% elif node.is_child_node %}
     <li class="level_2">
-        {{ node.pref_label }}
+        <a href="{% url 'archiv:glossary_detail' node.id %}">{{ node.pref_label }}</a>
         {% if not node.is_leaf_node %}
             <ul class="children">
                 {{ children }}
@@ -24,7 +24,7 @@
     </li>
     {% else %}
     <li class="level_1">
-        {{ node.pref_label }}
+        <a href="{% url 'archiv:glossary_detail' node.id %}">{{ node.pref_label }}</a>
         {% if not node.is_leaf_node %}
             <ul class="children">
                 {{ children }}
