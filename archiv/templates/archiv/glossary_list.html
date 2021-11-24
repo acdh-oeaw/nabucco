@@ -5,34 +5,35 @@
 
 {% block content %}
 
-<h1>{{ class_name }} - Overview </h1>
+<div class="container-fluid"></div>
+    <h1>{{ class_name }} - Overview </h1>
 
-
-{% recursetree object_list %}
-    {% if node.is_leaf_node %}
-    <a href="{% url 'archiv:glossary_detail' node.id %}"><li class="level_3">
-        {{ node.pref_label }}
-    </li></a>
-    {% elif node.is_child_node %}
-    <li class="level_2">
-        <a href="{% url 'archiv:glossary_detail' node.id %}">{{ node.pref_label }}</a>
-        {% if not node.is_leaf_node %}
-            <ul class="children">
-                {{ children }}
-            </ul>
+    {% recursetree object_list %}
+        {% if node.is_leaf_node %}
+        <a href="{% url 'archiv:glossary_detail' node.id %}"><li class="level_3" style="font-weight: lighter; color: #254aa5 ">
+            {{ node.pref_label }}
+        </li></a>
+        {% elif node.is_child_node and not node.is_leaf_node %}
+        <li class="level_2" class="h4" style="font-weight: bold; color: #254aa5">
+            <a href="{% url 'archiv:glossary_detail' node.id %}">{{ node.pref_label }}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+        {% else %}
+        <li class="level_1">
+            <a href="{% url 'archiv:glossary_detail' node.id %}" class="h2" style="font-weight: bolder; color: #254aa5">{{ node.pref_label }}</a>
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
         {% endif %}
-    </li>
-    {% else %}
-    <li class="level_1">
-        <a href="{% url 'archiv:glossary_detail' node.id %}">{{ node.pref_label }}</a>
-        {% if not node.is_leaf_node %}
-            <ul class="children">
-                {{ children }}
-            </ul>
-        {% endif %}
-    </li>
-    {% endif %}
-{% endrecursetree %} 
+    {% endrecursetree %} 
+    </div>    
 <!-- 
 {% for pref_label,broader_concept in object_list|tree_info %}
     {% if broader_concept.new_level %}<ul><li>{% else %}</li><li>{% endif %}
