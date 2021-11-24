@@ -15,13 +15,21 @@ body {
 
 .jumbotron {
     position: relative;
+    border-bottom: 5px solid #254aa5;
 }
+
 
 #title-img {
     opacity: 0.4;
     border-radius: 50%;
     max-width:100%;
     height: auto;
+}
+
+h2 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #254aa5;
 }
 
 .center {
