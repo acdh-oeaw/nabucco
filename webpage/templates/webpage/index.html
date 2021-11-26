@@ -4,9 +4,9 @@
 {% load webpage_extras %}
 {% block content %}
 
-        <div class="jumbotron">
+        <div class="jumbotron" style="background-color: white;">
             <div class="container">
-                    <img src="{% static 'img/project_background.jpg' %}" class='mx-auto d-block' id="title-img">
+                <img src="{% static 'img/project_background.jpg' %}" class='mx-auto d-block' id="title-img">
                 <!-- <h1 style="text-align:center; color: #111;">{% projects_metadata 'title' %}</h1>
                 <h3 style="text-align:center; color: #111;">{% projects_metadata 'subtitle' %}</h3>
                 <h5 style="text-align:center; color: #111;">{% projects_metadata 'description' %}</h5> -->
@@ -16,21 +16,23 @@
             </div>
         </div>
 
-    <div class="container" id="landing">
-        <div class="row">
+    <div class="container" id="landing" >
+        <div class="row" >
             <div class="col-md-12" style="text-align:center">
                 <h2>Browse the <b>NaBuCCo</b> Database</h2>
             </div>
             {% create_object_count app='archiv' as models %}
             {% for x in models %}
                 <div class="col-md-4  text-center">
-                    <div class="card flex-md-row mb-4 box-shadow">
-                        <div class="card-body">
-                            <h4 class="mb-0">{{x.name}}</h4>
-                            <h4 class="count">{{ x.count }}</h4>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="static/img/ishtar-gate.jpg" alt="Card image cap">
+                        <div class="card-body ">
+                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;">{{x.name}}</h4>
+                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }}</h4>
                             {% if x.link %}
-                                <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">View Details</a>
+                                <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
                             {% endif %}
+        
                         </div>
                     </div>
                 </div>
