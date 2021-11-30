@@ -60,7 +60,7 @@ class PlaceTable(tables.Table):
 
 class TabletTable(tables.Table):
 
-    id = tables.LinkColumn(verbose_name='ID')
+    museum_id = tables.LinkColumn(verbose_name='Museum No.')
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
     mentioned_place = tables.columns.ManyToManyColumn()
     key_word = tables.columns.ManyToManyColumn()

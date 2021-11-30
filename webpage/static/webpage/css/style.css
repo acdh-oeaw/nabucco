@@ -25,6 +25,11 @@ body {
     height: auto;
 }
 
+#gloss {
+    background-image:url('../../../../archiv/static/img/bg4.jpg');
+    padding: 200px, 200px, 200px, 200px;
+}
+
 h2 {
     padding-top: 25px;
     padding-bottom: 25px;

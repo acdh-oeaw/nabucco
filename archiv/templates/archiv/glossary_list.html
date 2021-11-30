@@ -5,11 +5,15 @@
 
 {% block content %}
 
-<div class="container-fluid"></div>
-    <h1>{{ class_name }} - Overview </h1>
-
+<div class="container-fluid" style="background-image:url('../../static/img/bg4.jpg'); background-size:cover;
+    padding-left: 100px;">
+    <h1 style="color: #254aa5">{{ class_name }} - Overview </h1>
+    <h4 style="color: #254aa5"> ({{ object_list.count }} entries)</h4>
+    <p>Devised by someone; based on Jursa 2005</p>
+    <div class="container">
+        <div class="row justify-content-center">
     {% recursetree object_list %}
-        {% if node.is_leaf_node %}
+        {% if node.is_leaf_node and node.is_child_node %}
         <a href="{% url 'archiv:glossary_detail' node.id %}"><li class="level_3" style="font-weight: lighter; color: #254aa5 ">
             {{ node.pref_label }}
         </li></a>
@@ -23,17 +27,18 @@
             {% endif %}
         </li>
         {% else %}
-        <li class="level_1">
+        <div class="col-md-6 offset-md-2" style="background-color:white;">
             <a href="{% url 'archiv:glossary_detail' node.id %}" class="h2" style="font-weight: bolder; color: #254aa5">{{ node.pref_label }}</a>
             {% if not node.is_leaf_node %}
                 <ul class="children">
                     {{ children }}
                 </ul>
             {% endif %}
-        </li>
+            </div>
         {% endif %}
-    {% endrecursetree %} 
-    </div>    
+    {% endrecursetree %}
+    </div> </div>  
+
 <!-- 
 {% for pref_label,broader_concept in object_list|tree_info %}
     {% if broader_concept.new_level %}<ul><li>{% else %}</li><li>{% endif %}
@@ -41,8 +46,7 @@
     {% for level in broader_concept.closed_levels %}</li></ul>{% endfor %}
 {% endfor %}
 -->
-
-<p>derived from Jursa 2005</p>
+</div>
 {% endblock %}
 
 
