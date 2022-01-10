@@ -16,13 +16,26 @@ body {
 .jumbotron {
     position: relative;
     border-bottom: 5px solid #254aa5;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.jumbotron .content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 100%; /* Full width */
+    padding: 20px; /* Some padding */
 }
 
 #title-img {
-    opacity: 0.4;
-    border-radius: 50%;
-    max-width:100%;
+    opacity: 0.7;
+    /*border-radius: 50%; */
+    width: 100%;
     height: auto;
+    size: cover;
 }
 
 #gloss {
