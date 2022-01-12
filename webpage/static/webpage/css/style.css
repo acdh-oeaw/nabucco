@@ -27,15 +27,15 @@ body {
     background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
     color: #f1f1f1; /* Grey text */
     width: 100%; /* Full width */
-    padding: 20px; /* Some padding */
+    padding: 30px; /* Some padding */
 }
 
 #title-img {
-    opacity: 0.7;
-    /*border-radius: 50%; */
-    width: 100%;
+    opacity: 0.9;
+    border-radius: 50%; 
     height: auto;
-    size: cover;
+    max-width: 75%;
+    /*size: cover;*/
 }
 
 #gloss {
