@@ -23,17 +23,7 @@ class GlossaryAdmin(DraggableMPTTAdmin):
     mptt_level_indent = 50
 
 
-@admin.register(Place)
-class PlaceAdmin(DraggableMPTTAdmin):
-    model = Place
-
-    list_filter = (
-        ('broader_concept', admin.RelatedOnlyFieldListFilter),
-    )
-    search_fields = ['name']
-    autocomplete_fields = ['broader_concept']
-
-
 admin.site.register(Archiv)
 admin.site.register(Bibliography)
+admin.site.register(Place)
 admin.site.register(Tablet)

@@ -49,12 +49,12 @@ class GlossaryTable(tables.Table):
 
 class PlaceTable(tables.Table):
 
-    id = tables.LinkColumn(verbose_name='ID')
+    name = tables.LinkColumn(verbose_name='Name')
     merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
 
     class Meta:
         model = Place
-        sequence = ('id',)
+        sequence = ('name',)
         attrs = {"class": "table table-responsive table-hover"}
 
 

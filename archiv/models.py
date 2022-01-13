@@ -441,7 +441,7 @@ class Glossary(MPTTModel):
         return False
 
 
-class Place(MPTTModel):
+class Place(models.Model):
     """ Place """
     legacy_id = models.CharField(
         max_length=300, blank=True,
@@ -465,7 +465,7 @@ class Place(MPTTModel):
         data_lookup="Place name",
     )
     part_of = models.ForeignKey(
-        "Place",
+        "self",
         related_name='rvn_place_part_of_place',
         on_delete=models.SET_NULL,
         null=True,
@@ -491,13 +491,6 @@ class Place(MPTTModel):
         verbose_name="Collection",
         help_text="Collection to group Place entries"
     )
-    broader_concept = TreeForeignKey(
-        'self',
-        verbose_name="skos:broader",
-        blank=True, null=True, on_delete=models.SET_NULL,
-        related_name="narrower_concepts",
-        help_text="Concept with a broader meaning that this concept inherits from"
-    )
     orig_data_csv = models.TextField(
         blank=True,
         null=True,
@@ -506,8 +499,7 @@ class Place(MPTTModel):
         is_public=True
     )
 
-    class MPTTMeta:
-        parent_attr = 'broader_concept'
+    class Meta:
         ordering = [
             'name',
         ]
