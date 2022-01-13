@@ -72,6 +72,7 @@ class Command(BaseCommand):
 
         for i, row in df_place.iterrows():
             place_id = row['Place id']
+            region_id = row['Parent id']
             related_object_id = row['Related objects']
             # check if Related Objects refers to Place/Bibliography or else
             try:
@@ -79,6 +80,12 @@ class Command(BaseCommand):
             except Place.DoesNotExist:
                 continue
             if place:
+                try:
+                    region_obj = Place.objects.get(legacy_pk=region_id)
+                    place.region = region_obj.name
+                    place.save()
+                except:
+                    continue
                 try:
                     related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
                     related_tablet.mentioned_place.add(place)

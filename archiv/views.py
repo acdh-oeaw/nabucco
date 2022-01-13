@@ -194,7 +194,7 @@ class PlaceListView(GenericListView):
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
     init_columns = [
-        'name', 'part_of'
+        'name', 'region',
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
