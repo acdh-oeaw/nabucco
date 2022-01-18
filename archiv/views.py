@@ -190,6 +190,8 @@ class GlossaryDelete(DeleteView):
 class PlaceListView(GenericListView):
 
     model = Place
+    regions = Place.objects.all().values_list('region', flat=True).order_by('region').distinct('region')
+    # print(regions)
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
@@ -199,6 +201,11 @@ class PlaceListView(GenericListView):
     enable_merge = True
     template_name = 'archiv/generic_list.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(PlaceListView, self).get_context_data(**kwargs)
+        context['regions'] = self.regions
+        return context
+        
 
 class PlaceDetailView(BaseDetailView):
 
