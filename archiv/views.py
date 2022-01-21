@@ -205,7 +205,7 @@ class PlaceListView(GenericListView):
         context = super(PlaceListView, self).get_context_data(**kwargs)
         context['regions'] = self.regions
         return context
-        
+
 
 class PlaceDetailView(BaseDetailView):
 
