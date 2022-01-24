@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-md-6">
             <h1> Toponyms and Hydronyms</h1>
-            <p> Each toponym is assignet to a main geographical regions as listed below: </p>
+            <p> Each toponym is assigned to a main geographical region as listed below: </p>
                 <ul>{% for region in regions %}
-                        <li>{{ region }}</li>
+                        <li> {{region }}</li>
                     {% endfor %}
                 </ul>
-            <p>The ancient names are transliterated in Latin characters following Zadok 1985 (RGTC 8).</p>
+            <p> Click <a href="{% url 'archiv:region_overview' %}">here</a> for a tabular overview of regions and their cities. The ancient names are transliterated in Latin characters following Zadok 1985 (RGTC 8).</p>
             <p>By clicking on a toponym, you will get a list of tablets of which this site is the place of issue. </p>
         </div>
         <div class="col-md-6">

@@ -101,6 +101,10 @@ urlpatterns = [
         views.PlaceDelete.as_view(),
         name='place_delete'),
     url(
+        r'^regions/$',
+        views.RegionView.as_view(),
+        name='region_overview'),
+    url(
         r'^tablet/$',
         views.TabletListView.as_view(),
         name='tablet_browse'

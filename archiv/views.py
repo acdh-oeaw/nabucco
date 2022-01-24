@@ -2,6 +2,7 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
+from django.views.generic import ListView
 from django.views.generic.edit import DeleteView
 from . filters import (
     ArchivListFilter,
@@ -241,6 +242,18 @@ class PlaceDelete(DeleteView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(PlaceDelete, self).dispatch(*args, **kwargs)
+
+
+class RegionView(ListView):
+
+    model = Place
+    regions = PlaceListView.regions
+    template_name = 'archiv/regions.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RegionView, self).get_context_data(**kwargs)
+        context['regions'] = self.regions
+        return context
 
 
 class TabletListView(GenericListView):

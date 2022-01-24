@@ -1,0 +1,36 @@
+{% extends "webpage/base.html" %}
+
+{%block content%}
+<div class="container-fluid">
+    {% for region in regions %}
+        <table>
+            <tr>
+                <th>{{region }}</th>
+            </tr>
+        {% for n in object_list %}
+            {% if n.region == region and not n.name in regions %} 
+               <tr>
+                   <td>{{ n.name }}</td>
+                </tr> 
+            {% endif %}
+        {% endfor %}
+        </table>
+    {% endfor %}
+
+</div>
+{% endblock %}
+
+
+{% for region in regions %}
+{{region }}
+{% for n in object_list %}
+{% if n.region == region %} 
+    {{ n.name }}
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+
+                    
+                
