@@ -191,13 +191,12 @@ class GlossaryDelete(DeleteView):
 class PlaceListView(GenericListView):
 
     model = Place
-    regions = Place.objects.all().values_list('region', flat=True).order_by('region').distinct('region')
-    # print(regions)
+    regions = Place.objects.all().values_list('part_of__name', flat=True).order_by('part_of__name').distinct('part_of__name')
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
     init_columns = [
-        'name', 'region',
+        'name', 'part_of',
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
@@ -247,14 +246,13 @@ class PlaceDelete(DeleteView):
 class RegionView(ListView):
 
     model = Place
-    regions = PlaceListView.regions
     template_name = 'archiv/regions.html'
+    regions = PlaceListView.regions
 
     def get_context_data(self, **kwargs):
         context = super(RegionView, self).get_context_data(**kwargs)
         context['regions'] = self.regions
         return context
-
 
 class TabletListView(GenericListView):
 

@@ -7,13 +7,13 @@
     {% for region in regions %}
         <div class='col-4'>
             <table id='{{region}}'>
-                {% if region != '' %}
+                {% if not region is None %}
                     <tr>
                         <th>{{region}}</th>
                     </tr>
                 {% endif %}
                 {% for n in object_list %}
-                    {% if n.region == region and not n.name in regions  %} 
+                    {% if n.part_of.name == region and not n.name in regions  %} 
                     <tr>
                         <td>{{ n.name }}</td>
                     </tr>

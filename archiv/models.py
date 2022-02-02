@@ -464,15 +464,6 @@ class Place(models.Model):
         is_public=True,
         data_lookup="Place name",
     )
-    region = models.CharField(
-        max_length=250,
-        blank=True,
-        verbose_name="Region",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-        data_lookup="Region",
-    )
     part_of = models.ForeignKey(
         "self",
         related_name='rvn_place_part_of_place',
@@ -483,7 +474,6 @@ class Place(models.Model):
         help_text="larger region",
     ).set_extra(
         is_public=True,
-        data_lookup="Parent id",
     )
     title = models.CharField(
         max_length=250,

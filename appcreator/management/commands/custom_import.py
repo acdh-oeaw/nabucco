@@ -81,8 +81,7 @@ class Command(BaseCommand):
                 continue
             if place:
                 try:
-                    region_obj = Place.objects.get(legacy_pk=region_id)
-                    place.region = region_obj.name
+                    place.part_of = Place.objects.get(legacy_pk=region_id)
                     place.save()
                 except:
                     continue
