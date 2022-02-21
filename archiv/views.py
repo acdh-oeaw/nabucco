@@ -191,7 +191,11 @@ class GlossaryDelete(DeleteView):
 class PlaceListView(GenericListView):
 
     model = Place
-    regions = Place.objects.all().values_list('part_of__name', flat=True).order_by('part_of__name').distinct('part_of__name')
+    regions = Place.objects.all().values_list(
+        'part_of__name', flat=True
+    ).order_by(
+        'part_of__name'
+    ).distinct('part_of__name')
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
@@ -253,6 +257,7 @@ class RegionView(ListView):
         context = super(RegionView, self).get_context_data(**kwargs)
         context['regions'] = self.regions
         return context
+
 
 class TabletListView(GenericListView):
 
