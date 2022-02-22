@@ -14,7 +14,7 @@ class Command(BaseCommand):
         # print(df_json)
 
         for i, row in df_json.iterrows():
-            museum_id = row['node.Museum No']
+            museum_id = row['node.Museum No'].replace("BM 0", "BM ").replace("AO 0", "AO ")
             # paraphrase = row['node.Paraphrase']
             period = row['node.Period']
             day = row['node.Babylonian Day']
