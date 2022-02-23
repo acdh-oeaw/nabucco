@@ -20,10 +20,31 @@ class Command(BaseCommand):
             month = row['node.Babylonian Month']
             king = row['node.Babylonian King']
             place = row['node.Place of issue']
+            if place:
+                clean_place = re.sub(clean, '', place).lstrip().rstrip()
             archive = row['node.Archive:']
+            if archive:
+                clean_a = re.sub(clean, '', archive).replace('\n', '').lstrip().rstrip()
             type_content = row['node.Type and content']
+            if type_content:
+                clean_type_content = re.sub(clean, '', type_content).replace('\n', '').lstrip().rstrip()
             period = row['node.Period']
             day = row['node.Babylonian Day']
+
+            place, _ = Place.objects.get_or_create(
+                name=clean_place
+            )
+            place.save()
+
+            archive, _ = Archiv.objects.get_or_create(
+                name=clean_a
+            )
+            archive.save()
+
+            glossary, _ = Glossary.objects.get_or_create(
+                pref_label=clean_type_content
+            )
+            glossary.save()
 
             tablet, created = Tablet.objects.get_or_create(
                 museum_id=clean_id)
@@ -40,15 +61,12 @@ class Command(BaseCommand):
                     tablet.king = re.sub(clean, '', king).lstrip().rstrip()[0:3]
                 if month:
                     tablet.month = re.sub(clean, '', month).replace('\n', '').lstrip().rstrip()[0:3]
-
                 if archive:
-                    clean_a = re.sub(clean, '', archive).replace('\n', '').lstrip().rstrip()
                     try:
                         tablet.archiv = Archiv.objects.get(name=clean_a)
                         tablet.save()
                     except Archiv.DoesNotExist:
                         continue
-
                 if type_content:
                     clean_type_content = re.sub(clean, '', type_content).replace('\n', '').lstrip().rstrip()
                     try:
@@ -56,9 +74,7 @@ class Command(BaseCommand):
                         tablet.save()
                     except Glossary.DoesNotExist:
                         continue
-
                 if place:
-                    clean_place = re.sub(clean, '', place).lstrip().rstrip()
                     try:
                         tablet.place_of_issue = Place.objects.get(name=clean_place)
                         tablet.save()
