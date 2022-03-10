@@ -1,0 +1,29 @@
+#visualization {
+    background: #fafafa;
+    height: 700px;
+    position: relative;
+  }
+  #visualization label {
+    /* overwrite fundament */
+    margin-bottom: 0;
+  }
+  [data-nerv-legend] {
+    left: 0.4rem;
+    top: 0.4rem;
+  }
+  [data-nerv-export] {
+    bottom: 0.4rem;
+    left: 0.4rem;
+  }
+  [data-nerv-3d-toggle] {
+    bottom: 3.0rem;
+    right: 0.8rem;
+  }
+  [data-nerv-filter-controls] {
+    right: 0.4rem;
+    top: 0.4rem;
+  }
+  [data-nerv-simulation-controls] {
+    bottom: 0.4rem;
+    right: 3rem;
+  }

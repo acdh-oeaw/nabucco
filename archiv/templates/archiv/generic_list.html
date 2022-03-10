@@ -27,6 +27,23 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="Diacritics" class="panel-body">
+                            <table>
+                                <thead ><h5 style="margin-bottom:15px;">Diacritics</h3></thead>
+                                <tbody><tr><td style="cursor: pointer;">Ā</td><td style="cursor: pointer;">ā</td><td style="cursor: pointer;">Â</td><td style="cursor: pointer;">â</td><td style="cursor: pointer;">Á</td><td style="cursor: pointer;">á</td><td style="cursor: pointer;">À</td><td style="cursor: pointer;">à</td></tr>
+                                    <tr><td style="cursor: pointer;">Ē</td><td style="cursor: pointer;">ē</td><td style="cursor: pointer;">Ê</td><td style="cursor: pointer;">ê</td><td style="cursor: pointer;">É</td><td style="cursor: pointer;">é</td><td style="cursor: pointer;">È</td><td style="cursor: pointer;">è</td></tr>
+                                    <tr><td style="cursor: pointer;">Ī</td><td style="cursor: pointer;">ī</td><td style="cursor: pointer;">Î</td><td style="cursor: pointer;">î</td><td style="cursor: pointer;">Í</td><td style="cursor: pointer;">í</td><td style="cursor: pointer;">Ì</td><td style="cursor: pointer;">ì</td></tr>
+                                    <tr><td style="cursor: pointer;">Ū</td><td style="cursor: pointer;">ū</td><td style="cursor: pointer;">Û</td><td style="cursor: pointer;">û</td><td style="cursor: pointer;">Ú</td><td style="cursor: pointer;">ú</td><td style="cursor: pointer;">Ù</td><td style="cursor: pointer;">ù</td></tr>
+                                    <tr><td style="cursor: pointer;">Š</td><td style="cursor: pointer;">š</td><td style="cursor: pointer;">Ṣ</td><td style="cursor: pointer;">ṣ</td><td style="cursor: pointer;">Ṭ</td><td style="cursor: pointer;">ṭ</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -55,7 +72,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-8" id="results">
+            <div class="col-md-6" id="results">
                 <div class="card">
                     <div class="card-body table-responsive">
                         {% with table.paginator.count as total %}

@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'netvis',
     'appcreator',
     'archiv',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [

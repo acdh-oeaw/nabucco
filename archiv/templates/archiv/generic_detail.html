@@ -133,13 +133,13 @@
               {% endfor %}
             </table>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div id="visualization"></div>
           <script src="{% static 'netvis/js/netvis.js' %}"></script>
           <script type="text/javascript">
             showGraph("visualization", "{% url 'netvis:graph' app_name=app_name model_name=class_name|lower pk=object.id %}")
           </script>
-      </div>
+        </div>-->
 
     </div>
     {% if user.is_authenticated %}
