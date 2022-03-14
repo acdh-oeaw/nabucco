@@ -1,0 +1,392 @@
+[
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Uruk",
+            "legacy_pk": 61,
+            "lng": null,
+            "name": "Uruk",
+            "orig_data_csv": "{\"place id\": 61, \"parent id\": 4, \"place name\": \"Uruk\", \"related objects\": NaN, \"title\": \"Uruk\"}",
+            "part_of": null,
+            "place_collection": "",
+            "title": "Uruk"
+        },
+        "model": "archiv.place",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Ur",
+            "legacy_pk": 67,
+            "lng": null,
+            "name": "Ur",
+            "orig_data_csv": "{\"place id\": 67, \"parent id\": 4, \"place name\": \"Ur\", \"related objects\": NaN, \"title\": \"Ur\"}",
+            "part_of": null,
+            "place_collection": "",
+            "title": "Ur"
+        },
+        "model": "archiv.place",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Nippur",
+            "legacy_pk": 40,
+            "lng": null,
+            "name": "Nippur",
+            "orig_data_csv": "{\"place id\": 40, \"parent id\": 4, \"place name\": \"Nippur\", \"related objects\": 1225.0, \"title\": \"Nippur\"}",
+            "part_of": null,
+            "place_collection": "",
+            "title": "Nippur"
+        },
+        "model": "archiv.place",
+        "pk": 10
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Babylon",
+            "legacy_pk": 37,
+            "lng": null,
+            "name": "Babylon",
+            "orig_data_csv": "{\"place id\": 37, \"parent id\": 4, \"place name\": \"Babylon\", \"related objects\": 2355.0, \"title\": \"Babylon\"}",
+            "part_of": null,
+            "place_collection": "",
+            "title": "Babylon"
+        },
+        "model": "archiv.place",
+        "pk": 9
+    },
+    {
+        "fields": {
+            "alt_name": "",
+            "description": "A short description of the archive",
+            "legacy_id": "S\u00een-n\u0101\u1e63ir",
+            "legacy_pk": 412,
+            "name": "S\u00een-n\u0101\u1e63ir",
+            "orig_data_csv": "{\"archive id\": 412, \"archive name\": \"S\\u00een-n\\u0101\\u1e63ir\", \"is part of\": \"Uruk\", \"title\": \"S\\u00een-n\\u0101\\u1e63ir\", \"related objects\": 5395.0, \"alternative name\": NaN}",
+            "paragraph": null,
+            "part_of": 3,
+            "title": "S\u00een-n\u0101\u1e63ir"
+        },
+        "model": "archiv.archiv",
+        "pk": 39
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "Purchases",
+            "legacy_pk": null,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": null,
+            "pref_label": "",
+            "rght": 2,
+            "title": "",
+            "tree_id": 83
+        },
+        "model": "archiv.glossary",
+        "pk": 83
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Ur city",
+            "legacy_pk": 1418,
+            "lng": null,
+            "name": "Ur city",
+            "orig_data_csv": "{\"place id\": 1418, \"parent id\": 67, \"place name\": \"Ur city\", \"related objects\": 5684.0, \"title\": \"Ur city\"}",
+            "part_of": 4,
+            "place_collection": "",
+            "title": "Ur city"
+        },
+        "model": "archiv.place",
+        "pk": 273
+    },
+    {
+        "fields": {
+            "alt_name": "",
+            "description": "A short description of the archive",
+            "legacy_id": "nan",
+            "legacy_pk": null,
+            "name": "",
+            "orig_data_csv": null,
+            "paragraph": null,
+            "part_of": null,
+            "title": ""
+        },
+        "model": "archiv.archiv",
+        "pk": 120
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "nan",
+            "legacy_pk": null,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": null,
+            "pref_label": "",
+            "rght": 2,
+            "title": "",
+            "tree_id": 74
+        },
+        "model": "archiv.glossary",
+        "pk": 74
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Nippur city",
+            "legacy_pk": 22,
+            "lng": null,
+            "name": "Nippur city",
+            "orig_data_csv": "{\"place id\": 22, \"parent id\": 40, \"place name\": \"Nippur city\", \"related objects\": 8508.0, \"title\": \"Nippur city\"}",
+            "part_of": 10,
+            "place_collection": "",
+            "title": "Nippur city"
+        },
+        "model": "archiv.place",
+        "pk": 449
+    },
+    {
+        "fields": {
+            "alt_name": "",
+            "description": "A short description of the archive",
+            "legacy_id": "Egibi/N\u016br-S\u00een",
+            "legacy_pk": 7,
+            "name": "Egibi/N\u016br-S\u00een",
+            "orig_data_csv": "{\"archive id\": 7, \"archive name\": \"Egibi/N\\u016br-S\\u00een\", \"is part of\": \"Babylon\", \"title\": \"Egibi/N\\u016br-S\\u00een\", \"related objects\": 7063.0, \"alternative name\": NaN}",
+            "paragraph": null,
+            "part_of": 9,
+            "title": "Egibi/N\u016br-S\u00een"
+        },
+        "model": "archiv.archiv",
+        "pk": 118
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "Promissory notes ina mu\u1e96\u1e96i",
+            "legacy_pk": null,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": null,
+            "pref_label": "",
+            "rght": 2,
+            "title": "",
+            "tree_id": 73
+        },
+        "model": "archiv.glossary",
+        "pk": 73
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Babylon city",
+            "legacy_pk": 25,
+            "lng": null,
+            "name": "Babylon city",
+            "orig_data_csv": "{\"place id\": 25, \"parent id\": 37, \"place name\": \"Babylon city\", \"related objects\": 7063.0, \"title\": \"Babylon city\"}",
+            "part_of": 9,
+            "place_collection": "",
+            "title": "Babylon city"
+        },
+        "model": "archiv.place",
+        "pk": 413
+    },
+    {
+        "fields": {
+            "archiv": 39,
+            "bibliography": "",
+            "cdli_no": "",
+            "day": "",
+            "imported": "Melanie Gross (26/05/2016)",
+            "julian_date_year": 660,
+            "key_word": [],
+            "king": "\u0160\u0161u",
+            "legacy_id": "5388.0",
+            "legacy_pk": 5388,
+            "mentioned_archiv": [],
+            "mentioned_in_pub": [],
+            "mentioned_place": [],
+            "month": "VI",
+            "museum_id": "BM 118968",
+            "orig_data_csv": "{\"object id\": \"5388\", \"museum no.\": \"BM 118968\", \"publication\": \"Frame 2013\", \"text number\": \"11\", \"period\": \"ENB\", \"place of issue\": \"Ur city\", \"type and content\": \"Purchases\", \"day remark\": \"-\", \"month\": \"VI\", \"month remark\": \"-\", \"year\": 8.0, \"year remark\": \"-\", \"king\": \"\\u0160\\u0161u\", \"king remark\": \"-\", \"paraphrase\": \"Purchase of a garden:<strong> A</strong> purchases a date garden (<em>kir&icirc;</em> <em>gi&scaron;immari</em>) for 3 minas and 50 shekels of silver in pieces (<em>&scaron;ibirtu</em>), together with an additional payment (<em>atru</em>) of 7 shekels of silver, from <strong>B<sub>1</sub></strong>. The sold garden is the (inheritance) share (<em>zittu</em>) the seller divided (<em>z&acirc;zu</em>) with his uncle <strong>B<sub>2</sub></strong>. It is located in the district (<em>er\\u1e63etu</em>) of the Ninurta Temple inside of Uruk. Its upper side borders on (the property of) the seller&rsquo;s grandfather <strong>B<sub>3</sub></strong> and its upper front on (the property of) the seller&rsquo;s uncle <strong>B<sub>2</sub></strong>. Its lower side borders on the Ninurta Temple and its lower front on the street (<em>s\\u016bqu</em>). Neither cardinal directions nor measures are given for the sides of the plot. 11 witnesses and the scribe. Fingernail impressions (<em>\\u1e63upru</em>) of the seller.<br />\\r\\n&nbsp;<br />\\r\\n<strong>A</strong> = Mu&scaron;\\u0113zib-Marduk/Kiribtu; <strong>B<sub>1</sub></strong> = Ahh\\u0113&scaron;\\u0101ya/Ha&scaron;dia/&Scaron;ang&ucirc;-Ninurta; <strong>B<sub>2</sub></strong> = Zib\\u0101ya/\\u0112re&scaron;u; <strong>B<sub>3</sub></strong> = \\u0112re&scaron;u//&Scaron;ang&ucirc;-Ninurta; Scribe = &Scaron;ul\\u0101ya/Ibn\\u0101ya<br />\\r\\n&nbsp;\", \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": \"Frame 2013 11\", \"archive\": \"S\\u00een-n\\u0101\\u1e63ir\", \"day (babylonian)\": 29.0, \"bibliography\": NaN, \"title\": \"BM 118968\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": \"660 BCE\", \"julian date year\": \"660\", \"place of issue remark\": NaN, \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": \"Nail impressions\", \"orientation\": \"Portrait\", \"other markings description\": \"on all four edges\", \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
+            "paraphrase": "Purchase of a garden:<strong> A</strong> purchases a date garden (<em>kir&icirc;</em> <em>gi&scaron;immari</em>) for 3 minas and 50 shekels of silver in pieces (<em>&scaron;ibirtu</em>), together with an additional payment (<em>atru</em>) of 7 shekels of silver, from <strong>B<sub>1</sub></strong>. The sold garden is the (inheritance) share (<em>zittu</em>) the seller divided (<em>z&acirc;zu</em>) with his uncle <strong>B<sub>2</sub></strong>. It is located in the district (<em>er\u1e63etu</em>) of the Ninurta Temple inside of Uruk. Its upper side borders on (the property of) the seller&rsquo;s grandfather <strong>B<sub>3</sub></strong> and its upper front on (the property of) the seller&rsquo;s uncle <strong>B<sub>2</sub></strong>. Its lower side borders on the Ninurta Temple and its lower front on the street (<em>s\u016bqu</em>). Neither cardinal directions nor measures are given for the sides of the plot. 11 witnesses and the scribe. Fingernail impressions (<em>\u1e63upru</em>) of the seller.<br />\r\n&nbsp;<br />\r\n<strong>A</strong> = Mu&scaron;\u0113zib-Marduk/Kiribtu; <strong>B<sub>1</sub></strong> = Ahh\u0113&scaron;\u0101ya/Ha&scaron;dia/&Scaron;ang&ucirc;-Ninurta; <strong>B<sub>2</sub></strong> = Zib\u0101ya/\u0112re&scaron;u; <strong>B<sub>3</sub></strong> = \u0112re&scaron;u//&Scaron;ang&ucirc;-Ninurta; Scribe = &Scaron;ul\u0101ya/Ibn\u0101ya<br />\r\n&nbsp;",
+            "period": "ENB",
+            "place_of_issue": 273,
+            "publication_name": "Frame 2013",
+            "text_number": "",
+            "transliteration": null,
+            "type_content": 83,
+            "year": ""
+        },
+        "model": "archiv.tablet",
+        "pk": 860
+    },
+    {
+        "fields": {
+            "archiv": 120,
+            "bibliography": "",
+            "cdli_no": "",
+            "day": "",
+            "imported": "Melanie Gross (26/05/2016)",
+            "julian_date_year": 654,
+            "key_word": [],
+            "king": "\u0160\u0161u",
+            "legacy_id": "5877.0",
+            "legacy_pk": 5877,
+            "mentioned_archiv": [],
+            "mentioned_in_pub": [],
+            "mentioned_place": [],
+            "month": "II",
+            "museum_id": "15 N 155",
+            "orig_data_csv": "{\"object id\": \"5877\", \"museum no.\": \"15 N 155\", \"publication\": NaN, \"text number\": NaN, \"period\": \"ENB\", \"place of issue\": \"Nippur city\", \"type and content\": NaN, \"day remark\": \"-\", \"month\": \"II\", \"month remark\": \"-\", \"year\": 14.0, \"year remark\": \"?\", \"king\": \"\\u0160\\u0161u\", \"king remark\": \"-\", \"paraphrase\": NaN, \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": NaN, \"archive\": NaN, \"day (babylonian)\": 27.0, \"bibliography\": NaN, \"title\": \"15 N 155\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": \"654 BCE\", \"julian date year\": \"654\", \"place of issue remark\": NaN, \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": NaN, \"orientation\": NaN, \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
+            "paraphrase": null,
+            "period": "ENB",
+            "place_of_issue": 449,
+            "publication_name": "",
+            "text_number": "",
+            "transliteration": null,
+            "type_content": 74,
+            "year": ""
+        },
+        "model": "archiv.tablet",
+        "pk": 772
+    },
+    {
+        "fields": {
+            "archiv": 118,
+            "bibliography": "",
+            "cdli_no": "",
+            "day": "",
+            "imported": "Kathleen Abraham (18/04/2016)",
+            "julian_date_year": 510,
+            "key_word": [],
+            "king": "Dar",
+            "legacy_id": "4425.0",
+            "legacy_pk": 4425,
+            "mentioned_archiv": [],
+            "mentioned_in_pub": [],
+            "mentioned_place": [],
+            "month": "I",
+            "museum_id": "BM 30838",
+            "orig_data_csv": "{\"object id\": \"4425\", \"museum no.\": \"BM 30838\", \"publication\": \"Dar.\", \"text number\": \"318\", \"period\": \"Each\", \"place of issue\": \"Babylon city\", \"type and content\": \"Promissory notes ina mu\\u1e96\\u1e96i\", \"day remark\": \"-\", \"month\": \"I\", \"month remark\": \"-\", \"year\": 12.0, \"year remark\": \"-\", \"king\": \"Dar\", \"king remark\": \"-\", \"paraphrase\": \"Promissory note to pay a debt of silver and barley. Repayment according to the measure of the head of the Egibi family.<br />\\r\\n<strong>B</strong> should pay the 1/2 mina of medium quality silver, of which 1/8 is alloy, and the 38 kor of barley which are due from him, to <strong>A</strong>. Payment should be at the river (<em>ina muhhi n\\u0101ri</em>) in Til-Gula, in one instalment and according to <strong>C</strong>&rsquo;s measure, but it is not specified when it should take place. The place of delivery is further specified at the very end of the obverse, before the list of witnesses: at the lower embankment (<em>ina &scaron;apli&scaron; k\\u0101ri</em>). Names of 4 witnesses and the scribe.<br />\\r\\n<br />\\r\\n<strong>A</strong>=Marduk-b\\u0113l&scaron;unu/Arad-Marduk//&Scaron;ang&ucirc;-Ea;&nbsp;<strong>B</strong>=Nab&ucirc;-ittannu/Nab&ucirc;-z\\u0113ru-l\\u012b&scaron;ir//N\\u016br-Papsukkal; <strong>C</strong>=Marduk-n\\u0101\\u1e63ir-apli (=Marduk-n\\u0101\\u1e63ir-apli/Itti-Marduk-bal\\u0101\\u1e6du//Egibi)\", \"transliteration\": \"Transliteration available on <a href=\\\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\\\" target=\\\"_blank\\\">Achemenet</a>\", \"imported\": \"Kathleen Abraham (18/04/2016)\", \"publication name\": \"Dar. 318\", \"archive\": \"Egibi/N\\u016br-S\\u00een\", \"day (babylonian)\": 16.0, \"bibliography\": \"Reedition: Abraham 2004 108\", \"title\": \"BM 30838\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": \"28/04/510 BCE\", \"julian date year\": \"510\", \"place of issue remark\": NaN, \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": NaN, \"orientation\": NaN, \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
+            "paraphrase": "Promissory note to pay a debt of silver and barley. Repayment according to the measure of the head of the Egibi family.<br />\r\n<strong>B</strong> should pay the 1/2 mina of medium quality silver, of which 1/8 is alloy, and the 38 kor of barley which are due from him, to <strong>A</strong>. Payment should be at the river (<em>ina muhhi n\u0101ri</em>) in Til-Gula, in one instalment and according to <strong>C</strong>&rsquo;s measure, but it is not specified when it should take place. The place of delivery is further specified at the very end of the obverse, before the list of witnesses: at the lower embankment (<em>ina &scaron;apli&scaron; k\u0101ri</em>). Names of 4 witnesses and the scribe.<br />\r\n<br />\r\n<strong>A</strong>=Marduk-b\u0113l&scaron;unu/Arad-Marduk//&Scaron;ang&ucirc;-Ea;&nbsp;<strong>B</strong>=Nab&ucirc;-ittannu/Nab&ucirc;-z\u0113ru-l\u012b&scaron;ir//N\u016br-Papsukkal; <strong>C</strong>=Marduk-n\u0101\u1e63ir-apli (=Marduk-n\u0101\u1e63ir-apli/Itti-Marduk-bal\u0101\u1e6du//Egibi)",
+            "period": "Each",
+            "place_of_issue": 413,
+            "publication_name": "Dar.",
+            "text_number": "",
+            "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",
+            "type_content": 73,
+            "year": ""
+        },
+        "model": "archiv.tablet",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "Legal - Permanent",
+            "legacy_pk": 814,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": "{\"concept id\": 814.0, \"label\": \"Legal - Permanent\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Legal - Permanent\", \"related objects\": NaN}",
+            "pref_label": "Legal - Permanent",
+            "rght": 26,
+            "title": "Legal - Permanent",
+            "tree_id": 28
+        },
+        "model": "archiv.glossary",
+        "pk": 28
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "Administrative",
+            "legacy_pk": 1192,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": "{\"concept id\": 1192.0, \"label\": \"Administrative\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Administrative\", \"related objects\": NaN}",
+            "pref_label": "Administrative",
+            "rght": 32,
+            "title": "Administrative",
+            "tree_id": 8
+        },
+        "model": "archiv.glossary",
+        "pk": 8
+    },
+    {
+        "fields": {
+            "broader_concept": 28,
+            "legacy_id": "Dowry",
+            "legacy_pk": 1219,
+            "level": 1,
+            "lft": 12,
+            "orig_data_csv": "{\"concept id\": 1219.0, \"label\": \"Dowry\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Dowry\", \"related objects\": NaN}",
+            "pref_label": "Dowry",
+            "rght": 13,
+            "title": "Dowry",
+            "tree_id": 28
+        },
+        "model": "archiv.glossary",
+        "pk": 45
+    },
+    {
+        "fields": {
+            "broader_concept": 8,
+            "legacy_id": "Incoming & outgoing",
+            "legacy_pk": 1294,
+            "level": 1,
+            "lft": 4,
+            "orig_data_csv": "{\"concept id\": 1294.0, \"label\": \"Incoming & outgoing\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Incoming & outgoing\", \"related objects\": NaN}",
+            "pref_label": "Incoming & outgoing",
+            "rght": 9,
+            "title": "Incoming & outgoing",
+            "tree_id": 8
+        },
+        "model": "archiv.glossary",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Atkuppu",
+            "legacy_pk": null,
+            "lng": null,
+            "name": "",
+            "orig_data_csv": null,
+            "part_of": null,
+            "place_collection": "",
+            "title": ""
+        },
+        "model": "archiv.place",
+        "pk": 11
+    },
+    {
+        "fields": {
+            "alt_name": "",
+            "description": "A short description of the archive",
+            "legacy_id": "Atkuppu I",
+            "legacy_pk": 495,
+            "name": "Atkuppu I",
+            "orig_data_csv": "{\"archive id\": 495, \"archive name\": \"Atkuppu I\", \"is part of\": \"Atkuppu\", \"title\": \"Atkuppu I\", \"related objects\": NaN, \"alternative name\": NaN}",
+            "paragraph": null,
+            "part_of": 11,
+            "title": "Atkuppu I"
+        },
+        "model": "archiv.archiv",
+        "pk": 52
+    }
+]
