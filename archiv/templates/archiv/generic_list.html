@@ -34,6 +34,10 @@
                     tab.style.display = 'table-row';
                 } else {
                     tab.style.display = 'none';
+                    $(tab).animate({
+                        top: "0px",
+                        left: "0px"
+                    });
                 }
                 })
        }
