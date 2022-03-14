@@ -1,4 +1,5 @@
 [![flake8 Lint](https://github.com/acdh-oeaw/nabucco/actions/workflows/lint.yml/badge.svg)](https://github.com/acdh-oeaw/nabucco/actions/workflows/lint.yml) [![Build and push to DockerHub](https://github.com/acdh-oeaw/nabucco/actions/workflows/build.yml/badge.svg)](https://github.com/acdh-oeaw/nabucco/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/acdh-oeaw/nabucco/branch/master/graph/badge.svg?token=K3J7L8V6WB)](https://codecov.io/gh/acdh-oeaw/nabucco)
 
 # nabucco
 * repo to process nabucco xml-data (taken from [orig-repo](https://github.com/DigitalPasts/nabucco/tree/master/nabucco-xml)) into something more usabel (csv); be aware, to ease the parsing, I manually removed the namespaces from the original files
