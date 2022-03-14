@@ -20,6 +20,35 @@
         });
     });
     </script>
+    <script type="text/javascript">
+       function drag() {
+            $('#diacritics').draggable();
+          }
+    </script>
+    <script type="text/javascript">
+       function toggle(){
+            var dia = document.getElementById("tableLegend")
+            var tab = document.getElementById("diacritics")
+            dia.addEventListener('click', function(){
+                if (tab.style.display === 'none'){
+                    tab.style.display = 'table-row';
+                } else {
+                    tab.style.display = 'none';
+                }
+                })
+       }
+       function choose(){
+            var tab = document.getElementById("diacritics")
+            tab.addEventListener('dblclick', function(){
+                if($(this).hasClass('ui-draggable-disabled')){
+                 $(this).draggable('enable')
+                } else {$(this).draggable('disable')}
+                 
+                 })
+       }
+
+    $(document).ready(drag).ready(toggle).ready(choose);
+    </script>
 
     {% if class_name == 'Archiv' %} {% include 'archiv/templates/archiv/partials/_archives.html' %} {% endif %}
     {% if class_name == 'Tablet' %} {% include 'archiv/templates/archiv/partials/_tablets.html' %} {% endif %}
@@ -27,23 +56,6 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div id="Diacritics" class="panel-body">
-                            <table>
-                                <thead ><h5 style="margin-bottom:15px;">Diacritics</h3></thead>
-                                <tbody><tr><td style="cursor: pointer;">Ā</td><td style="cursor: pointer;">ā</td><td style="cursor: pointer;">Â</td><td style="cursor: pointer;">â</td><td style="cursor: pointer;">Á</td><td style="cursor: pointer;">á</td><td style="cursor: pointer;">À</td><td style="cursor: pointer;">à</td></tr>
-                                    <tr><td style="cursor: pointer;">Ē</td><td style="cursor: pointer;">ē</td><td style="cursor: pointer;">Ê</td><td style="cursor: pointer;">ê</td><td style="cursor: pointer;">É</td><td style="cursor: pointer;">é</td><td style="cursor: pointer;">È</td><td style="cursor: pointer;">è</td></tr>
-                                    <tr><td style="cursor: pointer;">Ī</td><td style="cursor: pointer;">ī</td><td style="cursor: pointer;">Î</td><td style="cursor: pointer;">î</td><td style="cursor: pointer;">Í</td><td style="cursor: pointer;">í</td><td style="cursor: pointer;">Ì</td><td style="cursor: pointer;">ì</td></tr>
-                                    <tr><td style="cursor: pointer;">Ū</td><td style="cursor: pointer;">ū</td><td style="cursor: pointer;">Û</td><td style="cursor: pointer;">û</td><td style="cursor: pointer;">Ú</td><td style="cursor: pointer;">ú</td><td style="cursor: pointer;">Ù</td><td style="cursor: pointer;">ù</td></tr>
-                                    <tr><td style="cursor: pointer;">Š</td><td style="cursor: pointer;">š</td><td style="cursor: pointer;">Ṣ</td><td style="cursor: pointer;">ṣ</td><td style="cursor: pointer;">Ṭ</td><td style="cursor: pointer;">ṭ</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -55,6 +67,15 @@
                                 <a class ="btn btn-outline-secondary"  href="{{ create_view_link }}">Create new {{ class_name }}</a>
                             {% endif %}
                         {% endif %}
+                        <legend id="tableLegend" style="margin-bottom:15px;"> Diacritics</legend>
+                        <table id="diacritics" style="position:flex; z-index:1; background-color:lightgrey; display: none; margin-bottom:15px;">
+                            <tbody><tr><td style="cursor: pointer;">Ā</td><td style="cursor: pointer;">ā</td><td style="cursor: pointer;">Â</td><td style="cursor: pointer;">â</td><td style="cursor: pointer;">Á</td><td style="cursor: pointer;">á</td><td style="cursor: pointer;">À</td><td style="cursor: pointer;">à</td></tr>
+                                <tr><td style="cursor: pointer;">Ē</td><td style="cursor: pointer;">ē</td><td style="cursor: pointer;">Ê</td><td style="cursor: pointer;">ê</td><td style="cursor: pointer;">É</td><td style="cursor: pointer;">é</td><td style="cursor: pointer;">È</td><td style="cursor: pointer;">è</td></tr>
+                                <tr><td style="cursor: pointer;">Ī</td><td style="cursor: pointer;">ī</td><td style="cursor: pointer;">Î</td><td style="cursor: pointer;">î</td><td style="cursor: pointer;">Í</td><td style="cursor: pointer;">í</td><td style="cursor: pointer;">Ì</td><td style="cursor: pointer;">ì</td></tr>
+                                <tr><td style="cursor: pointer;">Ū</td><td style="cursor: pointer;">ū</td><td style="cursor: pointer;">Û</td><td style="cursor: pointer;">û</td><td style="cursor: pointer;">Ú</td><td style="cursor: pointer;">ú</td><td style="cursor: pointer;">Ù</td><td style="cursor: pointer;">ù</td></tr>
+                                <tr><td style="cursor: pointer;">Š</td><td style="cursor: pointer;">š</td><td style="cursor: pointer;">Ṣ</td><td style="cursor: pointer;">ṣ</td><td style="cursor: pointer;">Ṭ</td><td style="cursor: pointer;">ṭ</td></tr>
+                            </tbody>
+                        </table>
                         <!-- {% block customView %}<h1>hallo du</h1>{% endblock %} -->
                         {% block create_button %}{% endblock %}
                         <!--Search mask-->
@@ -72,7 +93,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-6" id="results">
+            <div class="col-md-8" id="results">
                 <div class="card">
                     <div class="card-body table-responsive">
                         {% with table.paginator.count as total %}
