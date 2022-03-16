@@ -666,10 +666,10 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
     )
-    paraphrase = models.TextField(
+    paraphrase = RichTextField(
         blank=True, null=True,
         verbose_name="Paraphrase",
-        help_text="whatever",
+        help_text="Tablet content",
     ).set_extra(
         is_public=True,
         data_lookup="Paraphrase",
