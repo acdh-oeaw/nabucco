@@ -98,7 +98,7 @@
                                         <div class="dropdown-menu">
                                             {% nav_menu app='archiv' as links %}
                                             {% for x in links %}
-                                                <a class="dropdown-item" href="{{ x.link }}">{{ x.name }}</a>
+                                                <a class="dropdown-item" href="{{ x.link }}">{% if x.name == "Archiv" %} {{x.name}}es {% elif x.name == "Place" or x.name == "Tablet"%} {{x.name}}s {% elif x.name == "Glossary" %} Text typology {% else %} {{x.name}} {% endif %}</a>
                                             {% endfor %}
                                             <div class="dropdown-divider"></div>
                                         </div>

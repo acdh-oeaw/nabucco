@@ -6,9 +6,6 @@
 
         <div class="jumbotron jumbotron-fluid" style="background-color: white;">
                 <img src="{% static 'img/project_background.jpg' %}" class='mx-auto d-block' id="title-img">
-                <!-- <h1 style="text-align:center; color: #111;">{% projects_metadata 'title' %}</h1>
-                <h3 style="text-align:center; color: #111;">{% projects_metadata 'subtitle' %}</h3>
-                <h5 style="text-align:center; color: #111;">{% projects_metadata 'description' %}</h5> -->
                 <div class="content">
                     <h1 class="display-1">NaBuCCo</h1>
                     <p>THE NEO-BABYLONIAN CUNEIFORM CORPUS aims at making available 
@@ -22,21 +19,80 @@
             <div class="col-md-12" style="text-align:center">
                 <h2>Browse the <b>NaBuCCo</b> Database</h2>
             </div>
+        </div>
             {% create_object_count app='archiv' as models %}
+            <div class="row justify-content-center">
             {% for x in models %}
-                <div class="col-md-4  text-center">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="static/img/ishtar-gate.jpg" alt="Card image cap">
-                        <div class="card-body ">
-                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;">{{x.name}}</h4>
-                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }}</h4>
+                {% if x.name == "Archiv" %}
+                    <div class="col-md-6" style="text-align:center">
+                        <div class="card">
+                            <img class="card-img-top" src="static/img/ishtar-gate.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}}es </h4>
+                                <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
+                                {% if x.link %}
+                                    <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if x.name == "Tablet" %}
+                    <div class="col-md-6 order-first" style="text-align:center">
+                        <div class="card">
+                            <img class="card-img-top" src="static/img/tablet.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}}s </h4>
+                                <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
+                                {% if x.link %}
+                                    <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if x.name == "Place" %}
+                <div class="col-md-6" style="text-align:center">
+                    <div class="card">
+                        <img class="card-img-top" src="static/img/babylon.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}}s </h4>
+                            <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
                             {% if x.link %}
                                 <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
                             {% endif %}
-        
                         </div>
                     </div>
                 </div>
+            {% endif %}
+            {% if x.name == "Glossary" %}
+                    <div class="col-md-6" style="text-align:center">
+                        <div class="card">
+                            <img class="card-img-top" src="static/img/taxonomy.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> Text typology </h4>
+                                <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
+                                {% if x.link %}
+                                    <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if x.name == "Bibliography" %}
+                <div class="col-md-6 order-last" style="text-align:center">
+                    <div class="card">
+                        <img class="card-img-top" src="static/img/library.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}} </h4>
+                            <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
+                            {% if x.link %}
+                                <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
