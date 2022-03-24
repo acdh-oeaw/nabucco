@@ -64,13 +64,15 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 style="margin-bottom:15px;">
-                             Browse {% class_definition %} {% block list_title %}{% endblock %}
-                        </h3>
+                             Browse {% block list_title %}{% if class_name == "Archiv" %} {{class_name}}es {% elif class_name == "Place" or class_name == "Tablet"%} {{class_name}}s {% elif class_name == "Glossary" %} Text typology {% else %} {{class_name}} {% endif %}{% endblock %}
+                            <!-- {% class_definition %} --> 
+                            </h3>
                         {% if user.is_authenticated %}
                             {% if create_view_link  %}
                                 <a class ="btn btn-outline-secondary"  href="{{ create_view_link }}">Create new {{ class_name }}</a>
                             {% endif %}
                         {% endif %}
+                        <!-- Diacritics -->
                         <legend id="tableLegend" style="margin-bottom:15px;"> Diacritics</legend>
                         <table id="diacritics" style="position:flex; z-index:1; background-color:lightgrey; display: none; margin-bottom:15px;">
                             <tbody><tr><td style="cursor: pointer;">Ā</td><td style="cursor: pointer;">ā</td><td style="cursor: pointer;">Â</td><td style="cursor: pointer;">â</td><td style="cursor: pointer;">Á</td><td style="cursor: pointer;">á</td><td style="cursor: pointer;">À</td><td style="cursor: pointer;">à</td></tr>
@@ -93,7 +95,7 @@
                             {% crispy filter.form filter.form.helper %}
                         </form>
                         <a class ="btn btn-outline-secondary"  href=".">Reset search</a>
-                        {% include 'browsing/partials/chart_form.html' %}
+                        <!-- {% include 'browsing/partials/chart_form.html' %}-->
                 </div>
             </div>
             </div>

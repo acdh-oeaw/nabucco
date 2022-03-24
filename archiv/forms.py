@@ -24,22 +24,22 @@ class ArchivFilterFormHelper(FormHelper):
         self.layout = Layout(
             Fieldset(
                 'Basic search options',
-                'id',
+                'name',
+                'part_of',
                 css_id="basic_search_fields"
             ),
             Accordion(
                 AccordionGroup(
                     'Advanced search',
-                    'legacy_pk',
-                    'name',
-                    'part_of',
-                    'alt_name',
-                    'title',
+                    'paragraph',
+                    'description',
                     css_id="more"
                 ),
                 AccordionGroup(
-                    'admin',
+                    'Admin',
+                    'id',
                     'legacy_id',
+                    'legacy_pk',
                     css_id="admin_search"
                 ),
             )
