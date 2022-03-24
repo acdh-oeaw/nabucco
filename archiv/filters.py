@@ -202,20 +202,15 @@ class PlaceListFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(
         lookup_expr='icontains',
         help_text=Place._meta.get_field('name').help_text,
-        label=Place._meta.get_field('name').verbose_name
+        label=Place._meta.get_field('name').verbose_name.capitalize()
     )
     part_of = django_filters.ModelMultipleChoiceFilter(
         queryset=Place.objects.all(),
         help_text=Place._meta.get_field('part_of').help_text,
-        label=Place._meta.get_field('part_of').verbose_name,
+        label=Place._meta.get_field('part_of').verbose_name.capitalize(),
         widget=autocomplete.Select2Multiple(
             url="archiv-ac:place-autocomplete",
         )
-    )
-    title = django_filters.CharFilter(
-        lookup_expr='icontains',
-        help_text=Place._meta.get_field('title').help_text,
-        label=Place._meta.get_field('title').verbose_name
     )
     place_collection = django_filters.CharFilter(
         lookup_expr='icontains',
@@ -246,6 +241,11 @@ class TabletListFilter(django_filters.FilterSet):
         lookup_expr='icontains',
         help_text=Tablet._meta.get_field('museum_id').help_text,
         label=Tablet._meta.get_field('museum_id').verbose_name
+    )
+    cdli_no = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('cdli_no').help_text,
+        label=Tablet._meta.get_field('cdli_no').verbose_name
     )
     place_of_issue = django_filters.ModelMultipleChoiceFilter(
         queryset=Place.objects.all(),
@@ -317,6 +317,11 @@ class TabletListFilter(django_filters.FilterSet):
         lookup_expr='icontains',
         help_text=Tablet._meta.get_field('publication_name').help_text,
         label=Tablet._meta.get_field('publication_name').verbose_name
+    )
+    text_number = django_filters.CharFilter(
+        lookup_expr='icontains',
+        help_text=Tablet._meta.get_field('text_number').help_text,
+        label=Tablet._meta.get_field('text_number').verbose_name
     )
     period = django_filters.CharFilter(
         lookup_expr='icontains',

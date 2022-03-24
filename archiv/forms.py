@@ -181,21 +181,20 @@ class PlaceFilterFormHelper(FormHelper):
         self.layout = Layout(
             Fieldset(
                 'Basic search options',
-                'id',
+                'name',
                 css_id="basic_search_fields"
             ),
             Accordion(
                 AccordionGroup(
                     'Advanced search',
-                    'legacy_pk',
-                    'name',
                     'part_of',
-                    'title',
                     css_id="more"
                 ),
                 AccordionGroup(
                     'admin',
+                    'id',
                     'legacy_id',
+                    'legacy_pk',
                     css_id="admin_search"
                 ),
             )
@@ -229,37 +228,39 @@ class TabletFilterFormHelper(FormHelper):
         self.layout = Layout(
             Fieldset(
                 'Basic search options',
-                'id',
+                'museum_id',
+                'cdli_no',
                 css_id="basic_search_fields"
             ),
             Accordion(
                 AccordionGroup(
                     'Advanced search',
-                    'legacy_pk',
-                    'museum_id',
                     'place_of_issue',
                     'mentioned_place',
                     'type_content',
-                    'key_word',
+                    # 'key_word',
                     'paraphrase',
                     'transliteration',
                     'archiv',
-                    'mentioned_archiv',
+                    # 'mentioned_archiv',
                     'mentioned_in_pub',
                     'publication_name',
+                    'text number',
                     'period',
                     'day',
                     'month',
                     'year',
                     'king',
-                    'imported',
                     'julian_date_year',
                     'bibliography',
                     css_id="more"
                 ),
                 AccordionGroup(
                     'admin',
+                    'id',
                     'legacy_id',
+                    'legacy_pk',
+                    'imported',
                     css_id="admin_search"
                 ),
             )
