@@ -73,18 +73,15 @@ class BibliographyFilterFormHelper(FormHelper):
         self.layout = Layout(
             Fieldset(
                 'Basic search options',
-                'id',
+                'author',
+                'publication_year',
+                'title',
                 css_id="basic_search_fields"
             ),
             Accordion(
                 AccordionGroup(
                     'Advanced search',
-
-                    'legacy_pk',
                     'short_title',
-                    'author',
-                    'publication_year',
-                    'title',
                     'volume_nr',
                     'pages',
                     'journal',
@@ -98,7 +95,9 @@ class BibliographyFilterFormHelper(FormHelper):
                 ),
                 AccordionGroup(
                     'admin',
+                    'id',
                     'legacy_id',
+                    'legacy_pk',
                     css_id="admin_search"
                 ),
             )

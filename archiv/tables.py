@@ -32,7 +32,7 @@ class BibliographyTable(tables.Table):
 
     class Meta:
         model = Bibliography
-        sequence = ('title', 'short_title', 'publication_year', 'author',)
+        sequence = ('author', 'publication_year', 'title', 'short_title',)
         attrs = {"class": "table table-responsive table-hover"}
 
 
