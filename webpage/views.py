@@ -5,7 +5,7 @@ import requests
 from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.template import RequestContext, loader
+from django.template import loader
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 
@@ -30,7 +30,7 @@ class ImprintView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        imprint_url = get_imprint_url()
+        # imprint_url = get_imprint_url()
         r = requests.get(get_imprint_url())
 
         if r.status_code == 200:
@@ -56,7 +56,7 @@ class GenericWebpageView(TemplateView):
         try:
             loader.select_template([template_name])
             template_name = "webpage/{}.html".format(self.kwargs.get("template", 'index'))
-        except:
+        except NameError:
             template_name = "webpage/index.html"
         return [template_name]
 
