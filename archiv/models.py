@@ -61,7 +61,7 @@ class Archiv(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name="part of",
+        verbose_name="Provenance",
         help_text="Place of issue",
     ).set_extra(
         is_public=True,
@@ -505,7 +505,7 @@ class Place(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name="part of",
+        verbose_name="Region",
         help_text="larger region",
     ).set_extra(
         is_public=True,

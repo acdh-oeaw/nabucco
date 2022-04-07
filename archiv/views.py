@@ -266,7 +266,7 @@ class TabletListView(GenericListView):
     formhelper_class = TabletFilterFormHelper
     table_class = TabletTable
     init_columns = [
-        'museum_id', 'publication', 'archiv', 'type_content', 'place_of_issue'
+        'museum_id', 'archiv', 'type_content', 'place_of_issue'
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
