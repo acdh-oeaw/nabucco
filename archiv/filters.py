@@ -58,7 +58,6 @@ class ArchivListFilter(django_filters.FilterSet):
             'part_of',
             'paragraph',
             'description',
-            'title',
         ]
 
 

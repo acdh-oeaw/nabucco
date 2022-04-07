@@ -26,8 +26,8 @@ class Archiv(models.Model):
     )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
-        verbose_name="alt id",
-        help_text="whatever",
+        verbose_name="Archive ID",
+        help_text="NaBuCCo No.",
     ).set_extra(
         is_public=True,
         data_lookup="Archive id",
@@ -35,13 +35,13 @@ class Archiv(models.Model):
     description = RichTextField(
         default="A short description of the archive",
         blank=True,
-        verbose_name="archive description",
+        verbose_name="Archive Description",
     )
     name = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="name",
-        help_text="following GMTR 1",
+        verbose_name="Name",
+        help_text="Following GMTR 1",
     ).set_extra(
         is_public=True,
         data_lookup="Archive name",
@@ -50,8 +50,8 @@ class Archiv(models.Model):
         max_length=25,
         blank=True,
         null=True,
-        verbose_name="paragraph",
-        help_text="siglum according to GMTR 1",
+        verbose_name="Paragraph",
+        help_text="Siglum according to GMTR 1",
     ).set_extra(
         is_public=True,
     )
@@ -62,7 +62,7 @@ class Archiv(models.Model):
         null=True,
         blank=True,
         verbose_name="Provenance",
-        help_text="Place of issue",
+        help_text="(Assumed) place of origin",
     ).set_extra(
         is_public=True,
         data_lookup="Is part of",
@@ -75,15 +75,6 @@ class Archiv(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Alternative name",
-    )
-    title = models.CharField(
-        max_length=250,
-        blank=True,
-        verbose_name="Title",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-        data_lookup="Title",
     )
     orig_data_csv = models.TextField(
         blank=True,
@@ -476,16 +467,15 @@ class Place(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Name",
-        help_text="whatever",
     ).set_extra(
         is_public=True,
         data_lookup="Place name",
     )
     description = RichTextField(
-        default="A very nice place",
+        default="Add information on the location",
         blank=True,
         null=True,
-        verbose_name="place description",
+        verbose_name="Place description",
     )
     lng = models.FloatField(
         blank=True,

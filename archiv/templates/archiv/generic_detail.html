@@ -23,7 +23,7 @@
       </div>
       <div class="col-md-8">
         <h2 style="text-align: center;">
-          <small><a href="{{ object.get_listview_url }}" title="back to listview"><small>{{ class_name }}</small></a></small>
+          <small><a href="{{ object.get_listview_url }}" title="back to listview"><small> {% if class_name == 'Archiv' %} {{ class_name }}e {% endif %} </small></a></small>
           {{ object }}
           {% if user.is_authenticated %}
             <a href="{{ object.get_edit_url }}" title="edit">
@@ -89,7 +89,7 @@
                 </td>
               </tr>
               {% elif not x.extra_fields or x.extra_fields.is_public %}
-                {% if x.verbose_name != "The original data" and x.verbose_name != "ID" and x.verbose_name != "Matches FileChecker Entry" %}
+                {% if x.verbose_name != "The original data" and x.verbose_name != "ID" and x.verbose_name != "Legacy ID" and x.verbose_name != "Matches FileChecker Entry" %}
                 <tr>
                   <th>
                     {% if x.help_text %}
@@ -140,7 +140,6 @@
             showGraph("visualization", "{% url 'netvis:graph' app_name=app_name model_name=class_name|lower pk=object.id %}")
           </script>
         </div>-->
-
     </div>
     {% if user.is_authenticated %}
     <div class="card-footer" style="text-align: right;">
