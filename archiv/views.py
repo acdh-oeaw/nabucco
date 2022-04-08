@@ -58,7 +58,7 @@ class ArchivListView(GenericListView):
 class ArchivDetailView(BaseDetailView):
 
     model = Archiv
-    template_name = 'archiv/generic_detail.html'
+    template_name = 'archiv/archiv_detail.html'
 
 
 class ArchivCreate(BaseCreateView):

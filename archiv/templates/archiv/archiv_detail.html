@@ -5,7 +5,7 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
-<div class="card w-100">
+<div class="card w-100"> 
     <div class="card-header">
       <div class="row">
         <div class="col-md-2">
@@ -46,8 +46,8 @@
     </div>
 
     <div class="card-body">
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row justify-content-around">
+        <div class="col-md-4">
             <table class="table table-responsive table-hover">
               {% for x in object.field_dict %}
               {% if x.name == "name" or x.name == "paragraph" or x.name == "legacy_pk" or x.name == "part_of" %}
@@ -85,11 +85,20 @@
               {% endfor %}
             </table>
         </div>
-        <!-- <div class="col-md-6">
+        <div class="col-md-6">
+          <table class="table table-responsive table-hover">
+            <tr>
+              <th> Archive description</th>
+              <td> {{archiv.description|safe}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="row justify-content-center">
+        <div class="col-md-4">
           {% if user.is_authenticated %}
           <table class="table table-responsive table-hover">
             {% for x in object.field_dict %}
-            {% if x.verbose_name == "The original data" and x.verbose_name == "ID" and x.verbose_name == "Legacy ID" and x.verbose_name == "Matches FileChecker Entry" %}
+            {% if x.verbose_name == "The original data" or x.verbose_name == "ID" or x.verbose_name == "Legacy ID" or x.verbose_name == "Matches FileChecker Entry" %}
             <tr>
                 <th>
                   {% if x.help_text %}
@@ -124,7 +133,8 @@
             {% endfor %}
           </table>
           {% endif %}
-        </div> -->
+        </div>
+      </div> 
       </div>
     </div>
 {% endblock %}
