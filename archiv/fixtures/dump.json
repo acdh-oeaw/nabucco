@@ -72,8 +72,7 @@
             "name": "S\u00een-n\u0101\u1e63ir",
             "orig_data_csv": "{\"archive id\": 412, \"archive name\": \"S\\u00een-n\\u0101\\u1e63ir\", \"is part of\": \"Uruk\", \"title\": \"S\\u00een-n\\u0101\\u1e63ir\", \"related objects\": 5395.0, \"alternative name\": NaN}",
             "paragraph": null,
-            "part_of": 3,
-            "title": "S\u00een-n\u0101\u1e63ir"
+            "part_of": 3
         },
         "model": "archiv.archiv",
         "pk": 39
@@ -119,8 +118,7 @@
             "name": "",
             "orig_data_csv": null,
             "paragraph": null,
-            "part_of": null,
-            "title": ""
+            "part_of": null
         },
         "model": "archiv.archiv",
         "pk": 120
@@ -166,8 +164,7 @@
             "name": "Egibi/N\u016br-S\u00een",
             "orig_data_csv": "{\"archive id\": 7, \"archive name\": \"Egibi/N\\u016br-S\\u00een\", \"is part of\": \"Babylon\", \"title\": \"Egibi/N\\u016br-S\\u00een\", \"related objects\": 7063.0, \"alternative name\": NaN}",
             "paragraph": null,
-            "part_of": 9,
-            "title": "Egibi/N\u016br-S\u00een"
+            "part_of": 9
         },
         "model": "archiv.archiv",
         "pk": 118
@@ -383,8 +380,7 @@
             "name": "Atkuppu I",
             "orig_data_csv": "{\"archive id\": 495, \"archive name\": \"Atkuppu I\", \"is part of\": \"Atkuppu\", \"title\": \"Atkuppu I\", \"related objects\": NaN, \"alternative name\": NaN}",
             "paragraph": null,
-            "part_of": 11,
-            "title": "Atkuppu I"
+            "part_of": 11
         },
         "model": "archiv.archiv",
         "pk": 52
