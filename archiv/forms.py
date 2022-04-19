@@ -244,7 +244,6 @@ class TabletFilterFormHelper(FormHelper):
                     # 'mentioned_archiv',
                     'mentioned_in_pub',
                     'publication_name',
-                    'text number',
                     'period',
                     'day',
                     'month',
