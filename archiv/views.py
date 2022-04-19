@@ -214,7 +214,13 @@ class PlaceListView(GenericListView):
 class PlaceDetailView(BaseDetailView):
 
     model = Place
-    template_name = 'archiv/generic_detail.html'
+    regions = PlaceListView.regions
+    template_name = 'archiv/places_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PlaceDetailView, self).get_context_data(**kwargs)
+        context['regions'] = self.regions
+        return context
 
 
 class PlaceCreate(BaseCreateView):
