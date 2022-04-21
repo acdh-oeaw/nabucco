@@ -49,7 +49,7 @@
 
   <div class="card-body">
     <div class="row justify-content-around">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <table class="table table-responsive table-hover">
           {% for x in object.field_dict %}
           {% if x.name == "name" or x.name == "legacy_pk" or x.name == "part_of" and x.value != None %}
@@ -83,9 +83,6 @@
             </tr>
           {% endif %}
           {% endfor %}
-          {% if place.name in regions %}
-            <tr><th>Is region</th><td><div class="form-check"> <input class="form-check-input" type="radio"  style="background-color: #254aa5;" disabled checked/></div></td></tr>
-            {% endif %}
           {% if place.lng != None %} <tr><th>Geographical Position</th></tr><tr><td>Longitude: </td><td> {{place.lng}}</td></tr>
            <tr><td>Latitude: </td><td> {{place.lat}}</td></tr> {% endif %}
         </table>
@@ -98,6 +95,21 @@
           </tr>
         </table>
       </div>
+
+      {% if place in regions %}
+      <div class="col-md-3">
+        <table class="table table-responsive table-hover">
+          <tr><th>Is region</th><td><div class="form-check"> <input class="form-check-input" type="radio"  style="background-color: #254aa5;" disabled checked/></div></td></tr>
+          <tr><th>Related Places:</th></tr>
+          {% for p in places %}
+            {% if p.part_of == place %}
+              <tr><td> <a href="{{ p.get_absolute_url }}">{{p.name}}</a></td></tr>
+            {% endif %}
+          {% endfor %}
+      {% endif %}
+        </table>
+      </div>
+
       <div class="row justify-content-center">
         <div class="col-md-4">
           {% if user.is_authenticated %}

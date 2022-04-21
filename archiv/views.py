@@ -191,11 +191,14 @@ class GlossaryDelete(DeleteView):
 class PlaceListView(GenericListView):
 
     model = Place
-    regions = Place.objects.all().values_list(
-        'part_of__name', flat=True
-    ).order_by(
-        'part_of__name'
-    ).distinct('part_of__name')
+    queryset = Place.objects.exclude(part_of__exact=None)
+    context_object_name = 'place_list'
+    regions = Place.objects.filter(part_of__exact=None)
+    # regions = Place.objects.all().values_list(
+    #     'part_of__name', flat=True
+    # ).order_by(
+    #     'part_of__name'
+    # ).distinct('part_of__name')
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
@@ -214,12 +217,20 @@ class PlaceListView(GenericListView):
 class PlaceDetailView(BaseDetailView):
 
     model = Place
+    places = Place.objects.all()
     regions = PlaceListView.regions
+    region_names = Place.objects.all().values_list(
+        'part_of__name', flat=True
+    ).order_by(
+        'part_of__name'
+    ).distinct('part_of__name')
     template_name = 'archiv/places_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(PlaceDetailView, self).get_context_data(**kwargs)
         context['regions'] = self.regions
+        context['places'] = self.places
+        context['region_names'] = self.region_names
         return context
 
 
