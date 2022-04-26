@@ -350,7 +350,7 @@ class Glossary(MPTTModel):
     )
     legacy_pk = models.IntegerField(
         blank=True, null=True,
-        verbose_name="alt id",
+        verbose_name="Concept ID",
         help_text="whatever",
     ).set_extra(
         is_public=True,

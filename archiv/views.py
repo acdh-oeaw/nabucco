@@ -155,7 +155,7 @@ class GlossaryListView(GenericListView):
 class GlossaryDetailView(BaseDetailView):
 
     model = Glossary
-    template_name = 'archiv/generic_detail.html'
+    template_name = 'archiv/glossary_detail.html'
 
 
 class GlossaryCreate(BaseCreateView):
@@ -194,11 +194,7 @@ class PlaceListView(GenericListView):
     queryset = Place.objects.exclude(part_of__exact=None)
     context_object_name = 'place_list'
     regions = Place.objects.filter(part_of__exact=None)
-    # regions = Place.objects.all().values_list(
-    #     'part_of__name', flat=True
-    # ).order_by(
-    #     'part_of__name'
-    # ).distinct('part_of__name')
+
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable

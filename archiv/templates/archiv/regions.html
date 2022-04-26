@@ -13,9 +13,9 @@
                     </tr>
                 {% endif %}
                 {% for n in object_list %}
-                    {% if n.part_of.name == region and not n.name in regions  %} 
+                    {% if n.part_of.name == region.name and not n.name in regions  %} 
                     <tr>
-                        <td>{{ n.name }}</td>
+                        <td><a href="{{ n.get_absolute_url }}">{{n.name}}</a></td>
                     </tr>
                     {% endif %}
                 {% endfor %}
