@@ -288,7 +288,7 @@ class TabletListView(GenericListView):
 class TabletDetailView(BaseDetailView):
 
     model = Tablet
-    template_name = 'archiv/generic_detail.html'
+    template_name = 'archiv/tablet_detail.html'
 
 
 class TabletCreate(BaseCreateView):
