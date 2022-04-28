@@ -4,6 +4,8 @@ import django_filters
 
 from dal import autocomplete
 
+from archiv.filter_utils import SchrederFilter
+
 from . models import (
     Archiv,
     Bibliography,
@@ -230,7 +232,7 @@ class PlaceListFilter(django_filters.FilterSet):
         ]
 
 
-class TabletListFilter(django_filters.FilterSet):
+class TabletListFilter(SchrederFilter):
     legacy_id = django_filters.CharFilter(
         lookup_expr='icontains',
         help_text=Tablet._meta.get_field('legacy_id').help_text,
@@ -282,6 +284,12 @@ class TabletListFilter(django_filters.FilterSet):
         lookup_expr='icontains',
         help_text=Tablet._meta.get_field('paraphrase').help_text,
         label=Tablet._meta.get_field('paraphrase').verbose_name
+    )
+    paraphrase_scheder = django_filters.CharFilter(
+        method='scheder_filtering',
+        field_name='paraphrase',
+        help_text="Example: '+debt +pledge -house' look for entries that contain 'debt' and 'pledge' but NOT 'house'",
+        label="Extended search"
     )
     transliteration = django_filters.CharFilter(
         lookup_expr='icontains',

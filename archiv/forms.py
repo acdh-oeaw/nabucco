@@ -239,6 +239,7 @@ class TabletFilterFormHelper(FormHelper):
                     'type_content',
                     # 'key_word',
                     'paraphrase',
+                    'paraphrase_scheder',
                     'transliteration',
                     'archiv',
                     # 'mentioned_archiv',
