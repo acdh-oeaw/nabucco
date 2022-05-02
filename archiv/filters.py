@@ -2,9 +2,11 @@
 # from turtle import title
 import django_filters
 
+from django.db.models import Q
+
 from dal import autocomplete
 
-from archiv.filter_utils import SchrederFilter
+# from archiv.filter_utils import SchrederFilter
 
 from . models import (
     Archiv,
@@ -232,7 +234,7 @@ class PlaceListFilter(django_filters.FilterSet):
         ]
 
 
-class TabletListFilter(SchrederFilter):
+class TabletListFilter(django_filters.FilterSet):
     legacy_id = django_filters.CharFilter(
         lookup_expr='icontains',
         help_text=Tablet._meta.get_field('legacy_id').help_text,
@@ -281,16 +283,41 @@ class TabletListFilter(SchrederFilter):
         )
     )
     paraphrase = django_filters.CharFilter(
-        lookup_expr='icontains',
-        help_text=Tablet._meta.get_field('paraphrase').help_text,
+        method='additive_filtering',
+        help_text=Tablet._meta.get_field('paraphrase').help_text + ': one or more search terms',
         label=Tablet._meta.get_field('paraphrase').verbose_name
     )
-    paraphrase_scheder = django_filters.CharFilter(
-        method='scheder_filtering',
+
+    def additive_filtering(self, queryset, name, value):
+        lookup = '__'.join([name, 'contains'])
+        for x in value.split():
+            queryset = queryset.filter(**{lookup: x})
+        return queryset
+    paraphrase_negative = django_filters.CharFilter(
+        method='negative_filtering',
         field_name='paraphrase',
-        help_text="Example: '+debt +pledge -house' look for entries that contain 'debt' and 'pledge' but NOT 'house'",
+        help_text=Tablet._meta.get_field('paraphrase').help_text + ': exclude one or more search terms',
+        label=Tablet._meta.get_field('paraphrase').verbose_name
+    )
+
+    def negative_filtering(self, queryset, name, value):
+        lookup = '__'.join([name, 'contains'])
+        for x in value.split():
+            queryset = queryset.exclude(**{lookup: x})
+        return queryset
+    paraphrase_custom = django_filters.CharFilter(
+        method='custom_filtering',
+        field_name='paraphrase',
+        help_text=Tablet._meta.get_field('paraphrase').help_text + ': search for any of the terms given',
         label="Extended search"
     )
+
+    def custom_filtering(self, queryset, name, value):
+        lookup = '__'.join([name, 'contains'])
+        q = Q()
+        for x in value.split():
+            q |= Q(**{lookup: x})
+        return queryset.filter(q)
     transliteration = django_filters.CharFilter(
         lookup_expr='icontains',
         help_text=Tablet._meta.get_field('transliteration').help_text,
