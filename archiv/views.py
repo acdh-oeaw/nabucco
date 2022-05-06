@@ -35,7 +35,8 @@ from . models import (
     Bibliography,
     Glossary,
     Place,
-    Tablet
+    Tablet,
+    Introduction
 )
 from browsing.browsing_utils import (
     GenericListView, BaseCreateView, BaseUpdateView, BaseDetailView
@@ -53,6 +54,11 @@ class ArchivListView(GenericListView):
     ]
     enable_merge = False
     template_name = 'archiv/generic_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ArchivListView, self).get_context_data(**kwargs)
+        context['introduction'] = Introduction.objects.get(title__exact="Archives")
+        return context
 
 
 class ArchivDetailView(BaseDetailView):
@@ -207,6 +213,7 @@ class PlaceListView(GenericListView):
     def get_context_data(self, **kwargs):
         context = super(PlaceListView, self).get_context_data(**kwargs)
         context['regions'] = self.regions
+        context['introduction'] = Introduction.objects.get(title__exact="Places")
         return context
 
 
@@ -283,6 +290,11 @@ class TabletListView(GenericListView):
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TabletListView, self).get_context_data(**kwargs)
+        context['introduction'] = Introduction.objects.get(title__icontains="tablet")
+        return context
 
 
 class TabletDetailView(BaseDetailView):

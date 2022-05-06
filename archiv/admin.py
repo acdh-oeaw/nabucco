@@ -6,6 +6,7 @@ from . models import (
     Archiv,
     Bibliography,
     Glossary,
+    Introduction,
     Place,
     Tablet
 )
@@ -27,3 +28,4 @@ admin.site.register(Archiv)
 admin.site.register(Bibliography)
 admin.site.register(Place)
 admin.site.register(Tablet)
+admin.site.register(Introduction)

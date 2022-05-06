@@ -1,16 +1,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <h1> Toponyms and Hydronyms</h1>
-            <p> Each toponym is assigned to a main geographical region as listed below: </p>
+            <p> Each toponym is assigned to a main geographical region as listed below.Click <a href="{% url 'archiv:region_overview' %}">here</a> for a tabular overview of regions and their cities. </p>
                <ul>{% for x in regions %}
                             <li> 
                                 <a href="{{ x.get_absolute_url }}">  {{ x }} </a>
                             </li>
                     {% endfor %}
-                </ul>
-            <p> Click <a href="{% url 'archiv:region_overview' %}">here</a> for a tabular overview of regions and their cities. The ancient names are transliterated in Latin characters following Zadok 1985 (RGTC 8).</p>
-            <p>By clicking on a toponym, you will get a list of tablets of which this site is the place of issue. </p>
+                </ul> 
         </div>
         <div class="col-md-6">
             <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2533822.325691883!2d46.292332825773244!3d32.45539730908041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sat!4v1642264652224!5m2!1sen!2sat" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->

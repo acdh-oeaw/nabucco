@@ -857,3 +857,17 @@ class Tablet(models.Model):
                 kwargs={'pk': prev.first().id}
             )
         return False
+
+
+class Introduction(models.Model):
+    intro_text = RichTextField(
+        default="Add brief introductory text",
+        blank=True,
+    )
+    title = models.CharField(
+        max_length=250,
+        blank=True,
+    )
+
+    def __str__(self):
+        return "{}".format(self.title)
