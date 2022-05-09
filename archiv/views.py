@@ -54,10 +54,12 @@ class ArchivListView(GenericListView):
     ]
     enable_merge = False
     template_name = 'archiv/generic_list.html'
+    archive, created = Introduction.objects.get_or_create(title="Archives")
 
     def get_context_data(self, **kwargs):
         context = super(ArchivListView, self).get_context_data(**kwargs)
-        context['introduction'] = Introduction.objects.get(title__exact="Archives")
+        if self.archive:
+            context['introduction'] = self.archive 
         return context
 
 
@@ -209,11 +211,13 @@ class PlaceListView(GenericListView):
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
+    places, created = Introduction.objects.get_or_create(title="Places")
 
     def get_context_data(self, **kwargs):
         context = super(PlaceListView, self).get_context_data(**kwargs)
         context['regions'] = self.regions
-        context['introduction'] = Introduction.objects.get(title__exact="Places")
+        if self.places:
+            context['introduction'] = self.places
         return context
 
 
@@ -290,10 +294,12 @@ class TabletListView(GenericListView):
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
+    intro, created = Introduction.objects.get_or_create(title="Tablet catalogue")
 
     def get_context_data(self, **kwargs):
         context = super(TabletListView, self).get_context_data(**kwargs)
-        context['introduction'] = Introduction.objects.get(title__icontains="tablet")
+        if self.intro:
+            context['introduction'] = self.intro
         return context
 
 
