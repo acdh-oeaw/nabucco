@@ -22,13 +22,13 @@ class ArchivTestCase(TestCase):
         User.objects.create_user(**USER)
 
     def test_002_listviews(self):
+        apps.get_model('archiv', 'introduction')
         for x in to_check:
             try:
                 url = x.get_listview_url()
             except AttributeError:
                 url = False
             if url:
-                apps.get_model('archiv', 'introduction')
                 response = client.get(url)
                 self.assertEqual(response.status_code, 200)
 
