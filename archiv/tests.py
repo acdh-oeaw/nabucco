@@ -24,7 +24,6 @@ class ArchivTestCase(TestCase):
     def test_002_listviews(self):
         for x in to_check:
             try:
-                apps.get_model('archiv', 'introduction')
                 url = x.get_listview_url()
             except AttributeError:
                 url = False
