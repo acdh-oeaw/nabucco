@@ -59,7 +59,7 @@ class ArchivListView(GenericListView):
     def get_context_data(self, **kwargs):
         context = super(ArchivListView, self).get_context_data(**kwargs)
         if self.archive:
-            context['introduction'] = self.archive 
+            context['introduction'] = self.archive
         return context
 
 
