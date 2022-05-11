@@ -1,7 +1,7 @@
 [
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Uruk",
             "legacy_pk": 61,
@@ -17,7 +17,7 @@
     },
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>Geographical region in south Babylonia, including the city of Ur and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Ur",
             "legacy_pk": 67,
@@ -33,7 +33,7 @@
     },
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>Geographical region in center-south Babylonia, including the city of Nippur and other places in in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Nippur",
             "legacy_pk": 40,
@@ -49,13 +49,13 @@
     },
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>Geographical region in central Babylonia, including the city of Babylon and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Babylon",
             "legacy_pk": 37,
             "lng": null,
             "name": "Babylon",
-            "orig_data_csv": "{\"place id\": 37, \"parent id\": 4, \"place name\": \"Babylon\", \"related objects\": 2355.0, \"title\": \"Babylon\"}",
+            "orig_data_csv": "{\"place id\": 37, \"parent id\": 4, \"place name\": \"Babylon (Region)\", \"related objects\": 2355.0, \"title\": \"Babylon (Region)\"}",
             "part_of": null,
             "place_collection": "",
             "title": "Babylon"
@@ -111,20 +111,6 @@
     },
     {
         "fields": {
-            "alt_name": "",
-            "description": "A short description of the archive",
-            "legacy_id": "nan",
-            "legacy_pk": null,
-            "name": "",
-            "orig_data_csv": null,
-            "paragraph": null,
-            "part_of": null
-        },
-        "model": "archiv.archiv",
-        "pk": 120
-    },
-    {
-        "fields": {
             "broader_concept": null,
             "legacy_id": "nan",
             "legacy_pk": null,
@@ -141,11 +127,11 @@
     },
     {
         "fields": {
-            "description": "A very nice place",
-            "lat": null,
+            "description": "<p>A very nice place</p>",
+            "lat": 32.126944,
             "legacy_id": "Nippur city",
             "legacy_pk": 22,
-            "lng": null,
+            "lng": 45.230833,
             "name": "Nippur city",
             "orig_data_csv": "{\"place id\": 22, \"parent id\": 40, \"place name\": \"Nippur city\", \"related objects\": 8508.0, \"title\": \"Nippur city\"}",
             "part_of": 10,
@@ -233,7 +219,7 @@
     },
     {
         "fields": {
-            "archiv": 120,
+            "archiv": null,
             "bibliography": "",
             "cdli_no": "",
             "day": "",
@@ -357,22 +343,6 @@
     },
     {
         "fields": {
-            "description": "A very nice place",
-            "lat": null,
-            "legacy_id": "Atkuppu",
-            "legacy_pk": null,
-            "lng": null,
-            "name": "",
-            "orig_data_csv": null,
-            "part_of": null,
-            "place_collection": "",
-            "title": ""
-        },
-        "model": "archiv.place",
-        "pk": 11
-    },
-    {
-        "fields": {
             "alt_name": "",
             "description": "A short description of the archive",
             "legacy_id": "Atkuppu I",
@@ -380,7 +350,7 @@
             "name": "Atkuppu I",
             "orig_data_csv": "{\"archive id\": 495, \"archive name\": \"Atkuppu I\", \"is part of\": \"Atkuppu\", \"title\": \"Atkuppu I\", \"related objects\": NaN, \"alternative name\": NaN}",
             "paragraph": null,
-            "part_of": 11
+            "part_of": null
         },
         "model": "archiv.archiv",
         "pk": 52
