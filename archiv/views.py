@@ -54,7 +54,11 @@ class ArchivListView(GenericListView):
     ]
     enable_merge = False
     template_name = 'archiv/generic_list.html'
-    archive, created = Introduction.objects.get_or_create(title="Archives")
+    try:
+        archive, created = Introduction.objects.get_or_create(title="Archives")
+    except Exception as e:
+        print(e)
+        archive = e
 
     def get_context_data(self, **kwargs):
         context = super(ArchivListView, self).get_context_data(**kwargs)
