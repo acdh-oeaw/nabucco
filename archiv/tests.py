@@ -21,15 +21,15 @@ class ArchivTestCase(TestCase):
         # Create two users
         User.objects.create_user(**USER)
 
-    # def test_002_listviews(self):
-    #     for x in to_check:
-    #         try:
-    #             url = x.get_listview_url()
-    #         except AttributeError:
-    #             url = False
-    #         if url:
-    #             response = client.get(url)
-    #             self.assertEqual(response.status_code, 200)
+    def test_002_listviews(self):
+        for x in to_check:
+            try:
+                url = x.get_listview_url()
+            except AttributeError:
+                url = False
+            if url:
+                response = client.get(url)
+                self.assertEqual(response.status_code, 200)
 
     def test_003_detailviews(self):
         for x in to_check:
