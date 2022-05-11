@@ -215,7 +215,11 @@ class PlaceListView(GenericListView):
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
-    places, created = Introduction.objects.get_or_create(title="Places")
+    try:
+        places, created = Introduction.objects.get_or_create(title="Places")
+    except Exception as e:
+        print(e)
+        archive = e
 
     def get_context_data(self, **kwargs):
         context = super(PlaceListView, self).get_context_data(**kwargs)
@@ -298,7 +302,11 @@ class TabletListView(GenericListView):
     ]
     enable_merge = True
     template_name = 'archiv/generic_list.html'
-    intro, created = Introduction.objects.get_or_create(title="Tablet catalogue")
+    try:
+        intro, created = Introduction.objects.get_or_create(title="Tablet catalogue")
+    except Exception as e:
+        print(e)
+        archive = e
 
     def get_context_data(self, **kwargs):
         context = super(TabletListView, self).get_context_data(**kwargs)
