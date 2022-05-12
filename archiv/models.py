@@ -647,15 +647,6 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Type and content",
     )
-    key_word = models.ManyToManyField(
-        "Glossary",
-        related_name='rvn_tablet_key_word_glossary',
-        blank=True,
-        verbose_name="random keyword",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-    )
     paraphrase = RichTextField(
         blank=True, null=True,
         verbose_name="Paraphrase",
@@ -683,15 +674,6 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Archive",
-    )
-    mentioned_archiv = models.ManyToManyField(
-        "Archiv",
-        related_name='rvn_tablet_mentioned_archiv_archiv',
-        blank=True,
-        verbose_name="Archive",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
     )
     mentioned_in_pub = models.ManyToManyField(
         "Bibliography",

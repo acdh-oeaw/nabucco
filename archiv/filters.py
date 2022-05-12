@@ -274,14 +274,6 @@ class TabletListFilter(django_filters.FilterSet):
             url="archiv-ac:glossary-autocomplete",
         )
     )
-    key_word = django_filters.ModelMultipleChoiceFilter(
-        queryset=Glossary.objects.all(),
-        help_text=Tablet._meta.get_field('key_word').help_text,
-        label=Tablet._meta.get_field('key_word').verbose_name,
-        widget=autocomplete.Select2Multiple(
-            url="archiv-ac:glossary-autocomplete",
-        )
-    )
     paraphrase = django_filters.CharFilter(
         method='additive_filtering',
         help_text=Tablet._meta.get_field('paraphrase').help_text + ': one or more search terms',
@@ -327,14 +319,6 @@ class TabletListFilter(django_filters.FilterSet):
         queryset=Archiv.objects.all(),
         help_text=Tablet._meta.get_field('archiv').help_text,
         label=Tablet._meta.get_field('archiv').verbose_name,
-        widget=autocomplete.Select2Multiple(
-            url="archiv-ac:archiv-autocomplete",
-        )
-    )
-    mentioned_archiv = django_filters.ModelMultipleChoiceFilter(
-        queryset=Archiv.objects.all(),
-        help_text=Tablet._meta.get_field('mentioned_archiv').help_text,
-        label=Tablet._meta.get_field('mentioned_archiv').verbose_name,
         widget=autocomplete.Select2Multiple(
             url="archiv-ac:archiv-autocomplete",
         )
@@ -398,13 +382,12 @@ class TabletListFilter(django_filters.FilterSet):
             'place_of_issue',
             'mentioned_place',
             'type_content',
-            'key_word',
             'paraphrase',
             'transliteration',
             'archiv',
-            'mentioned_archiv',
             'mentioned_in_pub',
             'publication_name',
+            'text_number',
             'period',
             'day',
             'month',

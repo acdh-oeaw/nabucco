@@ -1,4 +1,4 @@
-from os import name
+# from os import name
 from django.core.management.base import BaseCommand
 # from django.conf import settings
 # from appcreator.import_utils import run_import
@@ -28,13 +28,6 @@ class Command(BaseCommand):
             except Archiv.DoesNotExist:
                 continue
             if archive:
-            # OBSOLETE: 'mentioned' tabletss are simly tablets belonging to the archiv
-            #     try:
-            #         tablet = Tablet.objects.get(legacy_pk=related_object_id)
-            #         tablet.mentioned_archiv.add(archive)
-            #     except:
-            #         continue
-                # print(tablet.mentioned_archiv.all())
                 try:
                     bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
                     bib_item.mentioned_archive.add(archive)
@@ -57,11 +50,11 @@ class Command(BaseCommand):
                 glossary_item.delete()
             else:
                 if glossary_item:
-                    try:
-                        related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
-                        related_tablet.key_word.add(glossary_item)
-                    except:
-                        continue
+                    # try:
+                    #     related_tablet = Tablet.objects.get(legacy_pk=related_object_id)
+                    #     related_tablet.key_word.add(glossary_item)
+                    # except:
+                    #     continue
                     # print(related_tablet.key_word.all())
                     try:
                         related_bib_item = Bibliography.objects.get(legacy_pk=related_object_id)
