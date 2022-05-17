@@ -5,6 +5,28 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
+
+<script type="text/javascript">
+  function  toggleTabletVisibility(){
+    var t = document.getElementById("tablets");
+    if(t.style.display === "none") {
+      t.style.display = "block";
+    } else {
+      t.style.display = "none"
+    }
+  }  
+</script>
+<script type="text/javascript">
+  function  toggleArchiveVisibility(){
+    var t = document.getElementById("archives");
+    if(t.style.display === "none") {
+      t.style.display = "block";
+    } else {
+      t.style.display = "none"
+    }
+  }  
+</script>
+
 <div class="card w-100">
   <div class="card-header">
     <div class="row">
@@ -87,7 +109,7 @@
            <tr><td>Latitude: </td><td> {{place.lat}}</td></tr> {% endif %}
         </table>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <table class="table table-responsive table-hover">
           <tr>
             <th> Place description</th>
@@ -95,9 +117,30 @@
           </tr>
         </table>
       </div>
-
-      {% if place in regions %}
       <div class="col-md-3">
+        <table class="table table-responsive table-hover">
+          <div class="card-header" onclick="toggleArchiveVisibility()"><b>Archives</b></div>
+            {% for x in object.field_dict %} {% if x.name == "rvn_archiv_part_of_place" %}
+            <ul class="list-group" id="archives" style="display: none;">
+                {% if not x.value %} <li class="list-group-item"> No archives recorded</li> {% else %} {% for y in x.value %}
+                <li class="list-group-item"><a href="{{ y.get_absolute_url }}">{{ y }}</a></li> 
+              {% endfor %} </ul> {% endif %}
+              {% endif %}
+            {% endfor %}
+        </table>
+        <table class="table table-responsive table-hover">
+            <div class="card-header" onclick="toggleTabletVisibility()"><b>Tablets</b></div>
+            {% for x in object.field_dict %} {% if x.name == "rvn_tablet_place_of_issue_place" %}
+            <ul class="list-group" id="tablets" style="display: none;">
+                {% if not x.value %} <li class="list-group-item"> No tablets recorded</li> {% else %} {% for y in x.value %}
+                <li class="list-group-item"><a href="{{ y.get_absolute_url }}">{{ y }}</a></li> 
+              {% endfor %} </ul> {% endif %}
+              {% endif %}
+            {% endfor %}
+        </table> 
+      
+      {% if place in regions %}
+      
         <table class="table table-responsive table-hover">
           <tr><th>Is region</th><td><div class="form-check"> <input class="form-check-input" type="radio"  style="background-color: #254aa5;" disabled checked/></div></td></tr>
           <tr><th>Related Places:</th></tr>
@@ -108,7 +151,7 @@
           {% endfor %}
       {% endif %}
         </table>
-      </div>
+    </div>
 
       <div class="row justify-content-center">
         <div class="col-md-4">
