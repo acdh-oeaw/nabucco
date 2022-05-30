@@ -1,87 +1,63 @@
 Document Type,Document Class
 Damaged,
-Indeterminate legal text,Damaged
-Indeterminate administrative text,Damaged
+Indeterminate legal texts,Damaged
+Indeterminate administrative texts,Damaged
 Legal - Permanent,
-Redemption,Legal - Permanent
+Redemptions,Legal - Permanent
 Real estate - Other,Legal - Permanent
-Marriage,Legal - Permanent
-Will,Legal - Permanent
-Division (other than inheritance),Legal - Permanent
-Dowry,Legal - Permanent
+Marriages,Legal - Permanent
+Wills,Legal - Permanent
+Divisions (other than inheritance),Legal - Permanent
+Dowries,Legal - Permanent
 ,Legal - Permanent
-Adoption,Legal - Permanent
-Exchange,Legal - Permanent
-Consecration,Legal - Permanent
-Manumission,Legal - Permanent
-Purchase,Legal - Permanent
-Free gift,Legal - Permanent
+Adoptions,Legal - Permanent
+Exchanges,Legal - Permanent
+Consecrations,Legal - Permanent
+Manumissions,Legal - Permanent
+Purchases,Legal - Permanent
+Free gifts,Legal - Permanent
 Administrative,
 Memorandum (taẖsistu ana la mašê),Administrative
 Incoming & outgoing,Administrative
 Multiple instances,Incoming & outgoing
 Single instance,Incoming & outgoing
-Note,Administrative
+Notes,Administrative
 Outgoing,Administrative
-List,Outgoing
+Lists,Outgoing
 Multiple transactions,Outgoing
-Inventory,Administrative
-Single,Inventory
-Multiple (list),Inventory
+Inventories,Administrative
+Single,Inventories
+Multiple (list),Inventories
 Incoming,Administrative
 Single transaction,Incoming
-Letter order,Administrative
-Balanced account,Administrative
+Letter orders,Administrative
+Balanced accounts,Administrative
 Legal - Other,
 Other,
 Litigation,
-Summon/Oath/Injunction,Litigation
-Court protocol,Litigation
-Statement in court/Deposition,Litigation
-Legal - Temporary,
-Deposit,Legal - Temporary
+Deposits,Legal - Temporary
+Statements in court/Deposition,Litigation
+Summonses/Oaths/Injunctions,Litigation
+Court protocols,Litigation
 Hiring,Legal - Temporary
-Commercial partnership,Legal - Temporary
-Apprenticeship,Legal - Temporary
-Settlement of accounts,Legal - Temporary
-Cancellation of agreement,Legal - Temporary
-Receipt,Legal - Temporary
-Inheritance,Legal - Temporary
-Promissory note ina muẖẖi,Legal - Temporary
+Commercial partnerships,Legal - Temporary
+Legal - Temporary,
+Apprenticeships,Legal - Temporary
+Settlements of accounts,Legal - Temporary
+Cancellations of agreement,Legal - Temporary
+Receipts,Legal - Temporary
+Inheritances,Legal - Temporary
+Promissory notes ina muẖẖi,Legal - Temporary
 Grazing,Legal - Temporary
 Nursing,Legal - Temporary
-Security for debt,Legal - Temporary
-Loan ina pani,Legal - Temporary
-Lease,Legal - Temporary
-Indeterminate text,
+Securities for debts,Legal - Temporary
+Loans ina pani,Legal - Temporary
+Leases,Legal - Temporary
+Indeterminate texts,
 Correspondence,
-Letter,Correspondence
-Task completed,
-Task to be completed,
-Supply,
-Receipt of income,
-Expenditure,
-General keywords,
-Dialogue document,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+Letters,Correspondence
+Receipts of income,
+Expenditures,
+
+
+

@@ -853,3 +853,7 @@ class Introduction(models.Model):
 
     def __str__(self):
         return "{}".format(self.title)
+
+    @classmethod
+    def get_source_table(self):
+        print("No introduction in source tables")
