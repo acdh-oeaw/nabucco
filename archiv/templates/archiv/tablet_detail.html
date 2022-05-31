@@ -68,9 +68,9 @@
                 <a href="{{ y.get_absolute_url }}">{{ y }}</a>
               </li>
               {% endfor %}
-              {% elif  x.f_type == 'FK'%}
-              <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-              {% elif  x.f_type == 'REVRESE_RELATION' %}
+              {% elif  x.f_type == 'FK' and x.name == "type_content"%}
+              <a href="{{ x.value.get_absolute_url }}"> {% if tablet.type_content.title %} {{tablet.type_content.title}} {% else %} {{x.value}} {% endif %}</a>
+              {% elif x.f_type == 'REVRESE_RELATION' %}
               {% for y in x.value %}
               <li>
                 <a href="{{ y.get_absolute_url }}">{{ y }}</a>

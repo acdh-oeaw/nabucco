@@ -82,8 +82,6 @@
               {% endfor %}
               {% elif  x.f_type == 'FK' %}
               <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-              {% elif  x.f_type == 'FK' %}
-              <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
               {% elif  x.f_type == 'REVRESE_RELATION' %}
               {% for y in x.value %}
               <li>
