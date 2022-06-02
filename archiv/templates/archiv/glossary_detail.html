@@ -5,6 +5,18 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
+
+<script type="text/javascript">
+  function  toggleTabletVisibility(){
+    var t = document.getElementById("tablets");
+    if(t.style.display === "none") {
+      t.style.display = "block";
+    } else {
+      t.style.display = "none"
+    }
+  }  
+</script>
+
 <div class="card w-100">
   <div class="card-header">
     <div class="row">
@@ -49,7 +61,7 @@
 
   <div class="card-body">
     <div class="row justify-content-around">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <table class="table table-responsive table-hover">
           {% for x in object.field_dict %}
           {% if x.name == "pref_label" or x.name == "legacy_pk" %}
@@ -87,7 +99,7 @@
           {% endfor %}
         </table>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <table class="table table-responsive table-hover">
           {% for x in object.field_dict %}
           {% if x.verbose_name == "skos:broader" and x.value != None or x.verbose_name == "narrower_concepts" and x.value %}
@@ -125,6 +137,18 @@
           </tr>
           {% endif %}
           {% endfor %}
+        </table>
+      </div>
+      <div class="col-md-3">
+        <table class="table table-responsive table-hover">
+          <div class="card-header" onclick="toggleTabletVisibility()"><b>Tablets</b></div>
+            {% for x in object.field_dict %} {% if x.name == "rvn_tablet_type_content_glossary" %}
+            <ul class="list-group" id="tablets" style="display: none;">
+                {% if not x.value %} <li class="list-group-item"> No tablets recorded</li> {% else %} {% for y in x.value %}
+                <li class="list-group-item"><a href="{{ y.get_absolute_url }}">{{ y }}</a></li> 
+              {% endfor %} </ul> {% endif %}
+              {% endif %}
+            {% endfor %}
         </table>
       </div>
       <div class="row justify-content-center">
