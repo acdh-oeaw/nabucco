@@ -64,10 +64,12 @@
       <div class="col-md-3">
         <table class="table table-responsive table-hover">
           {% for x in object.field_dict %}
-          {% if x.name == "name" or x.name == "paragraph" or x.name == "legacy_pk" or x.name == "part_of" %}
+          {% if x.name == "name" or x.verbose_name == "ID" or x.name == "paragraph" or x.name == "part_of" %}
           <tr>
             <th>
-              {% if x.help_text %}
+              {% if x.verbose_name == "ID" %}
+              NaBuCCo ID
+              {% elif x.help_text %}
               <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
               {% else %}
               {{ x.verbose_name }}
@@ -122,7 +124,7 @@
           {% if user.is_authenticated %}
           <table class="table table-responsive table-hover">
             {% for x in object.field_dict %}
-            {% if x.verbose_name == "The original data" or x.verbose_name == "ID" or x.verbose_name == "Legacy ID" or x.verbose_name == "Matches FileChecker Entry" %}
+            {% if x.verbose_name == "The original data" or x.verbose_name == "Legacy ID" or x.name == "legacy_pk" or x.verbose_name == "Matches FileChecker Entry" %}
             <tr>
               <th>
                 {% if x.help_text %}

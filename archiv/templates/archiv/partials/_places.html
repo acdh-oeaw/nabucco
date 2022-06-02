@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <p> Each toponym is assigned to a main geographical region as listed below.Click <a href="{% url 'archiv:region_overview' %}">here</a> for a tabular overview of regions and their cities. </p>
+            <p> Each toponym is assigned to a main geographical region as listed below. Click <a href="{% url 'archiv:region_overview' %}">here</a> for a tabular overview of regions and their cities. </p>
                <ul>{% for x in regions %}
                             <li> 
                                 <a href="{{ x.get_absolute_url }}">  {{ x }} </a>
