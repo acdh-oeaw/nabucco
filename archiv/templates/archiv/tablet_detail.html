@@ -114,7 +114,7 @@
           {% if user.is_authenticated %}
           <table class="table table-responsive table-hover">
             {% for x in object.field_dict %}
-            {% if x.verbose_name == "The original data" or x.name == "imported" or x.verbose_name == "legacy_pk" or x.verbose_name == "Legacy ID" or x.verbose_name == "Matches FileChecker Entry" %}
+            {% if x.verbose_name == "The original data" or x.name == "imported" or x.verbose_name == "NaBuCCo No." or x.verbose_name == "Legacy ID" or x.verbose_name == "Matches FileChecker Entry" %}
             <tr>
               <th>
                 {% if x.help_text %}
