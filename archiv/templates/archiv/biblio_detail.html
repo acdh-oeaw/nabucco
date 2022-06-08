@@ -5,6 +5,18 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
+
+<script type="text/javascript">
+  function  toggleVisibility(){
+    var t = document.getElementById("pub_tabs");
+    if(t.style.display === "none") {
+      t.style.display = "block";
+    } else {
+      t.style.display = "none"
+    }
+  }  
+</script>
+
 <div class="card w-100">
   <div class="card-header">
     <div class="row">
@@ -46,13 +58,12 @@
       </div>
     </div>
   </div>
-
   <div class="card-body">
     <div class="row justify-content-around">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <table class="table table-responsive table-hover">
           {% for x in object.field_dict %}
-          {% if x.name == "museum_id" or x.verbose_name == "ID" or x.name == "cdli_no" or x.name == "type_content" or x.name == "place_of_issue" or x.name == "julian_date_year" or x.name == "archiv" or x.name == "period" %}
+          {% if x.verbose_name == "ID" or x.name == "short_title" or x.name == "author" or x.name == "publication_year" or x.name == "title" or x.name == "pages" or x.name == "journal" or x.name == "editor" or x.name == "book"  %}
           <tr>
             <th>
               {% if x.verbose_name == "ID" %}
@@ -70,54 +81,41 @@
                 <a href="{{ y.get_absolute_url }}">{{ y }}</a>
               </li>
               {% endfor %}
-              {% elif  x.f_type == 'FK' and x.name == "type_content"%}
-              <a href="{{ x.value.get_absolute_url }}"> {% if tablet.type_content.title %} {{tablet.type_content.title}} {% else %} {{x.value}} {% endif %}</a>
-              {% elif x.f_type == 'REVRESE_RELATION' %}
+              {% elif  x.f_type == 'FK' %}
+              <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
+              {% elif  x.f_type == 'REVRESE_RELATION' %}
               {% for y in x.value %}
               <li>
                 <a href="{{ y.get_absolute_url }}">{{ y }}</a>
               </li>
               {% endfor %}
               {% elif  x.f_type == 'SIMPLE' %}
-              {% for y in x.value %}
-              {% endfor %}
               {{ x.value }}
               {% endif %}
             </td>
-            </tr>
-          {% elif x.name == "mentioned_in_pub" %}
-          {% for y in x.value %}
-          <th>Editio princeps</th>
-          <td> <a href="{{ y.get_absolute_url }}">{{ y }}</a> {{tablet.text_number|safe}}</td>
-          {% endfor %}
+          </tr>
           {% endif %}
           {% endfor %}
         </table>
       </div>
-      <div class="col-md-6">
-        <table class="table table-responsive table-hover">
-          <tr>
-            <th> Paraphrase</th>
-            <td> {{tablet.paraphrase|safe}}</td>
-          </tr>
-          <tr>
-            <th> Transliteration </th>
-            <td> {{tablet.transliteration|safe}}</td>
-          </tr>
-          <tr><th>Babylonian Date (year-month-day): </th>
-            <td> {% if tablet.king %}{{tablet.king}}{% else %}XXX{% endif %}.
-                {% if tablet.year %}{{tablet.year}}{% else %}yy{% endif %}-{% if tablet.month %}{{tablet.month}}{% else %}mm{% endif %}-{% if tablet.day%}{{tablet.day}}{% else %}dd{% endif %}
-            </td>
-        </tr>
-        </table>
+      <div class="col-md-3">
+        <table class="card">
+          <div class="card-header" onclick="toggleVisibility()"><b>Tablets published</b></div>
+            {% for x in object.field_dict %} {% if x.name == "rvn_tablet_mentioned_in_pub_bibliography" %}
+            <ul class="list-group" id="pub_tabs" style="display: none;">
+                {% if not x.value %} <li class="list-group-item"> No tablets recorded</li> {% else %} {% for y in x.value %}
+                <li class="list-group-item"><a href="{{ y.get_absolute_url }}">{{ y }}</a></li> 
+              {% endfor %} </ul> {% endif %}
+              {% endif %}
+            {% endfor %}
+        </table> 
       </div>
-
       <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-4">
           {% if user.is_authenticated %}
           <table class="table table-responsive table-hover">
             {% for x in object.field_dict %}
-            {% if x.verbose_name == "The original data" or x.name == "imported" or x.verbose_name == "NaBuCCo No." or x.verbose_name == "Legacy ID" or x.verbose_name == "Matches FileChecker Entry" %}
+            {% if x.verbose_name == "The original data" or x.verbose_name == "Legacy ID" or x.name == "legacy_pk" or x.verbose_name == "Matches FileChecker Entry" %}
             <tr>
               <th>
                 {% if x.help_text %}

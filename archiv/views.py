@@ -118,7 +118,7 @@ class BibliographyListView(GenericListView):
 class BibliographyDetailView(BaseDetailView):
 
     model = Bibliography
-    template_name = 'archiv/generic_detail.html'
+    template_name = 'archiv/biblio_detail.html'
 
 
 class BibliographyCreate(BaseCreateView):
