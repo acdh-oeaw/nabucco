@@ -702,9 +702,18 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Text number",
     )
+    PERIOD_CHOICES = [
+        ('NB', 'nB'),
+        ('Each', 'eAch'),
+        ('ENB', 'enB'),
+        ('Ach', 'lAch'),
+        ('-', '-'),
+    ]
     period = models.CharField(
         max_length=250,
         blank=True,
+        choices=PERIOD_CHOICES,
+        default="-",
         verbose_name="Period",
         help_text="whatever",
     ).set_extra(
@@ -738,9 +747,29 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Year",
     )
+    KING_CHOICES = [
+        ('-', '-'),
+        ('Esar', 'Esar'),
+        ('Ššu', 'Ššu'),
+        ('Kan', 'Kan'),
+        ('Npl', 'Npl'),
+        ('Nbk', 'Nbk'),
+        ('AM', 'AM'),
+        ('Ner', 'Ner'),
+        ('Nbn', 'Nbn'),
+        ('Cyr', 'Cyr'),
+        ('Cam', 'Cam'),
+        ('Bar', 'Bar'),
+        ('Dar', 'Dar'),
+        ('Nbk III', 'Nbk III'),
+        ('Nbk IV', 'Nbk IV'),
+        ('Xer', 'Xer'),
+    ]
     king = models.CharField(
         max_length=250,
         blank=True,
+        choices=KING_CHOICES,
+        default="-",
         verbose_name="King",
         help_text="King (abbreviated)",
     ).set_extra(
