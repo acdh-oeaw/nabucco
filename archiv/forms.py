@@ -50,7 +50,8 @@ class ArchivForm(forms.ModelForm):
 
     class Meta:
         model = Archiv
-        fields = "__all__"
+        # fields = "__all__"
+        exclude = ['orig_data_csv', 'legacy_id', 'legacy_pk']
 
     def __init__(self, *args, **kwargs):
         super(ArchivForm, self).__init__(*args, **kwargs)
@@ -108,7 +109,7 @@ class BibliographyForm(forms.ModelForm):
 
     class Meta:
         model = Bibliography
-        fields = "__all__"
+        exclude = ['orig_data_csv', 'legacy_id', 'legacy_pk']
 
     def __init__(self, *args, **kwargs):
         super(BibliographyForm, self).__init__(*args, **kwargs)
@@ -157,7 +158,7 @@ class GlossaryForm(forms.ModelForm):
 
     class Meta:
         model = Glossary
-        fields = "__all__"
+        exclude = ['orig_data_csv', 'legacy_id', 'legacy_pk']
 
     def __init__(self, *args, **kwargs):
         super(GlossaryForm, self).__init__(*args, **kwargs)
@@ -204,7 +205,7 @@ class PlaceForm(forms.ModelForm):
 
     class Meta:
         model = Place
-        fields = "__all__"
+        exclude = ['orig_data_csv', 'legacy_id', 'legacy_pk']
 
     def __init__(self, *args, **kwargs):
         super(PlaceForm, self).__init__(*args, **kwargs)
@@ -270,7 +271,7 @@ class TabletForm(forms.ModelForm):
 
     class Meta:
         model = Tablet
-        fields = "__all__"
+        exclude = ['orig_data_csv', 'legacy_id', 'legacy_pk']
 
     def __init__(self, *args, **kwargs):
         super(TabletForm, self).__init__(*args, **kwargs)
