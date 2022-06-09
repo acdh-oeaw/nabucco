@@ -493,6 +493,7 @@ class Place(models.Model):
         "self",
         related_name='rvn_place_part_of_place',
         on_delete=models.SET_NULL,
+        limit_choices_to={'part_of__exact': None},
         null=True,
         blank=True,
         verbose_name="Region",
