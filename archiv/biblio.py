@@ -46,9 +46,10 @@ for x in biblio_array:
         else:
             template['creators'].append({'creatorType': 'editor', 'lastName': x['Editor'].split(', ')[0],
                                         'firstName:': '-'})
+        # print(template)
         resp = zot.create_items([template])
     if not x['Book'] and not x['Editor'] and not x['Journal'] and len(x['Short title'].split(' ')) == 2:
-        # the data is is mess: accepted as BOOK entires that use as short title "Author-Year"
+        # the data is is mess: accepted as BOOK are entries that use as short title "Author-Year"
         if re.match(r'[0-9]{4}$', x['Short title'].split(' ')[1]):
             template = zot.item_template('book')
             template['title'] = x['Title']
