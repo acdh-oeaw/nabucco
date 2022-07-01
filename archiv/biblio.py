@@ -2,7 +2,7 @@ from pyzotero import zotero
 import csv
 import re
 
-zot = zotero.Zotero(9702503, 'user', '345lPzTOcrnjXjZAfgf5Hrys')
+zot = zotero.Zotero(9702503, 'user', 'key')
 csv_file_path = r'C:\Users\Reinhard\Desktop\nabucco\data\csv\Bibliography.csv'
 biblio_array = []
 
@@ -27,8 +27,8 @@ for x in biblio_array:
             template['creators'][0]['firstName'] = x['Author'].split(', ')[1]
         else:
             template['creators'][0]['firstName'] = '-'
-        resp = zot.create_items([template])
-    if x['Book'] and x['Editor']:
+        # resp = zot.create_items([template])
+    elif x['Book'] and x['Editor']:
         template = zot.item_template('bookSection')
         template['title'] = x['Title']
         template['bookTitle'] = x['Book']
@@ -48,7 +48,7 @@ for x in biblio_array:
                                         'firstName:': '-'})
         # print(template)
         resp = zot.create_items([template])
-    if not x['Book'] and not x['Editor'] and not x['Journal'] and len(x['Short title'].split(' ')) == 2:
+    elif not x['Book'] and not x['Editor'] and not x['Journal'] and len(x['Short title'].split(' ')) == 2:
         # the data is is mess: accepted as BOOK are entries that use as short title "Author-Year"
         if re.match(r'[0-9]{4}$', x['Short title'].split(' ')[1]):
             template = zot.item_template('book')
@@ -60,4 +60,6 @@ for x in biblio_array:
                 template['creators'][0]['firstName'] = x['Author'].split(', ')[1]
             else:
                 template['creators'][0]['firstName'] = '-'
-            resp = zot.create_items([template])
+            # resp = zot.create_items([template])
+    else:
+        continue
