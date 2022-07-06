@@ -1,17 +1,22 @@
 from pyzotero import zotero
 import csv
 import re
+import os
 
-zot = zotero.Zotero(9702503, 'user', 'key')
+ZOTERO_KEY = os.environ.get('ZOTERO_KEY')
+
+zot = zotero.Zotero(9702503, 'user', ZOTERO_KEY)
+
 csv_file_path = r'C:\Users\Reinhard\Desktop\nabucco\data\csv\Bibliography.csv'
 biblio_array = []
+not_imported = []
 
 with open(csv_file_path, 'r', encoding='utf-8') as csv_file_handler:
     csv_reader = csv.DictReader(csv_file_handler)
 
     for row in csv_reader:
         biblio_array.append(row)
-
+# print(ZOTERO_KEY)
 for x in biblio_array:
     if x['Journal']:
         template = zot.item_template('journalArticle')
@@ -27,7 +32,7 @@ for x in biblio_array:
             template['creators'][0]['firstName'] = x['Author'].split(', ')[1]
         else:
             template['creators'][0]['firstName'] = '-'
-        # resp = zot.create_items([template])
+        resp = zot.create_items([template])
     elif x['Book'] and x['Editor']:
         template = zot.item_template('bookSection')
         template['title'] = x['Title']
@@ -40,12 +45,6 @@ for x in biblio_array:
             template['creators'][0]['firstName'] = x['Author'].split(', ')[1]
         else:
             template['creators'][0]['firstName'] = '-'
-        if len(x['Editor'].split(', ')) >= 2:
-            template['creators'].append({'creatorType': 'editor', 'lastName': x['Editor'].split(', ')[0],
-                                        'firstName:': x['Editor'].split(', ')[1]})
-        else:
-            template['creators'].append({'creatorType': 'editor', 'lastName': x['Editor'].split(', ')[0],
-                                        'firstName:': '-'})
         # print(template)
         resp = zot.create_items([template])
     elif not x['Book'] and not x['Editor'] and not x['Journal'] and len(x['Short title'].split(' ')) == 2:
@@ -60,6 +59,6 @@ for x in biblio_array:
                 template['creators'][0]['firstName'] = x['Author'].split(', ')[1]
             else:
                 template['creators'][0]['firstName'] = '-'
-            # resp = zot.create_items([template])
+            resp = zot.create_items([template])
     else:
-        continue
+        not_imported.append(x)
