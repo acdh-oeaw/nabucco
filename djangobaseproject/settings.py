@@ -35,8 +35,10 @@ SHEET_ID = os.environ.get('SHEET_ID', "19tfPPMRiIQf6SPicfhvX3gMQd0Hfb5I6eEeKg2xw
 SECRET_KEY = os.environ.get('SECRET_KEY', 'üpxyd-dsafjlsfj-wy5^_*oo3sac4e6')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True')
-
+if os.environ.get("DEBUG"):
+    DEBUG = True
+else:
+    DEBUG = False
 ADD_ALLOWED_HOST = os.environ.get('ALLOWED_HOST', '*')
 
 ALLOWED_HOSTS = [
