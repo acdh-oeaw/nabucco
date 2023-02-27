@@ -22,24 +22,28 @@ SHARED_URL = "https://shared.acdh.oeaw.ac.at/"
 PROJECT_NAME = os.environ.get("PROJECT_NAME", "nabucco")
 
 
-ACDH_IMPRINT_URL = "https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID="
-REDMINE_ID = os.environ.get('REDMINE_ID', 19545)
+ACDH_IMPRINT_URL = (
+    "https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID="
+)
+REDMINE_ID = os.environ.get("REDMINE_ID", 19545)
 
-SHEET_ID = os.environ.get('SHEET_ID', "19tfPPMRiIQf6SPicfhvX3gMQd0Hfb5I6eEeKg2xw3Lc asdf")
+SHEET_ID = os.environ.get(
+    "SHEET_ID", "19tfPPMRiIQf6SPicfhvX3gMQd0Hfb5I6eEeKg2xw3Lc asdf"
+)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'üpxyd-dsafjlsfj-wy5^_*oo3sac4e6')
+SECRET_KEY = os.environ.get("SECRET_KEY", "üpxyd-dsafjlsfj-wy5^_*oo3sac4e6")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get("DEBUG"):
     DEBUG = True
 else:
     DEBUG = False
-ADD_ALLOWED_HOST = os.environ.get('ALLOWED_HOST', '*')
+ADD_ALLOWED_HOST = os.environ.get("ALLOWED_HOST", "*")
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -51,55 +55,56 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'dal_select2',
-    'dal',
-    'crispy_forms',
-    'django_filters',
-    'django_tables2',
-    'mptt',
-    'browsing',
-    'infos',
-    'webpage',
-    'charts',
-    'netvis',
-    'appcreator',
-    'archiv',
-    'ckeditor',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "dal_select2",
+    "dal",
+    "crispy_forms",
+    "django_filters",
+    "crispy_bootstrap4",
+    "django_tables2",
+    "mptt",
+    "browsing",
+    "infos",
+    "webpage",
+    "charts",
+    "netvis",
+    "appcreator",
+    "archiv",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'djangobaseproject.urls'
+ROOT_URLCONF = "djangobaseproject.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
         # Verweis auf Template Folder
-        'DIRS': [os.path.join(BASE_DIR), 'webpage/templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'webpage.webpage_content_processors.installed_apps',
-                'webpage.webpage_content_processors.is_dev_version',
-                'webpage.webpage_content_processors.get_db_name',
+        "DIRS": [os.path.join(BASE_DIR), "webpage/templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "webpage.webpage_content_processors.installed_apps",
+                "webpage.webpage_content_processors.is_dev_version",
+                "webpage.webpage_content_processors.get_db_name",
                 "webpage.webpage_content_processors.shared_url",
                 "webpage.webpage_content_processors.my_app_name",
             ],
@@ -107,20 +112,20 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangobaseproject.wsgi.application'
+WSGI_APPLICATION = "djangobaseproject.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql_psycopg2'),
-        'NAME': os.environ.get('POSTGRES_DB', 'nabucco'),
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+    "default": {
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.postgresql_psycopg2"),
+        "NAME": os.environ.get("POSTGRES_DB", "nabucco"),
+        "USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
     }
 }
 
@@ -130,16 +135,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -147,9 +152,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -161,13 +166,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
-STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+STATIC_URL = "/static/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
