@@ -10,7 +10,7 @@ exclude =
     docs/conf.py,
     build,
     dist
-    env
+    venv
     infos
     appcreator
     djangobaseproject/settings
