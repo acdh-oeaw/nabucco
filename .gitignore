@@ -137,3 +137,5 @@ dmypy.json
 staticfiles
 .env_dev
 dump.sql
+.secret
+nabucco_dump.sql
