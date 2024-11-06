@@ -65,15 +65,12 @@ INSTALLED_APPS = [
     "dal",
     "crispy_forms",
     "django_filters",
-    "crispy_bootstrap4",
+    "crispy_bootstrap5",
     "django_tables2",
     "mptt",
     "browsing",
     "infos",
     "webpage",
-    "charts",
-    "netvis",
-    "appcreator",
     "archiv",
     "ckeditor",
 ]
@@ -175,4 +172,5 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-CRISPY_TEMPLATE_PACK = "bootstrap4"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

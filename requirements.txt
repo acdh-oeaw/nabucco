@@ -1,7 +1,6 @@
 acdh-django-browsing
-acdh-django-netvis>=3.1.0,<4
 acdh-xml-pyutils
-crispy-bootstrap4
+crispy-bootstrap5
 Django>=5.0,<6
 django-ckeditor
 django-mptt
