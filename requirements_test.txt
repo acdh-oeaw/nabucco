@@ -1,3 +1,4 @@
 -r requirements.txt
-flake8>=3.9
-coverage>=5.5
+flake8
+coverage
+black
