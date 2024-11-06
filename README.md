@@ -9,7 +9,7 @@
 
 * clone the repo `git clone https://github.com/acdh-oeaw/nabucco.git`
 * change into repo-folder `cd nabucco`
-* create a virtualenv, e.g. `virtualenv env` and activate it `source env/bin/activate`
+* create a virtualenv, e.g. `python -m venv venv` and activate it `source venv/bin/activate`
 * install required packages `pip install -r requirements.txt`
 * create a postgres-db `nabucco` with user and pw `postgres` - or modify `settings.py` or set propper environment variables
     --> note that with Windows, PostgreSQL13 seems not to work: use version 12

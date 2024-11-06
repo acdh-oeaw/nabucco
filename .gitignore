@@ -110,7 +110,6 @@ celerybeat.pid
 # Environments
 nabucco/
 .nabucco
-.env
 .venv
 env/
 venv/
