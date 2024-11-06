@@ -10,123 +10,53 @@
 {% endblock %}
 {% block content %}
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-        var fetchedParameter = "{{ table.page.number }}";
-        $("#goto option").each(function() {
-            if($(this).text() == fetchedParameter) {
-                $(this).attr('selected', 'selected');
-            }
-        });
-    });
-    </script>
-    <script type="text/javascript">
-       function drag() {
-            $('#diacritics').draggable();
-          }
-    </script>
-    <script type="text/javascript">
-       function toggle(){
-            var dia = document.getElementById("tableLegend")
-            var tab = document.getElementById("diacritics")
-            dia.addEventListener('click', function(){
-                if (tab.style.display === 'none'){
-                    tab.style.display = 'table-row';
-                } else {
-                    tab.style.display = 'none';
-                    $(tab).animate({
-                        top: "0px",
-                        left: "0px"
-                    });
-                }
-                })
-       }
-       function choose(){
-            var tab = document.getElementById("diacritics")
-            tab.addEventListener('dblclick', function(){
-                if($(this).hasClass('ui-draggable-disabled')){
-                 $(this).draggable('enable')
-                } else {$(this).draggable('disable')}
-                 
-                 })
-       }
+<div class="container">
 
-    $(document).ready(drag).ready(toggle).ready(choose);
-    </script>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <h1> {{introduction.title}}</h1>
-                <p> {{introduction.intro_text|safe }} </p>
-            </div>
-            {% if class_name == 'Place' %} 
-                {% include 'archiv/templates/archiv/partials/_places.html' %}
-            {% endif %}
-        </div>
+    <h1 class="display-5 text-center p-4">
+        Browse {% class_definition %} {% block list_title %} {% endblock %}
+    </h1>
+    {% if user.is_authenticated %}
+    <div class="d-grid gap-2">
+        <a class="btn btn-primary float-center ms-5 me-5" href="{{ create_view_link }}">Create new {{ class_name }}</a>
     </div>
+    {% endif %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 style="margin-bottom:15px;">
-                             Browse {% block list_title %}{% if class_name == "Archiv" %} {{class_name}}es {% elif class_name == "Place" or class_name == "Tablet"%} {{class_name}}s {% elif class_name == "Glossary" %} Text typology {% else %} {{class_name}} {% endif %}{% endblock %}
-                            <!-- {% class_definition %} --> 
-                            </h3>
-                        {% if user.is_authenticated %}
-                            {% if create_view_link  %}
-                                <a class ="btn btn-outline-secondary"  href="{{ create_view_link }}">Create new {{ class_name }}</a>
-                            {% endif %}
-                        {% endif %}
-                        <!-- Diacritics -->
-                        <legend id="tableLegend" style="margin-bottom:15px;"> Diacritics</legend>
-                        <table id="diacritics" style="position:flex; z-index:1; background-color:lightgrey; display: none; margin-bottom:15px;">
-                            <tbody><tr><td style="cursor: pointer;">Ā</td><td style="cursor: pointer;">ā</td><td style="cursor: pointer;">Â</td><td style="cursor: pointer;">â</td><td style="cursor: pointer;">Á</td><td style="cursor: pointer;">á</td><td style="cursor: pointer;">À</td><td style="cursor: pointer;">à</td></tr>
-                                <tr><td style="cursor: pointer;">Ē</td><td style="cursor: pointer;">ē</td><td style="cursor: pointer;">Ê</td><td style="cursor: pointer;">ê</td><td style="cursor: pointer;">É</td><td style="cursor: pointer;">é</td><td style="cursor: pointer;">È</td><td style="cursor: pointer;">è</td></tr>
-                                <tr><td style="cursor: pointer;">Ī</td><td style="cursor: pointer;">ī</td><td style="cursor: pointer;">Î</td><td style="cursor: pointer;">î</td><td style="cursor: pointer;">Í</td><td style="cursor: pointer;">í</td><td style="cursor: pointer;">Ì</td><td style="cursor: pointer;">ì</td></tr>
-                                <tr><td style="cursor: pointer;">Ū</td><td style="cursor: pointer;">ū</td><td style="cursor: pointer;">Û</td><td style="cursor: pointer;">û</td><td style="cursor: pointer;">Ú</td><td style="cursor: pointer;">ú</td><td style="cursor: pointer;">Ù</td><td style="cursor: pointer;">ù</td></tr>
-                                <tr><td style="cursor: pointer;">Š</td><td style="cursor: pointer;">š</td><td style="cursor: pointer;">Ṣ</td><td style="cursor: pointer;">ṣ</td><td style="cursor: pointer;">Ṭ</td><td style="cursor: pointer;">ṭ</td></tr>
-                            </tbody>
-                        </table>
-                        <!-- {% block customView %}<h1>hallo du</h1>{% endblock %} -->
-                        {% block create_button %}{% endblock %}
-                        <!--Search mask-->
-                        {% load django_tables2 crispy_forms_tags %}
-                        <form action="." class="uniForm" method="get">
-                            {% if togglable_colums %}
-                                <legend>Select additional columns</legend>
-                                {% column_selector  %}
-                            {% endif %}
-                            <br/>
-                            {% crispy filter.form filter.form.helper %}
-                        </form>
-                        <a class ="btn btn-outline-secondary"  href=".">Reset search</a>
-                        <!-- {% include 'browsing/partials/chart_form.html' %}-->
+    <div class="row">
+        <div class="col-md-4">
+            {% block customView %}{% endblock %}
+            {% block create_button %}{% endblock %}
+            <!--Search mask-->
+            {% load django_tables2 crispy_forms_tags %}
+            <form action="." class="uniForm" method="get">
+                {% crispy filter.form filter.form.helper %}
+                {% include 'browsing/partials/column_selector.html' %}
+                <div class="d-grid gap-2 pt-2" aria-label="Search or reset search">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-primary" href=".">Reset</a>
                 </div>
-            </div>
-            </div>
-            <div class="col-md-8" id="results">
-                <div class="card">
-                    <div class="card-body table-responsive">
-                        {% with table.paginator.count as total %}
-                            <legend>Total results: {{ total }}</legend>
-                        {% endwith %}
-                        {% include 'browsing/partials/download_menu.html' %}
-                        {% block table %}
-                        {% include 'browsing/partials/table.html' %}
-                        {% endblock table %}
-                        {% block pagination.allpages %}
-                        {% include 'browsing/partials/pagination.html' %}
-                        {% endblock pagination.allpages %}
-                    </div>
-                </div>
+            </form>
+            {% include 'browsing/partials/chart_form.html' %}
+        </div>
+        <div class="col-md-8" id="results">
+            {% with table.paginator.count as total %}
+            <h2 class="text-center">{{ total }} Result(s)</h2>
+            {% endwith %}
+            {% block table %}
+            {% include 'browsing/partials/table.html' %}
+            {% endblock table %}
+            {% block pagination.allpages %}
+            {% include 'browsing/partials/pagination.html' %}
+            {% endblock pagination.allpages %}
+            <div class="float-end">
+                {% include "browsing/partials/download_menu.html" %}
             </div>
         </div>
     </div>
+</div>
+
+
 {% endblock %}
 {% block scripts2 %}
-    <script src="{% static 'archiv/js/set-form-attributes.js' %}"></script>
-    <script src="{% static 'archiv/js/filter-for-blank-fields.js' %}"></script>
+<script src="{% static 'browsing/js/set-form-attributes.js' %}"></script>
+<script src="{% static 'browsing/js/filter-for-blank-fields.js' %}"></script>
 {% endblock scripts2 %}
