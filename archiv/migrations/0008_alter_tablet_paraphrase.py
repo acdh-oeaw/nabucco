@@ -7,13 +7,18 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0007_auto_20220310_1129'),
+        ("archiv", "0007_auto_20220310_1129"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tablet',
-            name='paraphrase',
-            field=ckeditor.fields.RichTextField(blank=True, help_text='Tablet content', null=True, verbose_name='Paraphrase'),
+            model_name="tablet",
+            name="paraphrase",
+            field=ckeditor.fields.RichTextField(
+                blank=True,
+                help_text="Tablet content",
+                null=True,
+                verbose_name="Paraphrase",
+            ),
         ),
     ]

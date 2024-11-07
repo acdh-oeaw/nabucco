@@ -3,7 +3,7 @@ server {
 
     location /static/ {
         autoindex on;
-        alias /opt/app/djangobaseproject/staticfiles/;
+        alias /opt/app/staticfiles/;
     }
 
     location / {

@@ -6,7 +6,6 @@ register = template.Library()
 
 @register.simple_tag
 def project_insts():
-
     """returns all Project Institution objects"""
     project_insts = ProjectInst.objects.all()
     return project_insts

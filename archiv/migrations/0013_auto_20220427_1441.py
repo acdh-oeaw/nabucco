@@ -6,18 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0012_alter_place_legacy_pk'),
+        ("archiv", "0012_alter_place_legacy_pk"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='glossary',
-            name='legacy_pk',
-            field=models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='Concept ID'),
+            model_name="glossary",
+            name="legacy_pk",
+            field=models.IntegerField(
+                blank=True, help_text="whatever", null=True, verbose_name="Concept ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='tablet',
-            name='legacy_pk',
-            field=models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='NaBuCCo No.'),
+            model_name="tablet",
+            name="legacy_pk",
+            field=models.IntegerField(
+                blank=True, help_text="whatever", null=True, verbose_name="NaBuCCo No."
+            ),
         ),
     ]

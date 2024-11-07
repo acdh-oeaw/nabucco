@@ -7,42 +7,64 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0009_auto_20220407_1100'),
+        ("archiv", "0009_auto_20220407_1100"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='archiv',
-            name='title',
+            model_name="archiv",
+            name="title",
         ),
         migrations.AlterField(
-            model_name='archiv',
-            name='description',
-            field=ckeditor.fields.RichTextField(blank=True, default='A short description of the archive', verbose_name='Archive Description'),
+            model_name="archiv",
+            name="description",
+            field=ckeditor.fields.RichTextField(
+                blank=True,
+                default="A short description of the archive",
+                verbose_name="Archive Description",
+            ),
         ),
         migrations.AlterField(
-            model_name='archiv',
-            name='legacy_pk',
-            field=models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='Archive ID'),
+            model_name="archiv",
+            name="legacy_pk",
+            field=models.IntegerField(
+                blank=True, help_text="whatever", null=True, verbose_name="Archive ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='archiv',
-            name='name',
-            field=models.CharField(blank=True, help_text='Following GMTR 1', max_length=250, verbose_name='name'),
+            model_name="archiv",
+            name="name",
+            field=models.CharField(
+                blank=True,
+                help_text="Following GMTR 1",
+                max_length=250,
+                verbose_name="name",
+            ),
         ),
         migrations.AlterField(
-            model_name='archiv',
-            name='paragraph',
-            field=models.CharField(blank=True, help_text='Siglum according to GMTR 1', max_length=25, null=True, verbose_name='Paragraph'),
+            model_name="archiv",
+            name="paragraph",
+            field=models.CharField(
+                blank=True,
+                help_text="Siglum according to GMTR 1",
+                max_length=25,
+                null=True,
+                verbose_name="Paragraph",
+            ),
         ),
         migrations.AlterField(
-            model_name='place',
-            name='description',
-            field=ckeditor.fields.RichTextField(blank=True, default='Add information on the location', null=True, verbose_name='Place description'),
+            model_name="place",
+            name="description",
+            field=ckeditor.fields.RichTextField(
+                blank=True,
+                default="Add information on the location",
+                null=True,
+                verbose_name="Place description",
+            ),
         ),
         migrations.AlterField(
-            model_name='place',
-            name='name',
-            field=models.CharField(blank=True, max_length=250, verbose_name='Name'),
+            model_name="place",
+            name="name",
+            field=models.CharField(blank=True, max_length=250, verbose_name="Name"),
         ),
     ]

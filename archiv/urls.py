@@ -11,9 +11,7 @@ urlpatterns = [
         name="archiv_detail",
     ),
     path("archiv/create/", views.ArchivCreate.as_view(), name="archiv_create"),
-    path(
-        "archiv/edit/<int:pk>", views.ArchivUpdate.as_view(), name="archiv_edit"
-    ),
+    path("archiv/edit/<int:pk>", views.ArchivUpdate.as_view(), name="archiv_edit"),
     path(
         "archiv/delete/<int:pk>",
         views.ArchivDelete.as_view(),
@@ -69,9 +67,7 @@ urlpatterns = [
     ),
     path("place/create/", views.PlaceCreate.as_view(), name="place_create"),
     path("place/edit/<int:pk>", views.PlaceUpdate.as_view(), name="place_edit"),
-    path(
-        "place/delete/<int:pk>", views.PlaceDelete.as_view(), name="place_delete"
-    ),
+    path("place/delete/<int:pk>", views.PlaceDelete.as_view(), name="place_delete"),
     path("regions/", views.RegionView.as_view(), name="region_overview"),
     path("tablet/", views.TabletListView.as_view(), name="tablet_browse"),
     path(
@@ -80,9 +76,7 @@ urlpatterns = [
         name="tablet_detail",
     ),
     path("tablet/create/", views.TabletCreate.as_view(), name="tablet_create"),
-    path(
-        "tablet/edit/<int:pk>", views.TabletUpdate.as_view(), name="tablet_edit"
-    ),
+    path("tablet/edit/<int:pk>", views.TabletUpdate.as_view(), name="tablet_edit"),
     path(
         "tablet/delete/<int:pk>",
         views.TabletDelete.as_view(),
