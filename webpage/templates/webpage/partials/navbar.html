@@ -39,9 +39,14 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'archiv:tablet_browse' %}">Tablets</a></li>
                             <li><a class="dropdown-item" href="{% url 'archiv:archiv_browse' %}">Archivs</a></li>
-                            <li><a class="dropdown-item" href="{% url 'archiv:bibliography_browse' %}">Bibliography</a></li>
-                            <li><a class="dropdown-item" href="{% url 'archiv:glossary_browse' %}">Text typology</a></li>
+                            <li><a class="dropdown-item" href="{% url 'archiv:bibliography_browse' %}">Bibliography</a>
+                            </li>
                             <li><a class="dropdown-item" href="{% url 'archiv:place_browse' %}">Places</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'archiv:glossary_browse' %}">Text typology</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
