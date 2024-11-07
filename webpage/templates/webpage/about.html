@@ -1,20 +1,22 @@
 {% extends "webpage/base.html" %}
 {% load static %}
 {% load webpage_extras %}
-{% block title %} About {% endblock %}
+{% block title %} About the Project{% endblock %}
 {% block content %}
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h1 class="card-title">{% projects_metadata 'title' %}</h1>
-        </div>
-        <div class="card-body">
-            <div>
-                <p>
-                    {% projects_metadata 'description' %}
-                </p>
-            </div>
-        </div>
-    </div>
+<div class="container pt-3">
+    <h1 class="display-2 p-3 text-center">About the Project</h1>
+    <p>
+        A cooperation between the KU Leuven and the University of Vienna, directed by Michael Jursa and Kathleen
+        Abraham. NABUCCO began through the initiative of Kathleen Abraham at the KU Leuven with the collaboration of
+        Michael Jursa of the University of Vienna. NABUCCO's primary aim is to make cuneiform documentary sources
+        originating from Babylonia and dated to the Age of Empires (c. 770 BCE – 75 CE) accessible through metadata and
+        paraphrases or 'digests' that cover the documents' contents, prosopography, and archival background. Data have
+        been provided, in addition to the persons mentioned above, by Stefania Ermidoro, Melanie Gross, Evelien
+        Vanderstraeten, Matthias Adelhofer and others, and over the years NABUCCO has benefited significantly from the
+        input, intellectual and technical, of Shai Gordin. The creation of the site in its present form and location,
+        hosted by the Austrian Academy of Science's ACDH, was largely the work of Reinhard Pirngruber. Funding has come,
+        in different phases, from the KU Leuven, the Belgian Science Policy Office (Project PVII/14), the University of
+        Vienna, and the Austrian Science Fund (FWF, Vienna; most recently project I 3927).
+    </p>
 </div>
 {% endblock %}
