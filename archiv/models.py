@@ -85,6 +85,7 @@ class Archiv(models.Model):
             "name",
         ]
         verbose_name = "Archiv"
+        verbose_name_plural = "Archivs"
 
     def __str__(self):
         if self.name:

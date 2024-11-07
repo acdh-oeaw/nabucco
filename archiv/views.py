@@ -39,6 +39,20 @@ from browsing.browsing_utils import (
 )
 
 
+class CustomListView(GenericListView):
+    h1 = "Hallo"
+    create_button_text = "Create new item"
+    template_name = "archiv/custom_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomListView, self).get_context_data()
+        context["h1"] = self.h1
+        context["create_button_text"] = self.create_button_text
+        context["verbose_name"] = self.model._meta.verbose_name
+        context["verbose_name_plural"] = self.model._meta.verbose_name_plural
+        return context
+
+
 class ArchivListView(GenericListView):
 
     model = Archiv
