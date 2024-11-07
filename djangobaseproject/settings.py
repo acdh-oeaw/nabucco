@@ -23,10 +23,8 @@ SHARED_URL = "https://shared.acdh.oeaw.ac.at/"
 PROJECT_NAME = os.environ.get("PROJECT_NAME", "nabucco")
 
 
-ACDH_IMPRINT_URL = (
-    "https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?serviceID="
-)
-REDMINE_ID = os.environ.get("REDMINE_ID", 19545)
+ACDH_IMPRINT_URL = "https://imprint.acdh.oeaw.ac.at/"
+REDMINE_ID = os.environ.get("REDMINE_ID", 19546)
 
 SHEET_ID = os.environ.get(
     "SHEET_ID", "19tfPPMRiIQf6SPicfhvX3gMQd0Hfb5I6eEeKg2xw3Lc asdf"
