@@ -40,28 +40,30 @@ from browsing.browsing_utils import (
 
 
 class CustomListView(GenericListView):
-    h1 = "Hallo"
+    h1 = ""
     create_button_text = "Create new item"
-    template_name = "archiv/custom_list.html"
+    template_name = "archiv/generic_list.html"
+    introduction = ""
 
     def get_context_data(self, **kwargs):
         context = super(CustomListView, self).get_context_data()
-        context["h1"] = self.h1
+        if self.h1:
+            context["h1"] = self.h1
+        else:
+            context["h1"] = f"Browse {self.model._meta.verbose_name_plural}"
         context["create_button_text"] = self.create_button_text
         context["verbose_name"] = self.model._meta.verbose_name
         context["verbose_name_plural"] = self.model._meta.verbose_name_plural
         return context
 
 
-class ArchivListView(GenericListView):
-
+class ArchivListView(CustomListView):
     model = Archiv
     filter_class = ArchivListFilter
     formhelper_class = ArchivFilterFormHelper
     table_class = ArchivTable
     init_columns = ["name", "part_of"]
     enable_merge = False
-    template_name = "archiv/generic_list.html"
     try:
         archive, created = Introduction.objects.get_or_create(title="Archives")
     except Exception as e:
@@ -111,7 +113,7 @@ class ArchivDelete(DeleteView):
         return super(ArchivDelete, self).dispatch(*args, **kwargs)
 
 
-class BibliographyListView(GenericListView):
+class BibliographyListView(CustomListView):
 
     model = Bibliography
     filter_class = BibliographyListFilter
@@ -212,7 +214,7 @@ class GlossaryDelete(DeleteView):
         return super(GlossaryDelete, self).dispatch(*args, **kwargs)
 
 
-class PlaceListView(GenericListView):
+class PlaceListView(CustomListView):
 
     model = Place
     queryset = Place.objects.exclude(part_of__exact=None)
@@ -227,18 +229,9 @@ class PlaceListView(GenericListView):
         "part_of",
     ]
     enable_merge = True
-    template_name = "archiv/generic_list.html"
-    try:
-        places, created = Introduction.objects.get_or_create(title="Places")
-    except Exception as e:
-        print(e)
-        archive = e
 
     def get_context_data(self, **kwargs):
         context = super(PlaceListView, self).get_context_data(**kwargs)
-        context["regions"] = self.regions
-        if self.places:
-            context["introduction"] = self.places
         return context
 
 
@@ -305,7 +298,7 @@ class RegionView(ListView):
         return context
 
 
-class TabletListView(GenericListView):
+class TabletListView(CustomListView):
 
     model = Tablet
     filter_class = TabletListFilter
@@ -313,18 +306,6 @@ class TabletListView(GenericListView):
     table_class = TabletTable
     init_columns = ["museum_id", "archiv", "type_content", "place_of_issue"]
     enable_merge = True
-    template_name = "archiv/generic_list.html"
-    try:
-        intro, created = Introduction.objects.get_or_create(title="Tablet catalogue")
-    except Exception as e:
-        print(e)
-        archive = e
-
-    def get_context_data(self, **kwargs):
-        context = super(TabletListView, self).get_context_data(**kwargs)
-        if self.intro:
-            context["introduction"] = self.intro
-        return context
 
 
 class TabletDetailView(BaseDetailView):

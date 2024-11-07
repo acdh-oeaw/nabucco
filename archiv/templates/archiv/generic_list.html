@@ -4,7 +4,7 @@
 {% load browsing_extras %}
 {% load crispy_forms_field %}
 {% load crispy_forms_tags %}
-{% block title %} Browse {{ class_name }} {% endblock %}
+{% block title %} Browse {{ verbose_name_plural }} {% endblock %}
 {% block scriptHeader %}
 
 {% endblock %}
@@ -13,12 +13,10 @@
 
 <div class="container">
 
-    <h1 class="display-5 text-center p-4">
-        Browse {% class_definition %} {% block list_title %} {% endblock %}
-    </h1>
+    <h1 class="display-5 text-center">{{ h1 }}</h1>
     {% if user.is_authenticated %}
-    <div class="d-grid gap-2">
-        <a class="btn btn-primary float-center ms-5 me-5" href="{{ create_view_link }}">Create new {{ class_name }}</a>
+    <div class="d-grid gap-2 pb-2">
+        <a class="btn btn-primary float-center ms-5 me-5" href="{{ create_view_link }}">Create new {{ verbose_name_plural }}</a>
     </div>
     {% endif %}
 

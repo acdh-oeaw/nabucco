@@ -44,21 +44,15 @@
                             <li><a class="dropdown-item" href="{% url 'archiv:place_browse' %}">Places</a></li>
                         </ul>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Data
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/api-docs/">API-Docs</a></li>
-                            <li><a class="dropdown-item" href="/api/">API</a></li>
-                        </ul>
-                    </li> -->
                 </ul>
                 {% if user.is_authenticated %}
-                <a href="{% url 'webpage:user_logout' %}"><i class="bi bi-person-check"></i></a>
+                <a href="{% url 'webpage:user_logout' %}" class="pe-3">
+                    <i class="bi bi-person-check fs-3"></i>
+                </a>
                 {% else %}
-                <a href="{% url 'webpage:user_login' %}"><i class="bi bi-box-arrow-in-right"></i></a>
+                <a href="{% url 'webpage:user_login' %}" class="pe-3">
+                    <i class="bi bi-box-arrow-in-right fs-3"></i>
+                </a>
                 {% endif %}
             </div>
         </div>
