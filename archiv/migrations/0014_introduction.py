@@ -7,16 +7,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0013_auto_20220427_1441'),
+        ("archiv", "0013_auto_20220427_1441"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Introduction',
+            name="Introduction",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('intro_text', ckeditor.fields.RichTextField(blank=True, default='Add brief introductory text')),
-                ('title', models.CharField(blank=True, max_length=250)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "intro_text",
+                    ckeditor.fields.RichTextField(
+                        blank=True, default="Add brief introductory text"
+                    ),
+                ),
+                ("title", models.CharField(blank=True, max_length=250)),
             ],
         ),
     ]

@@ -2,66 +2,69 @@
 import django_tables2 as tables
 
 from browsing.browsing_utils import MergeColumn
-from . models import (
-    Archiv,
-    Bibliography,
-    Glossary,
-    Place,
-    Tablet
-)
+from .models import Archiv, Bibliography, Glossary, Place, Tablet
 
 
 class ArchivTable(tables.Table):
 
-    name = tables.LinkColumn(verbose_name='Name')
-    merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    name = tables.LinkColumn(verbose_name="Name")
+    merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
 
     class Meta:
         model = Archiv
-        sequence = ('name', 'alt_name', 'part_of',)
+        sequence = (
+            "name",
+            "alt_name",
+            "part_of",
+        )
         attrs = {"class": "table table-responsive table-hover"}
 
 
 class BibliographyTable(tables.Table):
 
     title = tables.LinkColumn()
-    merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
     mentioned_place = tables.columns.ManyToManyColumn()
     mentioned_archive = tables.columns.ManyToManyColumn()
     mentioned_glossary_item = tables.columns.ManyToManyColumn()
 
     class Meta:
         model = Bibliography
-        sequence = ('author', 'publication_year', 'title', 'short_title',)
+        sequence = (
+            "author",
+            "publication_year",
+            "title",
+            "short_title",
+        )
         attrs = {"class": "table table-responsive table-hover"}
 
 
 class GlossaryTable(tables.Table):
-    pref_label = tables.LinkColumn(verbose_name='Document Type')
-    broader_concept = tables.LinkColumn(verbose_name='Document Class')
-    merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    pref_label = tables.LinkColumn(verbose_name="Document Type")
+    broader_concept = tables.LinkColumn(verbose_name="Document Class")
+    merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
 
     class Meta:
         model = Glossary
-        sequence = ('pref_label',)
+        sequence = ("pref_label",)
         attrs = {"class": "table table-responsive table-hover"}
 
 
 class PlaceTable(tables.Table):
 
-    name = tables.LinkColumn(verbose_name='Name')
-    merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    name = tables.LinkColumn(verbose_name="Name")
+    merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
 
     class Meta:
         model = Place
-        sequence = ('name',)
+        sequence = ("name",)
         attrs = {"class": "table table-responsive table-hover"}
 
 
 class TabletTable(tables.Table):
 
-    museum_id = tables.LinkColumn(verbose_name='Museum No.')
-    merge = MergeColumn(verbose_name='keep | remove', accessor='pk')
+    museum_id = tables.LinkColumn(verbose_name="Museum No.")
+    merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
     mentioned_place = tables.columns.ManyToManyColumn()
     key_word = tables.columns.ManyToManyColumn()
     mentioned_archiv = tables.columns.ManyToManyColumn()
@@ -69,5 +72,5 @@ class TabletTable(tables.Table):
 
     class Meta:
         model = Tablet
-        sequence = ('id',)
+        sequence = ("id",)
         attrs = {"class": "table table-responsive table-hover"}

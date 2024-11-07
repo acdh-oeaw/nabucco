@@ -9,131 +9,620 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Archiv',
+            name="Archiv",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('legacy_id', models.CharField(blank=True, max_length=300, verbose_name='Legacy ID')),
-                ('legacy_pk', models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='alt id')),
-                ('name', models.CharField(blank=True, help_text='following GMTR 1', max_length=250, verbose_name='name')),
-                ('alt_name', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Alternative name')),
-                ('title', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Title')),
-                ('orig_data_csv', models.TextField(blank=True, null=True, verbose_name='The original data')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "legacy_id",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="Legacy ID"
+                    ),
+                ),
+                (
+                    "legacy_pk",
+                    models.IntegerField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="alt id",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True,
+                        help_text="following GMTR 1",
+                        max_length=250,
+                        verbose_name="name",
+                    ),
+                ),
+                (
+                    "alt_name",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Alternative name",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "orig_data_csv",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="The original data"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Archiv',
-                'ordering': ['name'],
+                "verbose_name": "Archiv",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='Bibliography',
+            name="Bibliography",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('legacy_id', models.CharField(blank=True, max_length=300, verbose_name='Legacy ID')),
-                ('legacy_pk', models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='alt id')),
-                ('short_title', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Short Title')),
-                ('author', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Author')),
-                ('publication_year', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Publication year')),
-                ('title', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Title')),
-                ('volume_nr', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Volume no.')),
-                ('pages', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Pages')),
-                ('journal', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Journal')),
-                ('editor', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Editor')),
-                ('book', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Book')),
-                ('related_publications', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='related_publications')),
-                ('orig_data_csv', models.TextField(blank=True, null=True, verbose_name='The original data')),
-                ('mentioned_archive', models.ManyToManyField(blank=True, help_text='whatever', related_name='rvn_bibliography_mentioned_archive_archiv', to='archiv.Archiv', verbose_name='Place mentioned on Tablet')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "legacy_id",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="Legacy ID"
+                    ),
+                ),
+                (
+                    "legacy_pk",
+                    models.IntegerField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="alt id",
+                    ),
+                ),
+                (
+                    "short_title",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Short Title",
+                    ),
+                ),
+                (
+                    "author",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Author",
+                    ),
+                ),
+                (
+                    "publication_year",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Publication year",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "volume_nr",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Volume no.",
+                    ),
+                ),
+                (
+                    "pages",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Pages",
+                    ),
+                ),
+                (
+                    "journal",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Journal",
+                    ),
+                ),
+                (
+                    "editor",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Editor",
+                    ),
+                ),
+                (
+                    "book",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Book",
+                    ),
+                ),
+                (
+                    "related_publications",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="related_publications",
+                    ),
+                ),
+                (
+                    "orig_data_csv",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="The original data"
+                    ),
+                ),
+                (
+                    "mentioned_archive",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="whatever",
+                        related_name="rvn_bibliography_mentioned_archive_archiv",
+                        to="archiv.Archiv",
+                        verbose_name="Place mentioned on Tablet",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Bibliography',
-                'ordering': ['short_title'],
+                "verbose_name": "Bibliography",
+                "ordering": ["short_title"],
             },
         ),
         migrations.CreateModel(
-            name='Glossary',
+            name="Glossary",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('legacy_id', models.CharField(blank=True, max_length=300, verbose_name='Legacy ID')),
-                ('legacy_pk', models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='alt id')),
-                ('pref_label', models.CharField(blank=True, help_text='type of document', max_length=250, verbose_name='Label')),
-                ('glossary_collection', models.CharField(blank=True, help_text='Collection to group Glossary entries', max_length=250, verbose_name='Collection')),
-                ('title', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Title')),
-                ('orig_data_csv', models.TextField(blank=True, null=True, verbose_name='The original data')),
-                ('lft', models.PositiveIntegerField(editable=False)),
-                ('rght', models.PositiveIntegerField(editable=False)),
-                ('tree_id', models.PositiveIntegerField(db_index=True, editable=False)),
-                ('level', models.PositiveIntegerField(editable=False)),
-                ('broader_concept', mptt.fields.TreeForeignKey(blank=True, help_text='Concept with a broader meaning that this concept inherits from', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='narrower_concepts', to='archiv.glossary', verbose_name='skos:broader')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "legacy_id",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="Legacy ID"
+                    ),
+                ),
+                (
+                    "legacy_pk",
+                    models.IntegerField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="alt id",
+                    ),
+                ),
+                (
+                    "pref_label",
+                    models.CharField(
+                        blank=True,
+                        help_text="type of document",
+                        max_length=250,
+                        verbose_name="Label",
+                    ),
+                ),
+                (
+                    "glossary_collection",
+                    models.CharField(
+                        blank=True,
+                        help_text="Collection to group Glossary entries",
+                        max_length=250,
+                        verbose_name="Collection",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "orig_data_csv",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="The original data"
+                    ),
+                ),
+                ("lft", models.PositiveIntegerField(editable=False)),
+                ("rght", models.PositiveIntegerField(editable=False)),
+                ("tree_id", models.PositiveIntegerField(db_index=True, editable=False)),
+                ("level", models.PositiveIntegerField(editable=False)),
+                (
+                    "broader_concept",
+                    mptt.fields.TreeForeignKey(
+                        blank=True,
+                        help_text="Concept with a broader meaning that this concept inherits from",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="narrower_concepts",
+                        to="archiv.glossary",
+                        verbose_name="skos:broader",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Place',
+            name="Place",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('legacy_id', models.CharField(blank=True, max_length=300, verbose_name='Legacy ID')),
-                ('legacy_pk', models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='alt id')),
-                ('name', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Name')),
-                ('title', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Title')),
-                ('orig_data_csv', models.TextField(blank=True, null=True, verbose_name='The original data')),
-                ('part_of', models.ForeignKey(blank=True, help_text='larger region', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_place_part_of_place', to='archiv.place', verbose_name='part of')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "legacy_id",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="Legacy ID"
+                    ),
+                ),
+                (
+                    "legacy_pk",
+                    models.IntegerField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="alt id",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Name",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Title",
+                    ),
+                ),
+                (
+                    "orig_data_csv",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="The original data"
+                    ),
+                ),
+                (
+                    "part_of",
+                    models.ForeignKey(
+                        blank=True,
+                        help_text="larger region",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="rvn_place_part_of_place",
+                        to="archiv.place",
+                        verbose_name="part of",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Place',
-                'ordering': ['name'],
+                "verbose_name": "Place",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='Tablet',
+            name="Tablet",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('legacy_id', models.CharField(blank=True, max_length=300, verbose_name='Legacy ID')),
-                ('legacy_pk', models.IntegerField(blank=True, help_text='whatever', null=True, verbose_name='alt id')),
-                ('museum_id', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Museum No.')),
-                ('paraphrase', models.TextField(blank=True, help_text='whatever', null=True, verbose_name='Paraphrase')),
-                ('transliteration', models.TextField(blank=True, help_text='whatever', null=True, verbose_name='Transliteration')),
-                ('publication_name', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Publication name')),
-                ('period', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Period')),
-                ('day', models.CharField(blank=True, help_text='Day of month', max_length=250, verbose_name='Babylonian Day')),
-                ('month', models.CharField(blank=True, help_text='Babylonian month (I-XII)', max_length=250, verbose_name='Babylonian Month')),
-                ('year', models.CharField(blank=True, help_text='Regnal year', max_length=250, verbose_name='Babylonian Year')),
-                ('king', models.CharField(blank=True, help_text='King (abbreviated)', max_length=250, verbose_name='King')),
-                ('imported', models.CharField(blank=True, help_text='whatever', max_length=250, verbose_name='Imported (Person, date)')),
-                ('julian_date_year', models.IntegerField(blank=True, help_text='Year BCE', null=True, verbose_name='Year BCE')),
-                ('bibliography', models.CharField(blank=True, help_text='Bibliography', max_length=250, verbose_name='Bibliography')),
-                ('orig_data_csv', models.TextField(blank=True, null=True, verbose_name='The original data')),
-                ('archiv', models.ForeignKey(blank=True, help_text='whatever', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_tablet_archiv_archiv', to='archiv.archiv', verbose_name='Archive')),
-                ('key_word', models.ManyToManyField(blank=True, help_text='whatever', related_name='rvn_tablet_key_word_glossary', to='archiv.Glossary', verbose_name='random keyword')),
-                ('mentioned_archiv', models.ManyToManyField(blank=True, help_text='whatever', related_name='rvn_tablet_mentioned_archiv_archiv', to='archiv.Archiv', verbose_name='Archive')),
-                ('mentioned_in_pub', models.ManyToManyField(blank=True, help_text='whatever', related_name='rvn_tablet_mentioned_in_pub_bibliography', to='archiv.Bibliography', verbose_name='Mentioned in Publication')),
-                ('mentioned_place', models.ManyToManyField(blank=True, help_text='whatever', related_name='rvn_tablet_mentioned_place_place', to='archiv.Place', verbose_name='Place mentioned on Tablet')),
-                ('place_of_issue', models.ForeignKey(blank=True, help_text='whatever', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_tablet_place_of_issue_place', to='archiv.place', verbose_name='Place of issue')),
-                ('type_content', models.ForeignKey(blank=True, help_text='whatever', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_tablet_type_content_glossary', to='archiv.glossary', verbose_name='Type and content')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "legacy_id",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="Legacy ID"
+                    ),
+                ),
+                (
+                    "legacy_pk",
+                    models.IntegerField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="alt id",
+                    ),
+                ),
+                (
+                    "museum_id",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Museum No.",
+                    ),
+                ),
+                (
+                    "paraphrase",
+                    models.TextField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="Paraphrase",
+                    ),
+                ),
+                (
+                    "transliteration",
+                    models.TextField(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        verbose_name="Transliteration",
+                    ),
+                ),
+                (
+                    "publication_name",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Publication name",
+                    ),
+                ),
+                (
+                    "period",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Period",
+                    ),
+                ),
+                (
+                    "day",
+                    models.CharField(
+                        blank=True,
+                        help_text="Day of month",
+                        max_length=250,
+                        verbose_name="Babylonian Day",
+                    ),
+                ),
+                (
+                    "month",
+                    models.CharField(
+                        blank=True,
+                        help_text="Babylonian month (I-XII)",
+                        max_length=250,
+                        verbose_name="Babylonian Month",
+                    ),
+                ),
+                (
+                    "year",
+                    models.CharField(
+                        blank=True,
+                        help_text="Regnal year",
+                        max_length=250,
+                        verbose_name="Babylonian Year",
+                    ),
+                ),
+                (
+                    "king",
+                    models.CharField(
+                        blank=True,
+                        help_text="King (abbreviated)",
+                        max_length=250,
+                        verbose_name="King",
+                    ),
+                ),
+                (
+                    "imported",
+                    models.CharField(
+                        blank=True,
+                        help_text="whatever",
+                        max_length=250,
+                        verbose_name="Imported (Person, date)",
+                    ),
+                ),
+                (
+                    "julian_date_year",
+                    models.IntegerField(
+                        blank=True,
+                        help_text="Year BCE",
+                        null=True,
+                        verbose_name="Year BCE",
+                    ),
+                ),
+                (
+                    "bibliography",
+                    models.CharField(
+                        blank=True,
+                        help_text="Bibliography",
+                        max_length=250,
+                        verbose_name="Bibliography",
+                    ),
+                ),
+                (
+                    "orig_data_csv",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="The original data"
+                    ),
+                ),
+                (
+                    "archiv",
+                    models.ForeignKey(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="rvn_tablet_archiv_archiv",
+                        to="archiv.archiv",
+                        verbose_name="Archive",
+                    ),
+                ),
+                (
+                    "key_word",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="whatever",
+                        related_name="rvn_tablet_key_word_glossary",
+                        to="archiv.Glossary",
+                        verbose_name="random keyword",
+                    ),
+                ),
+                (
+                    "mentioned_archiv",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="whatever",
+                        related_name="rvn_tablet_mentioned_archiv_archiv",
+                        to="archiv.Archiv",
+                        verbose_name="Archive",
+                    ),
+                ),
+                (
+                    "mentioned_in_pub",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="whatever",
+                        related_name="rvn_tablet_mentioned_in_pub_bibliography",
+                        to="archiv.Bibliography",
+                        verbose_name="Mentioned in Publication",
+                    ),
+                ),
+                (
+                    "mentioned_place",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="whatever",
+                        related_name="rvn_tablet_mentioned_place_place",
+                        to="archiv.Place",
+                        verbose_name="Place mentioned on Tablet",
+                    ),
+                ),
+                (
+                    "place_of_issue",
+                    models.ForeignKey(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="rvn_tablet_place_of_issue_place",
+                        to="archiv.place",
+                        verbose_name="Place of issue",
+                    ),
+                ),
+                (
+                    "type_content",
+                    models.ForeignKey(
+                        blank=True,
+                        help_text="whatever",
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="rvn_tablet_type_content_glossary",
+                        to="archiv.glossary",
+                        verbose_name="Type and content",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Tablet',
-                'ordering': ['id'],
+                "verbose_name": "Tablet",
+                "ordering": ["id"],
             },
         ),
         migrations.AddField(
-            model_name='bibliography',
-            name='mentioned_glossary_item',
-            field=models.ManyToManyField(blank=True, help_text='mentioned_glossary_item', related_name='rvn_bibliography_mentioned_glossary_item_glossary', to='archiv.Glossary', verbose_name='mentioned_glossary_item'),
+            model_name="bibliography",
+            name="mentioned_glossary_item",
+            field=models.ManyToManyField(
+                blank=True,
+                help_text="mentioned_glossary_item",
+                related_name="rvn_bibliography_mentioned_glossary_item_glossary",
+                to="archiv.Glossary",
+                verbose_name="mentioned_glossary_item",
+            ),
         ),
         migrations.AddField(
-            model_name='bibliography',
-            name='mentioned_place',
-            field=models.ManyToManyField(blank=True, help_text='whatever', related_name='rvn_bibliography_mentioned_place_place', to='archiv.Place', verbose_name='Place mentioned on Tablet'),
+            model_name="bibliography",
+            name="mentioned_place",
+            field=models.ManyToManyField(
+                blank=True,
+                help_text="whatever",
+                related_name="rvn_bibliography_mentioned_place_place",
+                to="archiv.Place",
+                verbose_name="Place mentioned on Tablet",
+            ),
         ),
         migrations.AddField(
-            model_name='archiv',
-            name='part_of',
-            field=models.ForeignKey(blank=True, help_text='Place of issue', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_archiv_part_of_place', to='archiv.place', verbose_name='part of'),
+            model_name="archiv",
+            name="part_of",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Place of issue",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="rvn_archiv_part_of_place",
+                to="archiv.place",
+                verbose_name="part of",
+            ),
         ),
     ]

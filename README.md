@@ -31,8 +31,4 @@ optional:
 
 To run the image you should provide an `.env` file to pass in needed environment variables; see `nabucco/settings.py` for possible varibles:
 
-`docker run -it -p 8020:8020 --rm --env-file .env_dev nabucco:latest`
-
-### or use published image:
-
-`docker run -it -p 8020:8020 --rm --env-file .env_dev acdhch/nabucco:latest`
+`docker run -it --network="host" --rm --env-file .env nabucco:latest`

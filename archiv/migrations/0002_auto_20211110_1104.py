@@ -8,75 +8,98 @@ import mptt.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0001_initial'),
+        ("archiv", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='place',
+            name="place",
             options={},
         ),
         migrations.RemoveField(
-            model_name='glossary',
-            name='glossary_collection',
+            model_name="glossary",
+            name="glossary_collection",
         ),
         migrations.AddField(
-            model_name='place',
-            name='broader_concept',
-            field=mptt.fields.TreeForeignKey(blank=True, help_text='Concept with a broader meaning that this concept inherits from', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='narrower_concepts', to='archiv.place', verbose_name='skos:broader'),
+            model_name="place",
+            name="broader_concept",
+            field=mptt.fields.TreeForeignKey(
+                blank=True,
+                help_text="Concept with a broader meaning that this concept inherits from",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="narrower_concepts",
+                to="archiv.place",
+                verbose_name="skos:broader",
+            ),
         ),
         migrations.AddField(
-            model_name='place',
-            name='level',
+            model_name="place",
+            name="level",
             field=models.PositiveIntegerField(default=0, editable=False),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='place',
-            name='lft',
+            model_name="place",
+            name="lft",
             field=models.PositiveIntegerField(default=1, editable=False),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='place',
-            name='place_collection',
-            field=models.CharField(blank=True, help_text='Collection to group Place entries', max_length=250, verbose_name='Collection'),
+            model_name="place",
+            name="place_collection",
+            field=models.CharField(
+                blank=True,
+                help_text="Collection to group Place entries",
+                max_length=250,
+                verbose_name="Collection",
+            ),
         ),
         migrations.AddField(
-            model_name='place',
-            name='rght',
+            model_name="place",
+            name="rght",
             field=models.PositiveIntegerField(default=2, editable=False),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='place',
-            name='tree_id',
+            model_name="place",
+            name="tree_id",
             field=models.PositiveIntegerField(db_index=True, default=1, editable=False),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='archiv',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="archiv",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='bibliography',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="bibliography",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='glossary',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="glossary",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='place',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="place",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='tablet',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="tablet",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
     ]

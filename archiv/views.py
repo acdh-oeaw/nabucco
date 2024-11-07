@@ -4,14 +4,14 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import DeleteView
-from . filters import (
+from .filters import (
     ArchivListFilter,
     BibliographyListFilter,
     GlossaryListFilter,
     PlaceListFilter,
-    TabletListFilter
+    TabletListFilter,
 )
-from . forms import (
+from .forms import (
     ArchivForm,
     ArchivFilterFormHelper,
     BibliographyForm,
@@ -21,25 +21,21 @@ from . forms import (
     PlaceFilterFormHelper,
     PlaceForm,
     TabletFilterFormHelper,
-    TabletForm
+    TabletForm,
 )
-from . tables import (
+from .tables import (
     ArchivTable,
     BibliographyTable,
     GlossaryTable,
     PlaceTable,
-    TabletTable
+    TabletTable,
 )
-from . models import (
-    Archiv,
-    Bibliography,
-    Glossary,
-    Place,
-    Tablet,
-    Introduction
-)
+from .models import Archiv, Bibliography, Glossary, Place, Tablet, Introduction
 from browsing.browsing_utils import (
-    GenericListView, BaseCreateView, BaseUpdateView, BaseDetailView
+    GenericListView,
+    BaseCreateView,
+    BaseUpdateView,
+    BaseDetailView,
 )
 
 
@@ -49,11 +45,9 @@ class ArchivListView(GenericListView):
     filter_class = ArchivListFilter
     formhelper_class = ArchivFilterFormHelper
     table_class = ArchivTable
-    init_columns = [
-        'name', 'part_of'
-    ]
+    init_columns = ["name", "part_of"]
     enable_merge = False
-    template_name = 'archiv/generic_list.html'
+    template_name = "archiv/generic_list.html"
     try:
         archive, created = Introduction.objects.get_or_create(title="Archives")
     except Exception as e:
@@ -63,14 +57,14 @@ class ArchivListView(GenericListView):
     def get_context_data(self, **kwargs):
         context = super(ArchivListView, self).get_context_data(**kwargs)
         if self.archive:
-            context['introduction'] = self.archive
+            context["introduction"] = self.archive
         return context
 
 
 class ArchivDetailView(BaseDetailView):
 
     model = Archiv
-    template_name = 'archiv/archiv_detail.html'
+    template_name = "archiv/archiv_detail.html"
 
 
 class ArchivCreate(BaseCreateView):
@@ -95,8 +89,8 @@ class ArchivUpdate(BaseUpdateView):
 
 class ArchivDelete(DeleteView):
     model = Archiv
-    template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('archiv:archiv_browse')
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:archiv_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -110,7 +104,10 @@ class BibliographyListView(GenericListView):
     formhelper_class = BibliographyFilterFormHelper
     table_class = BibliographyTable
     init_columns = [
-        'title', 'short_title', 'publication_year', 'author',
+        "title",
+        "short_title",
+        "publication_year",
+        "author",
     ]
     enable_merge = True
 
@@ -118,7 +115,7 @@ class BibliographyListView(GenericListView):
 class BibliographyDetailView(BaseDetailView):
 
     model = Bibliography
-    template_name = 'archiv/biblio_detail.html'
+    template_name = "archiv/biblio_detail.html"
 
 
 class BibliographyCreate(BaseCreateView):
@@ -143,8 +140,8 @@ class BibliographyUpdate(BaseUpdateView):
 
 class BibliographyDelete(DeleteView):
     model = Bibliography
-    template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('archiv:bibliography_browse')
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:bibliography_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -158,16 +155,17 @@ class GlossaryListView(GenericListView):
     formhelper_class = GlossaryFilterFormHelper
     table_class = GlossaryTable
     init_columns = [
-        'pref_label', 'broader_concept',
+        "pref_label",
+        "broader_concept",
     ]
-    enable_merge = True,
-    template_name = 'archiv/glossary_list.html'
+    enable_merge = (True,)
+    template_name = "archiv/glossary_list.html"
 
 
 class GlossaryDetailView(BaseDetailView):
 
     model = Glossary
-    template_name = 'archiv/glossary_detail.html'
+    template_name = "archiv/glossary_detail.html"
 
 
 class GlossaryCreate(BaseCreateView):
@@ -192,8 +190,8 @@ class GlossaryUpdate(BaseUpdateView):
 
 class GlossaryDelete(DeleteView):
     model = Glossary
-    template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('archiv:glossary_browse')
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:glossary_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -204,17 +202,18 @@ class PlaceListView(GenericListView):
 
     model = Place
     queryset = Place.objects.exclude(part_of__exact=None)
-    context_object_name = 'place_list'
+    context_object_name = "place_list"
     regions = Place.objects.filter(part_of__exact=None)
 
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
     init_columns = [
-        'name', 'part_of',
+        "name",
+        "part_of",
     ]
     enable_merge = True
-    template_name = 'archiv/generic_list.html'
+    template_name = "archiv/generic_list.html"
     try:
         places, created = Introduction.objects.get_or_create(title="Places")
     except Exception as e:
@@ -223,9 +222,9 @@ class PlaceListView(GenericListView):
 
     def get_context_data(self, **kwargs):
         context = super(PlaceListView, self).get_context_data(**kwargs)
-        context['regions'] = self.regions
+        context["regions"] = self.regions
         if self.places:
-            context['introduction'] = self.places
+            context["introduction"] = self.places
         return context
 
 
@@ -234,18 +233,19 @@ class PlaceDetailView(BaseDetailView):
     model = Place
     places = Place.objects.all()
     regions = PlaceListView.regions
-    region_names = Place.objects.all().values_list(
-        'part_of__name', flat=True
-    ).order_by(
-        'part_of__name'
-    ).distinct('part_of__name')
-    template_name = 'archiv/places_detail.html'
+    region_names = (
+        Place.objects.all()
+        .values_list("part_of__name", flat=True)
+        .order_by("part_of__name")
+        .distinct("part_of__name")
+    )
+    template_name = "archiv/places_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super(PlaceDetailView, self).get_context_data(**kwargs)
-        context['regions'] = self.regions
-        context['places'] = self.places
-        context['region_names'] = self.region_names
+        context["regions"] = self.regions
+        context["places"] = self.places
+        context["region_names"] = self.region_names
         return context
 
 
@@ -271,8 +271,8 @@ class PlaceUpdate(BaseUpdateView):
 
 class PlaceDelete(DeleteView):
     model = Place
-    template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('archiv:place_browse')
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:place_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -282,12 +282,12 @@ class PlaceDelete(DeleteView):
 class RegionView(ListView):
 
     model = Place
-    template_name = 'archiv/regions.html'
+    template_name = "archiv/regions.html"
     regions = PlaceListView.regions
 
     def get_context_data(self, **kwargs):
         context = super(RegionView, self).get_context_data(**kwargs)
-        context['regions'] = self.regions
+        context["regions"] = self.regions
         return context
 
 
@@ -297,11 +297,9 @@ class TabletListView(GenericListView):
     filter_class = TabletListFilter
     formhelper_class = TabletFilterFormHelper
     table_class = TabletTable
-    init_columns = [
-        'museum_id', 'archiv', 'type_content', 'place_of_issue'
-    ]
+    init_columns = ["museum_id", "archiv", "type_content", "place_of_issue"]
     enable_merge = True
-    template_name = 'archiv/generic_list.html'
+    template_name = "archiv/generic_list.html"
     try:
         intro, created = Introduction.objects.get_or_create(title="Tablet catalogue")
     except Exception as e:
@@ -311,14 +309,14 @@ class TabletListView(GenericListView):
     def get_context_data(self, **kwargs):
         context = super(TabletListView, self).get_context_data(**kwargs)
         if self.intro:
-            context['introduction'] = self.intro
+            context["introduction"] = self.intro
         return context
 
 
 class TabletDetailView(BaseDetailView):
 
     model = Tablet
-    template_name = 'archiv/tablet_detail.html'
+    template_name = "archiv/tablet_detail.html"
 
 
 class TabletCreate(BaseCreateView):
@@ -343,8 +341,8 @@ class TabletUpdate(BaseUpdateView):
 
 class TabletDelete(DeleteView):
     model = Tablet
-    template_name = 'webpage/confirm_delete.html'
-    success_url = reverse_lazy('archiv:tablet_browse')
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:tablet_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

@@ -6,32 +6,32 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0003_auto_20211112_1329'),
+        ("archiv", "0003_auto_20211112_1329"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='place',
-            options={'ordering': ['name'], 'verbose_name': 'Place'},
+            name="place",
+            options={"ordering": ["name"], "verbose_name": "Place"},
         ),
         migrations.RemoveField(
-            model_name='place',
-            name='broader_concept',
+            model_name="place",
+            name="broader_concept",
         ),
         migrations.RemoveField(
-            model_name='place',
-            name='level',
+            model_name="place",
+            name="level",
         ),
         migrations.RemoveField(
-            model_name='place',
-            name='lft',
+            model_name="place",
+            name="lft",
         ),
         migrations.RemoveField(
-            model_name='place',
-            name='rght',
+            model_name="place",
+            name="rght",
         ),
         migrations.RemoveField(
-            model_name='place',
-            name='tree_id',
+            model_name="place",
+            name="tree_id",
         ),
     ]

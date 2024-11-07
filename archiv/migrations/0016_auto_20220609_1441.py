@@ -6,18 +6,55 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0015_auto_20220512_1537'),
+        ("archiv", "0015_auto_20220512_1537"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tablet',
-            name='king',
-            field=models.CharField(blank=True, choices=[('-', '-'), ('Esar', 'Esar'), ('Ššu', 'Ššu'), ('Kan', 'Kan'), ('Npl', 'Npl'), ('Nbk', 'Nbk'), ('AM', 'AM'), ('Ner', 'Ner'), ('Nbn', 'Nbn'), ('Cyr', 'Cyr'), ('Cam', 'Cam'), ('Bar', 'Bar'), ('Dar', 'Dar'), ('Nbk III', 'Nbk III'), ('Nbk IV', 'Nbk IV'), ('Xer', 'Xer')], default='-', help_text='King (abbreviated)', max_length=250, verbose_name='King'),
+            model_name="tablet",
+            name="king",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("-", "-"),
+                    ("Esar", "Esar"),
+                    ("Ššu", "Ššu"),
+                    ("Kan", "Kan"),
+                    ("Npl", "Npl"),
+                    ("Nbk", "Nbk"),
+                    ("AM", "AM"),
+                    ("Ner", "Ner"),
+                    ("Nbn", "Nbn"),
+                    ("Cyr", "Cyr"),
+                    ("Cam", "Cam"),
+                    ("Bar", "Bar"),
+                    ("Dar", "Dar"),
+                    ("Nbk III", "Nbk III"),
+                    ("Nbk IV", "Nbk IV"),
+                    ("Xer", "Xer"),
+                ],
+                default="-",
+                help_text="King (abbreviated)",
+                max_length=250,
+                verbose_name="King",
+            ),
         ),
         migrations.AlterField(
-            model_name='tablet',
-            name='period',
-            field=models.CharField(blank=True, choices=[('NB', 'nB'), ('Each', 'eAch'), ('ENB', 'enB'), ('Ach', 'lAch'), ('-', '-')], default='-', help_text='whatever', max_length=250, verbose_name='Period'),
+            model_name="tablet",
+            name="period",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("NB", "nB"),
+                    ("Each", "eAch"),
+                    ("ENB", "enB"),
+                    ("Ach", "lAch"),
+                    ("-", "-"),
+                ],
+                default="-",
+                help_text="whatever",
+                max_length=250,
+                verbose_name="Period",
+            ),
         ),
     ]

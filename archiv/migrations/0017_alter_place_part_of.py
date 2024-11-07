@@ -7,13 +7,22 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0016_auto_20220609_1441'),
+        ("archiv", "0016_auto_20220609_1441"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='place',
-            name='part_of',
-            field=models.ForeignKey(blank=True, help_text='larger region', limit_choices_to={'part_of__exact': None}, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_place_part_of_place', to='archiv.place', verbose_name='Region'),
+            model_name="place",
+            name="part_of",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="larger region",
+                limit_choices_to={"part_of__exact": None},
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="rvn_place_part_of_place",
+                to="archiv.place",
+                verbose_name="Region",
+            ),
         ),
     ]

@@ -2,20 +2,17 @@ from django.apps import apps
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 
-MODELS = list(apps.all_models['archiv'].values())
-intro = apps.get_model('archiv', 'introduction')
+MODELS = list(apps.all_models["archiv"].values())
+intro = apps.get_model("archiv", "introduction")
 to_check = [x for x in MODELS if x != intro]
 
 
 client = Client()
-USER = {
-    "username": "testuser",
-    "password": "somepassword"
-}
+USER = {"username": "testuser", "password": "somepassword"}
 
 
 class ArchivTestCase(TestCase):
-    fixtures = ['dump.json']
+    fixtures = ["dump.json"]
 
     def setUp(self):
         # Create two users
@@ -39,7 +36,7 @@ class ArchivTestCase(TestCase):
             except AttributeError:
                 url = False
             if url:
-                response = client.get(url, {'pk': item.id})
+                response = client.get(url, {"pk": item.id})
                 self.assertEqual(response.status_code, 200)
 
     def test_004_editviews(self):
@@ -51,7 +48,7 @@ class ArchivTestCase(TestCase):
             except AttributeError:
                 url = False
             if url:
-                response = client.get(url, {'pk': item.id})
+                response = client.get(url, {"pk": item.id})
                 self.assertEqual(response.status_code, 200)
 
     def test_005_createviews_not_logged_in(self):
@@ -62,7 +59,7 @@ class ArchivTestCase(TestCase):
             except AttributeError:
                 url = False
             if url:
-                response = client.get(url, {'pk': item.id})
+                response = client.get(url, {"pk": item.id})
                 self.assertEqual(response.status_code, 302)
 
     def test_006_createviews_logged_in(self):
@@ -74,5 +71,5 @@ class ArchivTestCase(TestCase):
             except AttributeError:
                 url = False
             if url:
-                response = client.get(url, {'pk': item.id})
+                response = client.get(url, {"pk": item.id})
                 self.assertEqual(response.status_code, 200)

@@ -7,18 +7,34 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archiv', '0008_alter_tablet_paraphrase'),
+        ("archiv", "0008_alter_tablet_paraphrase"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='archiv',
-            name='part_of',
-            field=models.ForeignKey(blank=True, help_text='Place of issue', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_archiv_part_of_place', to='archiv.place', verbose_name='Provenance'),
+            model_name="archiv",
+            name="part_of",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="Place of issue",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="rvn_archiv_part_of_place",
+                to="archiv.place",
+                verbose_name="Provenance",
+            ),
         ),
         migrations.AlterField(
-            model_name='place',
-            name='part_of',
-            field=models.ForeignKey(blank=True, help_text='larger region', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rvn_place_part_of_place', to='archiv.place', verbose_name='Region'),
+            model_name="place",
+            name="part_of",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="larger region",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="rvn_place_part_of_place",
+                to="archiv.place",
+                verbose_name="Region",
+            ),
         ),
     ]
