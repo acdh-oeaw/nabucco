@@ -25,7 +25,7 @@ class ArchivFilterFormHelper(FormHelper):
                 ),
                 AccordionGroup(
                     "Admin", "id", "legacy_id", "legacy_pk", css_id="admin_search"
-                ),
+                )
             ),
         )
 

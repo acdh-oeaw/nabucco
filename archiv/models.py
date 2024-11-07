@@ -273,6 +273,7 @@ class Bibliography(models.Model):
             "short_title",
         ]
         verbose_name = "Bibliography"
+        verbose_name_plural = "Bibliographies"
 
     def __str__(self):
         if self.short_title:
@@ -494,6 +495,7 @@ class Place(models.Model):
             "name",
         ]
         verbose_name = "Place"
+        verbose_name_plural = "Places"
 
     def __str__(self):
         if self.name:
@@ -774,6 +776,7 @@ class Tablet(models.Model):
             "id",
         ]
         verbose_name = "Tablet"
+        verbose_name_plural = "Tablets"
 
     def __str__(self):
         if self.museum_id:
