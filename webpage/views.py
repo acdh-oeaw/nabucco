@@ -13,34 +13,25 @@ from .forms import form_user_login
 from .metadata import PROJECT_METADATA as PM
 
 
-def get_imprint_url():
-    try:
-        base_url = settings.ACDH_IMPRINT_URL
-    except AttributeError:
-        base_url = "https://provide-an-acdh-imprint-url/"
-    try:
-        redmine_id = settings.REDMINE_ID
-    except AttributeError:
-        redmine_id = "go-register-a-redmine-service-issue"
-    return "{}{}".format(base_url, redmine_id)
-
-
 class ImprintView(TemplateView):
     template_name = "webpage/imprint.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # imprint_url = get_imprint_url()
-        r = requests.get(get_imprint_url())
-
+        try:
+            imprint_url = f"{settings.ACDH_IMPRINT_URL}{settings.REDMINE_ID}"
+        except Exception as e:
+            context["imprint_body"] = e
+            return context
+        r = requests.get(imprint_url)
         if r.status_code == 200:
-            context["imprint_body"] = "{}".format(r.text)
+            context["imprint_body"] = f"{r.text}"
         else:
-            context[
-                "imprint_body"
-            ] = """
-            On of our services is currently not available. Please try it later or write an email to
-            acdh@oeaw.ac.at; if you are service provide, make sure that you provided ACDH_IMPRINT_URL and REDMINE_ID
+            context["imprint_body"] = """
+            On of our services is currently not available.\
+            Please try it later or write an email to\
+            acdh-ch-helpdesk@oeaw.ac.at; if you are service provide,\
+            make sure that you provided ACDH_IMPRINT_URL and REDMINE_ID
             """
         return context
 
