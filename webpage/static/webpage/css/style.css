@@ -1,0 +1,12 @@
+.unstyled-link {
+    color: inherit;           /* Inherits color from the parent element */
+    text-decoration: none;    /* Removes underline */
+  }
+  
+  .unstyled-link:hover,
+  .unstyled-link:focus,
+  .unstyled-link:active {
+    color: inherit;           /* Ensures color remains the same on hover and focus */
+    text-decoration: none;    /* Keeps underline removed on hover and focus */
+    outline: none;            /* Removes focus outline */
+  }
