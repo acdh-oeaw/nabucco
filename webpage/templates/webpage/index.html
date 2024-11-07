@@ -3,97 +3,29 @@
 {% load stats_extras %}
 {% load webpage_extras %}
 {% block content %}
-
-        <div class="jumbotron jumbotron-fluid" style="background-color: white;">
-                <img src="{% static 'img/project_background.jpg' %}" class='mx-auto d-block' id="title-img">
-                <div class="content">
-                    <h1 class="display-1">NaBuCCo</h1>
-                    <p>THE NEO-BABYLONIAN CUNEIFORM CORPUS aims at making available 
-                    the large corpus of archival documents from first millennium BCE Babylonia 
-                    to historians of the ancient world in general and Assyriologists in particular.</p>
-                </div>
-        </div>
-
-    <div class="container" id="landing" >
-        <div class="row" >
-            <div class="col-md-12" style="text-align:center">
-                <h2>Browse the <b>NaBuCCo</b> Database</h2>
-            </div>
-        </div>
-            {% create_object_count app='archiv' as models %}
-            <div class="row justify-content-center">
-            {% for x in models %}
-                {% if x.name == "Archiv" %}
-                    <div class="col-md-6" style="text-align:center">
-                        <div class="card">
-                            <img class="card-img-top" src="static/img/ishtar-gate.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}}es </h4>
-                                <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
-                                {% if x.link %}
-                                    <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if x.name == "Tablet" %}
-                    <div class="col-md-6 order-first" style="text-align:center">
-                        <div class="card">
-                            <img class="card-img-top" src="static/img/tablet.jpg" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}}s </h4>
-                                <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
-                                {% if x.link %}
-                                    <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if x.name == "Place" %}
-                <div class="col-md-6" style="text-align:center">
-                    <div class="card">
-                        <img class="card-img-top" src="static/img/babylon.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}}s </h4>
-                            <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
-                            {% if x.link %}
-                                <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-            {% if x.name == "Glossary" %}
-                    <div class="col-md-6" style="text-align:center">
-                        <div class="card">
-                            <img class="card-img-top" src="static/img/taxonomy.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> Text typology </h4>
-                                <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
-                                {% if x.link %}
-                                    <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if x.name == "Bibliography" %}
-                <div class="col-md-6 order-last" style="text-align:center">
-                    <div class="card">
-                        <img class="card-img-top" src="static/img/library.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-text" style="font-weight:bold; color: #254aa5;"> {{x.name}} </h4>
-                            <h6 class="card-text" style="font-weight:bold; color: #254aa5;">{{ x.count }} entries</h6>
-                            {% if x.link %}
-                                <a class="btn btn-main btn-outline-primary btn-sm" href="{{ x.link }}" role="button">Browse data</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-            {% endfor %}
-        </div>
+<style>
+    .jumbotron-background {
+        background-image: url("{% static 'webpage/img/title-image.jpg' %}");
+    }
+</style>
+<div class="my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-1 jumbotron-background">
+      <h1 class="display-1 p-5">Nabucco</h1>
+      <h2 class="display-3 text-light">A Neo-Babylonian Cuneiform Corpus</h2>
+      <p class="container lead fs-2">
+        THE NEO-BABYLONIAN CUNEIFORM CORPUS aims at making available the large corpus of archival documents from first millennium BCE Babylonia to historians of the ancient world in general and Assyriologists in particular.
+      </p>
+      <div class="d-inline-flex gap-2 mb-5 pt-5">
+        <a class="btn btn-outline-light btn-lg px-4" type="button" href="{% url 'webpage:staticpage' template='about' %}">
+          About the Project
+        </a>
+        <a class="btn btn-outline-light btn-lg px-4" type="button" href="{% url 'archiv:tablet_browse' %}">
+          Browse the Tablets
+        </a>
+      </div>
+      <p class="text-light pt-5 container">
+        This pottery head of a stand was inscribed with a cuneiform inscription mentioning the name of the Entemena (Enmetena), ruler of Lagash, and dates back to the Early Dynastic Period, C. 2400 BCE. From Southern Mesopotamia, modern-day Iraq. The Sulaymaniyah Museum, Iraq.<br/>
+        <a href="https://commons.wikimedia.org/wiki/File:An_Inscribed_stand%27s_head_mentioning_the_name_of_Entemena,_ruler_of_Lagash,_early_dynastic_period,_c._2400_BCE._Sulaymaniyah_Museum.jpg" class="text-light">Osama Shukir Muhammed Amin FRCP(Glasg)</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" class="text-light">CC BY-SA 4.0</a>, via Wikimedia Commons</p>
     </div>
+  </div>
 {% endblock %}
