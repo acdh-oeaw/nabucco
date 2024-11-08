@@ -2,7 +2,6 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
-from django.views.generic import ListView
 from django.views.generic.edit import DeleteView
 from .filters import (
     ArchivListFilter,
@@ -37,6 +36,16 @@ from browsing.browsing_utils import (
     BaseUpdateView,
     BaseDetailView,
 )
+
+
+class CustomDetailView(BaseDetailView):
+    template_name = "archiv/generic_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CustomDetailView, self).get_context_data()
+        context["verbose_name"] = self.model._meta.verbose_name
+        context["verbose_name_plural"] = self.model._meta.verbose_name_plural
+        return context
 
 
 class CustomListView(GenericListView):
@@ -77,7 +86,7 @@ class ArchivListView(CustomListView):
         return context
 
 
-class ArchivDetailView(BaseDetailView):
+class ArchivDetailView(CustomDetailView):
 
     model = Archiv
     template_name = "archiv/archiv_detail.html"
@@ -128,7 +137,7 @@ class BibliographyListView(CustomListView):
     enable_merge = True
 
 
-class BibliographyDetailView(BaseDetailView):
+class BibliographyDetailView(CustomDetailView):
 
     model = Bibliography
     template_name = "archiv/biblio_detail.html"
@@ -178,7 +187,7 @@ class GlossaryListView(GenericListView):
     template_name = "archiv/glossary_list.html"
 
 
-class GlossaryDetailView(BaseDetailView):
+class GlossaryDetailView(CustomDetailView):
 
     model = Glossary
     template_name = "archiv/glossary_detail.html"
@@ -217,10 +226,6 @@ class GlossaryDelete(DeleteView):
 class PlaceListView(CustomListView):
 
     model = Place
-    queryset = Place.objects.exclude(part_of__exact=None)
-    context_object_name = "place_list"
-    regions = Place.objects.filter(part_of__exact=None)
-
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
@@ -235,25 +240,10 @@ class PlaceListView(CustomListView):
         return context
 
 
-class PlaceDetailView(BaseDetailView):
+class PlaceDetailView(CustomDetailView):
 
     model = Place
-    places = Place.objects.all()
-    regions = PlaceListView.regions
-    region_names = (
-        Place.objects.all()
-        .values_list("part_of__name", flat=True)
-        .order_by("part_of__name")
-        .distinct("part_of__name")
-    )
-    template_name = "archiv/places_detail.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(PlaceDetailView, self).get_context_data(**kwargs)
-        context["regions"] = self.regions
-        context["places"] = self.places
-        context["region_names"] = self.region_names
-        return context
+    template_name = "archiv/place_detail.html"
 
 
 class PlaceCreate(BaseCreateView):
@@ -286,18 +276,6 @@ class PlaceDelete(DeleteView):
         return super(PlaceDelete, self).dispatch(*args, **kwargs)
 
 
-class RegionView(ListView):
-
-    model = Place
-    template_name = "archiv/regions.html"
-    regions = PlaceListView.regions
-
-    def get_context_data(self, **kwargs):
-        context = super(RegionView, self).get_context_data(**kwargs)
-        context["regions"] = self.regions
-        return context
-
-
 class TabletListView(CustomListView):
 
     model = Tablet
@@ -308,7 +286,7 @@ class TabletListView(CustomListView):
     enable_merge = True
 
 
-class TabletDetailView(BaseDetailView):
+class TabletDetailView(CustomDetailView):
 
     model = Tablet
     template_name = "archiv/tablet_detail.html"

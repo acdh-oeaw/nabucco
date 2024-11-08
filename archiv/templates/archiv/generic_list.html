@@ -16,15 +16,15 @@
     <h1 class="display-5 text-center">{{ h1 }}</h1>
     {% if user.is_authenticated %}
     <div class="d-grid gap-2 pb-2">
-        <a class="btn btn-primary float-center ms-5 me-5" href="{{ create_view_link }}">Create new {{ verbose_name_plural }}</a>
+        <a class="btn btn-primary float-center ms-5 me-5" href="{{ create_view_link }}">
+            Create new {{ verbose_name }}</a>
     </div>
     {% endif %}
 
     <div class="row">
         <div class="col-md-4">
-            {% block customView %}{% endblock %}
-            {% block create_button %}{% endblock %}
             <!--Search mask-->
+            <h2 class="text-center pb-4 pt-3">Refine Results</h2>
             {% load django_tables2 crispy_forms_tags %}
             <form action="." class="uniForm" method="get">
                 {% crispy filter.form filter.form.helper %}
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-8" id="results">
             {% with table.paginator.count as total %}
-            <h2 class="text-center">{{ total }} Result(s)</h2>
+            <h2 class="text-center pb-4 pt-3">{{ total }} Result(s)</h2>
             {% endwith %}
             {% block table %}
             {% include 'browsing/partials/table.html' %}
@@ -52,7 +52,6 @@
         </div>
     </div>
 </div>
-
 
 {% endblock %}
 {% block scripts2 %}

@@ -1,159 +1,81 @@
-{% extends "webpage/base.html" %}
+{% extends "archiv/generic_detail.html" %}
 {% load static %}
 
 {% load webpage_extras %}
 {% block title %}{{ object }}{% endblock %}
 
-{% block content %}
-<div class="card w-100">
-  <div class="card-header">
-    <div class="row">
-      <div class="col-md-2">
-        {% if object.get_prev %}
-        <h2>
-          <a href="{{ object.get_prev }}" title="previous">
-            <i data-feather="chevron-left"></i>
-          </a>
-        </h2>
-        {% endif %}
-      </div>
-      <div class="col-md-8">
-        <h2 style="text-align: center;">
-          <small><a href="{{ object.get_listview_url }}"
-              title="back to listview"><small>{{ class_name }}</small></a></small>
-          {{ object }}
-          {% if user.is_authenticated %}
-          <a href="{{ object.get_edit_url }}" title="edit">
-            <i data-feather="edit"></i>
-          </a>
-          {% endif %}
-          {% if 'archeutils' in APPS %}
-          <a href="{% url 'archeutils:res_as_arche_graph' app_name=app_name model_name=class_name|lower pk=object.id %}"
-            title="As ARCHE-RDF">
-            <i data-feather="download"></i>
-          </a>
-          {% endif%}
-        </h2>
-      </div>
-      <div class="col-md-2">
-        <h2>
-          {% if object.get_next %}
-          <a href="{{ object.get_next }}" style="float:right" title="next">
-            <i data-feather="chevron-right"></i>
-          </a>
-        </h2>
-        {% endif %}
-      </div>
-    </div>
-  </div>
+{% block custom %}
 
-  <div class="card-body">
+  <div class="container">
     <div class="row justify-content-around">
-      <div class="col-md-4">
-        <table class="table table-responsive table-hover">
-          {% for x in object.field_dict %}
-          {% if x.name == "museum_id" or x.verbose_name == "ID" or x.name == "cdli_no" or x.name == "type_content" or x.name == "place_of_issue" or x.name == "julian_date_year" or x.name == "archiv" or x.name == "period" %}
-          <tr>
-            <th>
-              {% if x.verbose_name == "ID" %}
-              NaBuCCo ID
-              {% elif x.help_text %}
-              <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
-              {% else %}
-              {{ x.verbose_name }}
-              {% endif %}
-            </th>
-            <td>
-              {% if x.f_type == 'M2M' %}
-              {% for y in x.value %}
-              <li>
-                <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-              </li>
-              {% endfor %}
-              {% elif  x.f_type == 'FK' and x.name == "type_content"%}
-              <a href="{{ x.value.get_absolute_url }}"> {% if tablet.type_content.title %} {{tablet.type_content.title}} {% else %} {{x.value}} {% endif %}</a>
-              {% elif x.f_type == 'REVRESE_RELATION' %}
-              {% for y in x.value %}
-              <li>
-                <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-              </li>
-              {% endfor %}
-              {% elif  x.f_type == 'SIMPLE' %}
-              {% for y in x.value %}
-              {% endfor %}
-              {{ x.value }}
-              {% endif %}
-            </td>
-            </tr>
-          {% elif x.name == "mentioned_in_pub" %}
-          {% for y in x.value %}
-          <th>Editio princeps</th>
-          <td> <a href="{{ y.get_absolute_url }}">{{ y }}</a> {{tablet.text_number|safe}}</td>
+      <div class="col-md-5">
+        <h2>Basic Metadata</h2>
+        <dl>
+          <dt>NaBuCCo ID</dt>
+          <dd>{{ object.id }}</dd>
+          <dt>Museum No.</dt>
+          <dd>{{ object.museum_id }}</dd>
+          <dt>CDLI P-Identifier</dt>
+          <dd>{{ object.cdli_no }}</dd>
+          <dt>Place of issue</dt>
+          <dd>
+            <a href="{{ object.place_of_issue.get_absolute_url }}">
+              {{ object.place_of_issue }}
+            </a>
+          </dd>
+          <dt>Type and Content</dt>
+          <dd>
+            <a href="{{ object.type_content.get_absolute_url }}">
+              {{ object.type_content }}
+            </a>
+          </dd>
+          <dt>Archive</dt>
+          <dd>
+            <a href="{{ object.archiv.get_absolute_url }}">
+              {{ object.archiv }}
+            </a>
+          </dd>
+          <dt>Period</dt>
+          <dd>{{ object.period }}</dd>
+          <dt>Year BCE</dt>
+          <dd>{{ object.julian_date_year }}</dd>
+          <dt>Editio princeps</dt>
+          {% for x in object.mentioned_in_pub.all %}
+          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
           {% endfor %}
-          {% endif %}
-          {% endfor %}
-        </table>
+        </dl>
+        
+        {% if user.is_authenticated %}
+        <hr />
+          <h3>original data</h3>
+          <code>{{ object.orig_data_csv|safe }}</code>
+        {% endif %}
       </div>
-      <div class="col-md-6">
-        <table class="table table-responsive table-hover">
-          <tr>
-            <th> Paraphrase</th>
-            <td> {{tablet.paraphrase|safe}}</td>
-          </tr>
-          <tr>
-            <th> Transliteration </th>
-            <td> {{tablet.transliteration|safe}}</td>
-          </tr>
-          <tr><th>Babylonian Date (year-month-day): </th>
-            <td> {% if tablet.king %}{{tablet.king}}{% else %}XXX{% endif %}.
-                {% if tablet.year %}{{tablet.year}}{% else %}yy{% endif %}-{% if tablet.month %}{{tablet.month}}{% else %}mm{% endif %}-{% if tablet.day%}{{tablet.day}}{% else %}dd{% endif %}
-            </td>
-        </tr>
-        </table>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          {% if user.is_authenticated %}
-          <table class="table table-responsive table-hover">
-            {% for x in object.field_dict %}
-            {% if x.verbose_name == "The original data" or x.name == "imported" or x.verbose_name == "NaBuCCo No." or x.verbose_name == "Legacy ID" or x.verbose_name == "Matches FileChecker Entry" %}
-            <tr>
-              <th>
-                {% if x.help_text %}
-                <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
-                {% else %}
-                {{ x.verbose_name }}
-                {% endif %}
-              </th>
-              <td>
-                {% if x.f_type == 'M2M' %}
-                {% for y in x.value %}
-                <li>
-                  <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-                </li>
-                {% endfor %}
-                {% elif  x.f_type == 'FK' %}
-                <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-                {% elif  x.f_type == 'FK' %}
-                <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-                {% elif  x.f_type == 'REVRESE_RELATION' %}
-                {% for y in x.value %}
-                <li>
-                  <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-                </li>
-                {% endfor %}
-                {% elif  x.f_type == 'SIMPLE' %}
-                {{ x.value }}
-                {% endif %}
-              </td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-          </table>
-          {% endif %}
-        </div>
+      <div class="col-md-5">
+        <h2>Content</h2>
+          <dl>
+            <dt>Paraphrase</dt>
+            <dd>{{ object.paraphrase|safe}}</dd>
+    
+            <dt>Transliteration </dt>
+            <dd>{{ object.transliteration|safe}}</dd>
+            <dt>Babylonian Date (year-month-day): </dt>
+            <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
+                {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
+            </dd>
+          </dl>
+          <hr/>
+          <h3>further information</h3>
+          <dl>
+            <dt>Imported (Person, Date)</dt>
+            <dd>{{ object.imported }}</dd>
+          </dl>
+          <dl>
+            <dt>Legacy NaBuCCo ID</dt>
+            <dd>{{ object.legacy_pk }}</dd>
+          </dl>
       </div>
     </div>
   </div>
-  {% endblock %}
+
+{% endblock custom %}

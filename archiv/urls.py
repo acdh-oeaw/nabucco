@@ -68,7 +68,6 @@ urlpatterns = [
     path("place/create/", views.PlaceCreate.as_view(), name="place_create"),
     path("place/edit/<int:pk>", views.PlaceUpdate.as_view(), name="place_edit"),
     path("place/delete/<int:pk>", views.PlaceDelete.as_view(), name="place_delete"),
-    path("regions/", views.RegionView.as_view(), name="region_overview"),
     path("tablet/", views.TabletListView.as_view(), name="tablet_browse"),
     path(
         "tablet/detail/<int:pk>",

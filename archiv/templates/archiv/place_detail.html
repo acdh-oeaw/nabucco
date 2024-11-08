@@ -1,0 +1,62 @@
+{% extends "archiv/generic_detail.html" %}
+{% load static %}
+
+{% load webpage_extras %}
+{% block title %}{{ object }}{% endblock %}
+
+{% block custom %}
+
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-md-5">
+      <h2>Basic Metadata</h2>
+      <dl>
+        <dt>NaBuCCo ID</dt>
+        <dd>{{ object.id }}</dd>
+        <dt>Name</dt>
+        <dd>{{ object.name }}</dd>
+        {% if object.description %}
+        <dt>Description</dt>
+        <dd>{{ object.description|safe }}</dd>
+        {% endif %}
+        {% if object.part_of %}
+        <dt>Part of Region</dt>
+        <dd><a href="{{ object.part_of.get_absolute_url }}">{{ object.part_of }}</a></dd>
+        {% endif %}
+        {% if object.rvn_place_part_of_place.all %}
+        <dt>Region of {{ object.rvn_place_part_of_place.all|length }} Places</dt>
+        {% for x in object.rvn_place_part_of_place.all %}
+        <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+        {% endfor %}
+        {% endif %}
+      </dl>
+    </div>
+    <div class="col-md-2">
+      <h2>{{ object.rvn_archiv_part_of_place.all|length }} related Archivs</h2>
+      <ul>
+        {% for x in object.rvn_archiv_part_of_place.all %}
+        <li>
+          <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-2">
+      <h2>{{ object.rvn_tablet_place_of_issue_place.all|length }} related Tablets</h2>
+      <ul>
+        {% for x in object.rvn_tablet_place_of_issue_place.all %}
+        <li>
+          <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+      <hr />
+      <h2>original data</h2>
+      <code>{{ object.orig_data_csv|safe }}</code>
+  {% endif %}
+</div>
+
+{% endblock %}
