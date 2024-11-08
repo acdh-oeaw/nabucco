@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "dal",
     "crispy_forms",
     "django_filters",
+    "leaflet",
     "crispy_bootstrap5",
     "django_tables2",
     "mptt",

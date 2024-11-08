@@ -41,3 +41,8 @@ dd {
   position: relative;
   z-index: 2;
 }
+
+.leaflet-container {  /* all maps */
+  max-width:  600px;
+  max-height: 400px;
+}

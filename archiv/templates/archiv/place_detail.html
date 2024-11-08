@@ -1,8 +1,14 @@
 {% extends "archiv/generic_detail.html" %}
 {% load static %}
-
+{% load leaflet_tags %}
 {% load webpage_extras %}
+
 {% block title %}{{ object }}{% endblock %}
+
+{% block scriptHeader %}
+{% leaflet_js %}
+{% leaflet_css %}
+{% endblock scriptHeader %}
 
 {% block custom %}
 
@@ -30,6 +36,11 @@
         {% endfor %}
         {% endif %}
       </dl>
+      <div>
+        {% leaflet_map "yourmap"  callback="window.map_init_basic" %}
+       
+      </div>
+        
     </div>
     <div class="col-md-2">
       <h2>{{ object.rvn_archiv_part_of_place.all|length }} related Archivs</h2>
@@ -60,3 +71,10 @@
 </div>
 
 {% endblock %}
+{% block scripts2 %}
+<script>
+  function map_init_basic (map, options) {
+      L.marker([50.5, 30.5]).addTo(map);
+  }
+</script>
+{% endblock scripts2 %}
