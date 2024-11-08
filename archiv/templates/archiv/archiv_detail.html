@@ -1,165 +1,68 @@
-{% extends "webpage/base.html" %}
+{% extends "archiv/generic_detail.html" %}
 {% load static %}
+
 {% load webpage_extras %}
-{% block title %}{{ object.name }}{% endblock %}
+{% block title %}{{ object }}{% endblock %}
 
-{% block content %}
+{% block custom %}
 
-<script type="text/javascript">
-  function  toggleVisibility(){
-    var t = document.getElementById("tablets");
-    if(t.style.display === "none") {
-      t.style.display = "block";
-    } else {
-      t.style.display = "none"
-    }
-  }  
-</script>
-
-<div class="card w-100">
-  <div class="card-header">
-    <div class="row">
-      <div class="col-md-2">
-        {% if object.get_prev %}
-        <h2>
-          <a href="{{ object.get_prev }}" title="previous">
-            <i data-feather="chevron-left"></i>
-          </a>
-        </h2>
-        {% endif %}
-      </div>
-      <div class="col-md-8">
-        <h2 style="text-align: center;">
-          <small><a href="{{ object.get_listview_url }}"
-              title="back to listview"><small>{{ class_name }}e</small></a></small>
-          {{ object }}
-          {% if user.is_authenticated %}
-          <a href="{{ object.get_edit_url }}" title="edit">
-            <i data-feather="edit"></i>
-          </a>
+<div class="row justify-content-around">
+  <div class="col-md-3">
+    <h3>Basic Metadata</h3>
+    <table class="table table-responsive table-hover">
+      {% for x in object.field_dict %}
+      {% if x.name == "name" or x.verbose_name == "ID" or x.name == "paragraph" or x.name == "part_of" %}
+      <tr>
+        <th>
+          {% if x.verbose_name == "ID" %}
+          NaBuCCo ID
+          {% elif x.help_text %}
+          <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
+          {% else %}
+          {{ x.verbose_name }}
           {% endif %}
-          {% if 'archeutils' in APPS %}
-          <a href="{% url 'archeutils:res_as_arche_graph' app_name=app_name model_name=class_name|lower pk=object.id %}"
-            title="As ARCHE-RDF">
-            <i data-feather="download"></i>
-          </a>
-          {% endif%}
-        </h2>
-      </div>
-      <div class="col-md-2">
-        <h2>
-          {% if object.get_next %}
-          <a href="{{ object.get_next }}" style="float:right" title="next">
-            <i data-feather="chevron-right"></i>
-          </a>
-        </h2>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-
-  <div class="card-body">
-    <div class="row justify-content-around">
-      <div class="col-md-3">
-        <table class="table table-responsive table-hover">
-          {% for x in object.field_dict %}
-          {% if x.name == "name" or x.verbose_name == "ID" or x.name == "paragraph" or x.name == "part_of" %}
-          <tr>
-            <th>
-              {% if x.verbose_name == "ID" %}
-              NaBuCCo ID
-              {% elif x.help_text %}
-              <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
-              {% else %}
-              {{ x.verbose_name }}
-              {% endif %}
-            </th>
-            <td>
-              {% if x.f_type == 'M2M' %}
-              {% for y in x.value %}
-              <li>
-                <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-              </li>
-              {% endfor %}
-              {% elif  x.f_type == 'FK' %}
-              <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-              {% elif  x.f_type == 'REVRESE_RELATION' %}
-              {% for y in x.value %}
-              <li>
-                <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-              </li>
-              {% endfor %}
-              {% elif  x.f_type == 'SIMPLE' %}
-              {{ x.value }}
-              {% endif %}
-            </td>
-          </tr>
-          {% endif %}
+        </th>
+        <td>
+          {% if x.f_type == 'M2M' %}
+          {% for y in x.value %}
+          <li>
+            <a href="{{ y.get_absolute_url }}">{{ y }}</a>
+          </li>
           {% endfor %}
-        </table>
-      </div>
-      <div class="col-md-5">
-        <table class="table table-responsive table-hover">
-          <tr>
-            <th> Archive description</th>
-            <td> {{archiv.description|safe}}</td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-md-3">
-        <table class="card">
-          <div class="card-header" onclick="toggleVisibility()"><b>Associated tablets</b></div>
-            {% for x in object.field_dict %} {% if x.name == "rvn_tablet_archiv_archiv" %}
-            <ul class="list-group" id="tablets" style="display: none;">
-                {% if not x.value %} <li class="list-group-item"> No tablets recorded</li> {% else %} {% for y in x.value %}
-                <li class="list-group-item"><a href="{{ y.get_absolute_url }}">{{ y }}</a></li> 
-              {% endfor %} </ul> {% endif %}
-              {% endif %}
-            {% endfor %}
-        </table> 
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-4">
-          {% if user.is_authenticated %}
-          <table class="table table-responsive table-hover">
-            {% for x in object.field_dict %}
-            {% if x.verbose_name == "The original data" or x.verbose_name == "Legacy ID" or x.name == "legacy_pk" or x.verbose_name == "Matches FileChecker Entry" %}
-            <tr>
-              <th>
-                {% if x.help_text %}
-                <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
-                {% else %}
-                {{ x.verbose_name }}
-                {% endif %}
-              </th>
-              <td>
-                {% if x.f_type == 'M2M' %}
-                {% for y in x.value %}
-                <li>
-                  <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-                </li>
-                {% endfor %}
-                {% elif  x.f_type == 'FK' %}
-                <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-                {% elif  x.f_type == 'FK' %}
-                <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-                {% elif  x.f_type == 'REVRESE_RELATION' %}
-                {% for y in x.value %}
-                <li>
-                  <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-                </li>
-                {% endfor %}
-                {% elif  x.f_type == 'SIMPLE' %}
-                {{ x.value }}
-                {% endif %}
-              </td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-          </table>
+          {% elif x.f_type == 'FK' %}
+          <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
+          {% elif x.f_type == 'REVRESE_RELATION' %}
+          {% for y in x.value %}
+          <li>
+            <a href="{{ y.get_absolute_url }}">{{ y }}</a>
+          </li>
+          {% endfor %}
+          {% elif x.f_type == 'SIMPLE' %}
+          {{ x.value }}
           {% endif %}
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </table>
   </div>
-  {% endblock %}
+  <div class="col-md-4">
+    
+        <h3> Archive description</h3>
+        <p>{{archiv.description|safe}}</p>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <h3>{{ object.rvn_tablet_archiv_archiv.all|length }} related Tablets</h3>
+    <ul>
+      {% for x in object.rvn_tablet_archiv_archiv.all %}
+      <li>
+        <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

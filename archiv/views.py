@@ -39,6 +39,14 @@ from browsing.browsing_utils import (
 )
 
 
+class CustomDetailView(BaseDetailView):
+    def get_context_data(self, **kwargs):
+        context = super(CustomDetailView, self).get_context_data()
+        context["verbose_name"] = self.model._meta.verbose_name
+        context["verbose_name_plural"] = self.model._meta.verbose_name_plural
+        return context
+
+
 class CustomListView(GenericListView):
     h1 = ""
     create_button_text = "Create new item"
@@ -77,7 +85,7 @@ class ArchivListView(CustomListView):
         return context
 
 
-class ArchivDetailView(BaseDetailView):
+class ArchivDetailView(CustomDetailView):
 
     model = Archiv
     template_name = "archiv/archiv_detail.html"
@@ -128,7 +136,7 @@ class BibliographyListView(CustomListView):
     enable_merge = True
 
 
-class BibliographyDetailView(BaseDetailView):
+class BibliographyDetailView(CustomDetailView):
 
     model = Bibliography
     template_name = "archiv/biblio_detail.html"
@@ -178,7 +186,7 @@ class GlossaryListView(GenericListView):
     template_name = "archiv/glossary_list.html"
 
 
-class GlossaryDetailView(BaseDetailView):
+class GlossaryDetailView(CustomDetailView):
 
     model = Glossary
     template_name = "archiv/glossary_detail.html"
@@ -235,7 +243,7 @@ class PlaceListView(CustomListView):
         return context
 
 
-class PlaceDetailView(BaseDetailView):
+class PlaceDetailView(CustomDetailView):
 
     model = Place
     places = Place.objects.all()
@@ -308,7 +316,7 @@ class TabletListView(CustomListView):
     enable_merge = True
 
 
-class TabletDetailView(BaseDetailView):
+class TabletDetailView(CustomDetailView):
 
     model = Tablet
     template_name = "archiv/tablet_detail.html"

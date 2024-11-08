@@ -1,0 +1,38 @@
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-2">
+    
+            {% if object.get_prev %}
+            <p class="text-start">
+                <a href="{{ object.get_prev }}">
+                    <i class="fs-3 bi bi-chevron-left" title="previous entry" aria-hidden="true"></i>
+                    <span class="visually-hidden">previous entry</span>
+                </a>
+            </p>
+            {% endif %}
+    
+        </div>
+        <div class="col-md-8 text-center">
+            <h1 class="text-center">
+                {{ object }}
+            </h1>
+            {% if user.is_authenticated %}
+                    <a href="{{ object.get_edit_url }}">
+                        <i class="fs-3 bi bi-pencil-square" title="edit entry" aria-hidden="true"></i>
+                        <span class="visually-hidden">edit entry</span>
+                    </a>
+                {% endif %}
+        </div>
+        <div class="col-md-2">
+            {% if object.get_next %}
+            <p class="text-end">
+    
+                <a href="{{ object.get_next }}">
+                    <i class="fs-3 bi bi-chevron-right" title="next entry" aria-hidden="true"></i>
+                    <span class="visually-hidden">next entry</span>
+                </a>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>

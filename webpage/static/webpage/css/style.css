@@ -1,43 +1,39 @@
 .unstyled-link {
-    color: inherit;           /* Inherits color from the parent element */
-    text-decoration: none;    /* Removes underline */
-  }
-  
-  .unstyled-link:hover,
-  .unstyled-link:focus,
-  .unstyled-link:active {
-    color: inherit;           /* Ensures color remains the same on hover and focus */
-    text-decoration: none;    /* Keeps underline removed on hover and focus */
-    outline: none;            /* Removes focus outline */
-  }
+  color: inherit;
+  /* Inherits color from the parent element */
+  text-decoration: none;
+  /* Removes underline */
+}
 
 
-  .jumbotron-background {
-    background-size: cover;
-    background-position: center;
-    color: white;
-    position: relative;
-    height: auto;
-  }
+.jumbotron-background {
+  background-size: cover;
+  background-position: center;
+  color: white;
+  position: relative;
+  height: auto;
+}
 
-  /* Overlay effect */
-  .jumbotron-background::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Adjust the opacity as needed */
-    border-radius: 0.5rem;
-    z-index: 1; /* Places overlay below content */
-  }
+/* Overlay effect */
+.jumbotron-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* Adjust the opacity as needed */
+  border-radius: 0.5rem;
+  z-index: 1;
+  /* Places overlay below content */
+}
 
 
-  .jumbotron-background h1,
-  .jumbotron-background h2,
-  .jumbotron-background p,
-  .jumbotron-background .btn {
-    position: relative;
-    z-index: 2;
-  }
+.jumbotron-background h1,
+.jumbotron-background h2,
+.jumbotron-background p,
+.jumbotron-background .btn {
+  position: relative;
+  z-index: 2;
+}

@@ -780,9 +780,9 @@ class Tablet(models.Model):
 
     def __str__(self):
         if self.museum_id:
-            return "{}".format(self.museum_id)
+            return f"{self.museum_id}"
         else:
-            return "{}".format(self.legacy_id)
+            return f"{self.legacy_id}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -836,8 +836,4 @@ class Introduction(models.Model):
     )
 
     def __str__(self):
-        return "{}".format(self.title)
-
-    @classmethod
-    def get_source_table(self):
-        print("No introduction in source tables")
+        return f"{self.title}"
