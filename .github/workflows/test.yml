@@ -24,6 +24,8 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
+    - name: GDAL
+      run: sudo apt-get install postgresql-common libpq-dev python3-gdal
     - name: Install dependencies
       run: |
         pip install --upgrade --upgrade-strategy eager -r requirements_dev.txt
