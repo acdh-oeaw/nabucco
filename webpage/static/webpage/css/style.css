@@ -1,3 +1,7 @@
+dd {
+  margin-left: 2em;
+}
+
 .unstyled-link {
   color: inherit;
   /* Inherits color from the parent element */
