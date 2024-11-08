@@ -16,9 +16,7 @@ class ArchivFilterFormHelper(FormHelper):
         self.form_method = "GET"
         self.form_tag = False
         self.layout = Layout(
-            Fieldset(
-                "", "name", "part_of", css_id="basic_search_fields"
-            ),
+            Fieldset("", "name", "part_of", css_id="basic_search_fields"),
             BS5Accordion(
                 AccordionGroup(
                     "Advanced search", "paragraph", "description", css_id="more"

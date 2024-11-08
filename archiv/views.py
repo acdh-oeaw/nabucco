@@ -2,7 +2,6 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
-from django.views.generic import ListView
 from django.views.generic.edit import DeleteView
 from .filters import (
     ArchivListFilter,
@@ -227,10 +226,6 @@ class GlossaryDelete(DeleteView):
 class PlaceListView(CustomListView):
 
     model = Place
-    queryset = Place.objects.exclude(part_of__exact=None)
-    context_object_name = "place_list"
-    regions = Place.objects.filter(part_of__exact=None)
-
     filter_class = PlaceListFilter
     formhelper_class = PlaceFilterFormHelper
     table_class = PlaceTable
@@ -279,18 +274,6 @@ class PlaceDelete(DeleteView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(PlaceDelete, self).dispatch(*args, **kwargs)
-
-
-class RegionView(ListView):
-
-    model = Place
-    template_name = "archiv/regions.html"
-    regions = PlaceListView.regions
-
-    def get_context_data(self, **kwargs):
-        context = super(RegionView, self).get_context_data(**kwargs)
-        context["regions"] = self.regions
-        return context
 
 
 class TabletListView(CustomListView):
