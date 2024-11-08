@@ -3,6 +3,7 @@ acdh-xml-pyutils
 crispy-bootstrap5
 Django>=5.0,<6
 django-ckeditor
+django-leaflet
 django-next-prev>=1.1.0,<2
 django-mptt
 jinja2

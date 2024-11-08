@@ -1,3 +1,4 @@
+{% load static %}
 {% load webpage_extras %}
 
 <!DOCTYPE html>
@@ -8,6 +9,8 @@
 {% include "webpage/partials/head.html" %}
 {% block scriptHeader %}
 {% endblock scriptHeader %}
+<link rel="stylesheet" href="{% static 'webpage/css/style.css' %}" />
+
 </head>
 
 <body class="d-flex flex-column h-100">
