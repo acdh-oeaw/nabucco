@@ -40,6 +40,8 @@ from browsing.browsing_utils import (
 
 
 class CustomDetailView(BaseDetailView):
+    template_name = "archiv/generic_detail.html"
+
     def get_context_data(self, **kwargs):
         context = super(CustomDetailView, self).get_context_data()
         context["verbose_name"] = self.model._meta.verbose_name
@@ -246,22 +248,7 @@ class PlaceListView(CustomListView):
 class PlaceDetailView(CustomDetailView):
 
     model = Place
-    places = Place.objects.all()
-    regions = PlaceListView.regions
-    region_names = (
-        Place.objects.all()
-        .values_list("part_of__name", flat=True)
-        .order_by("part_of__name")
-        .distinct("part_of__name")
-    )
-    template_name = "archiv/places_detail.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(PlaceDetailView, self).get_context_data(**kwargs)
-        context["regions"] = self.regions
-        context["places"] = self.places
-        context["region_names"] = self.region_names
-        return context
+    template_name = "archiv/place_detail.html"
 
 
 class PlaceCreate(BaseCreateView):

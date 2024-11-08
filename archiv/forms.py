@@ -17,7 +17,7 @@ class ArchivFilterFormHelper(FormHelper):
         self.form_tag = False
         self.layout = Layout(
             Fieldset(
-                "Basic search options", "name", "part_of", css_id="basic_search_fields"
+                "", "name", "part_of", css_id="basic_search_fields"
             ),
             BS5Accordion(
                 AccordionGroup(
@@ -58,7 +58,7 @@ class BibliographyFilterFormHelper(FormHelper):
         self.form_tag = False
         self.layout = Layout(
             Fieldset(
-                "Basic search options",
+                "",
                 "author",
                 "publication_year",
                 "title",
@@ -112,7 +112,7 @@ class GlossaryFilterFormHelper(FormHelper):
         self.form_method = "GET"
         self.form_tag = False
         self.layout = Layout(
-            Fieldset("Basic search options", "id", css_id="basic_search_fields"),
+            Fieldset("", "id", css_id="basic_search_fields"),
             BS5Accordion(
                 AccordionGroup(
                     "Advanced search",
@@ -154,7 +154,7 @@ class PlaceFilterFormHelper(FormHelper):
         self.form_method = "GET"
         self.form_tag = False
         self.layout = Layout(
-            Fieldset("Basic search options", "name", css_id="basic_search_fields"),
+            Fieldset("", "name", css_id="basic_search_fields"),
             BS5Accordion(
                 AccordionGroup("Advanced search", "part_of", css_id="more"),
                 AccordionGroup(
@@ -191,7 +191,7 @@ class TabletFilterFormHelper(FormHelper):
         self.form_tag = False
         self.layout = Layout(
             Fieldset(
-                "Basic search options",
+                "",
                 "museum_id",
                 "cdli_no",
                 css_id="basic_search_fields",
