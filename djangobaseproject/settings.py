@@ -174,3 +174,11 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LEAFLET_CONFIG = {
+    "DEFAULT_CENTER": (33.1, 45.0),
+    "DEFAULT_ZOOM": 5,
+    "MIN_ZOOM": 3,
+    "MAX_ZOOM": 18,
+    "DEFAULT_PRECISION": 6,
+}
