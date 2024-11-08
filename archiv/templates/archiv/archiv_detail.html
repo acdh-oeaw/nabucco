@@ -9,52 +9,27 @@
 <div class="row justify-content-around">
   <div class="col-md-3">
     <h2>Basic Metadata</h2>
-    <table class="table table-responsive table-hover">
-      {% for x in object.field_dict %}
-      {% if x.name == "name" or x.verbose_name == "ID" or x.name == "paragraph" or x.name == "part_of" %}
-      <tr>
-        <th>
-          {% if x.verbose_name == "ID" %}
-          NaBuCCo ID
-          {% elif x.help_text %}
-          <abbr title="{{ x.help_text }}">{{ x.verbose_name }}</abbr>
-          {% else %}
-          {{ x.verbose_name }}
-          {% endif %}
-        </th>
-        <td>
-          {% if x.f_type == 'M2M' %}
-          {% for y in x.value %}
-          <li>
-            <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-          </li>
-          {% endfor %}
-          {% elif x.f_type == 'FK' %}
-          <a href="{{ x.value.get_absolute_url }}">{{ x.value }}</a>
-          {% elif x.f_type == 'REVRESE_RELATION' %}
-          {% for y in x.value %}
-          <li>
-            <a href="{{ y.get_absolute_url }}">{{ y }}</a>
-          </li>
-          {% endfor %}
-          {% elif x.f_type == 'SIMPLE' %}
-          {{ x.value }}
-          {% endif %}
-        </td>
-      </tr>
-      {% endif %}
-      {% endfor %}
-    </table>
+    <dl>
+      <dt>NaBuCCo ID</dt>
+      <dd>{{ object.id }}</dd>
+      <dt>Name</dt>
+      <dd>{{ object.name }}</dd>
+      <dt>Siglum according to GMTR 1</dt>
+      <dd>{{ object.paragraph }}</dd>
+      <dt>(Assumed) place of origin</dt>
+      <dd>
+        <a href="{{ object.part_of.get_absolute_url }}">{{ object.part_of }}</a>
+      </dd>
+    </dl>
   </div>
   <div class="col-md-4">
-        <h2> Archive description</h2>
-        <p>{{archiv.description|safe}}</p>
-       
-      {% if user.is_authenticated %}
-      <hr />
-        <h2>original data</h2>
-        <code>{{ object.orig_data_csv|safe }}</code>
-      {% endif %}
+    <h2> Archive description</h2>
+    <p>{{archiv.description|safe}}</p>
+    {% if user.is_authenticated %}
+    <hr />
+    <h2>original data</h2>
+    <code>{{ object.orig_data_csv|safe }}</code>
+    {% endif %}
   </div>
   <div class="col-md-3">
     <h2>{{ object.rvn_tablet_archiv_archiv.all|length }} related Tablets</h2>
