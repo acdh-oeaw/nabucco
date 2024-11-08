@@ -5,9 +5,10 @@ from django.db import models
 from django.urls import reverse
 
 from browsing.browsing_utils import model_to_dict
-from mptt.models import MPTTModel, TreeForeignKey
-
 from ckeditor.fields import RichTextField
+
+from mptt.models import MPTTModel, TreeForeignKey
+from next_prev import next_in_order, prev_in_order
 
 
 def set_extra(self, **kwargs):
@@ -89,9 +90,9 @@ class Archiv(models.Model):
 
     def __str__(self):
         if self.name:
-            return "{}".format(self.name)
+            return f"{self.name}"
         else:
-            return "{}".format(self.legacy_id)
+            return f"{self.legacy_id}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -122,15 +123,21 @@ class Archiv(models.Model):
         return reverse("archiv:archiv_edit", kwargs={"pk": self.id})
 
     def get_next(self):
-        next = self.__class__.objects.filter(id__gt=self.id)
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
         if next:
-            return reverse("archiv:archiv_detail", kwargs={"pk": next.first().id})
+            return reverse("archiv:archiv_detail", kwargs={"pk": next.id})
         return False
 
     def get_prev(self):
-        prev = self.__class__.objects.filter(id__lt=self.id).order_by("-id")
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
         if prev:
-            return reverse("archiv:archiv_detail", kwargs={"pk": prev.first().id})
+            return reverse("archiv:archiv_detail", kwargs={"pk": prev.id})
         return False
 
 
@@ -277,9 +284,9 @@ class Bibliography(models.Model):
 
     def __str__(self):
         if self.short_title:
-            return "{}".format(self.short_title)
+            return f"{self.short_title}"
         else:
-            return "{}".format(self.legacy_id)
+            return f"{self.legacy_id}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -310,15 +317,21 @@ class Bibliography(models.Model):
         return reverse("archiv:bibliography_edit", kwargs={"pk": self.id})
 
     def get_next(self):
-        next = self.__class__.objects.filter(id__gt=self.id)
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
         if next:
-            return reverse("archiv:bibliography_detail", kwargs={"pk": next.first().id})
+            return reverse("archiv:bibliography_detail", kwargs={"pk": next.id})
         return False
 
     def get_prev(self):
-        prev = self.__class__.objects.filter(id__lt=self.id).order_by("-id")
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
         if prev:
-            return reverse("archiv:bibliography_detail", kwargs={"pk": prev.first().id})
+            return reverse("archiv:bibliography_detail", kwargs={"pk": prev.id})
         return False
 
 
@@ -375,9 +388,9 @@ class Glossary(MPTTModel):
 
     def __str__(self):
         if self.pref_label:
-            return "{}".format(self.pref_label)
+            return f"{self.pref_label}"
         else:
-            return "{}".format(self.legacy_id)
+            return f"{self.legacy_id}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -408,15 +421,21 @@ class Glossary(MPTTModel):
         return reverse("archiv:glossary_edit", kwargs={"pk": self.id})
 
     def get_next(self):
-        next = self.__class__.objects.filter(id__gt=self.id)
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
         if next:
-            return reverse("archiv:glossary_detail", kwargs={"pk": next.first().id})
+            return reverse("archiv:glossary_detail", kwargs={"pk": next.id})
         return False
 
     def get_prev(self):
-        prev = self.__class__.objects.filter(id__lt=self.id).order_by("-id")
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
         if prev:
-            return reverse("archiv:glossary_detail", kwargs={"pk": prev.first().id})
+            return reverse("archiv:glossary_detail", kwargs={"pk": prev.id})
         return False
 
 
@@ -499,9 +518,9 @@ class Place(models.Model):
 
     def __str__(self):
         if self.name:
-            return "{}".format(self.name)
+            return f"{self.name}"
         else:
-            return "{}".format(self.legacy_id)
+            return f"{self.legacy_id}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -532,15 +551,21 @@ class Place(models.Model):
         return reverse("archiv:place_edit", kwargs={"pk": self.id})
 
     def get_next(self):
-        next = self.__class__.objects.filter(id__gt=self.id)
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
         if next:
-            return reverse("archiv:place_detail", kwargs={"pk": next.first().id})
+            return reverse("archiv:place_detail", kwargs={"pk": next.id})
         return False
 
     def get_prev(self):
-        prev = self.__class__.objects.filter(id__lt=self.id).order_by("-id")
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
         if prev:
-            return reverse("archiv:place_detail", kwargs={"pk": prev.first().id})
+            return reverse("archiv:place_detail", kwargs={"pk": prev.id})
         return False
 
 
@@ -813,15 +838,21 @@ class Tablet(models.Model):
         return reverse("archiv:tablet_edit", kwargs={"pk": self.id})
 
     def get_next(self):
-        next = self.__class__.objects.filter(id__gt=self.id)
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
         if next:
-            return reverse("archiv:tablet_detail", kwargs={"pk": next.first().id})
+            return reverse("archiv:tablet_detail", kwargs={"pk": next.id})
         return False
 
     def get_prev(self):
-        prev = self.__class__.objects.filter(id__lt=self.id).order_by("-id")
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
         if prev:
-            return reverse("archiv:tablet_detail", kwargs={"pk": prev.first().id})
+            return reverse("archiv:tablet_detail", kwargs={"pk": prev.id})
         return False
 
 
