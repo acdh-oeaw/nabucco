@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from browsing.browsing_utils import model_to_dict
+from browsing.utils import model_to_dict
 
 
 class ProjectInst(models.Model):

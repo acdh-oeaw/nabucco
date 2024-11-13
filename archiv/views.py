@@ -30,7 +30,7 @@ from .tables import (
     TabletTable,
 )
 from .models import Archiv, Bibliography, Glossary, Place, Tablet, Introduction
-from browsing.browsing_utils import (
+from browsing.utils import (
     GenericListView,
     BaseCreateView,
     BaseUpdateView,
@@ -38,35 +38,7 @@ from browsing.browsing_utils import (
 )
 
 
-class CustomDetailView(BaseDetailView):
-    template_name = "archiv/generic_detail.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(CustomDetailView, self).get_context_data()
-        context["verbose_name"] = self.model._meta.verbose_name
-        context["verbose_name_plural"] = self.model._meta.verbose_name_plural
-        return context
-
-
-class CustomListView(GenericListView):
-    h1 = ""
-    create_button_text = "Create new item"
-    template_name = "archiv/generic_list.html"
-    introduction = ""
-
-    def get_context_data(self, **kwargs):
-        context = super(CustomListView, self).get_context_data()
-        if self.h1:
-            context["h1"] = self.h1
-        else:
-            context["h1"] = f"Browse {self.model._meta.verbose_name_plural}"
-        context["create_button_text"] = self.create_button_text
-        context["verbose_name"] = self.model._meta.verbose_name
-        context["verbose_name_plural"] = self.model._meta.verbose_name_plural
-        return context
-
-
-class ArchivListView(CustomListView):
+class ArchivListView(GenericListView):
     model = Archiv
     filter_class = ArchivListFilter
     formhelper_class = ArchivFilterFormHelper
@@ -86,7 +58,7 @@ class ArchivListView(CustomListView):
         return context
 
 
-class ArchivDetailView(CustomDetailView):
+class ArchivDetailView(BaseDetailView):
 
     model = Archiv
     template_name = "archiv/archiv_detail.html"
@@ -122,7 +94,7 @@ class ArchivDelete(DeleteView):
         return super(ArchivDelete, self).dispatch(*args, **kwargs)
 
 
-class BibliographyListView(CustomListView):
+class BibliographyListView(GenericListView):
 
     model = Bibliography
     filter_class = BibliographyListFilter
@@ -137,7 +109,7 @@ class BibliographyListView(CustomListView):
     enable_merge = True
 
 
-class BibliographyDetailView(CustomDetailView):
+class BibliographyDetailView(BaseDetailView):
 
     model = Bibliography
     template_name = "archiv/biblio_detail.html"
@@ -187,7 +159,7 @@ class GlossaryListView(GenericListView):
     template_name = "archiv/glossary_list.html"
 
 
-class GlossaryDetailView(CustomDetailView):
+class GlossaryDetailView(BaseDetailView):
 
     model = Glossary
     template_name = "archiv/glossary_detail.html"
@@ -223,7 +195,7 @@ class GlossaryDelete(DeleteView):
         return super(GlossaryDelete, self).dispatch(*args, **kwargs)
 
 
-class PlaceListView(CustomListView):
+class PlaceListView(GenericListView):
 
     model = Place
     filter_class = PlaceListFilter
@@ -240,7 +212,7 @@ class PlaceListView(CustomListView):
         return context
 
 
-class PlaceDetailView(CustomDetailView):
+class PlaceDetailView(BaseDetailView):
 
     model = Place
     template_name = "archiv/place_detail.html"
@@ -276,7 +248,7 @@ class PlaceDelete(DeleteView):
         return super(PlaceDelete, self).dispatch(*args, **kwargs)
 
 
-class TabletListView(CustomListView):
+class TabletListView(GenericListView):
 
     model = Tablet
     filter_class = TabletListFilter
@@ -286,7 +258,7 @@ class TabletListView(CustomListView):
     enable_merge = True
 
 
-class TabletDetailView(CustomDetailView):
+class TabletDetailView(BaseDetailView):
 
     model = Tablet
     template_name = "archiv/tablet_detail.html"
