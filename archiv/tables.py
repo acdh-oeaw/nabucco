@@ -2,7 +2,23 @@
 import django_tables2 as tables
 
 from browsing.utils import MergeColumn
-from .models import Archiv, Bibliography, Glossary, Place, Tablet
+from .models import Archiv, Bibliography, Glossary, Place, Tablet, Dossier
+
+
+class DossierTable(tables.Table):
+
+    name = tables.LinkColumn(verbose_name="Name")
+    merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
+
+    class Meta:
+        model = Dossier
+        sequence = (
+            "id",
+            "name",
+            "archiv",
+            "description",
+        )
+        attrs = {"class": "table table-responsive table-hover"}
 
 
 class ArchivTable(tables.Table):

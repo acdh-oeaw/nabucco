@@ -496,6 +496,13 @@ class Place(models.Model):
         is_public=True,
         data_lookup="Title",
     )
+    pleiades_url = models.URLField(
+        max_length=50,
+        blank=True,
+        null=True,
+        verbose_name="Pleiades URL",
+        help_text="https://pleiades.stoa.org/",
+    )
     place_collection = models.CharField(
         max_length=250,
         blank=True,
@@ -659,6 +666,15 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Archive",
+    )
+    dossier = models.ForeignKey(
+        "Dossier",
+        related_name="rvn_tablet_archiv_dossier",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Dossier",
+        help_text="whatever",
     )
     mentioned_in_pub = models.ManyToManyField(
         "Bibliography",
@@ -865,3 +881,72 @@ class Introduction(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+class Dossier(models.Model):
+    name = models.CharField(
+        max_length=250,
+        default="generic dossier name (change me!)",
+        verbose_name="Name of Dossier",
+        help_text="whatever",
+    )
+    description = models.TextField(
+        blank=True, null=True, verbose_name="Description", help_text="whatever"
+    )
+    archiv = models.ForeignKey(
+        Archiv,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="has_dossier",
+        verbose_name="Archiv",
+        help_text="whatever",
+    )
+
+    class Meta:
+        ordering = [
+            "id",
+        ]
+        verbose_name = "Dossier"
+        verbose_name_plural = "Dossiers"
+
+    def __str__(self):
+        return f"{self.name}"
+
+    def field_dict(self):
+        return model_to_dict(self)
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse("archiv:dossier_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse("archiv:dossier_create")
+
+    def get_absolute_url(self):
+        return reverse("archiv:dossier_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse("archiv:dossier_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse("archiv:dossier_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse("archiv:dossier_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse("archiv:dossier_detail", kwargs={"pk": prev.id})
+        return False

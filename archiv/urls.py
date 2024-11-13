@@ -81,4 +81,17 @@ urlpatterns = [
         views.TabletDelete.as_view(),
         name="tablet_delete",
     ),
+    path("dossier/", views.DossierListView.as_view(), name="dossier_browse"),
+    path(
+        "dossier/detail/<int:pk>",
+        views.DossierDetailView.as_view(),
+        name="dossier_detail",
+    ),
+    path("dossier/create/", views.DossierCreate.as_view(), name="dossier_create"),
+    path("dossier/edit/<int:pk>", views.DossierUpdate.as_view(), name="dossier_edit"),
+    path(
+        "dossier/delete/<int:pk>",
+        views.DossierDelete.as_view(),
+        name="dossier_delete",
+    ),
 ]
