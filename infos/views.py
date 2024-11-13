@@ -8,7 +8,7 @@ from .filters import *
 from .forms import *
 from .tables import *
 from .models import *
-from browsing.browsing_utils import GenericListView, BaseCreateView, BaseUpdateView
+from browsing.utils import GenericListView, BaseCreateView, BaseUpdateView
 
 
 class TeamMemberListView(GenericListView):
