@@ -28,8 +28,9 @@ from .tables import (
     GlossaryTable,
     PlaceTable,
     TabletTable,
+    DossierTable,
 )
-from .models import Archiv, Bibliography, Glossary, Place, Tablet, Introduction
+from .models import Archiv, Bibliography, Glossary, Place, Tablet, Introduction, Dossier
 from browsing.utils import (
     GenericListView,
     BaseCreateView,
@@ -288,6 +289,49 @@ class TabletDelete(DeleteView):
     model = Tablet
     template_name = "webpage/confirm_delete.html"
     success_url = reverse_lazy("archiv:tablet_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TabletDelete, self).dispatch(*args, **kwargs)
+
+
+class DossierListView(GenericListView):
+
+    model = Dossier
+    init_columns = [
+        "name",
+    ]
+    enable_merge = True
+    table_class = DossierTable
+
+
+class DossierDetailView(BaseDetailView):
+
+    model = Dossier
+
+
+class DossierCreate(BaseCreateView):
+
+    model = Dossier
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(DossierCreate, self).dispatch(*args, **kwargs)
+
+
+class DossierUpdate(BaseUpdateView):
+
+    model = Dossier
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(DossierUpdate, self).dispatch(*args, **kwargs)
+
+
+class DossierDelete(DeleteView):
+    model = Dossier
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:dossier_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

@@ -25,6 +25,10 @@
         <dt>Description</dt>
         <dd>{{ object.description|safe }}</dd>
         {% endif %}
+        {% if object.pleiades_url %}
+        <dt>Pleiades</dt>
+        <dd><a href="{{ object.pleiades_url }}">{{ object.pleiades_url }}</a></dd>
+        {% endif %}
         {% if object.lng %}
         <dt>Coordinates</dt>
         <dd><span id="lng">{{ object.lng }}</span> <span id="lat">{{ object.lat }}</span></dd>

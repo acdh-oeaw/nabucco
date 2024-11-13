@@ -35,6 +35,12 @@
               {{ object.archiv }}
             </a>
           </dd>
+          <dt>Dossier</dt>
+          <dd>
+            <a href="{{ object.dossier.get_absolute_url }}">
+              {{ object.dossier }}
+            </a>
+          </dd>
           <dt>Period</dt>
           <dd>{{ object.period }}</dd>
           <dt>Year BCE</dt>
