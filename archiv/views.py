@@ -34,8 +34,7 @@ from browsing.utils import (
     GenericListView,
     BaseCreateView,
     BaseUpdateView,
-    BaseDetailView
-    
+    BaseDetailView,
 )
 
 
