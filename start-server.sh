@@ -1,12 +1,6 @@
-#!/usr/bin/env bash
-# start-server.sh
 echo "Hello from Project Nabucco"
 python manage.py collectstatic --no-input
-if [ -n "$MIGRATE" ] ; then
-    (echo "making migrations and running them"
-    python manage.py makemigrations --no-input
-    python manage.py migrate --no-input)
-fi
+echo "running any pending migrations"
 if [ -n "$DJANGO_SUPERUSER_USERNAME" ] && [ -n "$DJANGO_SUPERUSER_PASSWORD" ] ; then
     (echo "creating superuser ${DJANGO_SUPERUSER_USERNAME}" && python manage.py createsuperuser --no-input --noinput --email 'blank@email.com')
 fi
