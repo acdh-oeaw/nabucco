@@ -43,6 +43,10 @@
           </dd>
           <dt>Period</dt>
           <dd>{{ object.period }}</dd>
+          {% if object.inferred_date %}
+          <dt>Inferred date</dt>
+          <dd>{{ object.inferred_date }}</dd>
+          {% endif %}
           <dt>Year BCE</dt>
           <dd>{{ object.julian_date_year }}</dd>
           <dt>Editio princeps</dt>
