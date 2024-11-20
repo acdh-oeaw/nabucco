@@ -94,4 +94,3 @@ class TabletTable(tables.Table):
             "text_number",
             "period",
         )
-    
