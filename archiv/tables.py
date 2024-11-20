@@ -18,7 +18,6 @@ class DossierTable(tables.Table):
             "archiv",
             "description",
         )
-        attrs = {"class": "table table-responsive table-hover"}
 
 
 class ArchivTable(tables.Table):
@@ -33,7 +32,6 @@ class ArchivTable(tables.Table):
             "alt_name",
             "part_of",
         )
-        attrs = {"class": "table table-responsive table-hover"}
 
 
 class BibliographyTable(tables.Table):
@@ -52,7 +50,6 @@ class BibliographyTable(tables.Table):
             "title",
             "short_title",
         )
-        attrs = {"class": "table table-responsive table-hover"}
 
 
 class GlossaryTable(tables.Table):
@@ -63,7 +60,6 @@ class GlossaryTable(tables.Table):
     class Meta:
         model = Glossary
         sequence = ("pref_label",)
-        attrs = {"class": "table table-responsive table-hover"}
 
 
 class PlaceTable(tables.Table):
@@ -74,19 +70,27 @@ class PlaceTable(tables.Table):
     class Meta:
         model = Place
         sequence = ("name",)
-        attrs = {"class": "table table-responsive table-hover"}
 
 
 class TabletTable(tables.Table):
-
+    id = tables.LinkColumn(verbose_name="ID")
     museum_id = tables.LinkColumn(verbose_name="Museum No.")
     merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
-    mentioned_place = tables.columns.ManyToManyColumn()
-    key_word = tables.columns.ManyToManyColumn()
-    mentioned_archiv = tables.columns.ManyToManyColumn()
-    mentioned_in_pub = tables.columns.ManyToManyColumn()
+    mentioned_place = tables.columns.ManyToManyColumn(
+        verbose_name="Place mentioned on Tablet"
+    )
+    mentioned_archiv = tables.columns.ManyToManyColumn(
+        verbose_name="Archiv mentioned on Tablet"
+    )
+    mentioned_in_pub = tables.columns.ManyToManyColumn(
+        verbose_name="Mentioned in Publication"
+    )
 
     class Meta:
         model = Tablet
-        sequence = ("id",)
-        attrs = {"class": "table table-responsive table-hover"}
+        sequence = (
+            "id",
+            "publication_name",
+            "text_number",
+            "period",
+        )
