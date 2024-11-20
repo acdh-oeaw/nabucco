@@ -68,7 +68,7 @@ class Archiv(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Alternative name",
-        help_text="whatever",
+        help_text="different name found in publications",
     ).set_extra(
         is_public=True,
         data_lookup="Alternative name",
@@ -155,7 +155,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Short Title",
-        help_text="whatever",
+        help_text="abbreviated title according to Archiv für Orientforschung",
     ).set_extra(
         is_public=True,
         data_lookup="Short title",
@@ -164,7 +164,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Author",
-        help_text="whatever",
+        help_text="author(s) of the publication",
     ).set_extra(
         is_public=True,
         data_lookup="Author",
@@ -173,7 +173,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Publication year",
-        help_text="whatever",
+        help_text="year in which it was published",
     ).set_extra(
         is_public=True,
         data_lookup="Publication year",
@@ -182,7 +182,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Title",
-        help_text="whatever",
+        help_text="title of the publication",
     ).set_extra(
         is_public=True,
         data_lookup="Title",
@@ -191,7 +191,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Volume no.",
-        help_text="whatever",
+        help_text="issue of journal or series",
     ).set_extra(
         is_public=True,
         data_lookup="Volume no.",
@@ -200,7 +200,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Pages",
-        help_text="whatever",
+        help_text="pages in journal or sammelschrift",
     ).set_extra(
         is_public=True,
         data_lookup="Pages",
@@ -209,7 +209,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Journal",
-        help_text="whatever",
+        help_text="name of journal",
     ).set_extra(
         is_public=True,
         data_lookup="Journal",
@@ -218,7 +218,7 @@ class Bibliography(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Editor",
-        help_text="whatever",
+        help_text="editor(s) of the publication",
     ).set_extra(
         is_public=True,
         data_lookup="Editor",
@@ -367,7 +367,7 @@ class Glossary(MPTTModel):
         max_length=250,
         blank=True,
         verbose_name="Title",
-        help_text="whatever",
+        help_text="name of type of document",
     ).set_extra(
         is_public=True,
         data_lookup="Title",
@@ -466,12 +466,14 @@ class Place(models.Model):
     lng = models.FloatField(
         blank=True,
         null=True,
+        verbose_name="Longitude",
     ).set_extra(
         is_public=True,
     )
     lat = models.FloatField(
         blank=True,
         null=True,
+        verbose_name="Latitude",
     ).set_extra(
         is_public=True,
     )
@@ -590,7 +592,7 @@ class Tablet(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Museum No.",
-        help_text="whatever",
+        help_text="Accession or collection number in museum",
     ).set_extra(
         is_public=True,
         data_lookup="Museum No.",
@@ -611,7 +613,7 @@ class Tablet(models.Model):
         null=True,
         blank=True,
         verbose_name="Place of issue",
-        help_text="whatever",
+        help_text="select place of issue as specified on tablet",
     ).set_extra(
         is_public=True,
         data_lookup="Place of issue",
@@ -632,7 +634,7 @@ class Tablet(models.Model):
         null=True,
         blank=True,
         verbose_name="Type and content",
-        help_text="whatever",
+        help_text="select corresponding type of document",
     ).set_extra(
         is_public=True,
         data_lookup="Type and content",
@@ -650,7 +652,7 @@ class Tablet(models.Model):
         blank=True,
         null=True,
         verbose_name="Transliteration",
-        help_text="whatever",
+        help_text="transliterated text or link to transliteration (achemenet.com)",
     ).set_extra(
         is_public=True,
         data_lookup="Transliteration",
@@ -662,7 +664,7 @@ class Tablet(models.Model):
         null=True,
         blank=True,
         verbose_name="Archive",
-        help_text="whatever",
+        help_text="select corresponding archive",
     ).set_extra(
         is_public=True,
         data_lookup="Archive",
@@ -674,7 +676,7 @@ class Tablet(models.Model):
         null=True,
         blank=True,
         verbose_name="Dossier",
-        help_text="whatever",
+        help_text="select corresponding dossier within archive",
     )
     mentioned_in_pub = models.ManyToManyField(
         "Bibliography",
@@ -689,7 +691,7 @@ class Tablet(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Publication name",
-        help_text="whatever",
+        help_text="primary publication (abbreviation)",
     ).set_extra(
         is_public=True,
         data_lookup="Publication",
@@ -698,7 +700,7 @@ class Tablet(models.Model):
         max_length=250,
         blank=True,
         verbose_name="Text number",
-        help_text="whatever",
+        help_text="text number within primary publication",
     ).set_extra(
         is_public=True,
         data_lookup="Text number",
@@ -716,7 +718,7 @@ class Tablet(models.Model):
         choices=PERIOD_CHOICES,
         default="-",
         verbose_name="Period",
-        help_text="whatever",
+        help_text="select period in which the tablet was issued",
     ).set_extra(
         is_public=True,
         data_lookup="Period",
