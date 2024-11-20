@@ -215,6 +215,7 @@ class TabletFilterFormHelper(FormHelper):
                     "king",
                     "julian_date_year",
                     "bibliography",
+                    "inferred_date",
                     css_id="more",
                 ),
                 AccordionGroup(

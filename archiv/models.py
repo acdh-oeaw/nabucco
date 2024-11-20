@@ -797,6 +797,12 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Julian date year",
     )
+    inferred_date = models.CharField(
+        max_length=250,
+        blank=True,
+        verbose_name="Inferred date",
+        help_text="date range on basis of context and prosopography",
+    )
     bibliography = models.CharField(
         max_length=250,
         blank=True,
