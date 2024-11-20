@@ -60,12 +60,12 @@ class BibliographyFilterFormHelper(FormHelper):
                 "author",
                 "publication_year",
                 "title",
+                "short_title",
                 css_id="basic_search_fields",
             ),
             BS5Accordion(
                 AccordionGroup(
                     "Advanced search",
-                    "short_title",
                     "volume_nr",
                     "pages",
                     "journal",
@@ -188,6 +188,8 @@ class TabletFilterFormHelper(FormHelper):
         self.layout = Layout(
             Fieldset(
                 "",
+                "publication_name",
+                "text_number",
                 "museum_id",
                 "cdli_no",
                 css_id="basic_search_fields",
@@ -204,8 +206,6 @@ class TabletFilterFormHelper(FormHelper):
                     "transliteration",
                     "archiv",
                     "mentioned_in_pub",
-                    "publication_name",
-                    "text_number",
                     "period",
                     "day",
                     "month",

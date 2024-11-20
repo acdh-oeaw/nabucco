@@ -315,10 +315,17 @@ class TabletListFilter(django_filters.FilterSet):
             url="archiv-ac:bibliography-autocomplete",
         ),
     )
-    publication_name = django_filters.CharFilter(
+    publication_name = (
+        django_filters.CharFilter(
+            lookup_expr="icontains",
+            help_text=Tablet._meta.get_field("publication_name").help_text,
+            label=Tablet._meta.get_field("publication_name").verbose_name,
+        ),
+    )
+    text_number = django_filters.CharFilter(
         lookup_expr="icontains",
-        help_text=Tablet._meta.get_field("publication_name").help_text,
-        label=Tablet._meta.get_field("publication_name").verbose_name,
+        help_text=Tablet._meta.get_field("text_number").help_text,
+        label=Tablet._meta.get_field("text_number").verbose_name,
     )
     period = django_filters.CharFilter(
         lookup_expr="icontains",
