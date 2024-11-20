@@ -223,15 +223,6 @@ class Bibliography(models.Model):
         is_public=True,
         data_lookup="Editor",
     )
-    book = models.CharField(
-        max_length=250,
-        blank=True,
-        verbose_name="Book",
-        help_text="whatever",
-    ).set_extra(
-        is_public=True,
-        data_lookup="Book",
-    )
     mentioned_place = models.ManyToManyField(
         "Place",
         related_name="rvn_bibliography_mentioned_place_place",
@@ -256,14 +247,6 @@ class Bibliography(models.Model):
         blank=True,
         verbose_name="mentioned_glossary_item",
         help_text="mentioned_glossary_item",
-    ).set_extra(
-        is_public=True,
-    )
-    related_publications = models.CharField(
-        max_length=250,
-        blank=True,
-        verbose_name="related_publications",
-        help_text="whatever",
     ).set_extra(
         is_public=True,
     )
