@@ -101,11 +101,6 @@ class BibliographyListFilter(django_filters.FilterSet):
         help_text=Bibliography._meta.get_field("editor").help_text,
         label=Bibliography._meta.get_field("editor").verbose_name,
     )
-    book = django_filters.CharFilter(
-        lookup_expr="icontains",
-        help_text=Bibliography._meta.get_field("book").help_text,
-        label=Bibliography._meta.get_field("book").verbose_name,
-    )
     mentioned_place = django_filters.ModelMultipleChoiceFilter(
         queryset=Place.objects.all(),
         help_text=Bibliography._meta.get_field("mentioned_place").help_text,
@@ -130,11 +125,6 @@ class BibliographyListFilter(django_filters.FilterSet):
             url="archiv-ac:glossary-autocomplete",
         ),
     )
-    related_publications = django_filters.CharFilter(
-        lookup_expr="icontains",
-        help_text=Bibliography._meta.get_field("related_publications").help_text,
-        label=Bibliography._meta.get_field("related_publications").verbose_name,
-    )
 
     class Meta:
         model = Bibliography
@@ -150,11 +140,9 @@ class BibliographyListFilter(django_filters.FilterSet):
             "pages",
             "journal",
             "editor",
-            "book",
             "mentioned_place",
             "mentioned_archive",
             "mentioned_glossary_item",
-            "related_publications",
         ]
 
 

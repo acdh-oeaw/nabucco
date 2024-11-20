@@ -70,11 +70,9 @@ class BibliographyFilterFormHelper(FormHelper):
                     "pages",
                     "journal",
                     "editor",
-                    "book",
                     "mentioned_place",
                     "mentioned_archive",
                     "mentioned_glossary_item",
-                    "related_publications",
                     css_id="more",
                 ),
                 AccordionGroup(
