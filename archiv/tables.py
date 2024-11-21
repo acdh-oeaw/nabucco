@@ -92,5 +92,9 @@ class TabletTable(tables.Table):
             "id",
             "publication_name",
             "text_number",
+            "museum_id",
+            "type_content",
+            "archiv",
+            "place_of_issue",
             "period",
         )

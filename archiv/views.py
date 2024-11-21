@@ -255,7 +255,16 @@ class TabletListView(GenericListView):
     filter_class = TabletListFilter
     formhelper_class = TabletFilterFormHelper
     table_class = TabletTable
-    init_columns = ["id", "publication_name", "text_number", "period"]
+    init_columns = [
+        "id",
+        "publication_name",
+        "text_number",
+        "museum_id",
+        "type_content",
+        "archiv",
+        "place_of_issue",
+        "period",
+    ]
     enable_merge = True
 
 
