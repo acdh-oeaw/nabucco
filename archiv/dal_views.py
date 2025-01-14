@@ -50,6 +50,15 @@ class PlaceAC(autocomplete.Select2QuerySetView):
         return qs
 
 
+class RegionAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Place.objects.filter(part_of__isnull=True)
+
+        if self.q:
+            qs = qs.filter(Q(legacy_id__icontains=self.q) | Q(name__icontains=self.q))
+        return qs
+
+
 class TabletAC(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Tablet.objects.all()

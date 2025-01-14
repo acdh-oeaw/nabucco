@@ -190,7 +190,7 @@ class PlaceListFilter(django_filters.FilterSet):
         help_text=Place._meta.get_field("part_of").help_text,
         label=Place._meta.get_field("part_of").verbose_name.capitalize(),
         widget=autocomplete.Select2Multiple(
-            url="archiv-ac:place-autocomplete",
+            url="archiv-ac:region-autocomplete",
         ),
     )
     place_collection = django_filters.CharFilter(
