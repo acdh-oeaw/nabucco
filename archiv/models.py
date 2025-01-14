@@ -511,6 +511,11 @@ class Place(models.Model):
         else:
             return f"{self.legacy_id}"
 
+    def save(self, *args, **kwargs):
+        if self.legacy_id and not self.name:
+            self.name = self.legacy_id
+        super(Place, self).save(*args, **kwargs)
+
     def field_dict(self):
         return model_to_dict(self)
 

@@ -63,7 +63,7 @@ class GlossaryTable(tables.Table):
 
 
 class PlaceTable(tables.Table):
-
+    id = tables.LinkColumn(verbose_name="Nabucco ID")
     name = tables.LinkColumn(verbose_name="Name")
     merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
 
