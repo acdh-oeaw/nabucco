@@ -73,7 +73,7 @@ INSTALLED_APPS = [
     "webpage",
     "archiv",
     "digeanna",
-    "ckeditor",
+    "tinymce",
 ]
 
 MIDDLEWARE = [

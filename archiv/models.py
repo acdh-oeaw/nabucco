@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from browsing.utils import model_to_dict
-from ckeditor.fields import RichTextField
+from tinymce.models import HTMLField
 
 from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
@@ -29,7 +29,7 @@ class Archiv(models.Model):
         is_public=True,
         data_lookup="Archive id",
     )
-    description = RichTextField(
+    description = HTMLField(
         default="A short description of the archive",
         blank=True,
         verbose_name="Archive Description",
@@ -440,7 +440,7 @@ class Place(models.Model):
         is_public=True,
         data_lookup="Place name",
     )
-    description = RichTextField(
+    description = HTMLField(
         default="Add information on the location",
         blank=True,
         null=True,
@@ -627,7 +627,7 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Type and content",
     )
-    paraphrase = RichTextField(
+    paraphrase = HTMLField(
         blank=True,
         null=True,
         verbose_name="Paraphrase",
@@ -866,7 +866,7 @@ class Tablet(models.Model):
 
 
 class Introduction(models.Model):
-    intro_text = RichTextField(
+    intro_text = HTMLField(
         default="Add brief introductory text",
         blank=True,
     )
