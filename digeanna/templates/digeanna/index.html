@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load stats_extras %}
+{% load webpage_extras %}
+{% block title %}DigEanna{% endblock %}
+{% block content %}
+<style>
+    .jumbotron-background {
+        background-image: url("{% static 'digeanna/img/title-image.jpg' %}");
+    }
+</style>
+<div class="my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-1 jumbotron-background">
+      <h1 class="display-1 p-5">DigEanna</h1>
+      <h2 class="display-3 text-light">A Digitalization of the Eanna Archive</h2>
+      <p class="container lead fs-2">
+        DigEanna offers a comprehensive investigation of cuneiform texts regarding the Eanna temple at Uruk as a body of documentary data, i.e. an ‘archive’.
+      </p>
+      <div class="d-inline-flex gap-2 mb-5 pt-5">
+        <a class="btn btn-outline-light btn-lg px-4" type="button" href="{% url 'digeanna:about' %}">
+          About the Project
+        </a>
+        <a class="btn btn-outline-light btn-lg px-4" type="button" href="{% url 'archiv:tablet_browse' %}">
+          Browse the Tablets
+        </a>
+      </div>
+      <p class="text-light pt-5 container">
+        Vorderasiatisches Museum (Near East Museum), Berlin<br>© <a href="https://commons.wikimedia.org/wiki/File:Vorderasiatisches_Museum_Berlin_056.jpg" class="text-light">Einsamer Schütze</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" class="text-light">CC BY-SA 3.0</a>, via Wikimedia Commons</p>
+    </div>
+  </div>
+  <div class="text-center p-5">
+    <h3>How to quote</h3>
+    <blockquote class="blockquote">
+      <p>J. Hackl, M. Jursa, M. Sandowicz (eds.), DigEanna. A Digitalization of the Eanna Archive. {% now "Y-m-d" %} <a href="https://nabucco.acdh.oeaw.ac.at/digeanna">https://nabucco.acdh.oeaw.ac.at/digeanna</a></p>
+    </blockquote>
+  </div>
+{% endblock %}
+
+<a href="https://commons.wikimedia.org/wiki/File:Vorderasiatisches_Museum_Berlin_056.jpg">Einsamer Schütze</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons
