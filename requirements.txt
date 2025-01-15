@@ -4,6 +4,7 @@ crispy-bootstrap5
 Django>=5.0,<6
 django-autocomplete-light
 django-tinymce
+django-ckeditor  # needed for migrations
 django-leaflet
 django-next-prev>=1.1.0,<2
 django-mptt
