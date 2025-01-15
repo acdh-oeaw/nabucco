@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     "infos",
     "webpage",
     "archiv",
+    "digeanna",
     "ckeditor",
 ]
 
