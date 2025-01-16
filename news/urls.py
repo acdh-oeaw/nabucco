@@ -5,6 +5,7 @@ from . import views
 app_name = "news"
 
 urlpatterns = [
+    path("", views.NewsEntryListView.as_view(), name="list"),
     path(
         "<int:pk>",
         views.NewsEntryDetailView.as_view(),

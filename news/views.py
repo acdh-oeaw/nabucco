@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.views.generic.list import ListView
 from django.utils.decorators import method_decorator
 from browsing.utils import (
     BaseDetailView,
@@ -8,9 +9,13 @@ from browsing.utils import (
 from news.models import NewsEntry
 
 
+class NewsEntryListView(ListView):
+    model = NewsEntry
+
+
 class NewsEntryDetailView(BaseDetailView):
     model = NewsEntry
-    template_name = "news/news_detail.html"
+    template_name = "news/newsentry_detail.html"
 
 
 class NewsEntryCreate(BaseCreateView):

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% load webpage_extras %}
+{% block title %}News{% endblock %}
+{% block content %}
+<div class="container pt-3">
+    <h1 class="display-2 p-3 text-center">News</h1>
+    <div>
+        {% for x in object_list %}
+        <div>
+            <h2>{{ x.title }}</h2>
+            <p>{{ x.text|safe }}</p>
+
+            <p class="text-end text-muted">
+                By {{ x.created_by }}<br/>
+                last modified: {{ x.updated }}{% if user.is_authenticated %}<br/>
+                <a href="{{ x.get_edit_url }}">
+                    <i class="fs-3 bi bi-pencil-square" title="edit entry" aria-hidden="true"></i>
+                    <span class="visually-hidden">edit entry</span>
+                </a>{% endif %}
+            </p>
+        </div>
+        <hr />
+        {% endfor %}
+    </div>
+{% endblock %}

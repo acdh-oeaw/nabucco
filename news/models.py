@@ -32,7 +32,7 @@ class NewsEntry(models.Model):
 
     @classmethod
     def get_listview_url(self):
-        return "/"
+        return reverse_lazy("news:list")
 
     @classmethod
     def get_createview_url(self):
