@@ -33,13 +33,16 @@ class NewsEntry(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse_lazy("news:detail", kwargs={"pk": self.id})
+
     def get_next(self):
         try:
             next = next_in_order(self)
         except ValueError:
             return False
         if next:
-            return reverse_lazy("news:news_detail", kwargs={"pk": next.id})
+            return reverse_lazy("news:detail", kwargs={"pk": next.id})
         return False
 
     def get_prev(self):
@@ -48,5 +51,5 @@ class NewsEntry(models.Model):
         except ValueError:
             return False
         if prev:
-            return reverse_lazy("news:news_detail", kwargs={"pk": prev.id})
+            return reverse_lazy("news:detail", kwargs={"pk": prev.id})
         return False

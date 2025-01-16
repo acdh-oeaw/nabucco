@@ -4,6 +4,6 @@ from browsing.utils import (
 from news.models import NewsEntry
 
 
-class NewsEntryDetailViews(BaseDetailView):
+class NewsEntryDetailView(BaseDetailView):
     model = NewsEntry
     template_name = "news/news_detail.html"
