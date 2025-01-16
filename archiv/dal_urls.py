@@ -17,8 +17,9 @@ urlpatterns = [
         name="glossary-autocomplete",
     ),
     path("place-autocomplete/", dal_views.PlaceAC.as_view(), name="place-autocomplete"),
-    path("region-autocomplete/", dal_views.RegionAC.as_view(), name="region-autocomplete"),
-
+    path(
+        "region-autocomplete/", dal_views.RegionAC.as_view(), name="region-autocomplete"
+    ),
     path(
         "tablet-autocomplete/", dal_views.TabletAC.as_view(), name="tablet-autocomplete"
     ),
