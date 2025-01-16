@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse_lazy
 from tinymce.models import HTMLField
+from next_prev import next_in_order, prev_in_order
 
 
 class NewsEntry(models.Model):
@@ -20,5 +22,31 @@ class NewsEntry(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+
+        ordering = [
+            "updated",
+        ]
+        verbose_name = "News Entry"
+        verbose_name_plural = "News Entries"
+
     def __str__(self):
         return self.title
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("news:news_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("news:news_detail", kwargs={"pk": prev.id})
+        return False

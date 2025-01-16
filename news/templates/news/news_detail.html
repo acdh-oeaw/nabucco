@@ -1,0 +1,13 @@
+{% extends "archiv/generic_detail.html" %}
+{% load static %}
+
+{% load webpage_extras %}
+{% block title %}{{ object }}{% endblock %}
+
+{% block custom %}
+
+<div class="container">
+    {{ object.text|safe }}
+</div>
+
+{% endblock %}

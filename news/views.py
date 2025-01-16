@@ -1,3 +1,9 @@
-# from django.shortcuts import render
+from browsing.utils import (
+    BaseDetailView,
+)
+from news.models import NewsEntry
 
-# Create your views here.
+
+class NewsEntryDetailViews(BaseDetailView):
+    model = NewsEntry
+    template_name = "news/news_detail.html"
