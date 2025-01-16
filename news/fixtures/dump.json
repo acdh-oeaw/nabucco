@@ -1,0 +1,42 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "lasdöjfljdslfjsdalfjdölfjsdlföj=",
+        "last_login": "2025-01-16T11:25:53.038Z",
+        "is_superuser": true,
+        "username": "pandorfer",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-02-09T08:46:47.653Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "news.newsentry",
+    "pk": 1,
+    "fields": {
+        "title": "First entry",
+        "text": "<div>\r\n<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n</div>",
+        "created_by": 1,
+        "created": "2025-01-16T08:05:01.820Z",
+        "updated": "2025-01-16T11:09:17.435Z"
+    }
+},
+{
+    "model": "news.newsentry",
+    "pk": 2,
+    "fields": {
+        "title": "Cool second post",
+        "text": "<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>\r\n<p>But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable</p>",
+        "created_by": 1,
+        "created": "2025-01-16T08:05:34.765Z",
+        "updated": "2025-01-16T11:09:03.801Z"
+    }
+}
+]

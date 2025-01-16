@@ -28,8 +28,26 @@
         Vorderasiatisches Museum (Near East Museum), Berlin<br>© <a href="https://commons.wikimedia.org/wiki/File:Vorderasiatisches_Museum_Berlin_056.jpg" class="text-light">Einsamer Schütze</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" class="text-light">CC BY-SA 3.0</a>, via Wikimedia Commons</p>
     </div>
   </div>
+  
+  <div class="container pt-3">
+    <h2 class="text-center">Latest News</h2>
+    {% for x in news %}
+      <div>
+        <h3>{{ x.title }}</h3>
+        <p>{{ x.text|safe }}</p>
+        <p class="text-end text-muted">
+            By {{ x.created_by }}<br/>
+            last modified: {{ x.updated }}{% if user.is_authenticated %}<br/>
+            <a href="{{ x.get_edit_url }}">
+                <i class="fs-3 bi bi-pencil-square" title="edit entry" aria-hidden="true"></i>
+                <span class="visually-hidden">edit entry</span>
+            </a>{% endif %}
+        </p>
+    </div>
+    {% endfor %}
+  </div>
   <div class="text-center p-5">
-    <h3>How to quote</h3>
+    <h2>How to quote</h2>
     <blockquote class="blockquote">
       <p>J. Hackl, M. Jursa, M. Sandowicz (eds.), DigEanna. A Digitalization of the Eanna Archive. {% now "Y-m-d" %} <a href="https://nabucco.acdh.oeaw.ac.at/digeanna">https://nabucco.acdh.oeaw.ac.at/digeanna</a></p>
     </blockquote>
