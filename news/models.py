@@ -30,11 +30,22 @@ class NewsEntry(models.Model):
         verbose_name = "News Entry"
         verbose_name_plural = "News Entries"
 
+    @classmethod
+    def get_listview_url(self):
+        return "/"
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("news:create")
+
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse_lazy("news:detail", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("news:edit", kwargs={"pk": self.id})
 
     def get_next(self):
         try:
