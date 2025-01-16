@@ -4,7 +4,16 @@
 {% block title %}News{% endblock %}
 {% block content %}
 <div class="container pt-3">
-    <h1 class="display-2 p-3 text-center">News</h1>
+    <h1 class="display-2 text-center">News</h1>
+    {% if user.is_authenticated %}
+    <div class="text-center">
+        <a href="{% url 'news:create' %}">
+            <i class="fs-1 bi bi-plus" title="create new entry" aria-hidden="true"></i>
+            <span class="visually-hidden">create new entry</span>
+        </a>
+    </div>
+    {% endif %}
+    
     <div>
         {% for x in object_list %}
         <div>
