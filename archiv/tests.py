@@ -2,6 +2,8 @@ from django.apps import apps
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 
+from archiv.models import Tablet
+
 MODELS = list(apps.all_models["archiv"].values())
 intro = apps.get_model("archiv", "introduction")
 to_check = [x for x in MODELS if x != intro]
@@ -73,3 +75,8 @@ class ArchivTestCase(TestCase):
             if url:
                 response = client.get(url, {"pk": item.id})
                 self.assertEqual(response.status_code, 200)
+
+    def test_007_custom_manager(self):
+        all_items = Tablet.objects.all().count()
+        digeanna_items = Tablet.digeanna_objects.all().count()
+        self.assertGreater(all_items, digeanna_items)

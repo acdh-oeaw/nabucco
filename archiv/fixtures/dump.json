@@ -1,19 +1,35 @@
 [
     {
         "fields": {
-            "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
-            "lat": null,
-            "legacy_id": "Uruk",
-            "legacy_pk": 61,
-            "lng": null,
-            "name": "Uruk",
-            "orig_data_csv": "{\"place id\": 61, \"parent id\": 4, \"place name\": \"Uruk\", \"related objects\": NaN, \"title\": \"Uruk\"}",
-            "part_of": null,
-            "place_collection": "",
-            "title": "Uruk"
+            "broader_concept": null,
+            "legacy_id": "Administrative",
+            "legacy_pk": 1192,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": "{\"concept id\": 1192, \"label\": \"Administrative\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Administrative\", \"related objects\": NaN}",
+            "pref_label": "Administrative",
+            "rght": 36,
+            "title": "Administrative",
+            "tree_id": 8
         },
-        "model": "archiv.place",
-        "pk": 3
+        "model": "archiv.glossary",
+        "pk": 136
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "Legal - Permanent",
+            "legacy_pk": 814,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": "{\"concept id\": 814, \"label\": \"Legal - Permanent\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Legal - Permanent\", \"related objects\": NaN}",
+            "pref_label": "Legal - Permanent",
+            "rght": 26,
+            "title": "Legal - Permanent",
+            "tree_id": 28
+        },
+        "model": "archiv.glossary",
+        "pk": 156
     },
     {
         "fields": {
@@ -26,6 +42,7 @@
             "orig_data_csv": "{\"place id\": 67, \"parent id\": 4, \"place name\": \"Ur\", \"related objects\": NaN, \"title\": \"Ur\"}",
             "part_of": null,
             "place_collection": "",
+            "pleiades_url": null,
             "title": "Ur"
         },
         "model": "archiv.place",
@@ -42,10 +59,60 @@
             "orig_data_csv": "{\"place id\": 40, \"parent id\": 4, \"place name\": \"Nippur\", \"related objects\": 1225.0, \"title\": \"Nippur\"}",
             "part_of": null,
             "place_collection": "",
+            "pleiades_url": null,
             "title": "Nippur"
         },
         "model": "archiv.place",
         "pk": 10
+    },
+    {
+        "fields": {
+            "broader_concept": 136,
+            "legacy_id": "Inventories",
+            "legacy_pk": 1543,
+            "level": 1,
+            "lft": 20,
+            "orig_data_csv": "{\"concept id\": 1543, \"label\": \"Inventories\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Inventory\", \"related objects\": NaN}",
+            "pref_label": "Inventories",
+            "rght": 25,
+            "title": "Inventory",
+            "tree_id": 8
+        },
+        "model": "archiv.glossary",
+        "pk": 141
+    },
+    {
+        "fields": {
+            "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
+            "lat": null,
+            "legacy_id": "Uruk",
+            "legacy_pk": 61,
+            "lng": null,
+            "name": "Uruk",
+            "orig_data_csv": "{\"place id\": 61, \"parent id\": 4, \"place name\": \"Uruk\", \"related objects\": NaN, \"title\": \"Uruk\"}",
+            "part_of": null,
+            "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/912986",
+            "title": "Uruk"
+        },
+        "model": "archiv.place",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "broader_concept": null,
+            "legacy_id": "Legal - Temporary",
+            "legacy_pk": 817,
+            "level": 0,
+            "lft": 1,
+            "orig_data_csv": "{\"concept id\": 817, \"label\": \"Legal - Temporary\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Legal - Temporary\", \"related objects\": NaN}",
+            "pref_label": "Legal - Temporary",
+            "rght": 30,
+            "title": "Legal - Temporary",
+            "tree_id": 24
+        },
+        "model": "archiv.glossary",
+        "pk": 152
     },
     {
         "fields": {
@@ -55,9 +122,10 @@
             "legacy_pk": 37,
             "lng": null,
             "name": "Babylon",
-            "orig_data_csv": "{\"place id\": 37, \"parent id\": 4, \"place name\": \"Babylon (Region)\", \"related objects\": 2355.0, \"title\": \"Babylon (Region)\"}",
+            "orig_data_csv": "{\"place id\": 37, \"parent id\": 4, \"place name\": \"Babylon\", \"related objects\": 2355.0, \"title\": \"Babylon\"}",
             "part_of": null,
             "place_collection": "",
+            "pleiades_url": null,
             "title": "Babylon"
         },
         "model": "archiv.place",
@@ -65,13 +133,33 @@
     },
     {
         "fields": {
+            "author": "Frame, Grant ",
+            "editor": "",
+            "journal": "",
+            "legacy_id": "Frame 2013",
+            "legacy_pk": 4114,
+            "mentioned_archive": [],
+            "mentioned_glossary_item": [],
+            "mentioned_place": [],
+            "orig_data_csv": "{\"occurrence id\": 4114, \"short title\": \"Frame 2013\", \"author\": \"Frame, Grant \", \"publication year\": \"2013\", \"title\": \"The Archive of Mu\\u0161\\u0113zib-Marduk, Son of Kiribtu and Descendant of S\\u00een-n\\u0101\\u1e63ir. A Landowner and Property Developer at Uruk in the Seventh Century BC, Babylonische Archive 5 (Dresden)\", \"volume no.\": NaN, \"pages\": NaN, \"journal\": NaN, \"related objects\": 5395.0, \"editor\": NaN, \"book\": NaN, \"related publications\": NaN}",
+            "pages": "",
+            "publication_year": "2013",
+            "short_title": "Frame 2013",
+            "title": "The Archive of Mu\u0161\u0113zib-Marduk, Son of Kiribtu and Descendant of S\u00een-n\u0101\u1e63ir. A Landowner and Property Developer at Uruk in the Seventh Century BC, Babylonische Archive 5 (Dresden)",
+            "volume_nr": ""
+        },
+        "model": "archiv.bibliography",
+        "pk": 2198
+    },
+    {
+        "fields": {
             "alt_name": "",
-            "description": "A short description of the archive",
+            "description": "<p>The protagonist of this archive, or rather this property file, is Mu&scaron;\u0113zib-Marduk/Kiribtu/S&icirc;n-n\u0101\u1e63ir&nbsp;(6 Esarhaddon-&shy;15 Kandal\u0101nu). It consists of thirty-two tablets (twenty-six unique texts) mostly in London, with strays at Yale, in Paris, Geneva, Philadelphia (Free Library) and even among the UET 4 material. The majority of the texts are title deeds for acquired real estate, and most of the promissory notes concern real estate.</p>\r\n\r\n<p>Mu&scaron;\u0113zib-Marduk owned or acquired several urban properties in Babylon and even more in Uruk; he also invested substantial amounts of money in orchards within or in the vicinity of Uruk.</p>",
             "legacy_id": "S\u00een-n\u0101\u1e63ir",
             "legacy_pk": 412,
             "name": "S\u00een-n\u0101\u1e63ir",
             "orig_data_csv": "{\"archive id\": 412, \"archive name\": \"S\\u00een-n\\u0101\\u1e63ir\", \"is part of\": \"Uruk\", \"title\": \"S\\u00een-n\\u0101\\u1e63ir\", \"related objects\": 5395.0, \"alternative name\": NaN}",
-            "paragraph": null,
+            "paragraph": "7.13.2.11",
             "part_of": 3
         },
         "model": "archiv.archiv",
@@ -79,23 +167,23 @@
     },
     {
         "fields": {
-            "broader_concept": null,
+            "broader_concept": 156,
             "legacy_id": "Purchases",
-            "legacy_pk": null,
-            "level": 0,
-            "lft": 1,
-            "orig_data_csv": null,
-            "pref_label": "",
-            "rght": 2,
-            "title": "",
-            "tree_id": 83
+            "legacy_pk": 1204,
+            "level": 1,
+            "lft": 22,
+            "orig_data_csv": "{\"concept id\": 1204, \"label\": \"Purchases\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Purchase\", \"related objects\": NaN}",
+            "pref_label": "Purchases",
+            "rght": 23,
+            "title": "Purchase",
+            "tree_id": 28
         },
         "model": "archiv.glossary",
-        "pk": 83
+        "pk": 188
     },
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>Ancient city in South Mesopotamia</p>",
             "lat": null,
             "legacy_id": "Ur city",
             "legacy_pk": 1418,
@@ -104,26 +192,11 @@
             "orig_data_csv": "{\"place id\": 1418, \"parent id\": 67, \"place name\": \"Ur city\", \"related objects\": 5684.0, \"title\": \"Ur city\"}",
             "part_of": 4,
             "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/912985",
             "title": "Ur city"
         },
         "model": "archiv.place",
         "pk": 273
-    },
-    {
-        "fields": {
-            "broader_concept": null,
-            "legacy_id": "nan",
-            "legacy_pk": null,
-            "level": 0,
-            "lft": 1,
-            "orig_data_csv": null,
-            "pref_label": "",
-            "rght": 2,
-            "title": "",
-            "tree_id": 74
-        },
-        "model": "archiv.glossary",
-        "pk": 74
     },
     {
         "fields": {
@@ -136,6 +209,7 @@
             "orig_data_csv": "{\"place id\": 22, \"parent id\": 40, \"place name\": \"Nippur city\", \"related objects\": 8508.0, \"title\": \"Nippur city\"}",
             "part_of": 10,
             "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/912910",
             "title": "Nippur city"
         },
         "model": "archiv.place",
@@ -143,13 +217,100 @@
     },
     {
         "fields": {
+            "author": "Pohl, Alfred ",
+            "editor": "",
+            "journal": "",
+            "legacy_id": "AnOr 9",
+            "legacy_pk": 163,
+            "mentioned_archive": [],
+            "mentioned_glossary_item": [],
+            "mentioned_place": [],
+            "orig_data_csv": "{\"occurrence id\": 163, \"short title\": \"AnOr 9\", \"author\": \"Pohl, Alfred \", \"publication year\": \"1934\", \"title\": \"Neubabylonische Rechtsurkunden aus den Berliner Staatlichen Museen. II\", \"volume no.\": \"9\", \"pages\": NaN, \"journal\": NaN, \"related objects\": 5674.0, \"editor\": NaN, \"book\": NaN, \"related publications\": NaN}",
+            "pages": "",
+            "publication_year": "1934",
+            "short_title": "AnOr 9",
+            "title": "Neubabylonische Rechtsurkunden aus den Berliner Staatlichen Museen. II",
+            "volume_nr": "9"
+        },
+        "model": "archiv.bibliography",
+        "pk": 2195
+    },
+    {
+        "fields": {
             "alt_name": "",
-            "description": "A short description of the archive",
+            "description": "<p>The &ldquo;dead&rdquo; temple archive of Eanna consists of about 8,000 published and unpublished texts mostly acquired on the antiquities market in the early twentieth century and now housed in major museums and collections in the US (Yale, Princeton) and Europe (Paris, Berlin, London). In addition, there are thousands of tablets and (predominantly) fragments found by the German excavations. The archive contains some material from the time of the Assyrian domination, but dense information is only available from the beginning of the reign of Nabopolassar. There is a clear break in the second year of Darius, possibly connected to the investigations into the affairs of the corrupt temple slave Gimillu; only comparatively few later texts are known. The latest texts dates to 29 Dar.</p>\r\n\r\n<p>The high percentage of contracts found in the Eanna archive (vis-&agrave;-vis Ebabbar/Sippar), at least in the collections, originating from illicit excavations, is striking. What this means for the structure of the archive remains to be investigated. Another clear distinction is the fact that only few and comparatively small private archives could be identified in the material originating from the clandestine excavations.</p>",
+            "legacy_id": "Eanna temple",
+            "legacy_pk": 370,
+            "name": "Eanna temple",
+            "orig_data_csv": "{\"archive id\": 370, \"archive name\": \"Eanna temple\", \"is part of\": \"Uruk\", \"title\": \"Eanna temple\", \"related objects\": 5705.0, \"alternative name\": NaN}",
+            "paragraph": "7.13.1.1",
+            "part_of": 3
+        },
+        "model": "archiv.archiv",
+        "pk": 119
+    },
+    {
+        "fields": {
+            "broader_concept": 141,
+            "legacy_id": "Multiple (list)",
+            "legacy_pk": 1576,
+            "level": 2,
+            "lft": 23,
+            "orig_data_csv": "{\"concept id\": 1576, \"label\": \"Multiple (list)\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Multiple (list)\", \"related objects\": NaN}",
+            "pref_label": "Multiple (list)",
+            "rght": 24,
+            "title": "Multiple (list)",
+            "tree_id": 8
+        },
+        "model": "archiv.glossary",
+        "pk": 162
+    },
+    {
+        "fields": {
+            "description": "<p>A very nice place</p>",
+            "lat": null,
+            "legacy_id": "Uruk city",
+            "legacy_pk": 1408,
+            "lng": null,
+            "name": "Uruk city",
+            "orig_data_csv": "{\"place id\": 1408, \"parent id\": 61, \"place name\": \"Uruk city\", \"related objects\": 5705.0, \"title\": \"Uruk city\"}",
+            "part_of": 3,
+            "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/912986",
+            "title": "Uruk city"
+        },
+        "model": "archiv.place",
+        "pk": 62
+    },
+    {
+        "fields": {
+            "author": "Strassmaier, Johann N. ",
+            "editor": "",
+            "journal": "",
+            "legacy_id": "Dar.",
+            "legacy_pk": 25,
+            "mentioned_archive": [],
+            "mentioned_glossary_item": [],
+            "mentioned_place": [],
+            "orig_data_csv": "{\"occurrence id\": 25, \"short title\": \"Dar.\", \"author\": \"Strassmaier, Johann N. \", \"publication year\": \"1897\", \"title\": \"Inschriften von Darius, K\\u00f6nig von Babylon (521-485 v.Chr.), Babylonische Texte X-XII (Leipzig)\", \"volume no.\": NaN, \"pages\": NaN, \"journal\": NaN, \"related objects\": 4427.0, \"editor\": NaN, \"book\": NaN, \"related publications\": NaN}",
+            "pages": "",
+            "publication_year": "1897",
+            "short_title": "Dar.",
+            "title": "Inschriften von Darius, K\u00f6nig von Babylon (521-485 v.Chr.), Babylonische Texte X-XII (Leipzig)",
+            "volume_nr": ""
+        },
+        "model": "archiv.bibliography",
+        "pk": 2369
+    },
+    {
+        "fields": {
+            "alt_name": "",
+            "description": "<p>This is the largest private archive from first millennium Babylonia spanning five generations with ca. 1,700 identified tablets and reports (by illicit excavators) speak of well above 2,000 texts. The majority of the tablets is in the British museum, in the 1876-11-17 collection and others; comparatively smaller groups are in the Louvre, Biblioth&egrave;que Nationale, Metropolitan Museum, J.P. Morgan Library, Ashmolean Museum, Pitt Rivers Museum, Royal Scottisch Museum, Museo di Storia ed Arte, Finnisches Nationalmuseum, Birmingham Museums and Art Gallery, Universit&auml;tsbibliothek Giessen, Oriental Institute Chicago, Fitzwilliam Museum, University of British Columbia, Mus&eacute;es Royaux, J.F. Lewis Collection, Freie Universit&auml;t Berlin, Harvard Semitic Museum, Princeton Theological Seminary, Free Library of Philadelphia, and private collections. The main protagonists are all offspring of a single male line: &Scaron;ul\u0101ya/Nab&ucirc;-z\u0113ru-uk\u012bn/Egibi&nbsp;(20 Npl&shy;-23 Nbk), Nab&ucirc;-ahh\u0113-iddin/&Scaron;ul\u0101ya&nbsp;(15 Nbk-&shy;12 Nbn), Itti-Marduk-bal\u0101\u1e6du (= Iddin\u0101ya)/Nab&ucirc;-ahh\u0113-iddin&nbsp;(5 Nbn&shy;-8 Cam), Marduk-n\u0101\u1e63ir-apli (= &Scaron;irku)/Itti-Marduk-bal\u0101\u1e6du&nbsp;(1-&shy;35 Dar) and finally his son Nidinti-B\u0113l&nbsp;(32 Dar&shy;-0 &Scaron;ama&scaron;-er\u012bba). Itti-Marduk-bal\u0101\u1e6du was married to fN\u016bpt\u0101ya, the daughter of Iddin-Marduk/Iq\u012b&scaron;\u0101ya/N\u016br-S&icirc;n&nbsp;(28 Nbk-&shy;2 Dar) and fIna-Esagila-ram&acirc;t/Z\u0113ria/Nab\u0101ya&nbsp;(34 Nbk&shy;15 Dar), which brought about the transfer of parts of the N\u016br-S&icirc;n archive; the core of which has not been found. The Egibi archive contains numerous family and property documents, including title deeds, except for the last phase which reinforces it identification as a &ldquo;dead&rdquo; archive.</p>\r\n\r\n<p>There is a steady increase in the dowries family members received from their wives and gave to their own daughters over the generations, highlighting the family&rsquo;s economic development from a modest trade in agricultural products, financed through <em>harr\u0101nu </em>ventures, to large-scale agricultural undertakings involving the family estates and rented (institutional) land through slave-agents. It seems that Itti-Marduk-bal\u0101\u1e6du also took over some of Iddin-Marduk&rsquo;s business. The family&rsquo;s patrimony was continuously enlarged through the purchase of (often small) fields (usually turned into date gardens) and plots of urban land. Nab&ucirc;-ahh\u0113-iddin was the first to have obvious institutional connections: business with the royal family and role as royal judge. This led to an increasing involvement in various forms of tax farming under the first Achaemenid rulers.&nbsp;The absence of temple prebends ownership identifies the Egibis as entrepreneurially oriented urbanites without well-established roots in the traditional temple-oriented establishment.</p>",
             "legacy_id": "Egibi/N\u016br-S\u00een",
             "legacy_pk": 7,
             "name": "Egibi/N\u016br-S\u00een",
             "orig_data_csv": "{\"archive id\": 7, \"archive name\": \"Egibi/N\\u016br-S\\u00een\", \"is part of\": \"Babylon\", \"title\": \"Egibi/N\\u016br-S\\u00een\", \"related objects\": 7063.0, \"alternative name\": NaN}",
-            "paragraph": null,
+            "paragraph": "7.1.2.4",
             "part_of": 9
         },
         "model": "archiv.archiv",
@@ -157,23 +318,23 @@
     },
     {
         "fields": {
-            "broader_concept": null,
+            "broader_concept": 152,
             "legacy_id": "Promissory notes ina mu\u1e96\u1e96i",
-            "legacy_pk": null,
-            "level": 0,
-            "lft": 1,
-            "orig_data_csv": null,
-            "pref_label": "",
-            "rght": 2,
-            "title": "",
-            "tree_id": 73
+            "legacy_pk": 1264,
+            "level": 1,
+            "lft": 18,
+            "orig_data_csv": "{\"concept id\": 1264, \"label\": \"Promissory notes ina mu\\u1e96\\u1e96i\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Promissory note ina mu\\u1e96\\u1e96i\", \"related objects\": NaN}",
+            "pref_label": "Promissory notes ina mu\u1e96\u1e96i",
+            "rght": 19,
+            "title": "Promissory note ina mu\u1e96\u1e96i",
+            "tree_id": 24
         },
         "model": "archiv.glossary",
-        "pk": 73
+        "pk": 175
     },
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>A very nice place</p>",
             "lat": null,
             "legacy_id": "Babylon city",
             "legacy_pk": 25,
@@ -182,6 +343,7 @@
             "orig_data_csv": "{\"place id\": 25, \"parent id\": 37, \"place name\": \"Babylon city\", \"related objects\": 7063.0, \"title\": \"Babylon city\"}",
             "part_of": 9,
             "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/893951",
             "title": "Babylon city"
         },
         "model": "archiv.place",
@@ -193,12 +355,16 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "dossier": null,
             "imported": "Melanie Gross (26/05/2016)",
+            "inferred_date": "",
             "julian_date_year": 660,
             "king": "\u0160\u0161u",
             "legacy_id": "5388.0",
             "legacy_pk": 5388,
-            "mentioned_in_pub": [],
+            "mentioned_in_pub": [
+                2198
+            ],
             "mentioned_place": [],
             "month": "VI",
             "museum_id": "BM 118968",
@@ -207,9 +373,9 @@
             "period": "ENB",
             "place_of_issue": 273,
             "publication_name": "Frame 2013",
-            "text_number": "",
+            "text_number": "11",
             "transliteration": null,
-            "type_content": 83,
+            "type_content": 188,
             "year": ""
         },
         "model": "archiv.tablet",
@@ -221,7 +387,9 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "dossier": null,
             "imported": "Melanie Gross (26/05/2016)",
+            "inferred_date": "",
             "julian_date_year": 654,
             "king": "\u0160\u0161u",
             "legacy_id": "5877.0",
@@ -237,7 +405,7 @@
             "publication_name": "",
             "text_number": "",
             "transliteration": null,
-            "type_content": 74,
+            "type_content": null,
             "year": ""
         },
         "model": "archiv.tablet",
@@ -245,16 +413,52 @@
     },
     {
         "fields": {
+            "archiv": 119,
+            "bibliography": "",
+            "cdli_no": "",
+            "day": "",
+            "dossier": null,
+            "imported": "Melanie Gross (26/05/2016)",
+            "inferred_date": "",
+            "julian_date_year": null,
+            "king": "Asb",
+            "legacy_id": "5671.0",
+            "legacy_pk": 5671,
+            "mentioned_in_pub": [
+                2195
+            ],
+            "mentioned_place": [],
+            "month": "-",
+            "museum_id": "VAT 8496",
+            "orig_data_csv": "{\"object id\": \"5671\", \"museum no.\": \"VAT 8496\", \"publication\": \"AnOr 9\", \"text number\": \"2\", \"period\": \"ENB\", \"place of issue\": \"Uruk city\", \"type and content\": \"Multiple (list)\", \"day remark\": \"no day\", \"month\": \"-\", \"month remark\": \"no month\", \"year\": NaN, \"year remark\": \"no year\", \"king\": \"Asb\", \"king remark\": \"-\", \"paraphrase\": \"List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\\u1e63u Canal and the Harri Canal.\", \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": \"AnOr 9 2\", \"archive\": \"Eanna temple\", \"day (babylonian)\": NaN, \"bibliography\": \"Cocquerillat 1968: 106-7 (partial transliteration).\", \"title\": \"VAT 8496\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": NaN, \"julian date year\": NaN, \"place of issue remark\": \"no place given, but it must be Uruk\", \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": \"-\", \"orientation\": \"Portrait\", \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
+            "paraphrase": "List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.",
+            "period": "ENB",
+            "place_of_issue": 62,
+            "publication_name": "AnOr 9",
+            "text_number": "2",
+            "transliteration": null,
+            "type_content": 162,
+            "year": ""
+        },
+        "model": "archiv.tablet",
+        "pk": 623
+    },
+    {
+        "fields": {
             "archiv": 118,
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "dossier": null,
             "imported": "Kathleen Abraham (18/04/2016)",
+            "inferred_date": "",
             "julian_date_year": 510,
             "king": "Dar",
             "legacy_id": "4425.0",
             "legacy_pk": 4425,
-            "mentioned_in_pub": [],
+            "mentioned_in_pub": [
+                2369
+            ],
             "mentioned_place": [],
             "month": "I",
             "museum_id": "BM 30838",
@@ -263,9 +467,9 @@
             "period": "Each",
             "place_of_issue": 413,
             "publication_name": "Dar.",
-            "text_number": "",
+            "text_number": "318",
             "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",
-            "type_content": 73,
+            "type_content": 175,
             "year": ""
         },
         "model": "archiv.tablet",
@@ -273,67 +477,20 @@
     },
     {
         "fields": {
-            "broader_concept": null,
-            "legacy_id": "Legal - Permanent",
-            "legacy_pk": 814,
-            "level": 0,
-            "lft": 1,
-            "orig_data_csv": "{\"concept id\": 814.0, \"label\": \"Legal - Permanent\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Legal - Permanent\", \"related objects\": NaN}",
-            "pref_label": "Legal - Permanent",
-            "rght": 26,
-            "title": "Legal - Permanent",
-            "tree_id": 28
+            "description": "Add information on the location",
+            "lat": null,
+            "legacy_id": "Atkuppu",
+            "legacy_pk": null,
+            "lng": null,
+            "name": "",
+            "orig_data_csv": null,
+            "part_of": null,
+            "place_collection": "",
+            "pleiades_url": null,
+            "title": ""
         },
-        "model": "archiv.glossary",
-        "pk": 28
-    },
-    {
-        "fields": {
-            "broader_concept": null,
-            "legacy_id": "Administrative",
-            "legacy_pk": 1192,
-            "level": 0,
-            "lft": 1,
-            "orig_data_csv": "{\"concept id\": 1192.0, \"label\": \"Administrative\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Administrative\", \"related objects\": NaN}",
-            "pref_label": "Administrative",
-            "rght": 32,
-            "title": "Administrative",
-            "tree_id": 8
-        },
-        "model": "archiv.glossary",
-        "pk": 8
-    },
-    {
-        "fields": {
-            "broader_concept": 28,
-            "legacy_id": "Dowry",
-            "legacy_pk": 1219,
-            "level": 1,
-            "lft": 12,
-            "orig_data_csv": "{\"concept id\": 1219.0, \"label\": \"Dowry\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Dowry\", \"related objects\": NaN}",
-            "pref_label": "Dowry",
-            "rght": 13,
-            "title": "Dowry",
-            "tree_id": 28
-        },
-        "model": "archiv.glossary",
-        "pk": 45
-    },
-    {
-        "fields": {
-            "broader_concept": 8,
-            "legacy_id": "Incoming & outgoing",
-            "legacy_pk": 1294,
-            "level": 1,
-            "lft": 4,
-            "orig_data_csv": "{\"concept id\": 1294.0, \"label\": \"Incoming & outgoing\", \"hierarchy\": \"Content type\", \"type\": 172.0, \"title\": \"Incoming & outgoing\", \"related objects\": NaN}",
-            "pref_label": "Incoming & outgoing",
-            "rght": 9,
-            "title": "Incoming & outgoing",
-            "tree_id": 8
-        },
-        "model": "archiv.glossary",
-        "pk": 6
+        "model": "archiv.place",
+        "pk": 600
     },
     {
         "fields": {
@@ -344,7 +501,7 @@
             "name": "Atkuppu I",
             "orig_data_csv": "{\"archive id\": 495, \"archive name\": \"Atkuppu I\", \"is part of\": \"Atkuppu\", \"title\": \"Atkuppu I\", \"related objects\": NaN, \"alternative name\": NaN}",
             "paragraph": null,
-            "part_of": null
+            "part_of": 600
         },
         "model": "archiv.archiv",
         "pk": 52

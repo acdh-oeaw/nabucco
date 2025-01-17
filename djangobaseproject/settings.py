@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     "digeanna",
     "tinymce",
     "news",
+    "fixture_magic",
 ]
 
 MIDDLEWARE = [

@@ -16,6 +16,19 @@ def set_extra(self, **kwargs):
 models.Field.set_extra = set_extra
 
 
+class DigeannaManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super()
+            .get_queryset()
+            .filter(
+                archiv__id__in=[
+                    119,
+                ]
+            )
+        )
+
+
 class Archiv(models.Model):
     """Archiv"""
 
@@ -803,6 +816,9 @@ class Tablet(models.Model):
     orig_data_csv = models.TextField(
         blank=True, null=True, verbose_name="The original data"
     ).set_extra(is_public=True)
+
+    objects = models.Manager()
+    digeanna_objects = DigeannaManager()
 
     class Meta:
 
