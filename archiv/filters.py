@@ -365,6 +365,11 @@ class TabletListFilter(django_filters.FilterSet):
         help_text=Tablet._meta.get_field("inferred_date").help_text,
         label=Tablet._meta.get_field("inferred_date").verbose_name,
     )
+    remark = django_filters.CharFilter(
+        lookup_expr="icontains",
+        help_text=Tablet._meta.get_field("remark").help_text,
+        label=Tablet._meta.get_field("remark").verbose_name,
+    )
 
     class Meta:
         model = Tablet
@@ -392,4 +397,5 @@ class TabletListFilter(django_filters.FilterSet):
             "bibliography",
             "inferred_date",
             "work_package",
+            "remark",
         ]
