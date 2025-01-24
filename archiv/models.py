@@ -1,11 +1,18 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from browsing.utils import model_to_dict
 from tinymce.models import HTMLField
 
 from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
+
+WP_LEADS = [
+    ("Jena", "Jena team"),
+    ("Vienna", "Vienna team"),
+    ("Warsaw", "Warsaw team"),
+    ("ext", "diverse team"),
+]
 
 
 def set_extra(self, **kwargs):
@@ -813,6 +820,13 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Bibliography (free text)",
     )
+    work_package = models.ManyToManyField(
+        "WorkPackage",
+        blank=True,
+        verbose_name="Work Packages",
+        help_text="attribution of the tablet to one or more DigEanna Work Packages",
+        related_name="related_tablets",
+    )
     orig_data_csv = models.TextField(
         blank=True, null=True, verbose_name="The original data"
     ).set_extra(is_public=True)
@@ -961,4 +975,99 @@ class Dossier(models.Model):
             return False
         if prev:
             return reverse("archiv:dossier_detail", kwargs={"pk": prev.id})
+        return False
+
+
+class WorkPackage(models.Model):
+    """
+    WorkPackage model represents a work package within a project.
+    Attributes:
+        wp_number (CharField): Number of the work package. Optional.
+        title (CharField): Title of the work package. Optional.
+        description (TextField): Description of the work package. Optional.
+        wp_lead (CharField): Lead of the work package. Optional. Choices are defined in WP_LEADS.
+    """
+
+    wp_number = models.CharField(
+        blank=True,
+        null=True,
+        max_length=250,
+        verbose_name="Number of the work package",
+        help_text="Number of the work package",
+    )
+    title = models.CharField(
+        blank=True,
+        null=True,
+        max_length=250,
+        verbose_name="Title of the work package",
+        help_text="Title of the work package",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="Description of the work package",
+    )
+    wp_lead = models.CharField(
+        choices=WP_LEADS,
+        blank=True,
+        null=True,
+        max_length=250,
+        verbose_name="Work package lead",
+        help_text="Lead of the work package",
+    )
+
+    class Meta:
+        ordering = [
+            "id",
+        ]
+        verbose_name = "Work Package"
+        verbose_name_plural = "Work Packages"
+
+    def __str__(self):
+        if self.wp_number and self.title:
+            return f"{self.wp_number}: {self.title}"
+        elif self.wp_number:
+            return f"{self.wp_number}"
+        elif self.title:
+            return f"{self.title}"
+        else:
+            return f"{self.id}"
+
+    def field_dict(self):
+        return model_to_dict(self)
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:workpackage_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:workpackage_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:workpackage_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:workpackage_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:workpackage_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:workpackage_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:workpackage_detail", kwargs={"pk": prev.id})
         return False

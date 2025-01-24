@@ -1,0 +1,40 @@
+{% extends "archiv/generic_detail.html" %}
+{% load static %}
+
+{% load webpage_extras %}
+{% block title %}{{ object }}{% endblock %}
+
+{% block custom %}
+
+<div class="container">
+
+    <div class="p-2">
+        <h2 class="fs-3">Description</h2>
+        <div>
+            {% if object.description %}
+            {{ object.description }}
+            {% else %}
+            {% lorem %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="p-2">
+        <h2 class="fs-4">WP-Lead</h2>
+        <div>
+            {{ object.wp_lead }}
+        </div>
+    </div>
+    <div class="p-2">
+        <h2 class="fs-4">Tablets</h2>
+        <ul>
+            {% for x in object.related_tablets.all %}
+            <li>
+                <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}
