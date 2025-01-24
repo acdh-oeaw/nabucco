@@ -197,6 +197,7 @@ class TabletFilterFormHelper(FormHelper):
             BS5Accordion(
                 AccordionGroup(
                     "Advanced search",
+                    "work_package",
                     "place_of_issue",
                     "mentioned_place",
                     "type_content",

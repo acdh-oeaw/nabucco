@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
+
 from .filters import (
     ArchivListFilter,
     BibliographyListFilter,
@@ -30,7 +31,16 @@ from .tables import (
     TabletTable,
     DossierTable,
 )
-from .models import Archiv, Bibliography, Glossary, Place, Tablet, Introduction, Dossier
+from .models import (
+    Archiv,
+    Bibliography,
+    Glossary,
+    Place,
+    Tablet,
+    Introduction,
+    Dossier,
+    WorkPackage,
+)
 from browsing.utils import (
     GenericListView,
     BaseCreateView,
@@ -341,6 +351,47 @@ class DossierDelete(DeleteView):
     model = Dossier
     template_name = "webpage/confirm_delete.html"
     success_url = reverse_lazy("archiv:dossier_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TabletDelete, self).dispatch(*args, **kwargs)
+
+
+class WorkPackageListView(GenericListView):
+
+    model = WorkPackage
+    init_columns = ["id", "wp_number", "title"]
+    enable_merge = True
+    # table_class = WorkPackageTable
+
+
+class WorkPackageDetailView(BaseDetailView):
+    model = WorkPackage
+    template_name = "archiv/workpackage_detail.html"
+
+
+class WorkPackageCreate(BaseCreateView):
+
+    model = WorkPackage
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(WorkPackageCreate, self).dispatch(*args, **kwargs)
+
+
+class WorkPackageUpdate(BaseUpdateView):
+
+    model = WorkPackage
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(WorkPackageUpdate, self).dispatch(*args, **kwargs)
+
+
+class WorkPackageDelete(DeleteView):
+    model = WorkPackage
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:workpackage_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

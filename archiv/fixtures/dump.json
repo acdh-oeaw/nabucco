@@ -38,7 +38,7 @@
             "legacy_id": "Ur",
             "legacy_pk": 67,
             "lng": null,
-            "name": "Ur",
+            "name": "Ur region",
             "orig_data_csv": "{\"place id\": 67, \"parent id\": 4, \"place name\": \"Ur\", \"related objects\": NaN, \"title\": \"Ur\"}",
             "part_of": null,
             "place_collection": "",
@@ -55,7 +55,7 @@
             "legacy_id": "Nippur",
             "legacy_pk": 40,
             "lng": null,
-            "name": "Nippur",
+            "name": "Nippur region",
             "orig_data_csv": "{\"place id\": 40, \"parent id\": 4, \"place name\": \"Nippur\", \"related objects\": 1225.0, \"title\": \"Nippur\"}",
             "part_of": null,
             "place_collection": "",
@@ -88,7 +88,7 @@
             "legacy_id": "Uruk",
             "legacy_pk": 61,
             "lng": null,
-            "name": "Uruk",
+            "name": "Uruk region",
             "orig_data_csv": "{\"place id\": 61, \"parent id\": 4, \"place name\": \"Uruk\", \"related objects\": NaN, \"title\": \"Uruk\"}",
             "part_of": null,
             "place_collection": "",
@@ -121,7 +121,7 @@
             "legacy_id": "Babylon",
             "legacy_pk": 37,
             "lng": null,
-            "name": "Babylon",
+            "name": "Babylon region",
             "orig_data_csv": "{\"place id\": 37, \"parent id\": 4, \"place name\": \"Babylon\", \"related objects\": 2355.0, \"title\": \"Babylon\"}",
             "part_of": null,
             "place_collection": "",
@@ -214,6 +214,36 @@
         },
         "model": "archiv.place",
         "pk": 449
+    },
+    {
+        "fields": {
+            "description": null,
+            "title": "A Prosopography of the Eanna scribes and social network analysis",
+            "wp_lead": null,
+            "wp_number": "WP6"
+        },
+        "model": "archiv.workpackage",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "description": null,
+            "title": "Dossiers in the Late Eanna Archive",
+            "wp_lead": null,
+            "wp_number": "WP5"
+        },
+        "model": "archiv.workpackage",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "description": null,
+            "title": "Dossiers in the Early Eanna Archive",
+            "wp_lead": null,
+            "wp_number": "WP4"
+        },
+        "model": "archiv.workpackage",
+        "pk": 1
     },
     {
         "fields": {
@@ -376,6 +406,7 @@
             "text_number": "11",
             "transliteration": null,
             "type_content": 188,
+            "work_package": [],
             "year": ""
         },
         "model": "archiv.tablet",
@@ -406,6 +437,7 @@
             "text_number": "",
             "transliteration": null,
             "type_content": null,
+            "work_package": [],
             "year": ""
         },
         "model": "archiv.tablet",
@@ -421,7 +453,7 @@
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
             "julian_date_year": null,
-            "king": "Asb",
+            "king": "",
             "legacy_id": "5671.0",
             "legacy_pk": 5671,
             "mentioned_in_pub": [
@@ -431,13 +463,18 @@
             "month": "-",
             "museum_id": "VAT 8496",
             "orig_data_csv": "{\"object id\": \"5671\", \"museum no.\": \"VAT 8496\", \"publication\": \"AnOr 9\", \"text number\": \"2\", \"period\": \"ENB\", \"place of issue\": \"Uruk city\", \"type and content\": \"Multiple (list)\", \"day remark\": \"no day\", \"month\": \"-\", \"month remark\": \"no month\", \"year\": NaN, \"year remark\": \"no year\", \"king\": \"Asb\", \"king remark\": \"-\", \"paraphrase\": \"List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\\u1e63u Canal and the Harri Canal.\", \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": \"AnOr 9 2\", \"archive\": \"Eanna temple\", \"day (babylonian)\": NaN, \"bibliography\": \"Cocquerillat 1968: 106-7 (partial transliteration).\", \"title\": \"VAT 8496\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": NaN, \"julian date year\": NaN, \"place of issue remark\": \"no place given, but it must be Uruk\", \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": \"-\", \"orientation\": \"Portrait\", \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
-            "paraphrase": "List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.",
+            "paraphrase": "<p>List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.</p>",
             "period": "ENB",
             "place_of_issue": 62,
             "publication_name": "AnOr 9",
             "text_number": "2",
-            "transliteration": null,
+            "transliteration": "",
             "type_content": 162,
+            "work_package": [
+                1,
+                2,
+                3
+            ],
             "year": ""
         },
         "model": "archiv.tablet",
@@ -470,6 +507,7 @@
             "text_number": "318",
             "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",
             "type_content": 175,
+            "work_package": [],
             "year": ""
         },
         "model": "archiv.tablet",

@@ -1,16 +1,13 @@
-from copy import deepcopy
-
 import requests
 
 from django.conf import settings
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import form_user_login
-from .metadata import PROJECT_METADATA as PM
 
 
 class ImprintView(TemplateView):
@@ -85,20 +82,3 @@ def user_logout(request):
 
 def handler404(request, exception):
     return render(request, "webpage/404-error.html", locals())
-
-
-def project_info(request):
-    """
-    returns a dict providing metadata about the current project
-    """
-
-    info_dict = deepcopy(PM)
-
-    if request.user.is_authenticated:
-        pass
-    else:
-        del info_dict["matomo_id"]
-        del info_dict["matomo_url"]
-    info_dict["base_tech"] = "django"
-    info_dict["framework"] = "djangobaseproject"
-    return JsonResponse(info_dict)

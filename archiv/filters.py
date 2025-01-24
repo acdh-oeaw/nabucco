@@ -391,4 +391,5 @@ class TabletListFilter(django_filters.FilterSet):
             "julian_date_year",
             "bibliography",
             "inferred_date",
+            "work_package",
         ]

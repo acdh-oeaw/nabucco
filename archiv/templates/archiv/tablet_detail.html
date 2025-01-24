@@ -84,6 +84,18 @@
             <dt>Legacy NaBuCCo ID</dt>
             <dd>{{ object.legacy_pk }}</dd>
           </dl>
+          <hr/>
+          <h3>Digeanna</h3>
+          <dl>
+            <dt>Workpackages</dt>
+              {% for x in object.work_package.all %}
+              <dd>
+                <a href="{{ x.get_absolute_url }}">
+                  {{ x }}
+                </a>
+              </dd>
+              {% endfor %}
+          </dl>
       </div>
     </div>
   </div>

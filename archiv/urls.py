@@ -94,4 +94,27 @@ urlpatterns = [
         views.DossierDelete.as_view(),
         name="dossier_delete",
     ),
+    path(
+        "workpackage/", views.WorkPackageListView.as_view(), name="workpackage_browse"
+    ),
+    path(
+        "workpackage/detail/<int:pk>",
+        views.WorkPackageDetailView.as_view(),
+        name="workpackage_detail",
+    ),
+    path(
+        "workpackage/create/",
+        views.WorkPackageCreate.as_view(),
+        name="workpackage_create",
+    ),
+    path(
+        "workpackage/edit/<int:pk>",
+        views.WorkPackageUpdate.as_view(),
+        name="workpackage_edit",
+    ),
+    # path(
+    #     "workpackage/delete/<int:pk>",
+    #     views.WorkPackageDelete.as_view(),
+    #     name="workpackage_delete",
+    # ),
 ]
