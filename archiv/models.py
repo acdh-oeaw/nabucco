@@ -827,6 +827,12 @@ class Tablet(models.Model):
         help_text="attribution of the tablet to one or more DigEanna Work Packages",
         related_name="related_tablets",
     )
+    remark = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Remarks",
+        help_text="general remarks regarding the content and attribution of the tablet to a dossier",
+    )
     orig_data_csv = models.TextField(
         blank=True, null=True, verbose_name="The original data"
     ).set_extra(is_public=True)

@@ -87,6 +87,8 @@
           <hr/>
           <h3>Digeanna</h3>
           <dl>
+            <dt>Remarks</dt>
+            <dd>{{ object.remark|safe }}</dd>
             <dt>Workpackages</dt>
               {% for x in object.work_package.all %}
               <dd>
