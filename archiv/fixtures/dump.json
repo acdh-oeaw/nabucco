@@ -83,6 +83,23 @@
     },
     {
         "fields": {
+            "description": "<p>Geographical region in central Babylonia, including the city of Borsippa and other places in the surrounding area</p>",
+            "lat": null,
+            "legacy_id": "Borsippa",
+            "legacy_pk": 52,
+            "lng": null,
+            "name": "Borsippa region",
+            "orig_data_csv": "{\"place id\": 52, \"parent id\": 4, \"place name\": \"Borsippa\", \"related objects\": 2880.0, \"title\": \"Borsippa\"}",
+            "part_of": null,
+            "place_collection": "",
+            "pleiades_url": null,
+            "title": "Borsippa"
+        },
+        "model": "archiv.place",
+        "pk": 8
+    },
+    {
+        "fields": {
             "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Uruk",
@@ -297,6 +314,23 @@
     },
     {
         "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "B\u012bt-Z\u0113riya",
+            "legacy_pk": 1542,
+            "lng": null,
+            "name": "B\u012bt-Z\u0113riya",
+            "orig_data_csv": "{\"place id\": 1542, \"parent id\": 52, \"place name\": \"B\\u012bt-Z\\u0113riya\", \"related objects\": 7702.0, \"title\": \"B\\u012bt-Z\\u0113riya\"}",
+            "part_of": 8,
+            "place_collection": "",
+            "pleiades_url": null,
+            "title": "B\u012bt-Z\u0113riya"
+        },
+        "model": "archiv.place",
+        "pk": 231
+    },
+    {
+        "fields": {
             "description": "<p>A very nice place</p>",
             "lat": null,
             "legacy_id": "Uruk city",
@@ -403,6 +437,7 @@
             "period": "ENB",
             "place_of_issue": 273,
             "publication_name": "Frame 2013",
+            "regional_setting": null,
             "remark": null,
             "text_number": "11",
             "transliteration": null,
@@ -435,6 +470,7 @@
             "period": "ENB",
             "place_of_issue": 449,
             "publication_name": "",
+            "regional_setting": null,
             "remark": null,
             "text_number": "",
             "transliteration": null,
@@ -469,6 +505,7 @@
             "period": "ENB",
             "place_of_issue": 62,
             "publication_name": "AnOr 9",
+            "regional_setting": 231,
             "remark": "lorem ipsum",
             "text_number": "2",
             "transliteration": "",
@@ -507,6 +544,7 @@
             "period": "Each",
             "place_of_issue": 413,
             "publication_name": "Dar.",
+            "regional_setting": null,
             "remark": null,
             "text_number": "318",
             "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",

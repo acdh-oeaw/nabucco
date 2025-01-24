@@ -236,6 +236,14 @@ class TabletListFilter(django_filters.FilterSet):
             url="archiv-ac:place-autocomplete",
         ),
     )
+    regional_setting = django_filters.ModelMultipleChoiceFilter(
+        queryset=Place.objects.all(),
+        help_text=Tablet._meta.get_field("regional_setting").help_text,
+        label=Tablet._meta.get_field("regional_setting").verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:place-autocomplete",
+        ),
+    )
     mentioned_place = django_filters.ModelMultipleChoiceFilter(
         queryset=Place.objects.all(),
         help_text=Tablet._meta.get_field("mentioned_place").help_text,
@@ -379,6 +387,7 @@ class TabletListFilter(django_filters.FilterSet):
             "legacy_pk",
             "museum_id",
             "place_of_issue",
+            "regional_setting",
             "mentioned_place",
             "type_content",
             "paraphrase",

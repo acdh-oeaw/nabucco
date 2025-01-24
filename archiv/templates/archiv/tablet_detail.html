@@ -23,6 +23,12 @@
               {{ object.place_of_issue }}
             </a>
           </dd>
+          <dt>Regional setting</dt>
+          <dd>
+            <a href="{{ object.regional_setting.get_absolute_url }}">
+              {{ object.regional_setting }}
+            </a>
+          </dd>
           <dt>Type and Content</dt>
           <dd>
             <a href="{{ object.type_content.get_absolute_url }}">
