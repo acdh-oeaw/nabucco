@@ -626,6 +626,15 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Place of issue",
     )
+    regional_setting = models.ForeignKey(
+        "Place",
+        related_name="rvn_tablet_regional_setting_place",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Regional setting",
+        help_text="select the inferred region where the content of the text is set, if there is no place of issue given",  # noqa: E501
+    )
     mentioned_place = models.ManyToManyField(
         "Place",
         related_name="rvn_tablet_mentioned_place_place",

@@ -200,6 +200,7 @@ class TabletFilterFormHelper(FormHelper):
                     "work_package",
                     "place_of_issue",
                     "mentioned_place",
+                    "regional_setting",
                     "type_content",
                     "paraphrase",
                     "paraphrase_negative",
