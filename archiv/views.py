@@ -40,6 +40,7 @@ from .models import (
     Introduction,
     Dossier,
     WorkPackage,
+    VanDrielFiles,
 )
 from browsing.utils import (
     GenericListView,
@@ -390,6 +391,47 @@ class WorkPackageUpdate(BaseUpdateView):
 
 class WorkPackageDelete(DeleteView):
     model = WorkPackage
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:workpackage_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TabletDelete, self).dispatch(*args, **kwargs)
+
+
+class VanDrielFilesListView(GenericListView):
+
+    model = VanDrielFiles
+    init_columns = ["id", "file", "sub_file"]
+    enable_merge = True
+    # table_class = VanDrielFilesTable
+
+
+class VanDrielFilesDetailView(BaseDetailView):
+    model = VanDrielFiles
+    template_name = "archiv/vandrielfile_detail.html"
+
+
+class VanDrielFilesCreate(BaseCreateView):
+
+    model = VanDrielFiles
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(VanDrielFilesCreate, self).dispatch(*args, **kwargs)
+
+
+class VanDrielFilesUpdate(BaseUpdateView):
+
+    model = VanDrielFiles
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(VanDrielFilesUpdate, self).dispatch(*args, **kwargs)
+
+
+class VanDrielFilesDelete(DeleteView):
+    model = VanDrielFiles
     template_name = "webpage/confirm_delete.html"
     success_url = reverse_lazy("archiv:workpackage_browse")
 

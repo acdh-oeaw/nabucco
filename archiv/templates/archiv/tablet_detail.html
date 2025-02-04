@@ -103,6 +103,16 @@
                 </a>
               </dd>
               {% endfor %}
+            <dt>Van Driel Files</dt>
+            {% for x in object.van_driel_files.all %}
+            <dd>
+              <a href="{{ x.get_absolute_url }}">
+                {{ x }}
+              </a>
+            </dd>
+            {% endfor %}
+            <dt>Private context</dt>
+            <dd>{{ object.private_context }}</dd>
           </dl>
       </div>
     </div>
