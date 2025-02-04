@@ -198,6 +198,8 @@ class TabletFilterFormHelper(FormHelper):
                 AccordionGroup(
                     "Advanced search",
                     "work_package",
+                    "van_driel_files",
+                    "private_context",
                     "place_of_issue",
                     "mentioned_place",
                     "regional_setting",

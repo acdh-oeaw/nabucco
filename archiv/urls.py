@@ -117,4 +117,24 @@ urlpatterns = [
     #     views.WorkPackageDelete.as_view(),
     #     name="workpackage_delete",
     # ),
+    path(
+        "vandrielfile/",
+        views.VanDrielFilesListView.as_view(),
+        name="vandrielfile_browse",
+    ),
+    path(
+        "vandrielfile/detail/<int:pk>",
+        views.VanDrielFilesDetailView.as_view(),
+        name="vandrielfile_detail",
+    ),
+    path(
+        "vandrielfile/create/",
+        views.VanDrielFilesCreate.as_view(),
+        name="vandrielfile_create",
+    ),
+    path(
+        "vandrielfile/edit/<int:pk>",
+        views.VanDrielFilesUpdate.as_view(),
+        name="vandrielfile_edit",
+    ),
 ]

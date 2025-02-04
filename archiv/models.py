@@ -103,7 +103,42 @@ class VanDrielFiles(models.Model):
     def __str__(self):
         file_nr = self.file.split(".")[0]
         sub_file_id = self.sub_file.split(".")[0]
-        return f"{file_nr} {sub_file_id}"
+        return f"{file_nr.lstrip('0')} {sub_file_id}"
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:vandrielfile_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:vandrielfile_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:vandrielfile_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:vandrielfile_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:vandrielfile_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:vandrielfile_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:vandrielfile_detail", kwargs={"pk": prev.id})
+        return False
 
 
 class Archiv(models.Model):
@@ -905,6 +940,18 @@ class Tablet(models.Model):
         verbose_name="Work Packages",
         help_text="attribution of the tablet to one or more DigEanna Work Packages",
         related_name="related_tablets",
+    )
+    van_driel_files = models.ManyToManyField(
+        VanDrielFiles,
+        blank=True,
+        verbose_name="file after G. van Driel",
+        help_text="choose the attribution of the text according to van Driel's categorization",
+        related_name="related_tablets",
+    )
+    private_context = models.BooleanField(
+        default=False,
+        verbose_name="Private context",
+        help_text="Does the text pertain to a private (economic) context?",
     )
     remark = models.TextField(
         blank=True,

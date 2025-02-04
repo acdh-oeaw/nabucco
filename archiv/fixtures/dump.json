@@ -83,23 +83,6 @@
     },
     {
         "fields": {
-            "description": "<p>Geographical region in central Babylonia, including the city of Borsippa and other places in the surrounding area</p>",
-            "lat": null,
-            "legacy_id": "Borsippa",
-            "legacy_pk": 52,
-            "lng": null,
-            "name": "Borsippa region",
-            "orig_data_csv": "{\"place id\": 52, \"parent id\": 4, \"place name\": \"Borsippa\", \"related objects\": 2880.0, \"title\": \"Borsippa\"}",
-            "part_of": null,
-            "place_collection": "",
-            "pleiades_url": null,
-            "title": "Borsippa"
-        },
-        "model": "archiv.place",
-        "pk": 8
-    },
-    {
-        "fields": {
             "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Uruk",
@@ -234,19 +217,29 @@
     },
     {
         "fields": {
-            "description": null,
-            "title": "A Prosopography of the Eanna scribes and social network analysis",
-            "wp_lead": null,
-            "wp_number": "WP6"
+            "description": "",
+            "file": "10",
+            "sub_file": "a. Mixed, cattle and sheep",
+            "verbum_regens": null
         },
-        "model": "archiv.workpackage",
+        "model": "archiv.vandrielfiles",
         "pk": 3
     },
     {
         "fields": {
-            "description": null,
+            "description": "Satements can be made freely, under oath or when subjected to masaltu.",
+            "file": "01",
+            "sub_file": "b. Statement",
+            "verbum_regens": "masaltu"
+        },
+        "model": "archiv.vandrielfiles",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "description": "The Late Eanna Archive comprises texts written from the late reign of Nebuchadnezzar to the reign of Darius whose intrinsic and\r\nextrinsic features make them distinct from earlier Eanna tablets in several respects (Jursa and Gordin 2018, Pirngruber 2021). In contrast to the Early Eanna corpus dominated by administrative records, this part of the Archive features a significant number of legal documents, among them numerous court documents. Since the early years of Assyriology, those texts have been studied for the insight they offer into Babylonian law. This focus on individual texts has overshadowed the archival perspective, a notable\r\nexception being the Gimillu Dossier [see recently Jursa 2004b and Kozuh 2014], whose link to the end of the Archive has been strongly postulated (van Driel 1998: 67\u201368, Jursa 2005: 138). Apart from adding to already identified Dossiers (e.g., the Gold Thieves [Renger 1971], the Forty Thieves of Uruk [Sandowicz 2014], the House of Nan\u0101ya-\u0113re\u0161 [Sandowicz, Wunsch, and Zawadzki, in press]) and identifying new ones, WP 5 will examine the distribution of Dossiers in chronological perspective and study the extent to which they coincide with crucial moments of Neo-Babylonian and Urukean history, such as the beginning of Nabonidus\u2019 reign, the period postdating Nabonidus\u2019 return from Teima, the mid-reign of Cyrus, and, in particular, the abrupt and still inexplicable end of the Eanna Archive in Darius\u2019 second year (most recently Kessler 2018).",
             "title": "Dossiers in the Late Eanna Archive",
-            "wp_lead": null,
+            "wp_lead": "Warsaw",
             "wp_number": "WP5"
         },
         "model": "archiv.workpackage",
@@ -254,9 +247,9 @@
     },
     {
         "fields": {
-            "description": null,
+            "description": "This work package focuses on texts written in the time span between the final years of Assyrian rule over Babylonia and the mid-reign of Nebuchadnezzar. Tasks will be assembling the Files, reconstructing the pertinent Dossiers and Bureaus and investigating the hypothesis that there occurred in fact a break in archival continuity around Nebuchadnezzar\u2019s 20th year that warrants the distinction between the Early and the Late Eanna Archive. We will also try and substantiate the causality underlying the archival break (following the hypothesis setout in Jursa and Gordin 2018). For this pupose, a prosopographically-oriented MA thesis on temple personnel working outside the city during the period covered by the Early Eanna Archive will be written",
             "title": "Dossiers in the Early Eanna Archive",
-            "wp_lead": null,
+            "wp_lead": "Vienna",
             "wp_number": "WP4"
         },
         "model": "archiv.workpackage",
@@ -311,23 +304,6 @@
         },
         "model": "archiv.glossary",
         "pk": 162
-    },
-    {
-        "fields": {
-            "description": "A very nice place",
-            "lat": null,
-            "legacy_id": "B\u012bt-Z\u0113riya",
-            "legacy_pk": 1542,
-            "lng": null,
-            "name": "B\u012bt-Z\u0113riya",
-            "orig_data_csv": "{\"place id\": 1542, \"parent id\": 52, \"place name\": \"B\\u012bt-Z\\u0113riya\", \"related objects\": 7702.0, \"title\": \"B\\u012bt-Z\\u0113riya\"}",
-            "part_of": 8,
-            "place_collection": "",
-            "pleiades_url": null,
-            "title": "B\u012bt-Z\u0113riya"
-        },
-        "model": "archiv.place",
-        "pk": 231
     },
     {
         "fields": {
@@ -436,12 +412,14 @@
             "paraphrase": "Purchase of a garden:<strong> A</strong> purchases a date garden (<em>kir&icirc;</em> <em>gi&scaron;immari</em>) for 3 minas and 50 shekels of silver in pieces (<em>&scaron;ibirtu</em>), together with an additional payment (<em>atru</em>) of 7 shekels of silver, from <strong>B<sub>1</sub></strong>. The sold garden is the (inheritance) share (<em>zittu</em>) the seller divided (<em>z&acirc;zu</em>) with his uncle <strong>B<sub>2</sub></strong>. It is located in the district (<em>er\u1e63etu</em>) of the Ninurta Temple inside of Uruk. Its upper side borders on (the property of) the seller&rsquo;s grandfather <strong>B<sub>3</sub></strong> and its upper front on (the property of) the seller&rsquo;s uncle <strong>B<sub>2</sub></strong>. Its lower side borders on the Ninurta Temple and its lower front on the street (<em>s\u016bqu</em>). Neither cardinal directions nor measures are given for the sides of the plot. 11 witnesses and the scribe. Fingernail impressions (<em>\u1e63upru</em>) of the seller.<br />\r\n&nbsp;<br />\r\n<strong>A</strong> = Mu&scaron;\u0113zib-Marduk/Kiribtu; <strong>B<sub>1</sub></strong> = Ahh\u0113&scaron;\u0101ya/Ha&scaron;dia/&Scaron;ang&ucirc;-Ninurta; <strong>B<sub>2</sub></strong> = Zib\u0101ya/\u0112re&scaron;u; <strong>B<sub>3</sub></strong> = \u0112re&scaron;u//&Scaron;ang&ucirc;-Ninurta; Scribe = &Scaron;ul\u0101ya/Ibn\u0101ya<br />\r\n&nbsp;",
             "period": "ENB",
             "place_of_issue": 273,
+            "private_context": false,
             "publication_name": "Frame 2013",
             "regional_setting": null,
             "remark": null,
             "text_number": "11",
             "transliteration": null,
             "type_content": 188,
+            "van_driel_files": [],
             "work_package": [],
             "year": ""
         },
@@ -469,12 +447,14 @@
             "paraphrase": null,
             "period": "ENB",
             "place_of_issue": 449,
+            "private_context": false,
             "publication_name": "",
             "regional_setting": null,
             "remark": null,
             "text_number": "",
             "transliteration": null,
             "type_content": null,
+            "van_driel_files": [],
             "work_package": [],
             "year": ""
         },
@@ -504,16 +484,20 @@
             "paraphrase": "<p>List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.</p>",
             "period": "ENB",
             "place_of_issue": 62,
+            "private_context": false,
             "publication_name": "AnOr 9",
-            "regional_setting": 231,
-            "remark": "lorem ipsum",
+            "regional_setting": null,
+            "remark": "",
             "text_number": "2",
             "transliteration": "",
             "type_content": 162,
-            "work_package": [
-                1,
+            "van_driel_files": [
                 2,
                 3
+            ],
+            "work_package": [
+                1,
+                2
             ],
             "year": ""
         },
@@ -543,12 +527,14 @@
             "paraphrase": "Promissory note to pay a debt of silver and barley. Repayment according to the measure of the head of the Egibi family.<br />\r\n<strong>B</strong> should pay the 1/2 mina of medium quality silver, of which 1/8 is alloy, and the 38 kor of barley which are due from him, to <strong>A</strong>. Payment should be at the river (<em>ina muhhi n\u0101ri</em>) in Til-Gula, in one instalment and according to <strong>C</strong>&rsquo;s measure, but it is not specified when it should take place. The place of delivery is further specified at the very end of the obverse, before the list of witnesses: at the lower embankment (<em>ina &scaron;apli&scaron; k\u0101ri</em>). Names of 4 witnesses and the scribe.<br />\r\n<br />\r\n<strong>A</strong>=Marduk-b\u0113l&scaron;unu/Arad-Marduk//&Scaron;ang&ucirc;-Ea;&nbsp;<strong>B</strong>=Nab&ucirc;-ittannu/Nab&ucirc;-z\u0113ru-l\u012b&scaron;ir//N\u016br-Papsukkal; <strong>C</strong>=Marduk-n\u0101\u1e63ir-apli (=Marduk-n\u0101\u1e63ir-apli/Itti-Marduk-bal\u0101\u1e6du//Egibi)",
             "period": "Each",
             "place_of_issue": 413,
+            "private_context": false,
             "publication_name": "Dar.",
             "regional_setting": null,
             "remark": null,
             "text_number": "318",
             "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",
             "type_content": 175,
+            "van_driel_files": [],
             "work_package": [],
             "year": ""
         },

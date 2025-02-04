@@ -406,5 +406,7 @@ class TabletListFilter(django_filters.FilterSet):
             "bibliography",
             "inferred_date",
             "work_package",
+            "van_driel_files",
+            "private_context",
             "remark",
         ]
