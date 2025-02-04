@@ -2,7 +2,7 @@
 from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
 
-from .models import Archiv, Bibliography, Glossary, Introduction, Place, Tablet
+from .models import Archiv, Bibliography, Glossary, Introduction, Place, Tablet, VanDrielFiles
 
 
 @admin.register(Glossary)
@@ -20,3 +20,4 @@ admin.site.register(Bibliography)
 admin.site.register(Place)
 admin.site.register(Tablet)
 admin.site.register(Introduction)
+admin.site.register(VanDrielFiles)
