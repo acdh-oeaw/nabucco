@@ -14,6 +14,21 @@ WP_LEADS = [
     ("ext", "diverse team"),
 ]
 
+FILE_CATEGORIES = [
+    ("01", "1. Administrative Management and Jurisdiction - General"),
+    ("02", "2. Administrative Jurisdiction and Accounting - Animals"),
+    ("03", "3. Administrative Jurisdiction and Accounting - Personnel"),
+    ("04", "4. Accounting - Silver"),
+    ("05", "5. Personnel and food rations"),
+    ("06", "6. Prebends"),
+    ("07", "7. Crafts"),
+    ("08", "8. Real estate"),
+    ("09", "9. Agricultural products"),
+    ("10", "10. Animal husbandry"),
+    ("11", "11. Letters"),
+    ("12", "12. Unclassified"),
+]
+
 
 def set_extra(self, **kwargs):
     self.extra = kwargs
@@ -34,6 +49,61 @@ class DigeannaManager(models.Manager):
                 ]
             )
         )
+
+
+class VanDrielFiles(models.Model):
+    """
+    VanDrielFiles model represents files categorized according to van Driel's classification.
+    Attributes:
+        file (CharField): Overarching file category with a maximum length of 2 characters.
+        sub_file (CharField): Text type or topic with a maximum length of 250 characters.
+        verbum_regens (CharField): Akkadian key term for text identification, optional with a maximum length of 250 characters.
+        description (TextField): General description and remarks concerning a file, optional.
+    Meta:
+        ordering (list): Default ordering of the model instances by 'file' and 'sub_file'.
+        verbose_name (str): Human-readable name for the model.
+        verbose_name_plural (str): Human-readable plural name for the model.
+    Methods:
+        __str__: Returns a string representation of the instance combining 'file' and 'sub_file'.
+    """  # noqa: E501
+
+    file = models.CharField(
+        max_length=2,
+        verbose_name="File",
+        default="12",
+        help_text="overarching file category",
+        choices=FILE_CATEGORIES,
+    )
+    sub_file = models.CharField(
+        max_length=250,
+        default="z. not defined",
+        verbose_name="Sub-file",
+        help_text="Text type or topic",
+    )
+    verbum_regens = models.CharField(
+        max_length=250,
+        blank=True,
+        null=True,
+        verbose_name="Verbum regens",
+        help_text="Akkadian key term for text identification",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="General description and remarks concerning a file",
+    )
+
+    class Meta:
+
+        ordering = ["file", "sub_file"]
+        verbose_name = "File after van Driel, BiOr 55-1 (1998), 59-79"
+        verbose_name_plural = "Files after van Driel, BiOr 55-1 (1998), 59-79"
+
+    def __str__(self):
+        file_nr = self.file.split(".")[0]
+        sub_file_id = self.sub_file.split(".")[0]
+        return f"{file_nr} {sub_file_id}"
 
 
 class Archiv(models.Model):
