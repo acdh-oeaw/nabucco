@@ -25,7 +25,7 @@ class NewsEntry(models.Model):
     class Meta:
 
         ordering = [
-            "updated",
+            "-updated",
         ]
         verbose_name = "News Entry"
         verbose_name_plural = "News Entries"
