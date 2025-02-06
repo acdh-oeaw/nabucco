@@ -52,6 +52,72 @@ class DigeannaManager(models.Manager):
         )
 
 
+class LegalPurpose(models.Model):
+
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Legal purpose",
+        help_text="name of the type of purpose (as precise as possible in English)",
+    )
+    verbum_regens = HTMLField(
+        default="...",
+        verbose_name="verbum regens",
+        help_text="verba regentia characteristic of and critical for the legal content of a text typ",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="a brief description of the legal reality behind such a text",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Legal Purpose"
+        verbose_name_plural = "Legal Purposes"
+
+    def __str__(self):
+        return f"{self.name} ({strip_tags(self.verbum_regens)})"
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:legalpurpose_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:legalpurpose_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:legalpurpose_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:legalpurpose_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:legalpurpose_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:legalpurpose_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:legalpurpose_detail", kwargs={"pk": prev.id})
+        return False
+
+
 class TextForm(models.Model):
 
     name = models.CharField(
@@ -1023,6 +1089,15 @@ class Tablet(models.Model):
         on_delete=models.SET_NULL,
         verbose_name="Text form",
         help_text="select (one) attributable text form",
+    )
+    legal_purpose = models.ForeignKey(
+        LegalPurpose,
+        related_name="has_tablet",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Legal Purpose",
+        help_text="select (one) attributable legal purpose",
     )
     private_context = models.BooleanField(
         default=False,

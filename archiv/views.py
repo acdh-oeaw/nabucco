@@ -42,6 +42,7 @@ from .models import (
     WorkPackage,
     VanDrielFiles,
     TextForm,
+    LegalPurpose,
 )
 from browsing.utils import (
     GenericListView,
@@ -448,7 +449,6 @@ class TextFormListView(GenericListView):
 
 class TextFormDetailView(BaseDetailView):
     model = TextForm
-    # template_name = "archiv/textform_detail.html"
 
 
 class TextFormCreate(BaseCreateView):
@@ -476,4 +476,43 @@ class TextFormDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletDelete, self).dispatch(*args, **kwargs)
+        return super(TextFormDelete, self).dispatch(*args, **kwargs)
+
+
+class LegalPurposeListView(GenericListView):
+
+    model = LegalPurpose
+    init_columns = ["id", "name", "verbum_regens"]
+    enable_merge = True
+
+
+class LegalPurposeDetailView(BaseDetailView):
+    model = LegalPurpose
+
+
+class LegalPurposeCreate(BaseCreateView):
+
+    model = LegalPurpose
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LegalPurposeCreate, self).dispatch(*args, **kwargs)
+
+
+class LegalPurposeUpdate(BaseUpdateView):
+
+    model = LegalPurpose
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LegalPurposeUpdate, self).dispatch(*args, **kwargs)
+
+
+class LegalPurposeDelete(DeleteView):
+    model = LegalPurpose
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:workpackage_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LegalPurposeDelete, self).dispatch(*args, **kwargs)

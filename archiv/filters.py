@@ -407,6 +407,8 @@ class TabletListFilter(django_filters.FilterSet):
             "inferred_date",
             "work_package",
             "van_driel_files",
+            "text_form",
+            "legal_purpose",
             "private_context",
             "remark",
         ]

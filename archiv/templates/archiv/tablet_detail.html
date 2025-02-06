@@ -111,8 +111,10 @@
               </a>
             </dd>
             {% endfor %}
-            <dt>Text form</dt>
+            <dt>Text Form</dt>
             <dd><a href="{{ object.text_form.get_absolute_url }}">{{ object.text_form }}</a></dd>
+            <dt>Legal Purpose</dt>
+            <dd><a href="{{ object.legal_purpose.get_absolute_url }}">{{ object.legal_purpose }}</a></dd>
             <dt>Private context</dt>
             <dd>{{ object.private_context }}</dd>
           </dl>
