@@ -83,6 +83,23 @@
     },
     {
         "fields": {
+            "description": "<p>A region in the centre-east of Mesopotamia near Elam. Its principal city is D\u0113r.</p>",
+            "lat": null,
+            "legacy_id": "D\u0113r",
+            "legacy_pk": 76,
+            "lng": null,
+            "name": "D\u0113r region",
+            "orig_data_csv": "{\"place id\": 76, \"parent id\": 4, \"place name\": \"D\\u0113r (NE Babylonia)\", \"related objects\": NaN, \"title\": \"D\\u0113r (NE Babylonia)\"}",
+            "part_of": null,
+            "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/903013",
+            "title": "D\u0113r"
+        },
+        "model": "archiv.place",
+        "pk": 375
+    },
+    {
+        "fields": {
             "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Uruk",
@@ -217,33 +234,33 @@
     },
     {
         "fields": {
-            "description": "",
-            "file": "10",
-            "sub_file": "a. Mixed, cattle and sheep",
-            "verbum_regens": null
+            "description": "Document usually begins with witnesses, contents (can) refer to unusual events, sometimes related to the cult.",
+            "file": "01",
+            "sub_file": "c. Witnessed protocol",
+            "verbum_regens": "ta\u1e2bsistu l\u0101 ma\u0161\u00ea"
         },
         "model": "archiv.vandrielfiles",
         "pk": 3
     },
     {
         "fields": {
-            "description": "Satements can be made freely, under oath or when subjected to masaltu.",
+            "description": "witnessed; made freely, under oath or subjected to ma\u0161\u02c0altu",
             "file": "01",
             "sub_file": "b. Statement",
-            "verbum_regens": "masaltu"
+            "verbum_regens": null
         },
         "model": "archiv.vandrielfiles",
         "pk": 2
     },
     {
         "fields": {
-            "description": "The Late Eanna Archive comprises texts written from the late reign of Nebuchadnezzar to the reign of Darius whose intrinsic and\r\nextrinsic features make them distinct from earlier Eanna tablets in several respects (Jursa and Gordin 2018, Pirngruber 2021). In contrast to the Early Eanna corpus dominated by administrative records, this part of the Archive features a significant number of legal documents, among them numerous court documents. Since the early years of Assyriology, those texts have been studied for the insight they offer into Babylonian law. This focus on individual texts has overshadowed the archival perspective, a notable\r\nexception being the Gimillu Dossier [see recently Jursa 2004b and Kozuh 2014], whose link to the end of the Archive has been strongly postulated (van Driel 1998: 67\u201368, Jursa 2005: 138). Apart from adding to already identified Dossiers (e.g., the Gold Thieves [Renger 1971], the Forty Thieves of Uruk [Sandowicz 2014], the House of Nan\u0101ya-\u0113re\u0161 [Sandowicz, Wunsch, and Zawadzki, in press]) and identifying new ones, WP 5 will examine the distribution of Dossiers in chronological perspective and study the extent to which they coincide with crucial moments of Neo-Babylonian and Urukean history, such as the beginning of Nabonidus\u2019 reign, the period postdating Nabonidus\u2019 return from Teima, the mid-reign of Cyrus, and, in particular, the abrupt and still inexplicable end of the Eanna Archive in Darius\u2019 second year (most recently Kessler 2018).",
-            "title": "Dossiers in the Late Eanna Archive",
-            "wp_lead": "Warsaw",
-            "wp_number": "WP5"
+            "description": "This WP will be conducted by the Jena project part. Using the collective biography of the Eanna scribes as a starting point for the\r\ninvestigation into their work and the Files they produced (see WP 7), WP 6 will create a prosopography of this well-defined and well documented group of individuals. The prosopography will go beyond a mere update of K\u00fcmmel\u2019s now outdated prosopographic study of the Eanna scribes (K\u00fcmmel 1979), while Bongenaar 1997, the most comprehensive prosopographic study on the temple community of Ebabbar, will serve as a useful guideline for the analysis of the Eanna material.",
+            "title": "A Prosopography of the Eanna scribes and social network analysis",
+            "wp_lead": "Jena",
+            "wp_number": "WP6"
         },
         "model": "archiv.workpackage",
-        "pk": 2
+        "pk": 3
     },
     {
         "fields": {
@@ -277,6 +294,24 @@
     },
     {
         "fields": {
+            "description": "",
+            "name": "change me",
+            "verbum_regens": "<p>...</p>"
+        },
+        "model": "archiv.textform",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "archiv": 119,
+            "description": "",
+            "name": "generic dossier name (change me!)"
+        },
+        "model": "archiv.dossier",
+        "pk": 1
+    },
+    {
+        "fields": {
             "alt_name": "",
             "description": "<p>The &ldquo;dead&rdquo; temple archive of Eanna consists of about 8,000 published and unpublished texts mostly acquired on the antiquities market in the early twentieth century and now housed in major museums and collections in the US (Yale, Princeton) and Europe (Paris, Berlin, London). In addition, there are thousands of tablets and (predominantly) fragments found by the German excavations. The archive contains some material from the time of the Assyrian domination, but dense information is only available from the beginning of the reign of Nabopolassar. There is a clear break in the second year of Darius, possibly connected to the investigations into the affairs of the corrupt temple slave Gimillu; only comparatively few later texts are known. The latest texts dates to 29 Dar.</p>\r\n\r\n<p>The high percentage of contracts found in the Eanna archive (vis-&agrave;-vis Ebabbar/Sippar), at least in the collections, originating from illicit excavations, is striking. What this means for the structure of the archive remains to be investigated. Another clear distinction is the fact that only few and comparatively small private archives could be identified in the material originating from the clandestine excavations.</p>",
             "legacy_id": "Eanna temple",
@@ -304,6 +339,23 @@
         },
         "model": "archiv.glossary",
         "pk": 162
+    },
+    {
+        "fields": {
+            "description": "A very nice place",
+            "lat": null,
+            "legacy_id": "Ak\u0161ak",
+            "legacy_pk": 1521,
+            "lng": null,
+            "name": "Ak\u0161ak",
+            "orig_data_csv": "{\"place id\": 1521, \"parent id\": 76, \"place name\": \"Ak\\u0161ak\", \"related objects\": NaN, \"title\": \"Ak\\u0161ak\"}",
+            "part_of": 375,
+            "place_collection": "",
+            "pleiades_url": null,
+            "title": "Ak\u0161ak"
+        },
+        "model": "archiv.place",
+        "pk": 378
     },
     {
         "fields": {
@@ -416,6 +468,7 @@
             "publication_name": "Frame 2013",
             "regional_setting": null,
             "remark": null,
+            "text_form": null,
             "text_number": "11",
             "transliteration": null,
             "type_content": 188,
@@ -451,6 +504,7 @@
             "publication_name": "",
             "regional_setting": null,
             "remark": null,
+            "text_form": null,
             "text_number": "",
             "transliteration": null,
             "type_content": null,
@@ -467,11 +521,11 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
-            "dossier": null,
+            "dossier": 1,
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
             "julian_date_year": null,
-            "king": "",
+            "king": "Nbk IV",
             "legacy_id": "5671.0",
             "legacy_pk": 5671,
             "mentioned_in_pub": [
@@ -484,10 +538,11 @@
             "paraphrase": "<p>List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.</p>",
             "period": "ENB",
             "place_of_issue": 62,
-            "private_context": false,
+            "private_context": true,
             "publication_name": "AnOr 9",
-            "regional_setting": null,
+            "regional_setting": 378,
             "remark": "",
+            "text_form": 1,
             "text_number": "2",
             "transliteration": "",
             "type_content": 162,
@@ -497,7 +552,7 @@
             ],
             "work_package": [
                 1,
-                2
+                3
             ],
             "year": ""
         },
@@ -531,6 +586,7 @@
             "publication_name": "Dar.",
             "regional_setting": null,
             "remark": null,
+            "text_form": null,
             "text_number": "318",
             "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",
             "type_content": 175,

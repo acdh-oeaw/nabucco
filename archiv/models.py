@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse, reverse_lazy
+from django.utils.html import strip_tags
 
 from browsing.utils import model_to_dict
 from tinymce.models import HTMLField
@@ -49,6 +50,72 @@ class DigeannaManager(models.Manager):
                 ]
             )
         )
+
+
+class TextForm(models.Model):
+
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Designation",
+        help_text="name or type of the text form",
+    )
+    verbum_regens = HTMLField(
+        default="...",
+        verbose_name="verbum regens",
+        help_text="verba regentia characteristic of and critical for the text form",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="further notes and definition of the text form",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Text Form"
+        verbose_name_plural = "Text Forms"
+
+    def __str__(self):
+        return f"{self.name} ({strip_tags(self.verbum_regens)})"
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:textform_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:textform_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:textform_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:textform_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:textform_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:textform_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:textform_detail", kwargs={"pk": prev.id})
+        return False
 
 
 class VanDrielFiles(models.Model):
@@ -947,6 +1014,15 @@ class Tablet(models.Model):
         verbose_name="file after G. van Driel",
         help_text="choose the attribution of the text according to van Driel's categorization",
         related_name="related_tablets",
+    )
+    text_form = models.ForeignKey(
+        TextForm,
+        related_name="has_tablet",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Text form",
+        help_text="select (one) attributable text form",
     )
     private_context = models.BooleanField(
         default=False,

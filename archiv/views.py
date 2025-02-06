@@ -41,6 +41,7 @@ from .models import (
     Dossier,
     WorkPackage,
     VanDrielFiles,
+    TextForm,
 )
 from browsing.utils import (
     GenericListView,
@@ -363,7 +364,6 @@ class WorkPackageListView(GenericListView):
     model = WorkPackage
     init_columns = ["id", "wp_number", "title"]
     enable_merge = True
-    # table_class = WorkPackageTable
 
 
 class WorkPackageDetailView(BaseDetailView):
@@ -404,7 +404,6 @@ class VanDrielFilesListView(GenericListView):
     model = VanDrielFiles
     init_columns = ["id", "file", "sub_file"]
     enable_merge = True
-    # table_class = VanDrielFilesTable
 
 
 class VanDrielFilesDetailView(BaseDetailView):
@@ -432,6 +431,46 @@ class VanDrielFilesUpdate(BaseUpdateView):
 
 class VanDrielFilesDelete(DeleteView):
     model = VanDrielFiles
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:workpackage_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TabletDelete, self).dispatch(*args, **kwargs)
+
+
+class TextFormListView(GenericListView):
+
+    model = TextForm
+    init_columns = ["id", "name", "verbum_regens"]
+    enable_merge = True
+
+
+class TextFormDetailView(BaseDetailView):
+    model = TextForm
+    # template_name = "archiv/textform_detail.html"
+
+
+class TextFormCreate(BaseCreateView):
+
+    model = TextForm
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TextFormCreate, self).dispatch(*args, **kwargs)
+
+
+class TextFormUpdate(BaseUpdateView):
+
+    model = TextForm
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TextFormUpdate, self).dispatch(*args, **kwargs)
+
+
+class TextFormDelete(DeleteView):
+    model = TextForm
     template_name = "webpage/confirm_delete.html"
     success_url = reverse_lazy("archiv:workpackage_browse")
 
