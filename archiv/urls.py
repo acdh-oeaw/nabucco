@@ -162,4 +162,29 @@ urlpatterns = [
         views.TextFormDelete.as_view(),
         name="textform_delete",
     ),
+    path(
+        "legalpurpose/",
+        views.LegalPurposeListView.as_view(),
+        name="legalpurpose_browse",
+    ),
+    path(
+        "legalpurpose/detail/<int:pk>",
+        views.LegalPurposeDetailView.as_view(),
+        name="legalpurpose_detail",
+    ),
+    path(
+        "legalpurpose/create/",
+        views.LegalPurposeCreate.as_view(),
+        name="legalpurpose_create",
+    ),
+    path(
+        "legalpurpose/edit/<int:pk>",
+        views.LegalPurposeUpdate.as_view(),
+        name="legalpurpose_edit",
+    ),
+    path(
+        "legalpurpose/delete/<int:pk>",
+        views.LegalPurposeDelete.as_view(),
+        name="legalpurpose_delete",
+    ),
 ]
