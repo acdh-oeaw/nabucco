@@ -137,4 +137,29 @@ urlpatterns = [
         views.VanDrielFilesUpdate.as_view(),
         name="vandrielfile_edit",
     ),
+    path(
+        "textform/",
+        views.TextFormListView.as_view(),
+        name="textform_browse",
+    ),
+    path(
+        "textform/detail/<int:pk>",
+        views.TextFormDetailView.as_view(),
+        name="textform_detail",
+    ),
+    path(
+        "textform/create/",
+        views.TextFormCreate.as_view(),
+        name="textform_create",
+    ),
+    path(
+        "textform/edit/<int:pk>",
+        views.TextFormUpdate.as_view(),
+        name="textform_edit",
+    ),
+    path(
+        "textform/delete/<int:pk>",
+        views.TextFormDelete.as_view(),
+        name="textform_delete",
+    ),
 ]
