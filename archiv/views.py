@@ -43,6 +43,7 @@ from .models import (
     VanDrielFiles,
     TextForm,
     LegalPurpose,
+    TransActionType,
 )
 from browsing.utils import (
     GenericListView,
@@ -472,7 +473,7 @@ class TextFormUpdate(BaseUpdateView):
 class TextFormDelete(DeleteView):
     model = TextForm
     template_name = "webpage/confirm_delete.html"
-    success_url = reverse_lazy("archiv:workpackage_browse")
+    success_url = reverse_lazy("archiv:textform_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -511,8 +512,47 @@ class LegalPurposeUpdate(BaseUpdateView):
 class LegalPurposeDelete(DeleteView):
     model = LegalPurpose
     template_name = "webpage/confirm_delete.html"
-    success_url = reverse_lazy("archiv:workpackage_browse")
+    success_url = reverse_lazy("archiv:legalpurpose_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LegalPurposeDelete, self).dispatch(*args, **kwargs)
+
+
+class TransActionTypeListView(GenericListView):
+
+    model = TransActionType
+    init_columns = ["id", "name", "description"]
+    enable_merge = True
+
+
+class TransActionTypeDetailView(BaseDetailView):
+    model = TransActionType
+
+
+class TransActionTypeCreate(BaseCreateView):
+
+    model = TransActionType
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TransActionTypeCreate, self).dispatch(*args, **kwargs)
+
+
+class TransActionTypeUpdate(BaseUpdateView):
+
+    model = TransActionType
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TransActionTypeUpdate, self).dispatch(*args, **kwargs)
+
+
+class TransActionTypeDelete(DeleteView):
+    model = TransActionType
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:transactiontype_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TransActionTypeDelete, self).dispatch(*args, **kwargs)

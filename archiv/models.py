@@ -52,6 +52,67 @@ class DigeannaManager(models.Manager):
         )
 
 
+class TransActionType(models.Model):
+
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Transaction Type",
+        help_text="designation of the type, whether transactional or not, outgoing, incoming etc.",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="a brief description of the transaction type as viewed by the administration",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Transaction Type"
+        verbose_name_plural = "Transaction Types"
+
+    def __str__(self):
+        return self.name
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:transactiontype_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:transactiontype_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:transactiontype_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:transactiontype_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:transactiontype_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:transactiontype_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:transactiontype_detail", kwargs={"pk": prev.id})
+        return False
+
+
 class LegalPurpose(models.Model):
 
     name = models.CharField(
@@ -1098,6 +1159,14 @@ class Tablet(models.Model):
         on_delete=models.SET_NULL,
         verbose_name="Legal Purpose",
         help_text="select (one) attributable legal purpose",
+    )
+    transaction_type = models.ForeignKey(
+        TransActionType,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Transaction Type",
+        help_text="select (one) attributable transaction type",
     )
     private_context = models.BooleanField(
         default=False,

@@ -187,4 +187,29 @@ urlpatterns = [
         views.LegalPurposeDelete.as_view(),
         name="legalpurpose_delete",
     ),
+    path(
+        "transactiontype/",
+        views.TransActionTypeListView.as_view(),
+        name="transactiontype_browse",
+    ),
+    path(
+        "transactiontype/detail/<int:pk>",
+        views.TransActionTypeDetailView.as_view(),
+        name="transactiontype_detail",
+    ),
+    path(
+        "transactiontype/create/",
+        views.TransActionTypeCreate.as_view(),
+        name="transactiontype_create",
+    ),
+    path(
+        "transactiontype/edit/<int:pk>",
+        views.TransActionTypeUpdate.as_view(),
+        name="transactiontype_edit",
+    ),
+    path(
+        "transactiontype/delete/<int:pk>",
+        views.TransActionTypeDelete.as_view(),
+        name="transactiontype_delete",
+    ),
 ]

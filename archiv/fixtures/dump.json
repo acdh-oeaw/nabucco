@@ -294,6 +294,14 @@
     },
     {
         "fields": {
+            "description": "some elaborate description",
+            "name": "a to b"
+        },
+        "model": "archiv.transactiontype",
+        "pk": 1
+    },
+    {
+        "fields": {
             "description": "this is very serious",
             "name": "law",
             "verbum_regens": "<p>some gibberish</p>"
@@ -480,6 +488,7 @@
             "remark": null,
             "text_form": null,
             "text_number": "11",
+            "transaction_type": null,
             "transliteration": null,
             "type_content": 188,
             "van_driel_files": [],
@@ -517,6 +526,7 @@
             "remark": null,
             "text_form": null,
             "text_number": "",
+            "transaction_type": null,
             "transliteration": null,
             "type_content": null,
             "van_driel_files": [],
@@ -556,6 +566,7 @@
             "remark": "",
             "text_form": 1,
             "text_number": "2",
+            "transaction_type": 1,
             "transliteration": "",
             "type_content": 162,
             "van_driel_files": [
@@ -601,6 +612,7 @@
             "remark": null,
             "text_form": null,
             "text_number": "318",
+            "transaction_type": null,
             "transliteration": "Transliteration available on <a href=\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\" target=\"_blank\">Achemenet</a>",
             "type_content": 175,
             "van_driel_files": [],
