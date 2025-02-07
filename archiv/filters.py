@@ -410,6 +410,7 @@ class TabletListFilter(django_filters.FilterSet):
             "text_form",
             "legal_purpose",
             "transaction_type",
+            "domain",
             "private_context",
             "remark",
         ]
