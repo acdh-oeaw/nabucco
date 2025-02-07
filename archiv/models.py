@@ -1025,6 +1025,12 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="Paraphrase",
     )
+    legacy_paraphrase = HTMLField(
+        blank=True,
+        null=True,
+        verbose_name="Legacy paraphrase",
+        help_text="first paraphrase created for NaBuCCo of a text that has subsequently been reworked in a new paraphrase",  # noqa: E501
+    )
     transliteration = models.TextField(
         blank=True,
         null=True,
@@ -1212,6 +1218,11 @@ class Tablet(models.Model):
         verbose_name="Text form",
         help_text="select (one) attributable text form",
     )
+    tablet_as_list = models.BooleanField(
+        default=False,
+        verbose_name="List",
+        help_text="Is the text written as a list (rather than a single note)?"
+    )
     legal_purpose = models.ForeignKey(
         LegalPurpose,
         related_name="has_tablet",
@@ -1230,6 +1241,11 @@ class Tablet(models.Model):
         verbose_name="Transaction Type",
         help_text="select (one) attributable transaction type",
     )
+    second_order_accounting = models.BooleanField(
+        default=False,
+        verbose_name="second-order accounting",
+        help_text="Does the text belong to or contain elements of second-order accounting, i.e. referring to other documents or similar?"  # noqa: E501
+    )
     domain = models.ForeignKey(
         Domain,
         blank=True,
@@ -1238,6 +1254,35 @@ class Tablet(models.Model):
         on_delete=models.SET_NULL,
         verbose_name="Domain (Eanna)",
         help_text="select (one) attributable domain of the economic and administrative reality of Eanna",
+    )
+    formatting = models.BooleanField(
+        default=False,
+        verbose_name="Formatting",
+        help_text="Is there any formatting in the text layout rather than simply scriptio continua?"
+    )
+    formatting_remarks = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Formatting remarks",
+        help_text="Briefly describe any unusual or noteworthy points of text formatting"
+    )
+    tablet_format = models.CharField(
+        blank=True,
+        null=True,
+        max_length=100,
+        verbose_name="Format of the Tablet",
+        help_text="Choose the format of the physical tablet",
+        choices=(
+            ("landscape", "landscape format"),
+            ("portrait", "portrait format"),
+            ("square", "square-shaped"),
+            ("unclear", "unclear format"),
+        )
+    )
+    sealings = models.BooleanField(
+        default=False,
+        verbose_name="Sealings",
+        help_text="Does the tablet have seal impressions?"
     )
     private_context = models.BooleanField(
         default=False,
