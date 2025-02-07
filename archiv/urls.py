@@ -212,4 +212,29 @@ urlpatterns = [
         views.TransActionTypeDelete.as_view(),
         name="transactiontype_delete",
     ),
+    path(
+        "domain/",
+        views.DomainListView.as_view(),
+        name="domain_browse",
+    ),
+    path(
+        "domain/detail/<int:pk>",
+        views.DomainDetailView.as_view(),
+        name="domain_detail",
+    ),
+    path(
+        "domain/create/",
+        views.DomainCreate.as_view(),
+        name="domain_create",
+    ),
+    path(
+        "domain/edit/<int:pk>",
+        views.DomainUpdate.as_view(),
+        name="domain_edit",
+    ),
+    path(
+        "domain/delete/<int:pk>",
+        views.DomainDelete.as_view(),
+        name="domain_delete",
+    ),
 ]

@@ -203,6 +203,7 @@ class TabletFilterFormHelper(FormHelper):
                     "legal_purpose",
                     "transaction_type",
                     "private_context",
+                    "domain",
                     "place_of_issue",
                     "mentioned_place",
                     "regional_setting",

@@ -294,6 +294,14 @@
     },
     {
         "fields": {
+            "description": "This description is not that elaborate",
+            "name": "children"
+        },
+        "model": "archiv.domain",
+        "pk": 1
+    },
+    {
+        "fields": {
             "description": "some elaborate description",
             "name": "a to b"
         },
@@ -464,6 +472,7 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "domain": null,
             "dossier": null,
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
@@ -504,6 +513,7 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "domain": null,
             "dossier": null,
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
@@ -542,6 +552,7 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "domain": 1,
             "dossier": 1,
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
@@ -588,6 +599,7 @@
             "bibliography": "",
             "cdli_no": "",
             "day": "",
+            "domain": null,
             "dossier": null,
             "imported": "Kathleen Abraham (18/04/2016)",
             "inferred_date": "",

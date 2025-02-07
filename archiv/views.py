@@ -44,6 +44,7 @@ from .models import (
     TextForm,
     LegalPurpose,
     TransActionType,
+    Domain,
 )
 from browsing.utils import (
     GenericListView,
@@ -556,3 +557,42 @@ class TransActionTypeDelete(DeleteView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(TransActionTypeDelete, self).dispatch(*args, **kwargs)
+
+
+class DomainListView(GenericListView):
+
+    model = Domain
+    init_columns = ["id", "name", "description"]
+    enable_merge = True
+
+
+class DomainDetailView(BaseDetailView):
+    model = Domain
+
+
+class DomainCreate(BaseCreateView):
+
+    model = Domain
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(DomainCreate, self).dispatch(*args, **kwargs)
+
+
+class DomainUpdate(BaseUpdateView):
+
+    model = Domain
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(DomainUpdate, self).dispatch(*args, **kwargs)
+
+
+class DomainDelete(DeleteView):
+    model = Domain
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:domain_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(DomainDelete, self).dispatch(*args, **kwargs)

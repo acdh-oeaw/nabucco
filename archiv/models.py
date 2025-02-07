@@ -52,6 +52,67 @@ class DigeannaManager(models.Manager):
         )
 
 
+class Domain(models.Model):
+
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Domain",
+        help_text="concise designation of the domain",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="a brief description of the textual domain in the economic and administrative reality of Eanna",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Domain (Eanna)"
+        verbose_name_plural = "Domains (Eanna)"
+
+    def __str__(self):
+        return self.name
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:domain_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:domain_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:domain_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:domain_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:domain_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:domain_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:domain_detail", kwargs={"pk": prev.id})
+        return False
+
+
 class TransActionType(models.Model):
 
     name = models.CharField(
@@ -1164,9 +1225,19 @@ class Tablet(models.Model):
         TransActionType,
         blank=True,
         null=True,
+        related_name="has_tablet",
         on_delete=models.SET_NULL,
         verbose_name="Transaction Type",
         help_text="select (one) attributable transaction type",
+    )
+    domain = models.ForeignKey(
+        Domain,
+        blank=True,
+        null=True,
+        related_name="has_tablet",
+        on_delete=models.SET_NULL,
+        verbose_name="Domain (Eanna)",
+        help_text="select (one) attributable domain of the economic and administrative reality of Eanna",
     )
     private_context = models.BooleanField(
         default=False,
