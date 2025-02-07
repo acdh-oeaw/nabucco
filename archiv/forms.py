@@ -201,6 +201,7 @@ class TabletFilterFormHelper(FormHelper):
                     "van_driel_files",
                     "text_form",
                     "legal_purpose",
+                    "transaction_type",
                     "private_context",
                     "place_of_issue",
                     "mentioned_place",
