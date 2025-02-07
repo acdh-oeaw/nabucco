@@ -72,6 +72,9 @@
           <dl>
             <dt>Paraphrase</dt>
             <dd>{{ object.paraphrase|safe}}</dd>
+
+            <dt>Legacy Paraphrase</dt>
+            <dd>{{ object.legacy_paraphrase|safe}}</dd>
     
             <dt>Transliteration </dt>
             <dd>{{ object.transliteration|safe}}</dd>
@@ -115,6 +118,10 @@
             <dd>
               <a href="{{ object.text_form.get_absolute_url }}">{{ object.text_form }}</a>
             </dd>
+            <dt>Written as a list</dt>
+            <dd>
+              {{ object.tablet_as_list }}
+            </dd>
             <dt>Legal Purpose</dt>
             <dd>
               <a href="{{ object.legal_purpose.get_absolute_url }}">{{ object.legal_purpose }}</a>
@@ -123,10 +130,20 @@
             <dd>
               <a href="{{ object.transaction_type.get_absolute_url }}">{{ object.transaction_type }}</a>
             </dd>
+            <dt>Second-order accounting</dt>
+            <dd>{{ object.second_order_accounting }}</dd>
             <dt>Domain (Eanna)</dt>
             <dd>
               <a href="{{ object.domain.get_absolute_url }}">{{ object.domain }}</a>
             </dd>
+            <dt>Formatting</dt>
+            <dd>{{ object.formatting }}</dd>
+            <dt>Formatting remarks</dt>
+            <dd>{{ object.formatting_remarks }}</dd>
+            <dt>Format of the tablet</dt>
+            <dd>{{ object.tablet_format }}</dd>
+            <dt>Sealings</dt>
+            <dd>{{ object.sealings }}</dd>
             <dt>Private context</dt>
             <dd>{{ object.private_context }}</dd>
           </dl>
