@@ -14,11 +14,9 @@
 * create a postgres-db `nabucco` with user and pw `postgres` - or modify `settings.py` or set propper environment variables
     --> note that with Windows, PostgreSQL13 seems not to work: use version 12
 * run `python manage.py makemigrations` then `python manage.py migrate` and  `python manage.py runserver` to migrate database and start the dev server
-* (in another window) run `python manage.py import_data` to, well, to import the data
 
-optional:
-
-* run `xml_to_csv.py` (parses xmls in `data/xml` and writes data into `data/csv`, for each class one csv) and rename `data/csv/Archive.csv` to `data/csv/Archiv.csv`
+> [!IMPORTANT]  
+> The instructions of how to import data have been removed because the data as well as the related code are no longer part of this code base. The data import routine was only needed in the early stages of the application development.  
 
 ## Docker
 
