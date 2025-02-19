@@ -451,6 +451,7 @@ class TextFormListView(GenericListView):
 
 class TextFormDetailView(BaseDetailView):
     model = TextForm
+    template_name = "archiv/domain_et_all_detail.html"
 
 
 class TextFormCreate(BaseCreateView):
@@ -490,6 +491,7 @@ class LegalPurposeListView(GenericListView):
 
 class LegalPurposeDetailView(BaseDetailView):
     model = LegalPurpose
+    template_name = "archiv/domain_et_all_detail.html"
 
 
 class LegalPurposeCreate(BaseCreateView):
@@ -529,6 +531,7 @@ class TransActionTypeListView(GenericListView):
 
 class TransActionTypeDetailView(BaseDetailView):
     model = TransActionType
+    template_name = "archiv/domain_et_all_detail.html"
 
 
 class TransActionTypeCreate(BaseCreateView):
@@ -568,6 +571,7 @@ class DomainListView(GenericListView):
 
 class DomainDetailView(BaseDetailView):
     model = Domain
+    template_name = "archiv/domain_et_all_detail.html"
 
 
 class DomainCreate(BaseCreateView):

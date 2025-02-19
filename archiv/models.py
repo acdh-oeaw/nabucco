@@ -1221,7 +1221,7 @@ class Tablet(models.Model):
     tablet_as_list = models.BooleanField(
         default=False,
         verbose_name="List",
-        help_text="Is the text written as a list (rather than a single note)?"
+        help_text="Is the text written as a list (rather than a single note)?",
     )
     legal_purpose = models.ForeignKey(
         LegalPurpose,
@@ -1244,7 +1244,7 @@ class Tablet(models.Model):
     second_order_accounting = models.BooleanField(
         default=False,
         verbose_name="second-order accounting",
-        help_text="Does the text belong to or contain elements of second-order accounting, i.e. referring to other documents or similar?"  # noqa: E501
+        help_text="Does the text belong to or contain elements of second-order accounting, i.e. referring to other documents or similar?",  # noqa: E501
     )
     domain = models.ForeignKey(
         Domain,
@@ -1258,13 +1258,13 @@ class Tablet(models.Model):
     formatting = models.BooleanField(
         default=False,
         verbose_name="Formatting",
-        help_text="Is there any formatting in the text layout rather than simply scriptio continua?"
+        help_text="Is there any formatting in the text layout rather than simply scriptio continua?",
     )
     formatting_remarks = models.TextField(
         blank=True,
         null=True,
         verbose_name="Formatting remarks",
-        help_text="Briefly describe any unusual or noteworthy points of text formatting"
+        help_text="Briefly describe any unusual or noteworthy points of text formatting",
     )
     tablet_format = models.CharField(
         blank=True,
@@ -1277,12 +1277,12 @@ class Tablet(models.Model):
             ("portrait", "portrait format"),
             ("square", "square-shaped"),
             ("unclear", "unclear format"),
-        )
+        ),
     )
     sealings = models.BooleanField(
         default=False,
         verbose_name="Sealings",
-        help_text="Does the tablet have seal impressions?"
+        help_text="Does the tablet have seal impressions?",
     )
     private_context = models.BooleanField(
         default=False,
