@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load webpage_extras %}
+{% block title %}{{ object }}{% endblock %}
+{% block content %}
+{% include 'browsing/partials/detailview_breadcrumb.html' %}
+{% include 'browsing/partials/detailview_title.html' %}
+
+{% block custom %}
+<div class="container">
+    <div class="row p-3">
+        <div class="col-md-6">
+            <h2 class="text-center">Info</h2>
+            <dl>
+                {% if object.verbum_regens %}
+                <dt>Verbum regens</dt>
+                <dd>{{ object.verbum_regens|safe }}</dd>
+                {% endif %}
+                <dt>Description</dt>
+                <dd>
+                    {% if object.description %}
+                    {{ object.description|safe }}
+                    {% else %}
+                    no description provided
+                    {% endif %}
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center">Tablets</h2>
+            {% if object.has_tablet.all %}
+            <ul>
+                {% for x in object.has_tablet.all %}
+                <li><a href="{{ x.get_absolute_url }}">{{ x }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+</div>
+{% endblock custom %}
+
+
+{% endblock content%}
