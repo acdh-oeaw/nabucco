@@ -1373,6 +1373,13 @@ class Introduction(models.Model):
         blank=True,
     )
 
+    class Meta:
+        ordering = [
+            "id",
+        ]
+        verbose_name = "Introduction"
+        verbose_name_plural = "Introductions"
+
     def __str__(self):
         return f"{self.title}"
 

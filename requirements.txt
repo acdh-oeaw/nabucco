@@ -3,6 +3,7 @@ acdh-xml-pyutils
 crispy-bootstrap5
 Django>=5.0,<6
 django-autocomplete-light
+djangorestframework
 django-tinymce
 django-fixture-magic
 django-ckeditor  # needed for migrations
