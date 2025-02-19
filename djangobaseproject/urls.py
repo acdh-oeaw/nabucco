@@ -23,7 +23,7 @@ router.register(r"workpackages", api_views.WorkPackageViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include(router.urls)),
+    path("api/", include(router.urls), name='api-root'),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("tinymce/", include("tinymce.urls")),
     path("digeanna/", include("digeanna.urls", namespace="digeanna")),
