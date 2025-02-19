@@ -80,3 +80,32 @@ class ArchivTestCase(TestCase):
         all_items = Tablet.objects.all().count()
         digeanna_items = Tablet.digeanna_objects.all().count()
         self.assertGreater(all_items, digeanna_items)
+
+    def test_008_api_endpoints(self):
+        from djangobaseproject.urls import router
+
+        for prefix, viewset, basename in router.registry:
+            url = f"/api/{prefix}/"
+            response = client.get(url)
+            self.assertEqual(
+                response.status_code,
+                200,
+                f"API endpoint {url} returned {response.status_code}",
+            )
+
+    def test_009_api_detail_endpoints(self):
+        from djangobaseproject.urls import router
+
+        for prefix, viewset, basename in router.registry:
+            # Get the model class from the viewset
+            model = viewset.queryset.model
+            # Get the first object
+            first_obj = model.objects.first()
+            if first_obj:
+                url = f"/api/{prefix}/{first_obj.id}/"
+                response = client.get(url)
+                self.assertEqual(
+                    response.status_code,
+                    200,
+                    f"API detail endpoint {url} returned {response.status_code}",
+                )
