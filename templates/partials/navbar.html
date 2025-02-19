@@ -96,7 +96,11 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'api-root' %}">API</a>
+                      </li>
                 </ul>
+                
                 {% if user.is_authenticated %}
                 <a href="{% url 'webpage:user_logout' %}" class="pe-3">
                     <i class="bi bi-person-check fs-3" aria-hidden="true"></i>
