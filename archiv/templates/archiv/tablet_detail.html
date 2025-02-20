@@ -15,8 +15,11 @@
           <dd>{{ object.id }}</dd>
           <dt>Museum No.</dt>
           <dd>{{ object.museum_id }}</dd>
+          {% if object.cdli_no %}
           <dt>CDLI P-Identifier</dt>
-          <dd>{{ object.cdli_no }}</dd>
+          <dd>
+            <a href="{{ object.cdli_link }}">{{ object.cdli_no }}</a></dd>
+          {% endif %}
           {% if object.labasi_id %}
           <dt>LaBaSi ID</dt>
           <dd><a href="{{ object.labasi_detail_view }}"> {{object.labasi_id }}</a></dd>
