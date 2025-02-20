@@ -974,6 +974,12 @@ class Tablet(models.Model):
         is_public=True,
         data_lookup="CDLI No.",
     )
+    labasi_id = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="LaBaSi Identifier",
+        help_text="https://labasi.acdh.oeaw.ac.at/",
+    )
     place_of_issue = models.ForeignKey(
         "Place",
         related_name="rvn_tablet_place_of_issue_place",
@@ -1361,6 +1367,12 @@ class Tablet(models.Model):
         if prev:
             return reverse("archiv:tablet_detail", kwargs={"pk": prev.id})
         return False
+
+    def labasi_detail_view(self):
+        if self.labasi_id:
+            return f"https://labasi.acdh.oeaw.ac.at/tablets/detail/{self.labasi_id}"
+        else:
+            return False
 
 
 class Introduction(models.Model):

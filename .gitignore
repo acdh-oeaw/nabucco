@@ -139,3 +139,6 @@ staticfiles
 dump.sql
 .secret
 nabucco_dump.sql
+hansi.csv
+labasi.csv
+nabucco.csv
