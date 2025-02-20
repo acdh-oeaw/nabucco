@@ -1374,6 +1374,13 @@ class Tablet(models.Model):
         else:
             return False
 
+    def cdli_link(self):
+        if self.cdli_no:
+            cdli_no = self.cdli_no[1:]
+            return f"https://cdli.mpiwg-berlin.mpg.de/artifacts/{cdli_no}"
+        else:
+            return False
+
 
 class Introduction(models.Model):
     intro_text = HTMLField(
