@@ -1,5 +1,5 @@
 import django_filters
-
+from acdh_django_widgets.widgets import MartinAntonMuellerWidget
 from django.db.models import Q
 
 from dal import autocomplete
@@ -377,6 +377,11 @@ class TabletListFilter(django_filters.FilterSet):
         lookup_expr="icontains",
         help_text=Tablet._meta.get_field("remark").help_text,
         label=Tablet._meta.get_field("remark").verbose_name,
+    )
+    julian_date_year = django_filters.RangeFilter(
+        help_text=Tablet._meta.get_field("julian_date_year").help_text,
+        label=Tablet._meta.get_field("julian_date_year").verbose_name,
+        widget=MartinAntonMuellerWidget,
     )
 
     class Meta:

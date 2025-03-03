@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "django_tables2",
     "mptt",
+    "acdh_django_widgets",
     "browsing",
     "infos",
     "webpage",

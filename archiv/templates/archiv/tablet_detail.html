@@ -60,8 +60,8 @@
           <dt>Inferred date</dt>
           <dd>{{ object.inferred_date }}</dd>
           {% endif %}
-          <dt>Year BCE</dt>
-          <dd>{{ object.julian_date_year }}</dd>
+          <dt>Date BCE</dt>
+          <dd>{{ object.julian_date_year }}-{{ object.julian_date_month }}-{{ object.julian_date_day }}</dd>
           <dt>Editio princeps</dt>
           {% for x in object.mentioned_in_pub.all %}
           <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>

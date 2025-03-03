@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse, reverse_lazy
 from django.utils.html import strip_tags
@@ -1185,6 +1186,26 @@ class Tablet(models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Julian date year",
+    )
+    julian_date_month = models.IntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Month BCE",
+        help_text="modern month (numbered) as calculated from the Babylonian date of issue",
+        validators=[MinValueValidator(1), MaxValueValidator(12)],
+    ).set_extra(
+        is_public=True,
+        data_lookup="Julian date month",
+    )
+    julian_date_day = models.IntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Day BCE",
+        help_text="modern day (numbered) as calculated from the Babylonian date of issue",
+        validators=[MinValueValidator(1), MaxValueValidator(31)],
+    ).set_extra(
+        is_public=True,
+        data_lookup="Julian date day",
     )
     inferred_date = models.CharField(
         max_length=250,
