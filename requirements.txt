@@ -1,4 +1,5 @@
-acdh-django-browsing==3.1
+acdh-django-browsing==3.2
+acdh-django-widgets
 acdh-xml-pyutils
 crispy-bootstrap5
 Django>=5.0,<6
