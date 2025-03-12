@@ -13,8 +13,17 @@
         <dl>
           <dt>NaBuCCo ID</dt>
           <dd>{{ object.id }}</dd>
+
           <dt>Museum No.</dt>
           <dd>{{ object.museum_id }}</dd>
+
+          <dt>Primary Publication</dt>
+          <dd>
+          {% for x in object.mentioned_in_pub.all %}
+            <a href="{{ x.get_absolute_url }}">{{ x }}</a> {{ object.text_number }}
+          {% endfor %}
+          </dd>
+
           {% if object.cdli_no %}
           <dt>CDLI P-Identifier</dt>
           <dd>
@@ -24,18 +33,21 @@
           <dt>LaBaSi ID</dt>
           <dd><a href="{{ object.labasi_detail_view }}"> {{object.labasi_id }}</a></dd>
           {% endif %}
+
           <dt>Place of issue</dt>
           <dd>
             <a href="{{ object.place_of_issue.get_absolute_url }}">
               {{ object.place_of_issue }}
             </a>
           </dd>
+          
           <dt>Regional setting</dt>
           <dd>
             <a href="{{ object.regional_setting.get_absolute_url }}">
               {{ object.regional_setting }}
             </a>
           </dd>
+
           <dt>Type and Content</dt>
           <dd>
             <a href="{{ object.type_content.get_absolute_url }}">
@@ -48,24 +60,25 @@
               {{ object.archiv }}
             </a>
           </dd>
+
+          {% if object.dossier %}
           <dt>Dossier</dt>
           <dd>
             <a href="{{ object.dossier.get_absolute_url }}">
               {{ object.dossier }}
             </a>
           </dd>
+          {% endif %}
+
           <dt>Period</dt>
           <dd>{{ object.period }}</dd>
-          {% if object.inferred_date %}
+
+          
           <dt>Inferred date</dt>
           <dd>{{ object.inferred_date }}</dd>
-          {% endif %}
+
           <dt>Date BCE</dt>
-          <dd>{{ object.julian_date_year }}-{{ object.julian_date_month }}-{{ object.julian_date_day }}</dd>
-          <dt>Editio princeps</dt>
-          {% for x in object.mentioned_in_pub.all %}
-          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
-          {% endfor %}
+          <dd>{{ object.modern_date }}</dd>
         </dl>
         
         {% if user.is_authenticated %}
