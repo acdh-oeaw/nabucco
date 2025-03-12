@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "dal_select2",
     "dal",
+    "django_extensions",
     "rest_framework",
     "crispy_forms",
     "django_filters",
