@@ -1,7 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse, reverse_lazy
-from django.utils.html import strip_tags
 
 from browsing.utils import model_to_dict
 from tinymce.models import HTMLField
@@ -183,7 +182,8 @@ class LegalPurpose(models.Model):
         verbose_name="Legal purpose",
         help_text="name of the type of purpose (as precise as possible in English)",
     )
-    verbum_regens = HTMLField(
+    verbum_regens = models.CharField(
+        max_length=250,
         default="...",
         verbose_name="verbum regens",
         help_text="verba regentia characteristic of and critical for the legal content of a text typ",
@@ -203,7 +203,7 @@ class LegalPurpose(models.Model):
         verbose_name_plural = "Legal Purposes"
 
     def __str__(self):
-        return f"{self.name} ({strip_tags(self.verbum_regens)})"
+        return f"{self.name} ({self.verbum_regens})"
 
     @classmethod
     def get_listview_url(self):
@@ -249,7 +249,8 @@ class TextForm(models.Model):
         verbose_name="Designation",
         help_text="name or type of the text form",
     )
-    verbum_regens = HTMLField(
+    verbum_regens = models.CharField(
+        max_length=250,
         default="...",
         verbose_name="verbum regens",
         help_text="verba regentia characteristic of and critical for the text form",
@@ -269,7 +270,7 @@ class TextForm(models.Model):
         verbose_name_plural = "Text Forms"
 
     def __str__(self):
-        return f"{self.name} ({strip_tags(self.verbum_regens)})"
+        return f"{self.name} ({self.verbum_regens})"
 
     @classmethod
     def get_listview_url(self):
