@@ -398,7 +398,7 @@ class VanDrielFiles(models.Model):
 
 
 class Archiv(models.Model):
-    """Archiv"""
+    """Archive"""
 
     legacy_id = models.CharField(max_length=300, blank=True, verbose_name="Legacy ID")
     legacy_pk = models.IntegerField(
@@ -463,8 +463,8 @@ class Archiv(models.Model):
         ordering = [
             "name",
         ]
-        verbose_name = "Archiv"
-        verbose_name_plural = "Archivs"
+        verbose_name = "Archive"
+        verbose_name_plural = "Archives"
 
     def __str__(self):
         if self.name:
