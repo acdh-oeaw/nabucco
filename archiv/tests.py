@@ -109,3 +109,30 @@ class ArchivTestCase(TestCase):
                     200,
                     f"API detail endpoint {url} returned {response.status_code}",
                 )
+
+    def text_010_modern_date(self):
+        """
+        Tests the modern_date property of Tablet objects to ensure correct date format based on available Julian date components.
+        The test verifies that:
+        - When julian_date_day exists: modern_date has 2 slashes (full date format)
+        - When only julian_date_month exists: modern_date has 1 slash (month/year format)
+        - When only julian_date_year exists: modern_date has no slashes (year only)
+        - When no Julian date components exist: modern_date is False
+        Returns:
+            None
+        Raises:
+            AssertionError: If any of the date format validations fail
+        """  # noqa: E501
+
+        for x in Tablet.objects.all():
+            if self.julian_date_day:
+                modern_date = x.modern_date
+                self.assertEqual(modern_date.count("/"), 2)
+            elif self.julian_date_month:
+                modern_date = x.modern_date
+                self.assertEqual(modern_date.count("/"), 1)
+            elif self.julian_date_year:
+                modern_date = x.modern_date
+                self.assertEqual(modern_date.count("/"), 0)
+            else:
+                self.assertFalse(x.modern_date)

@@ -1402,6 +1402,17 @@ class Tablet(models.Model):
         else:
             return False
 
+    @property
+    def modern_date(self):
+        if self.julian_date_day and self.julian_date_month and self.julian_date_year:
+            return f"{self.julian_date_day:02d}/{self.julian_date_month:02d}/{self.julian_date_year}"
+        elif self.julian_date_month and self.julian_date_year:
+            return f"{self.julian_date_month:02d}/{self.julian_date_year}"
+        elif self.julian_date_year:
+            return f"{self.julian_date_year}"
+        else:
+            return False
+
 
 class Introduction(models.Model):
     intro_text = HTMLField(
