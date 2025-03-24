@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:3.12-slim
 
 # install nginx posgtes and gdal
 RUN apt-get update -y && apt-get upgrade -y && apt-get install nginx vim \
