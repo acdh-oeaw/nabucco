@@ -3,6 +3,7 @@ acdh-django-widgets
 acdh-xml-pyutils
 crispy-bootstrap5
 Django>=5.0,<6
+django-auditlog
 django-autocomplete-light
 django-extensions
 djangorestframework
