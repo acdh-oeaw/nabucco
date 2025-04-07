@@ -423,5 +423,6 @@ class TabletListFilter(django_filters.FilterSet):
             "sealings",
             "domain",
             "private_context",
+            "direct_speech",
             "remark",
         ]

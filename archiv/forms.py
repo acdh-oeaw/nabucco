@@ -227,6 +227,8 @@ class TabletFilterFormHelper(FormHelper):
                     "julian_date_year",
                     "bibliography",
                     "inferred_date",
+                    "private_context",
+                    "direct_speech",
                     "remark",
                     css_id="more",
                 ),
