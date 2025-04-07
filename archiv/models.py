@@ -1248,11 +1248,6 @@ class Tablet(models.Model):
         verbose_name="Text form",
         help_text="select (one) attributable text form",
     )
-    tablet_as_list = models.BooleanField(
-        default=False,
-        verbose_name="List",
-        help_text="Is the text written as a list (rather than a single note)?",
-    )
     legal_purpose = models.ForeignKey(
         LegalPurpose,
         related_name="has_tablet",

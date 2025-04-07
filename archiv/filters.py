@@ -414,7 +414,6 @@ class TabletListFilter(django_filters.FilterSet):
             "work_package",
             "van_driel_files",
             "text_form",
-            "tablet_as_list",
             "legal_purpose",
             "transaction_type",
             "second_order_accounting",
