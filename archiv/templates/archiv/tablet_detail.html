@@ -45,6 +45,13 @@
             </a>
           </dd>
 
+          {% if object.mentioned_place.all %}
+          <dt>Places mentioned on Tablet</dt>
+          {% for x in object.mentioned_place.all %}
+          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+          {% endfor %}
+          {% endif %}
+
           <dt>Archive</dt>
           <dd>
             <a href="{{ object.archiv.get_absolute_url }}">

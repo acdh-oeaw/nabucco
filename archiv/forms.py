@@ -1,8 +1,10 @@
 from django import forms
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset
 from crispy_forms.bootstrap import AccordionGroup
 from crispy_bootstrap5.bootstrap5 import BS5Accordion
+from dal import autocomplete
 
 
 from .models import Archiv, Bibliography, Glossary, Place, Tablet
@@ -249,6 +251,32 @@ class TabletForm(forms.ModelForm):
     class Meta:
         model = Tablet
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
+        widgets = {
+            "place_of_issue": autocomplete.ModelSelect2(
+                url="archiv-ac:place-autocomplete"
+            ),
+            "regional_setting": autocomplete.ModelSelect2(
+                url="archiv-ac:place-autocomplete"
+            ),
+            "mentioned_place": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:place-autocomplete"
+            ),
+            "dossier": autocomplete.ModelSelect2(
+                url="archiv-ac:dossier-autocomplete"
+            ),
+            "type_content": autocomplete.ModelSelect2(
+                url="archiv-ac:glossary-autocomplete"
+            ),
+            "mentioned_in_pub": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:bibliography-autocomplete"
+            ),
+            "work_package": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:workpackage-autocomplete"
+            ),
+            "van_driel_files": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:vandrielfiles-autocomplete"
+            ),
+        }
 
     def __init__(self, *args, **kwargs):
         super(TabletForm, self).__init__(*args, **kwargs)
