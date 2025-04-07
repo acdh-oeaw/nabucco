@@ -270,6 +270,7 @@ class TabletListView(GenericListView):
     filter_class = TabletListFilter
     formhelper_class = TabletFilterFormHelper
     table_class = TabletTable
+    template_name = "archiv/tablet_list.html"
     init_columns = [
         "id",
         "publication_name",
