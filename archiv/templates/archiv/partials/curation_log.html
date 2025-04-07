@@ -1,0 +1,14 @@
+{% if object.history.all %}
+{% with history=object.history.last %}
+{% if history.action == 0 %}
+<dt>created by</dt>
+<dd>{{ history.actor.first_name }} {{ history.actor.last_name }}, {{ history.timestamp }}</dd>
+{% endif %}
+{% endwith %}
+{% with history=object.history.first %}
+<dt>last updated by</dt>
+<dd>
+{{ history.actor.first_name }} {{ history.actor.last_name }}, {{ history.timestamp }}
+</dd>
+{% endwith %}
+{% endif %}

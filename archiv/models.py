@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse, reverse_lazy
 
 from auditlog.registry import auditlog
+from auditlog.models import AuditlogHistoryField
 from browsing.utils import model_to_dict
 from tinymce.models import HTMLField
 
@@ -1327,6 +1328,8 @@ class Tablet(models.Model):
     orig_data_csv = models.TextField(
         blank=True, null=True, verbose_name="The original data"
     ).set_extra(is_public=True)
+
+    history = AuditlogHistoryField()
 
     objects = models.Manager()
     digeanna_objects = DigeannaManager()
