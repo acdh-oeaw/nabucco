@@ -590,6 +590,7 @@
             "period": "ENB",
             "place_of_issue": 62,
             "private_context": true,
+            "direct_speech": true,
             "publication_name": "AnOr 9",
             "regional_setting": 378,
             "remark": "",

@@ -1314,6 +1314,11 @@ class Tablet(models.Model):
         verbose_name="Private context",
         help_text="Does the text pertain to a private (economic) context?",
     )
+    direct_speech = models.BooleanField(
+        default=False,
+        verbose_name="Features Direct Speech",
+        help_text="Does the tablet quote any form of direct speech?",
+    )
     remark = models.TextField(
         blank=True,
         null=True,
