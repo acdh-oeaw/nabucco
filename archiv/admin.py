@@ -7,7 +7,6 @@ from .models import Glossary
 
 for x in list(apps.all_models["archiv"].values()):
     model_name = x.__name__
-    print(model_name)
     if model_name == "Glossary" or "mentioned" in model_name:
         pass
     else:

@@ -18,10 +18,7 @@
           <dd>{{ object.museum_id }}</dd>
 
           <dt>Primary Publication</dt>
-          <dd>
-          {% for x in object.mentioned_in_pub.all %}
-            <a href="{{ x.get_absolute_url }}">{{ x }}</a> {{ object.text_number }}
-          {% endfor %}
+          <dd>{{ object.publication_name }} {{ object.text_number }}
           </dd>
 
           {% if object.cdli_no %}
@@ -48,12 +45,6 @@
             </a>
           </dd>
 
-          <dt>Type and Content</dt>
-          <dd>
-            <a href="{{ object.type_content.get_absolute_url }}">
-              {{ object.type_content }}
-            </a>
-          </dd>
           <dt>Archive</dt>
           <dd>
             <a href="{{ object.archiv.get_absolute_url }}">
@@ -80,42 +71,9 @@
           <dt>Date BCE</dt>
           <dd>{{ object.modern_date }}</dd>
         </dl>
-        
-        {% if user.is_authenticated %}
-        <hr />
-          <h3>original data</h3>
-          <code>{{ object.orig_data_csv|safe }}</code>
-        {% endif %}
-      </div>
-      <div class="col-md-5">
-        <h2>Content</h2>
+        <h3>Digeanna</h3>
           <dl>
-            <dt>Paraphrase</dt>
-            <dd>{{ object.paraphrase|safe}}</dd>
-
-            <dt>Legacy Paraphrase</dt>
-            <dd>{{ object.legacy_paraphrase|safe}}</dd>
-    
-            <dt>Transliteration </dt>
-            <dd>{{ object.transliteration|safe}}</dd>
-            <dt>Babylonian Date (year-month-day): </dt>
-            <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
-                {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
-            </dd>
-          </dl>
-          <hr/>
-          <h3>further information</h3>
-          <dl>
-            <dt>Imported (Person, Date)</dt>
-            <dd>{{ object.imported }}</dd>
-          </dl>
-          <dl>
-            <dt>Legacy NaBuCCo ID</dt>
-            <dd>{{ object.legacy_pk }}</dd>
-          </dl>
-          <hr/>
-          <h3>Digeanna</h3>
-          <dl>
+            {% if user.is_authenticated %}
             <dt>Remarks</dt>
             <dd>{{ object.remark|safe }}</dd>
             <dt>Workpackages</dt>
@@ -126,6 +84,7 @@
                 </a>
               </dd>
               {% endfor %}
+            {% endif %}
             <dt>Van Driel Files</dt>
             {% for x in object.van_driel_files.all %}
             <dd>
@@ -167,6 +126,53 @@
             <dt>Private context</dt>
             <dd>{{ object.private_context }}</dd>
           </dl>
+        
+        {% if user.is_authenticated %}
+        <hr />
+          <h3>original data</h3>
+          <code>{{ object.orig_data_csv|safe }}</code>
+        {% endif %}
+      </div>
+      <div class="col-md-5">
+        <h2>Content</h2>
+          <dl>
+            <dt>Paraphrase</dt>
+            <dd>{{ object.paraphrase|safe}}</dd>
+
+            <dt>Legacy Paraphrase</dt>
+            <dd>{{ object.legacy_paraphrase|safe}}</dd>
+    
+            <dt>Transliteration </dt>
+            <dd>{{ object.transliteration|safe}}</dd>
+            <dt>Babylonian Date (year-month-day): </dt>
+            <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
+                {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
+            </dd>
+          </dl>
+          <hr/>
+          <h3>Further Information</h3>
+          <dl>
+            {% if object.type_content %}
+            <dt>Type and Content</dt>
+            <dd>
+              <a href="{{ object.type_content.get_absolute_url }}">
+                {{ object.type_content }}
+              </a>
+            </dd>
+            {% endif %}
+            {% include 'archiv/partials/curation_log.html' %}
+          {% if object.imported %}
+            <dt>Imported (Person, Date)</dt>
+            <dd>{{ object.imported }}</dd>
+          {% endif %}
+          {% if object.legacy_pk %}
+            <dt>Legacy NaBuCCo ID</dt>
+            <dd>{{ object.legacy_pk }}</dd>
+          {% endif %}
+          </dl>
+          
+          <hr/>
+          
       </div>
     </div>
   </div>
