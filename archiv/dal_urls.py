@@ -4,6 +4,15 @@ from . import dal_views
 app_name = "archiv"
 urlpatterns = [
     path(
+        "dossier-autocomplete/", dal_views.DossierAC.as_view(), name="dossier-autocomplete"
+    ),
+    path(
+        "workpackage-autocomplete/", dal_views.WorkPackageAC.as_view(), name="workpackage-autocomplete"
+    ),
+    path(
+        "vandrielfiles-autocomplete/", dal_views.VanDrielFilesAC.as_view(), name="vandrielfiles-autocomplete"
+    ),
+    path(
         "archiv-autocomplete/", dal_views.ArchivAC.as_view(), name="archiv-autocomplete"
     ),
     path(

@@ -7,7 +7,37 @@ from .models import (
     Glossary,
     Place,
     Tablet,
+    Dossier,
+    WorkPackage,
+    VanDrielFiles,
 )
+
+
+class DossierAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Dossier.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs
+
+
+class WorkPackageAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = WorkPackage.objects.all()
+
+        if self.q:
+            qs = qs.filter(Q(wp_number__icontains=self.q) | Q(title__icontains=self.q))
+        return qs
+
+
+class VanDrielFilesAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = VanDrielFiles.objects.all()
+
+        if self.q:
+            qs = qs.filter(Q(file__icontains=self.q) | Q(sub_file__icontains=self.q))
+        return qs
 
 
 class ArchivAC(autocomplete.Select2QuerySetView):
