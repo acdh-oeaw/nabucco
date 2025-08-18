@@ -29,6 +29,8 @@ jobs:
       run: uv sync --locked
     - name: Run migrations
       run: uv run manage.py migrate
+    - name: activate .venv
+      run: source .venv/bin/activate
     - name: Run tests
       run: coverage run manage.py test
     - name: Create Coverage Report
