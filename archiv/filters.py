@@ -278,7 +278,7 @@ class TabletListFilter(django_filters.FilterSet):
         field_name="paraphrase",
         help_text=Tablet._meta.get_field("paraphrase").help_text
         + ": exclude one or more search terms",
-        label=Tablet._meta.get_field("paraphrase").verbose_name,
+        label="Exclude paraphrase search term",
     )
 
     def negative_filtering(self, queryset, name, value):
