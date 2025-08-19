@@ -120,7 +120,7 @@ class TransActionType(models.Model):
     name = models.CharField(
         max_length=250,
         default="change me",
-        verbose_name="Transaction Type",
+        verbose_name="Transaction type",
         help_text="designation of the type, whether transactional or not, outgoing, incoming etc.",
     )
     description = models.TextField(
@@ -134,8 +134,8 @@ class TransActionType(models.Model):
         ordering = [
             "name",
         ]
-        verbose_name = "Transaction Type"
-        verbose_name_plural = "Transaction Types"
+        verbose_name = "Transaction type"
+        verbose_name_plural = "Transaction types"
 
     def __str__(self):
         return self.name
@@ -538,7 +538,7 @@ class Bibliography(models.Model):
     short_title = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Short Title",
+        verbose_name="Short title",
         help_text="abbreviated title according to Archiv für Orientforschung",
     ).set_extra(
         is_public=True,
@@ -963,7 +963,7 @@ class Tablet(models.Model):
     museum_id = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Museum No.",
+        verbose_name="Museum no.",
         help_text="Accession or collection number in museum",
     ).set_extra(
         is_public=True,
@@ -972,7 +972,7 @@ class Tablet(models.Model):
     cdli_no = models.CharField(
         max_length=25,
         blank=True,
-        verbose_name="CDLI P-Identifier",
+        verbose_name="CDLI P-identifier",
         help_text="Link to CDLI",
     ).set_extra(
         is_public=True,
@@ -981,7 +981,7 @@ class Tablet(models.Model):
     labasi_id = models.PositiveIntegerField(
         blank=True,
         null=True,
-        verbose_name="LaBaSi Identifier",
+        verbose_name="LaBaSi identifier",
         help_text="https://labasi.acdh.oeaw.ac.at/",
     )
     place_of_issue = models.ForeignKey(
@@ -1009,7 +1009,7 @@ class Tablet(models.Model):
         "Place",
         related_name="rvn_tablet_mentioned_place_place",
         blank=True,
-        verbose_name="Place mentioned on Tablet",
+        verbose_name="Place mentioned on tablet",
         help_text="whatever",
     ).set_extra(
         is_public=True,
@@ -1075,7 +1075,7 @@ class Tablet(models.Model):
         "Bibliography",
         related_name="rvn_tablet_mentioned_in_pub_bibliography",
         blank=True,
-        verbose_name="Mentioned in Publication",
+        verbose_name="Mentioned in publication",
         help_text="whatever",
     ).set_extra(
         is_public=True,
@@ -1092,7 +1092,7 @@ class Tablet(models.Model):
     text_number = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Text number",
+        verbose_name="Text no.",
         help_text="text number within primary publication",
     ).set_extra(
         is_public=True,
@@ -1119,7 +1119,7 @@ class Tablet(models.Model):
     day = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Babylonian Day",
+        verbose_name="Babylonian day",
         help_text="Day of month",
     ).set_extra(
         is_public=True,
@@ -1128,7 +1128,7 @@ class Tablet(models.Model):
     month = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Babylonian Month",
+        verbose_name="Babylonian month",
         help_text="Babylonian month (I-XII)",
     ).set_extra(
         is_public=True,
@@ -1137,7 +1137,7 @@ class Tablet(models.Model):
     year = models.CharField(
         max_length=250,
         blank=True,
-        verbose_name="Babylonian Year",
+        verbose_name="Babylonian year",
         help_text="Regnal year",
     ).set_extra(
         is_public=True,
@@ -1228,14 +1228,14 @@ class Tablet(models.Model):
     work_package = models.ManyToManyField(
         "WorkPackage",
         blank=True,
-        verbose_name="Work Packages",
-        help_text="attribution of the tablet to one or more DigEanna Work Packages",
+        verbose_name="Work packages",
+        help_text="attribution of the tablet to one or more DigEanna Work packages",
         related_name="related_tablets",
     )
     van_driel_files = models.ManyToManyField(
         VanDrielFiles,
         blank=True,
-        verbose_name="file after G. van Driel",
+        verbose_name="File after G. van Driel",
         help_text="choose the attribution of the text according to van Driel's categorization",
         related_name="related_tablets",
     )
@@ -1254,7 +1254,7 @@ class Tablet(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        verbose_name="Legal Purpose",
+        verbose_name="Legal purpose",
         help_text="select (one) attributable legal purpose",
     )
     transaction_type = models.ForeignKey(
@@ -1263,7 +1263,7 @@ class Tablet(models.Model):
         null=True,
         related_name="has_tablet",
         on_delete=models.SET_NULL,
-        verbose_name="Transaction Type",
+        verbose_name="Transaction type",
         help_text="select (one) attributable transaction type",
     )
     second_order_accounting = models.BooleanField(
@@ -1295,7 +1295,7 @@ class Tablet(models.Model):
         blank=True,
         null=True,
         max_length=100,
-        verbose_name="Format of the Tablet",
+        verbose_name="Format of the tablet",
         help_text="Choose the format of the physical tablet",
         choices=(
             ("landscape", "landscape format"),
@@ -1316,7 +1316,7 @@ class Tablet(models.Model):
     )
     direct_speech = models.BooleanField(
         default=False,
-        verbose_name="Features Direct Speech",
+        verbose_name="Features Direct speech",
         help_text="Does the tablet quote any form of direct speech?",
     )
     remark = models.TextField(
@@ -1444,7 +1444,7 @@ class Dossier(models.Model):
     name = models.CharField(
         max_length=250,
         default="generic dossier name (change me!)",
-        verbose_name="Name of Dossier",
+        verbose_name="Name of dossier",
         help_text="whatever",
     )
     description = models.TextField(
