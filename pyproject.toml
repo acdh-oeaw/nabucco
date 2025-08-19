@@ -1,0 +1,34 @@
+[project]
+name = "nabucco"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "acdh-django-browsing>=3.2",
+    "acdh-django-widgets>=0.1.0",
+    "acdh-xml-pyutils>=1.1.1",
+    "crispy-bootstrap5>=2025.6",
+    "django>=5.2.5",
+    "django-auditlog>=3.2.1",
+    "django-autocomplete-light>=3.12.1",
+    "django-ckeditor>=6.7.3",
+    "django-extensions>=4.1",
+    "django-fixture-magic>=0.1.5",
+    "django-leaflet>=0.32.0",
+    "django-mptt>=0.17.0",
+    "django-next-prev>=1.1.0",
+    "django-tinymce>=4.1.0",
+    "djangorestframework>=3.16.1",
+    "gunicorn>=23.0.0",
+    "jinja2>=3.1.6",
+    "pandas>=2.3.1",
+    "psycopg2-binary>=2.9.10",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.10.4",
+    "ruff>=0.12.9",
+]

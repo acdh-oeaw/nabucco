@@ -19,25 +19,24 @@ jobs:
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
+    - name: checkout the repo  
+      uses: actions/checkout@v4
     - name: GDAL
       run: sudo apt-get install postgresql-common libpq-dev python3-gdal
-    - name: Install dependencies
-      run: |
-        pip install --upgrade --upgrade-strategy eager -r requirements_dev.txt
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@v6
+    - name: install dependencies
+      run: uv sync --locked
     - name: Run migrations
-      run: python manage.py migrate
+      run: uv run manage.py migrate
     - name: Run tests
-      run: coverage run manage.py test
+      run: uv run coverage run manage.py test
     - name: Create Coverage Report
-      run: coverage xml
+      run: uv run coverage xml
     - name: "Upload coverage to Codecov"
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         token: ${{secrets.CODECOV_TOKEN}}
-        file: ./coverage.xml
+        files: ./coverage.xml
         fail_ci_if_error: false
+        verbose: true
