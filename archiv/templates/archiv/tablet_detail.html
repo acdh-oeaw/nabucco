@@ -10,79 +10,93 @@
     <div class="row justify-content-around">
       <div class="col-md-5">
         <h2>Basic Metadata</h2>
-        <dl>
-          <dt>NaBuCCo ID</dt>
-          <dd>{{ object.id }}</dd>
+          <dl>
+            <dt>NaBuCCo ID</dt>
+            <dd>{{ object.id }}</dd>
 
-          <dt>Museum No.</dt>
-          <dd>{{ object.museum_id }}</dd>
+            <dt>Museum No.</dt>
+            <dd>{{ object.museum_id }}</dd>
 
-          <dt>Primary Publication</dt>
-          <dd>{{ object.publication_name }} {{ object.text_number }}
-          </dd>
+            <dt>Primary Publication</dt>
+            <dd>{{ object.publication_name }} {{ object.text_number }}
+            </dd>
 
-          {% if object.cdli_no %}
-          <dt>CDLI P-Identifier</dt>
-          <dd>
-            <a href="{{ object.cdli_link }}">{{ object.cdli_no }}</a></dd>
-          {% endif %}
-          {% if object.labasi_id %}
-          <dt>LaBaSi ID</dt>
-          <dd><a href="{{ object.labasi_detail_view }}"> {{object.labasi_id }}</a></dd>
-          {% endif %}
+            {% if object.cdli_no %}
+            <dt>CDLI P-Identifier</dt>
+            <dd>
+              <a href="{{ object.cdli_link }}">{{ object.cdli_no }}</a></dd>
+            {% endif %}
+            
+            {% if object.labasi_id %}
+            <dt>LaBaSi ID</dt>
+            <dd><a href="{{ object.labasi_detail_view }}"> {{object.labasi_id }}</a></dd>
+            {% endif %}
 
-          <dt>Place of issue</dt>
-          <dd>
-            <a href="{{ object.place_of_issue.get_absolute_url }}">
-              {{ object.place_of_issue }}
-            </a>
-          </dd>
-          
-          <dt>Regional setting</dt>
-          <dd>
-            <a href="{{ object.regional_setting.get_absolute_url }}">
-              {{ object.regional_setting }}
-            </a>
-          </dd>
 
-          {% if object.mentioned_place.all %}
-          <dt>Places mentioned on Tablet</dt>
-          {% for x in object.mentioned_place.all %}
-          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
-          {% endfor %}
-          {% endif %}
+            {% if object.place_of_issue %}
+            <dt>Place of issue</dt>
+            <dd>
+              <a href="{{ object.place_of_issue.get_absolute_url }}">
+                {{ object.place_of_issue }}
+              </a>
+            </dd>
+            {% endif %}
+            
+            {% if object.regional_setting %}
+            <dt>Regional setting</dt>
+            <dd>
+              <a href="{{ object.regional_setting.get_absolute_url }}">
+                {{ object.regional_setting }}
+              </a>
+            </dd>
+            {% endif %}
 
-          <dt>Archive</dt>
-          <dd>
-            <a href="{{ object.archiv.get_absolute_url }}">
-              {{ object.archiv }}
-            </a>
-          </dd>
+            {% if object.mentioned_place.all %}
+            <dt>Places mentioned on Tablet</dt>
+            {% for x in object.mentioned_place.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
 
-          {% if object.dossier %}
-          <dt>Dossier</dt>
-          <dd>
-            <a href="{{ object.dossier.get_absolute_url }}">
-              {{ object.dossier }}
-            </a>
-          </dd>
-          {% endif %}
+            {% if object.archiv %}
+            <dt>Archive</dt>
+            <dd>
+              <a href="{{ object.archiv.get_absolute_url }}">
+                {{ object.archiv }}
+              </a>
+            </dd>
+            {% endif %}
 
-          <dt>Period</dt>
-          <dd>{{ object.period }}</dd>
+            {% if object.dossier %}
+            <dt>Dossier</dt>
+            <dd>
+              <a href="{{ object.dossier.get_absolute_url }}">
+                {{ object.dossier }}
+              </a>
+            </dd>
+            {% endif %}
 
-          
-          <dt>Inferred date</dt>
-          <dd>{{ object.inferred_date }}</dd>
+            <dt>Period</dt>
+            <dd>{{ object.period }}</dd>
 
-          <dt>Date BCE</dt>
-          <dd>{{ object.modern_date }}</dd>
-        </dl>
+            {% if object.inferred_date %}
+            <dt>Inferred date</dt>
+            <dd>{{ object.inferred_date }}</dd>
+            {% endif %}
+
+            {% if object.modern_date %}
+            <dt>Date BCE</dt>
+            <dd>{{ object.modern_date }}</dd>
+            {% endif %}
+          </dl>
         <h3>Digeanna</h3>
           <dl>
             {% if user.is_authenticated %}
+            {% if object.remark %}
             <dt>Remarks</dt>
             <dd>{{ object.remark|safe }}</dd>
+            {% endif %}
+            {% if object.work_package.all %}
             <dt>Workpackages</dt>
               {% for x in object.work_package.all %}
               <dd>
@@ -91,7 +105,10 @@
                 </a>
               </dd>
               {% endfor %}
+              {% endif %}
             {% endif %}
+
+            {% if object.van_driel_files.all %}
             <dt>Van Driel Files</dt>
             {% for x in object.van_driel_files.all %}
             <dd>
@@ -100,53 +117,96 @@
               </a>
             </dd>
             {% endfor %}
+            {% endif %}
+
+            {% if object.text_form %}
             <dt>Text Form</dt>
             <dd>
               <a href="{{ object.text_form.get_absolute_url }}">{{ object.text_form }}</a>
             </dd>
+            {% endif %}
+
+            {% if object.legal_purpose %}
             <dt>Legal Purpose</dt>
             <dd>
               <a href="{{ object.legal_purpose.get_absolute_url }}">{{ object.legal_purpose }}</a>
             </dd>
+            {% endif %}
+
+            {% if object.transaction_type %}
             <dt>Transaction Type</dt>
             <dd>
               <a href="{{ object.transaction_type.get_absolute_url }}">{{ object.transaction_type }}</a>
             </dd>
+            {% endif %}
+
+            {% if object.second_order_accounting %}
             <dt>Second-order accounting</dt>
             <dd>{{ object.second_order_accounting }}</dd>
+            {% endif %}
+
+            {% if object.domain %}
             <dt>Domain (Eanna)</dt>
             <dd>
               <a href="{{ object.domain.get_absolute_url }}">{{ object.domain }}</a>
             </dd>
+            {% endif %}
+
+            {% if object.formatting %}
             <dt>Formatting</dt>
             <dd>{{ object.formatting }}</dd>
+            {% endif %}
+
+            {% if object.formatting_remarks %}
             <dt>Formatting remarks</dt>
             <dd>{{ object.formatting_remarks }}</dd>
+            {% endif %}
+
+            {% if object.tablet_format %}
             <dt>Format of the tablet</dt>
             <dd>{{ object.tablet_format }}</dd>
+            {% endif %}
+
+            {% if object.sealings %}
             <dt>Sealings</dt>
             <dd>{{ object.sealings }}</dd>
+            {% endif %}
+
+            {% if object.private_context %}
             <dt>Private context</dt>
             <dd>{{ object.private_context }}</dd>
+            {% endif %}
           </dl>
         
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and object.orig_data_csv%}
         <hr />
-          <h3>original data</h3>
+        <details>
+          <summary>original data</summary>
           <code>{{ object.orig_data_csv|safe }}</code>
+        </details>
+          
+          
         {% endif %}
       </div>
       <div class="col-md-5">
         <h2>Content</h2>
           <dl>
+
+            {% if object.paraphrase %}
             <dt>Paraphrase</dt>
             <dd>{{ object.paraphrase|safe}}</dd>
+            {% endif %}
 
+            {% if object.legacy_paraphrase %}
             <dt>Legacy Paraphrase</dt>
             <dd>{{ object.legacy_paraphrase|safe}}</dd>
+            {% endif %}
     
+            {% if object.transliteration %}
             <dt>Transliteration </dt>
             <dd>{{ object.transliteration|safe}}</dd>
+            {% endif %}
+
             <dt>Babylonian Date (year-month-day): </dt>
             <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
                 {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
