@@ -190,6 +190,7 @@ class TabletFilterFormHelper(FormHelper):
         self.layout = Layout(
             Fieldset(
                 "",
+                "ft_search",
                 "publication_name",
                 "text_number",
                 "museum_id",

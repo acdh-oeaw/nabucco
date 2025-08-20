@@ -1,6 +1,7 @@
 import django_filters
 from acdh_django_widgets.widgets import MartinAntonMuellerWidget
 from django.db.models import Q
+from django.contrib.postgres.search import SearchVector
 
 from dal import autocomplete
 
@@ -383,10 +384,25 @@ class TabletListFilter(django_filters.FilterSet):
         label=Tablet._meta.get_field("julian_date_year").verbose_name,
         widget=MartinAntonMuellerWidget,
     )
+    ft_search = django_filters.CharFilter(
+        field_name="museum_id",
+        method="search_fulltext",
+        label="Search all",
+        help_text="searches in many fields",
+    )
+
+    def search_fulltext(self, queryset, field_name, value):
+        search_term = value
+        print(search_term)
+        queryset = queryset.annotate(search=SearchVector("museum_id", "publication_name", "paraphrase")).filter(
+            search=search_term
+        )
+        return queryset
 
     class Meta:
         model = Tablet
         fields = [
+            "ft_search",
             "id",
             "legacy_id",
             "legacy_pk",
@@ -426,3 +442,4 @@ class TabletListFilter(django_filters.FilterSet):
             "direct_speech",
             "remark",
         ]
+
