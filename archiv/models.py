@@ -1,14 +1,12 @@
+from auditlog.models import AuditlogHistoryField
+from auditlog.registry import auditlog
+from browsing.utils import model_to_dict
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse, reverse_lazy
-
-from auditlog.registry import auditlog
-from auditlog.models import AuditlogHistoryField
-from browsing.utils import model_to_dict
-from tinymce.models import HTMLField
-
 from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
+from tinymce.models import HTMLField
 
 WP_LEADS = [
     ("Jena", "Jena team"),
@@ -55,7 +53,6 @@ class DigeannaManager(models.Manager):
 
 
 class Domain(models.Model):
-
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -116,7 +113,6 @@ class Domain(models.Model):
 
 
 class TransActionType(models.Model):
-
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -177,7 +173,6 @@ class TransActionType(models.Model):
 
 
 class LegalPurpose(models.Model):
-
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -244,7 +239,6 @@ class LegalPurpose(models.Model):
 
 
 class TextForm(models.Model):
-
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -354,7 +348,6 @@ class VanDrielFiles(models.Model):
     )
 
     class Meta:
-
         ordering = ["file", "sub_file"]
         verbose_name = "File after van Driel, BiOr 55-1 (1998), 59-79"
         verbose_name_plural = "Files after van Driel, BiOr 55-1 (1998), 59-79"
@@ -462,7 +455,6 @@ class Archiv(models.Model):
     ).set_extra(is_public=True)
 
     class Meta:
-
         ordering = [
             "name",
         ]
@@ -639,7 +631,6 @@ class Bibliography(models.Model):
     ).set_extra(is_public=True)
 
     class Meta:
-
         ordering = [
             "short_title",
         ]
@@ -1335,7 +1326,6 @@ class Tablet(models.Model):
     digeanna_objects = DigeannaManager()
 
     class Meta:
-
         ordering = [
             "id",
         ]
