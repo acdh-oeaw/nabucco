@@ -79,6 +79,11 @@
             <dt>Period</dt>
             <dd>{{ object.period }}</dd>
 
+            <dt>Babylonian Date (year-month-day): </dt>
+            <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
+                {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
+            </dd>
+
             {% if object.inferred_date %}
             <dt>Inferred date</dt>
             <dd>{{ object.inferred_date }}</dd>
@@ -207,10 +212,6 @@
             <dd>{{ object.transliteration|safe}}</dd>
             {% endif %}
 
-            <dt>Babylonian Date (year-month-day): </dt>
-            <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
-                {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
-            </dd>
           </dl>
           <hr/>
           <h3>Further Information</h3>
@@ -231,6 +232,14 @@
           {% if object.legacy_pk %}
             <dt>Legacy NaBuCCo ID</dt>
             <dd>{{ object.legacy_pk }}</dd>
+          {% endif %}
+          {% if object.mentioned_in_pub.all %}
+            <dt>Mentioned in the following publication(s)</dt>
+            {% for x in object.mentioned_in_pub.all %}
+            <dd>
+              <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+            </dd>
+            {% endfor %}
           {% endif %}
           </dl>
           
