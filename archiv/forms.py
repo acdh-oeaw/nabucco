@@ -1,11 +1,9 @@
-from django import forms
-
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Fieldset
-from crispy_forms.bootstrap import AccordionGroup
 from crispy_bootstrap5.bootstrap5 import BS5Accordion
+from crispy_forms.bootstrap import AccordionGroup
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Fieldset, Layout, Submit
 from dal import autocomplete
-
+from django import forms
 
 from .models import Archiv, Bibliography, Glossary, Place, Tablet
 
@@ -31,7 +29,6 @@ class ArchivFilterFormHelper(FormHelper):
 
 
 class ArchivForm(forms.ModelForm):
-
     class Meta:
         model = Archiv
         # fields = "__all__"
@@ -85,7 +82,6 @@ class BibliographyFilterFormHelper(FormHelper):
 
 
 class BibliographyForm(forms.ModelForm):
-
     class Meta:
         model = Bibliography
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
@@ -127,7 +123,6 @@ class GlossaryFilterFormHelper(FormHelper):
 
 
 class GlossaryForm(forms.ModelForm):
-
     class Meta:
         model = Glossary
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
@@ -163,7 +158,6 @@ class PlaceFilterFormHelper(FormHelper):
 
 
 class PlaceForm(forms.ModelForm):
-
     class Meta:
         model = Place
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
@@ -188,16 +182,16 @@ class TabletFilterFormHelper(FormHelper):
         self.form_method = "GET"
         self.form_tag = False
         self.layout = Layout(
-            Fieldset(
-                "",
-                "ft_search",
-                "publication_name",
-                "text_number",
-                "museum_id",
-                "cdli_no",
-                css_id="basic_search_fields",
-            ),
             BS5Accordion(
+                AccordionGroup(
+                    "Basic search",
+                    "ft_search",
+                    "publication_name",
+                    "text_number",
+                    "museum_id",
+                    "cdli_no",
+                    css_id="basic_search_fields",
+                ),
                 AccordionGroup(
                     "Advanced search",
                     "work_package",
@@ -236,19 +230,19 @@ class TabletFilterFormHelper(FormHelper):
                     css_id="more",
                 ),
                 AccordionGroup(
-                    "admin",
+                    "Admin search",
                     "id",
                     "legacy_id",
                     "legacy_pk",
                     "imported",
                     css_id="admin_search",
                 ),
+                always_open=False,
             ),
         )
 
 
 class TabletForm(forms.ModelForm):
-
     class Meta:
         model = Tablet
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
@@ -262,9 +256,7 @@ class TabletForm(forms.ModelForm):
             "mentioned_place": autocomplete.ModelSelect2Multiple(
                 url="archiv-ac:place-autocomplete"
             ),
-            "dossier": autocomplete.ModelSelect2(
-                url="archiv-ac:dossier-autocomplete"
-            ),
+            "dossier": autocomplete.ModelSelect2(url="archiv-ac:dossier-autocomplete"),
             "type_content": autocomplete.ModelSelect2(
                 url="archiv-ac:glossary-autocomplete"
             ),

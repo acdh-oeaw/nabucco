@@ -1,9 +1,8 @@
 import django_filters
 from acdh_django_widgets.widgets import MartinAntonMuellerWidget
-from django.db.models import Q
-from django.contrib.postgres.search import SearchVector
-
 from dal import autocomplete
+from django.contrib.postgres.search import SearchVector
+from django.db.models import Q
 
 from .models import Archiv, Bibliography, Glossary, Place, Tablet
 
@@ -388,15 +387,21 @@ class TabletListFilter(django_filters.FilterSet):
         field_name="museum_id",
         method="search_fulltext",
         label="Search all",
-        help_text="searches in many fields",
+        help_text="Searches in: Museum No., Publication name, Text number, Paraphrase, Legacy Paraphrase",
     )
 
     def search_fulltext(self, queryset, field_name, value):
         search_term = value
         print(search_term)
-        queryset = queryset.annotate(search=SearchVector("museum_id", "publication_name", "paraphrase")).filter(
-            search=search_term
-        )
+        queryset = queryset.annotate(
+            search=SearchVector(
+                "museum_id",
+                "publication_name",
+                "text_number",
+                "paraphrase",
+                "legacy_paraphrase",
+            )
+        ).filter(search=search_term)
         return queryset
 
     class Meta:
@@ -442,4 +447,3 @@ class TabletListFilter(django_filters.FilterSet):
             "direct_speech",
             "remark",
         ]
-
