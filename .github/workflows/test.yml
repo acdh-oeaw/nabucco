@@ -27,7 +27,7 @@ jobs:
       uses: astral-sh/setup-uv@v6
     - name: install dependencies
       run: uv sync --locked
-    - name: Run migrations
+    - name: Run migrations (foo)
       run: uv run manage.py migrate
     - name: Run tests
       run: uv run coverage run manage.py test
