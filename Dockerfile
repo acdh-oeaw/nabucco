@@ -1,6 +1,6 @@
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-# install nginx posgtes and gdal
+# install nginx postgres and gdal
 RUN apt-get update -y && apt-get upgrade -y && apt-get install nginx vim \
     postgresql-common libpq-dev python3-gdal -y
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
