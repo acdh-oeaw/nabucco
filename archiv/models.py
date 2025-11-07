@@ -8,7 +8,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
 from tinymce.models import HTMLField
 
-from archiv.utils import remove_html_encoding
+from archiv.utils import decode_html_entities
 
 WP_LEADS = [
     ("Jena", "Jena team"),
@@ -1342,7 +1342,11 @@ class Tablet(models.Model):
         verbose_name_plural = "Tablets"
 
     def save(self, *args, **kwargs):
-        self.cleaned_text = remove_html_encoding(self)
+        # self.cleaned_text = remove_html_encoding(self)
+        for field in self._meta.fields:
+            if isinstance(field, HTMLField) and getattr(self, field.name):
+                value = decode_html_entities(getattr(self, field.name))
+                setattr(self, field.name, value)
         super().save(*args, **kwargs)
 
     def __str__(self):

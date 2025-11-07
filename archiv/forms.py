@@ -245,7 +245,7 @@ class TabletFilterFormHelper(FormHelper):
 class TabletForm(forms.ModelForm):
     class Meta:
         model = Tablet
-        exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
+        exclude = ["orig_data_csv", "legacy_id", "legacy_pk", "cleaned_text"]
         widgets = {
             "place_of_issue": autocomplete.ModelSelect2(
                 url="archiv-ac:place-autocomplete"
