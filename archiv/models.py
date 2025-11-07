@@ -8,6 +8,8 @@ from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
 from tinymce.models import HTMLField
 
+from archiv.utils import remove_html_encoding
+
 WP_LEADS = [
     ("Jena", "Jena team"),
     ("Vienna", "Vienna team"),
@@ -1320,6 +1322,13 @@ class Tablet(models.Model):
         blank=True, null=True, verbose_name="The original data"
     ).set_extra(is_public=True)
 
+    cleaned_text = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Internal field",
+        help_text="Used for searching",
+    ).set_extra(is_public=False)
+
     history = AuditlogHistoryField()
 
     objects = models.Manager()
@@ -1331,6 +1340,10 @@ class Tablet(models.Model):
         ]
         verbose_name = "Tablet"
         verbose_name_plural = "Tablets"
+
+    def save(self, *args, **kwargs):
+        self.cleaned_text = remove_html_encoding(self)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         if self.museum_id:
