@@ -392,7 +392,6 @@ class TabletListFilter(django_filters.FilterSet):
 
     def search_fulltext(self, queryset, field_name, value):
         search_term = value
-        print(search_term)
         queryset = queryset.annotate(
             search=SearchVector(
                 "museum_id",
