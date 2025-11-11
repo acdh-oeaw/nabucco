@@ -1341,6 +1341,16 @@ class Tablet(models.Model):
         verbose_name = "Tablet"
         verbose_name_plural = "Tablets"
 
+    @classmethod
+    def search_fields(self):
+        return [
+            "museum_id",
+            "publication_name",
+            "text_number",
+            "paraphrase",
+            "legacy_paraphrase",
+        ]
+
     def save(self, *args, **kwargs):
         # self.cleaned_text = remove_html_encoding(self)
         for field in self._meta.fields:
