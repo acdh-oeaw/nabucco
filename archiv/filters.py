@@ -1,7 +1,6 @@
 import django_filters
 from acdh_django_widgets.widgets import MartinAntonMuellerWidget
 from dal import autocomplete
-from django.contrib.postgres.search import SearchVector
 from django.db.models import Q
 
 from .models import Archiv, Bibliography, Glossary, Place, Tablet
@@ -392,16 +391,12 @@ class TabletListFilter(django_filters.FilterSet):
 
     def search_fulltext(self, queryset, field_name, value):
         search_term = value
-        queryset = queryset.annotate(
-            search=SearchVector(
-                "museum_id",
-                "publication_name",
-                "text_number",
-                "paraphrase",
-                "legacy_paraphrase",
-            )
-        ).filter(search=search_term)
-        return queryset
+        search_fields = self._meta.model.search_fields()
+        q = Q()
+        for field in search_fields:
+            lookup = f"{field}__icontains"
+            q |= Q(**{lookup: search_term})
+        return queryset.filter(q)
 
     class Meta:
         model = Tablet
