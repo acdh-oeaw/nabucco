@@ -1,3 +1,4 @@
+from auditlog.context import disable_auditlog
 from django.core.management.base import BaseCommand
 from tqdm import tqdm
 
@@ -9,6 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         items = Tablet.objects.all()
-        for x in tqdm(items, total=items.count()):
-            x.save()
+        with disable_auditlog():
+            for x in tqdm(items, total=items.count()):
+                x.save()
         print("done")
