@@ -8,7 +8,7 @@ resolution-markers = [
 
 [[package]]
 name = "acdh-django-browsing"
-version = "3.2"
+version = "3.3.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "crispy-bootstrap5" },
@@ -18,9 +18,9 @@ dependencies = [
     { name = "django-tables2" },
     { name = "tablib" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/74/15/9b5e0eba9724ac3edc2201348ca27bdfae45c22278c30fb0a1019e31f6c1/acdh_django_browsing-3.2.tar.gz", hash = "sha256:c62bb0293c66ae13063920d381a0d7d34f4c703f792681e9e4dc092ce87aebde", size = 9715, upload-time = "2025-03-03T07:32:26.615Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9f/c9/46539afc5402876307fd3adb406e1f64b50c098d6b02dc2d7cbaf7888bb7/acdh_django_browsing-3.3.2.tar.gz", hash = "sha256:225a7e8ac4d8d078c2e18ce4908b400c6916dd000a517499e5bdee46744925f1", size = 9841, upload-time = "2025-11-26T12:04:53.122Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1b/91/e0c239d6fa31b87517eda4a47de386c2e3b18ec7889a236c2f5734ce77f8/acdh_django_browsing-3.2-py3-none-any.whl", hash = "sha256:b823d2311d0dc92318008d1ee2f8939f6bc9f1e04697f3067adec64260cf16e5", size = 14633, upload-time = "2025-03-03T07:32:25.562Z" },
+    { url = "https://files.pythonhosted.org/packages/a4/14/c7e8647ea51eeb9654a941a3fd3c663b963e164fac06bed9f90b68130733/acdh_django_browsing-3.3.2-py3-none-any.whl", hash = "sha256:c1d5e3f237d1e6d748419f757ff4f166a19252589e153e9b6faa6b0a672e0112", size = 14734, upload-time = "2025-11-26T12:04:52.019Z" },
 ]
 
 [[package]]
@@ -595,14 +595,14 @@ wheels = [
 
 [[package]]
 name = "django-tables2"
-version = "2.7.5"
+version = "2.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/19/0f/497ebb829a0f6d93ac8ae720b114a413e6e3a6eb0682f15c7a8d59f69464/django_tables2-2.7.5.tar.gz", hash = "sha256:fb5dcaa09379cf3947598ec7e1bd5f26ed63aafdee3b23963446763bbeac37bf", size = 128618, upload-time = "2025-01-02T07:49:42.674Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/28/ab/3533314e818b04a9e1f04ae167845fec509f4e78ebaa6cf507d12eabcce3/django_tables2-2.8.0.tar.gz", hash = "sha256:0dea3401bb99a0164ba09e20d59a7d90856fdc05e5ae2da9a14d0fa14d99257c", size = 129204, upload-time = "2025-11-21T10:17:43.813Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0b/66/6d454db3edcd285b767caaa790c3e7a3969c91bb6f93601d9a879aab06f2/django_tables2-2.7.5-py3-none-any.whl", hash = "sha256:d9338937797207ffb6f481be2125c5ec3a0bb1858d409c672cc25fc5d654cb22", size = 95984, upload-time = "2025-01-02T07:49:39.752Z" },
+    { url = "https://files.pythonhosted.org/packages/79/8b/047bb29359953b1c76f8886377845538144033d87da622c6b743f597a50b/django_tables2-2.8.0-py3-none-any.whl", hash = "sha256:860633b0f448216af73fca6005c7e38dc9b46931dc36c08a9281a71ee250b1ee", size = 95968, upload-time = "2025-11-21T10:17:42.363Z" },
 ]
 
 [[package]]
@@ -1163,7 +1163,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "acdh-django-browsing", specifier = ">=3.2" },
+    { name = "acdh-django-browsing", specifier = ">=3.3.2" },
     { name = "acdh-django-widgets", specifier = ">=0.1.0" },
     { name = "acdh-xml-pyutils", specifier = ">=1.1.1" },
     { name = "crispy-bootstrap5", specifier = ">=2025.6" },
@@ -1915,11 +1915,11 @@ wheels = [
 
 [[package]]
 name = "tablib"
-version = "3.8.0"
+version = "3.9.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/09/cc/fe19d9c2ac1088794a51fc72f49b7226f88a0361f924fb3d17a9ec80e657/tablib-3.8.0.tar.gz", hash = "sha256:94d8bcdc65a715a0024a6d5b701a5f31e45bd159269e62c73731de79f048db2b", size = 122247, upload-time = "2025-01-22T15:29:27.276Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/00/416d2ba54d7d58a7f7c61bf62dfeb48fd553cf49614daf83312f2d2c156e/tablib-3.9.0.tar.gz", hash = "sha256:1b6abd8edb0f35601e04c6161d79660fdcde4abb4a54f66cc9f9054bd55d5fe2", size = 125565, upload-time = "2025-10-15T18:21:56.263Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5c/95/6542f54ebd90539b12ed6189cb54a6550a28407b1c503c2e55190c29a4c9/tablib-3.8.0-py3-none-any.whl", hash = "sha256:35bdb9d4ec7052232f8803908f9c7a9c3c65807188b70618fa7a7d8ccd560b4d", size = 47935, upload-time = "2025-01-22T15:28:44.499Z" },
+    { url = "https://files.pythonhosted.org/packages/66/6b/32e51d847148b299088fc42d3d896845fd09c5247190133ea69dbe71ba51/tablib-3.9.0-py3-none-any.whl", hash = "sha256:eda17cd0d4dda614efc0e710227654c60ddbeb1ca92cdcfc5c3bd1fc5f5a6e4a", size = 49580, upload-time = "2025-10-15T18:21:44.185Z" },
 ]
 
 [[package]]
