@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "acdh-django-browsing>=3.2",
+    "acdh-django-browsing>=3.3.2",
     "acdh-django-widgets>=0.1.0",
     "acdh-xml-pyutils>=1.1.1",
     "crispy-bootstrap5>=2025.6",
