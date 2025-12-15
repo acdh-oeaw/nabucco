@@ -9,6 +9,7 @@ from next_prev import next_in_order, prev_in_order
 from tinymce.models import HTMLField
 
 from archiv.utils import decode_html_entities
+from infos.models import AboutTheProject
 
 WP_LEADS = [
     ("Jena", "Jena team"),
@@ -1332,6 +1333,13 @@ class Tablet(models.Model):
         default=True,
         verbose_name="Published",
         help_text="Ucheck to make tablet readable only for logged in users",
+    )
+    project = models.ManyToManyField(
+        AboutTheProject,
+        blank=True,
+        related_name="tablets",
+        verbose_name="Related Project(s)",
+        help_text="Select Project related to this tablet",
     )
 
     history = AuditlogHistoryField()

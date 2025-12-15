@@ -1,6 +1,7 @@
+from browsing.utils import model_to_dict
 from django.db import models
 from django.urls import reverse
-from browsing.utils import model_to_dict
+from tinymce.models import HTMLField
 
 
 class ProjectInst(models.Model):
@@ -27,7 +28,6 @@ class ProjectInst(models.Model):
     )
 
     class Meta:
-
         ordering = [
             "name",
         ]
@@ -93,7 +93,6 @@ class TeamMember(models.Model):
     )
 
     class Meta:
-
         ordering = [
             "role",
             "name",
@@ -143,7 +142,7 @@ class AboutTheProject(models.Model):
     subtitle = models.CharField(
         max_length=300, blank=True, verbose_name="Project's Sub Title"
     )
-    description = models.TextField(blank=True, verbose_name="Project Description")
+    description = HTMLField(blank=True, verbose_name="Project Description")
     author = models.CharField(
         max_length=250,
         blank=True,
@@ -160,7 +159,6 @@ class AboutTheProject(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-
         ordering = [
             "id",
         ]
