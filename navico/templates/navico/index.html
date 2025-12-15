@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% load stats_extras %}
+{% load webpage_extras %}
+{% block title %}Navico{% endblock %}
+{% block content %}
+<style>
+    .jumbotron-background {
+        background-image: url("{% static 'navico/img/title-image.jpg' %}");
+    }
+</style>
+<div class="my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-1 jumbotron-background">
+      <h1 class="display-1 p-5">Navico</h1>
+      <h2 class="display-3 text-light">The Experience of Temple Dependants and Chattel Slaves (626-484 BCE)</h2>
+      <p class="container lead fs-2">
+        Navico offers a comprehensive investigation of cuneiform texts regarding the lived experiences and agency of sbubaltern people in an environment of coerced labor.
+      </p>
+      <div class="d-inline-flex gap-2 mb-5 pt-5">
+        <a class="btn btn-outline-light btn-lg px-4" href="{% url 'navico:about' %}">
+          About the Project
+        </a>
+        <a class="btn btn-outline-light btn-lg px-4" href="{% url 'archiv:digeanna_browse' %}?archiv=119">
+          Browse the Tablets
+        </a>
+      </div>
+      <p class="text-light pt-5 container">
+         "She struck a dog and said, 'I wish I were dead like the dog.'" The tablet <a href="/archiv/tablet/detail/3128" class="link-no-style">YOS 7 107</a> records a moment of desperate anger revealing life at the bottom of Babylonian society.<br>
+        © <a href="https://collections.peabody.yale.edu/search/Record/YPM-BC-017863/" class="link-no-style">Yale Peabody Museum, CC0 1.0</a>
+      </p>
+    </div>
+  </div>
+  
+  <div class="text-center p-5">
+    <h2>How to quote</h2>
+    <blockquote class="blockquote">
+      <p>K. Abraham, M. Jursa (eds.), Navico. Navigating Coercion in Ancient Babylonia. DATE URL {% now "Y-m-d" %} <a href="https://nabucco.acdh.oeaw.ac.at/navico">https://nabucco.acdh.oeaw.ac.at/navico</a></p>
+    </blockquote>
+  </div>
+{% endblock %}
+
+<a href="https://commons.wikimedia.org/wiki/File:Vorderasiatisches_Museum_Berlin_056.jpg">Einsamer Schütze</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons

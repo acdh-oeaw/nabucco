@@ -46,3 +46,8 @@ dd {
   max-width:  600px;
   max-height: 400px;
 }
+
+.link-no-style {
+  color: inherit;
+  text-decoration: underline dotted;
+}

@@ -1,6 +1,6 @@
+from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
 from rest_framework import routers
 
 from archiv import api_views
@@ -27,6 +27,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("tinymce/", include("tinymce.urls")),
     path("digeanna/", include("digeanna.urls", namespace="digeanna")),
+    path("navico/", include("navico.urls", namespace="navico")),
     path("news/", include("news.urls", namespace="news")),
     path("browsing/", include("browsing.urls", namespace="browsing")),
     path("info/", include("infos.urls", namespace="info")),

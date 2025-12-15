@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     "webpage",
     "archiv",
     "digeanna",
+    "navico",
     "tinymce",
     "news",
     "fixture_magic",
