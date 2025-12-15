@@ -7,6 +7,7 @@
 {% block custom %}
 
   <div class="container">
+    {% if object.public or user.is_authenticated %}
     <div class="row justify-content-around">
       <div class="col-md-5">
         <h2>Basic Metadata</h2>
@@ -247,6 +248,11 @@
           
       </div>
     </div>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+      This tablet is currently only visible for logged in users
+    </div>
+    {% endif %}
   </div>
 
 {% endblock custom %}
