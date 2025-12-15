@@ -232,6 +232,7 @@ class TabletFilterFormHelper(FormHelper):
                 AccordionGroup(
                     "Admin search",
                     "id",
+                    "project",
                     "legacy_id",
                     "legacy_pk",
                     "imported",
