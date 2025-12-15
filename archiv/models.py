@@ -1328,6 +1328,11 @@ class Tablet(models.Model):
         verbose_name="Internal field",
         help_text="Used for searching",
     ).set_extra(is_public=False)
+    public = models.BooleanField(
+        default=True,
+        verbose_name="Published",
+        help_text="Ucheck to make tablet readable only for logged in users",
+    )
 
     history = AuditlogHistoryField()
 
