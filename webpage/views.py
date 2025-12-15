@@ -1,13 +1,26 @@
 import requests
-
 from django.conf import settings
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 from django.template import loader
 from django.views.generic import TemplateView
-from django.contrib.auth import authenticate, login, logout
+
+from infos.models import AboutTheProject
 
 from .forms import form_user_login
+
+
+class About(TemplateView):
+    template_name = "webpage/about.html"
+
+    def get_context_data(self, **kwargs):
+        try:
+            kwargs["object"] = AboutTheProject.objects.get(title="Nabucco")
+        except ObjectDoesNotExist:
+            kwargs["object"] = {"error": True}
+        return super().get_context_data(**kwargs)
 
 
 class ImprintView(TemplateView):
@@ -24,9 +37,7 @@ class ImprintView(TemplateView):
         if r.status_code == 200:
             context["imprint_body"] = f"{r.text}"
         else:
-            context[
-                "imprint_body"
-            ] = """
+            context["imprint_body"] = """
             On of our services is currently not available.\
             Please try it later or write an email to\
             acdh-ch-helpdesk@oeaw.ac.at; if you are service provide,\

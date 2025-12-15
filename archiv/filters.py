@@ -440,4 +440,5 @@ class TabletListFilter(django_filters.FilterSet):
             "private_context",
             "direct_speech",
             "remark",
+            "project",
         ]
