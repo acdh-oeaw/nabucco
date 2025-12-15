@@ -55,6 +55,64 @@ class DigeannaManager(models.Manager):
         )
 
 
+class NavicoTheme(models.Model):
+    theme = models.CharField(
+        verbose_name="Theme",
+        help_text="designation of the theme concerning the reality of slaves in a text",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="Description of the theme: what sphere of in life a slave does it pertain to? what is the historical significance?",  # noqa: E501
+    )
+
+    class Meta:
+        ordering = [
+            "theme",
+        ]
+        verbose_name = "Theme (Navico)"
+        verbose_name_plural = "Themes (Navico)"
+
+    def __str__(self):
+        return self.theme
+
+    @classmethod
+    def get_listview_url(self):
+        return reverse_lazy("archiv:navicotheme_browse")
+
+    @classmethod
+    def get_createview_url(self):
+        return reverse_lazy("archiv:navicotheme_create")
+
+    def get_absolute_url(self):
+        return reverse_lazy("archiv:navicotheme_detail", kwargs={"pk": self.id})
+
+    def get_delete_url(self):
+        return reverse_lazy("archiv:navicotheme_delete", kwargs={"pk": self.id})
+
+    def get_edit_url(self):
+        return reverse_lazy("archiv:navicotheme_edit", kwargs={"pk": self.id})
+
+    def get_next(self):
+        try:
+            next = next_in_order(self)
+        except ValueError:
+            return False
+        if next:
+            return reverse_lazy("archiv:navicotheme_detail", kwargs={"pk": next.id})
+        return False
+
+    def get_prev(self):
+        try:
+            prev = prev_in_order(self)
+        except ValueError:
+            return False
+        if prev:
+            return reverse_lazy("archiv:navicotheme_detail", kwargs={"pk": prev.id})
+        return False
+
+
 class Domain(models.Model):
     name = models.CharField(
         max_length=250,
@@ -1340,6 +1398,13 @@ class Tablet(models.Model):
         related_name="tablets",
         verbose_name="Related Project(s)",
         help_text="Select Project related to this tablet",
+    )
+    navico_theme = models.ManyToManyField(
+        NavicoTheme,
+        blank=True,
+        verbose_name="Themes (Navico)",
+        help_text="select the tablet's theme relating to Navico",
+        related_name="related_tablets",
     )
 
     history = AuditlogHistoryField()
