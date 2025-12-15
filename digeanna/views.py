@@ -1,12 +1,12 @@
+from auditlog.models import LogEntry
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
-from auditlog.models import LogEntry
 
 from news.models import NewsEntry
 
 
-class DigeannaIndexView(TemplateView):
+class IndexView(TemplateView):
     template_name = "digeanna/index.html"
 
     def get_context_data(self, **kwargs):
@@ -14,7 +14,7 @@ class DigeannaIndexView(TemplateView):
         return super().get_context_data(**kwargs)
 
 
-class DigeannaAbout(TemplateView):
+class About(TemplateView):
     template_name = "digeanna/about.html"
 
 
