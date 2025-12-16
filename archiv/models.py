@@ -8,7 +8,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
 from tinymce.models import HTMLField
 
-from archiv.utils import decode_html_entities
+from archiv.utils import CrudUrlMixin, PrevNextMixin, decode_html_entities
 from infos.models import AboutTheProject
 
 WP_LEADS = [
@@ -53,6 +53,66 @@ class DigeannaManager(models.Manager):
                 ]
             )
         )
+
+
+class SlaveDescriptor(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "slavedescriptor"
+    descriptor = models.CharField(
+        verbose_name="Oblate/Slave Descriptor",
+        max_length=250,
+        help_text="designation of a specific descriptor used in a text for an oblate/slave",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="describe the significance of the descriptor",
+    )
+
+    class Meta:
+        ordering = [
+            "descriptor",
+        ]
+        verbose_name = "Oblate/Slave Descriptor"
+        verbose_name_plural = "Oblate/Slave Descriptors"
+
+
+class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "navicorole"
+    role = models.CharField(
+        max_length=250,
+        verbose_name="Role",
+        help_text="designation of the slave's role in a text",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="concisely describe the role and its significance in a text",
+    )
+    active_passive = models.CharField(
+        max_length=50,
+        choices=(
+            ("active", "active role"),
+            ("passive", "passive role"),
+            ("ambiguous", "ambiguous role"),
+        ),
+        default="active",
+        help_text="Does the role pertain to an active or passive action in a text?",
+        verbose_name="Active/Passive",
+    )
+
+    class Meta:
+        ordering = [
+            "role",
+        ]
+        verbose_name = "Oblate/Slave Role"
+        verbose_name_plural = "Oblate/Slave Roles"
+
+    def __str__(self):
+        return self.theme
 
 
 class NavicoTheme(models.Model):
@@ -1404,6 +1464,13 @@ class Tablet(models.Model):
         blank=True,
         verbose_name="Themes (Navico)",
         help_text="select the tablet's theme relating to Navico",
+        related_name="related_tablets",
+    )
+    slave_role = models.ManyToManyField(
+        SlaveRole,
+        blank=True,
+        verbose_name="Slave role",
+        help_text="select the active/passive role of the oblate/slave featuring in the tablet",
         related_name="related_tablets",
     )
 
