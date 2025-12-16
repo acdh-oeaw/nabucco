@@ -40,6 +40,8 @@ from .models import (
     LegalPurpose,
     NavicoTheme,
     Place,
+    SlaveDescriptor,
+    SlaveRole,
     Tablet,
     TextForm,
     TransActionType,
@@ -605,7 +607,7 @@ class NavicoThemeListView(GenericListView):
 
 class NavicoThemeDetailView(BaseDetailView):
     model = NavicoTheme
-    template_name = "archiv/navicotheme_detail.html"
+    template_name = "archiv/generic_detail.html"
 
 
 class NavicoThemeCreate(BaseCreateView):
@@ -632,3 +634,77 @@ class NavicoThemeDelete(DeleteView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(NavicoThemeDelete, self).dispatch(*args, **kwargs)
+
+
+class SlaveDescriptorListView(GenericListView):
+    model = SlaveDescriptor
+    init_columns = ["id", "descriptor", "description"]
+    enable_merge = True
+
+
+class SlaveDescriptorDetailView(BaseDetailView):
+    model = SlaveDescriptor
+    template_name = "archiv/generic_detail.html"
+
+
+class SlaveDescriptorCreate(BaseCreateView):
+    model = SlaveDescriptor
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SlaveDescriptorCreate, self).dispatch(*args, **kwargs)
+
+
+class SlaveDescriptorUpdate(BaseUpdateView):
+    model = SlaveDescriptor
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SlaveDescriptorUpdate, self).dispatch(*args, **kwargs)
+
+
+class SlaveDescriptorDelete(DeleteView):
+    model = SlaveDescriptor
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:slavedescriptor_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SlaveDescriptorDelete, self).dispatch(*args, **kwargs)
+
+
+class SlaveRoleListView(GenericListView):
+    model = SlaveRole
+    init_columns = ["id", "role", "description", "active_passive"]
+    enable_merge = True
+
+
+class SlaveRoleDetailView(BaseDetailView):
+    model = SlaveRole
+    template_name = "archiv/generic_detail.html"
+
+
+class SlaveRoleCreate(BaseCreateView):
+    model = SlaveRole
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SlaveRoleCreate, self).dispatch(*args, **kwargs)
+
+
+class SlaveRoleUpdate(BaseUpdateView):
+    model = SlaveRole
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SlaveRoleUpdate, self).dispatch(*args, **kwargs)
+
+
+class SlaveRoleDelete(DeleteView):
+    model = SlaveRole
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:slaverole_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SlaveRoleDelete, self).dispatch(*args, **kwargs)

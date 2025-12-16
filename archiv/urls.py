@@ -264,4 +264,54 @@ urlpatterns = [
         views.NavicoThemeDelete.as_view(),
         name="navicotheme_delete",
     ),
+    path(
+        "slavedescriptor/",
+        views.SlaveDescriptorListView.as_view(),
+        name="slavedescriptor_browse",
+    ),
+    path(
+        "slavedescriptor/detail/<int:pk>",
+        views.SlaveDescriptorDetailView.as_view(),
+        name="slavedescriptor_detail",
+    ),
+    path(
+        "slavedescriptor/create/",
+        views.SlaveDescriptorCreate.as_view(),
+        name="slavedescriptor_create",
+    ),
+    path(
+        "slavedescriptor/edit/<int:pk>",
+        views.SlaveDescriptorUpdate.as_view(),
+        name="slavedescriptor_edit",
+    ),
+    path(
+        "slavedescriptor/delete/<int:pk>",
+        views.SlaveDescriptorDelete.as_view(),
+        name="slavedescriptor_delete",
+    ),
+    path(
+        "slaverole/",
+        views.SlaveRoleListView.as_view(),
+        name="slaverole_browse",
+    ),
+    path(
+        "slaverole/detail/<int:pk>",
+        views.SlaveRoleDetailView.as_view(),
+        name="slaverole_detail",
+    ),
+    path(
+        "slaverole/create/",
+        views.SlaveRoleCreate.as_view(),
+        name="slaverole_create",
+    ),
+    path(
+        "slaverole/edit/<int:pk>",
+        views.SlaveRoleUpdate.as_view(),
+        name="slaverole_edit",
+    ),
+    path(
+        "slaverole/delete/<int:pk>",
+        views.SlaveRoleDelete.as_view(),
+        name="slaverole_delete",
+    ),
 ]
