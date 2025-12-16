@@ -28,6 +28,11 @@ class CrudUrlMixin(models.Model):
     url_namespace = None
     url_basename = None
     primary_key_field = "pk"
+    browse_suffix = "_browse"
+    create_suffix = "_create"
+    detail_suffix = "_detail"
+    edit_suffix = "_edit"
+    delete_suffix = "_delete"
 
     class Meta:
         abstract = True
@@ -57,30 +62,34 @@ class CrudUrlMixin(models.Model):
 
     @classmethod
     def get_listview_url(cls):
-        return reverse_lazy(f"{cls.url_namespace}:{cls._get_url_basename()}_browse")
+        return reverse_lazy(
+            f"{cls.url_namespace}:{cls._get_url_basename()}{cls.browse_suffix}"
+        )
 
     @classmethod
     def get_createview_url(cls):
-        return reverse_lazy(f"{cls.url_namespace}:{cls._get_url_basename()}_create")
+        return reverse_lazy(
+            f"{cls.url_namespace}:{cls._get_url_basename()}{cls.create_suffix}"
+        )
 
     def get_absolute_url(self):
         pk_kwarg = self._get_pk_field_name()
         return reverse_lazy(
-            f"{self.url_namespace}:{self._get_url_basename()}_detail",
+            f"{self.url_namespace}:{self._get_url_basename()}{self.detail_suffix}",
             kwargs={pk_kwarg: self._get_pk_value()},
         )
 
     def get_edit_url(self):
         pk_kwarg = self._get_pk_field_name()
         return reverse_lazy(
-            f"{self.url_namespace}:{self._get_url_basename()}_edit",
+            f"{self.url_namespace}:{self._get_url_basename()}{self.edit_suffix}",
             kwargs={pk_kwarg: self._get_pk_value()},
         )
 
     def get_delete_url(self):
         pk_kwarg = self._get_pk_field_name()
         return reverse_lazy(
-            f"{self.url_namespace}:{self._get_url_basename()}_delete",
+            f"{self.url_namespace}:{self._get_url_basename()}{self.delete_suffix}",
             kwargs={pk_kwarg: self._get_pk_value()},
         )
 
