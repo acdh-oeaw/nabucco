@@ -7,6 +7,37 @@
 {% include 'browsing/partials/detailview_title.html' %}
 
 {% block custom %}
+<div class="container">
+    <div class="p-2">
+        {% if object.descriptor %}
+            <h2 class="fs-4">Oblate/Slave Descriptor</h2>
+            <p>{{ object.descriptor }}</p>
+        {% endif %}
+        {% if object.role %}
+            <h2 class="fs-4">Role</h2>
+            <p>{{ object.role }}</p>
+        {% endif %}
+        {% if object.description %}
+            <h2 class="fs-4">Description</h2>
+            <p>{{ object.description }}</p>
+        {% endif %}
+        {% if object.active_passive %}
+            <h2 class="fs-4">Active/Passive</h2>
+            <p>{{ object.active_passive }}</p>
+        {% endif %}
+    </div>
+    
+    <div class="p-2">
+        <h2 class="fs-4">Tablets</h2>
+        <ul>
+            {% for x in object.related_tablets.all %}
+            <li>
+                <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock custom %}
 
 {% endblock content%}

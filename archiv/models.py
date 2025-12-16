@@ -77,10 +77,13 @@ class SlaveDescriptor(CrudUrlMixin, PrevNextMixin, models.Model):
         verbose_name = "Oblate/Slave Descriptor"
         verbose_name_plural = "Oblate/Slave Descriptors"
 
+    def __str__(self):
+        return self.description
+
 
 class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
     url_namespace = "archiv"
-    url_basename = "navicorole"
+    url_basename = "slaverole"
     role = models.CharField(
         max_length=250,
         verbose_name="Role",
@@ -112,7 +115,7 @@ class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
         verbose_name_plural = "Oblate/Slave Roles"
 
     def __str__(self):
-        return self.theme
+        return f"{self.role} ({self.active_passive})"
 
 
 class NavicoTheme(CrudUrlMixin, PrevNextMixin, models.Model):
@@ -1125,6 +1128,13 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         blank=True,
         verbose_name="Slave role",
         help_text="select the active/passive role of the oblate/slave featuring in the tablet",
+        related_name="related_tablets",
+    )
+    slave_descriptor = models.ManyToManyField(
+        SlaveDescriptor,
+        blank=True,
+        verbose_name="Slave descriptor",
+        help_text="select the descriptors used for the oblate/slave",
         related_name="related_tablets",
     )
 
