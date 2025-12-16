@@ -3,7 +3,7 @@ from auditlog.registry import auditlog
 from browsing.utils import model_to_dict
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from mptt.models import MPTTModel, TreeForeignKey
 from next_prev import next_in_order, prev_in_order
 from tinymce.models import HTMLField
@@ -115,7 +115,9 @@ class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
         return self.theme
 
 
-class NavicoTheme(models.Model):
+class NavicoTheme(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "navicotheme"
     theme = models.CharField(
         verbose_name="Theme",
         help_text="designation of the theme concerning the reality of slaves in a text",
@@ -137,43 +139,10 @@ class NavicoTheme(models.Model):
     def __str__(self):
         return self.theme
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:navicotheme_browse")
 
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:navicotheme_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:navicotheme_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:navicotheme_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:navicotheme_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:navicotheme_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:navicotheme_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class Domain(models.Model):
+class Domain(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "domain"
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -197,43 +166,10 @@ class Domain(models.Model):
     def __str__(self):
         return self.name
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:domain_browse")
 
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:domain_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:domain_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:domain_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:domain_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:domain_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:domain_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class TransActionType(models.Model):
+class TransActionType(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "transactiontype"
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -257,43 +193,10 @@ class TransActionType(models.Model):
     def __str__(self):
         return self.name
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:transactiontype_browse")
 
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:transactiontype_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:transactiontype_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:transactiontype_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:transactiontype_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:transactiontype_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:transactiontype_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class LegalPurpose(models.Model):
+class LegalPurpose(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "legalpurpose"
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -323,43 +226,10 @@ class LegalPurpose(models.Model):
     def __str__(self):
         return f"{self.name} ({self.verbum_regens})"
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:legalpurpose_browse")
 
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:legalpurpose_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:legalpurpose_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:legalpurpose_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:legalpurpose_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:legalpurpose_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:legalpurpose_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class TextForm(models.Model):
+class TextForm(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "textform"
     name = models.CharField(
         max_length=250,
         default="change me",
@@ -389,58 +259,10 @@ class TextForm(models.Model):
     def __str__(self):
         return f"{self.name} ({self.verbum_regens})"
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:textform_browse")
 
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:textform_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:textform_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:textform_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:textform_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:textform_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:textform_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class VanDrielFiles(models.Model):
-    """
-    VanDrielFiles model represents files categorized according to van Driel's classification.
-    Attributes:
-        file (CharField): Overarching file category with a maximum length of 2 characters.
-        sub_file (CharField): Text type or topic with a maximum length of 250 characters.
-        verbum_regens (CharField): Akkadian key term for text identification, optional with a maximum length of 250 characters.
-        description (TextField): General description and remarks concerning a file, optional.
-    Meta:
-        ordering (list): Default ordering of the model instances by 'file' and 'sub_file'.
-        verbose_name (str): Human-readable name for the model.
-        verbose_name_plural (str): Human-readable plural name for the model.
-    Methods:
-        __str__: Returns a string representation of the instance combining 'file' and 'sub_file'.
-    """  # noqa: E501
-
+class VanDrielFiles(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "vandrielfile"
     file = models.CharField(
         max_length=2,
         verbose_name="File",
@@ -514,9 +336,11 @@ class VanDrielFiles(models.Model):
         return False
 
 
-class Archiv(models.Model):
+class Archiv(CrudUrlMixin, PrevNextMixin, models.Model):
     """Archive"""
 
+    url_namespace = "archiv"
+    url_basename = "archiv"
     legacy_id = models.CharField(max_length=300, blank=True, verbose_name="Legacy ID")
     legacy_pk = models.IntegerField(
         blank=True,
@@ -591,53 +415,12 @@ class Archiv(models.Model):
     def field_dict(self):
         return model_to_dict(self)
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse("archiv:archiv_browse")
 
-    @classmethod
-    def get_source_table(self):
-        return "./data/csv/Archiv.csv"
-
-    @classmethod
-    def get_natural_primary_key(self):
-        return "name"
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse("archiv:archiv_create")
-
-    def get_absolute_url(self):
-        return reverse("archiv:archiv_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse("archiv:archiv_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse("archiv:archiv_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse("archiv:archiv_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse("archiv:archiv_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class Bibliography(models.Model):
+class Bibliography(CrudUrlMixin, PrevNextMixin, models.Model):
     """Bibliography"""
 
+    url_namespace = "archiv"
+    url_basename = "bibliography"
     legacy_id = models.CharField(max_length=300, blank=True, verbose_name="Legacy ID")
     legacy_pk = models.IntegerField(
         blank=True,
@@ -767,53 +550,10 @@ class Bibliography(models.Model):
     def field_dict(self):
         return model_to_dict(self)
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse("archiv:bibliography_browse")
 
-    @classmethod
-    def get_source_table(self):
-        return "./data/csv/Bibliography.csv"
-
-    @classmethod
-    def get_natural_primary_key(self):
-        return "short_title"
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse("archiv:bibliography_create")
-
-    def get_absolute_url(self):
-        return reverse("archiv:bibliography_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse("archiv:bibliography_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse("archiv:bibliography_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse("archiv:bibliography_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse("archiv:bibliography_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class Glossary(MPTTModel):
-    """Glossary"""
-
+class Glossary(CrudUrlMixin, PrevNextMixin, MPTTModel):
+    url_namespace = "archiv"
+    url_basename = "glossary"
     legacy_id = models.CharField(max_length=300, blank=True, verbose_name="Legacy ID")
     legacy_pk = models.IntegerField(
         blank=True,
@@ -871,53 +611,10 @@ class Glossary(MPTTModel):
     def field_dict(self):
         return model_to_dict(self)
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse("archiv:glossary_browse")
 
-    @classmethod
-    def get_source_table(self):
-        return "./data/csv/Glossary.csv"
-
-    @classmethod
-    def get_natural_primary_key(self):
-        return "pref_label"
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse("archiv:glossary_create")
-
-    def get_absolute_url(self):
-        return reverse("archiv:glossary_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse("archiv:glossary_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse("archiv:glossary_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse("archiv:glossary_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse("archiv:glossary_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class Place(models.Model):
-    """Place"""
-
+class Place(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "place"
     legacy_id = models.CharField(max_length=300, blank=True, verbose_name="Legacy ID")
     legacy_pk = models.IntegerField(
         blank=True,
@@ -1015,53 +712,10 @@ class Place(models.Model):
     def field_dict(self):
         return model_to_dict(self)
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse("archiv:place_browse")
 
-    @classmethod
-    def get_source_table(self):
-        return "./data/csv/Place.csv"
-
-    @classmethod
-    def get_natural_primary_key(self):
-        return "name"
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse("archiv:place_create")
-
-    def get_absolute_url(self):
-        return reverse("archiv:place_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse("archiv:place_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse("archiv:place_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse("archiv:place_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse("archiv:place_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class Tablet(models.Model):
-    """Tablet"""
-
+class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "tablet"
     legacy_id = models.CharField(max_length=300, blank=True, verbose_name="Legacy ID")
     legacy_pk = models.IntegerField(
         blank=True,
@@ -1513,49 +1167,6 @@ class Tablet(models.Model):
     def field_dict(self):
         return model_to_dict(self)
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse("archiv:tablet_browse")
-
-    @classmethod
-    def get_source_table(self):
-        return "./data/csv/Tablet.csv"
-
-    @classmethod
-    def get_natural_primary_key(self):
-        return "legacy_pk"
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse("archiv:tablet_create")
-
-    def get_absolute_url(self):
-        return reverse("archiv:tablet_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse("archiv:tablet_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse("archiv:tablet_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse("archiv:tablet_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse("archiv:tablet_detail", kwargs={"pk": prev.id})
-        return False
-
     def labasi_detail_view(self):
         if self.labasi_id:
             return f"https://labasi.acdh.oeaw.ac.at/tablets/detail/{self.labasi_id}"
@@ -1581,7 +1192,10 @@ class Tablet(models.Model):
             return False
 
 
-class Introduction(models.Model):
+class Introduction(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "introduction"
+
     intro_text = HTMLField(
         default="Add brief introductory text",
         blank=True,
@@ -1602,7 +1216,10 @@ class Introduction(models.Model):
         return f"{self.title}"
 
 
-class Dossier(models.Model):
+class Dossier(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "dossier"
+
     name = models.CharField(
         max_length=250,
         default="generic dossier name (change me!)",
@@ -1635,52 +1252,10 @@ class Dossier(models.Model):
     def field_dict(self):
         return model_to_dict(self)
 
-    @classmethod
-    def get_listview_url(self):
-        return reverse("archiv:dossier_browse")
 
-    @classmethod
-    def get_createview_url(self):
-        return reverse("archiv:dossier_create")
-
-    def get_absolute_url(self):
-        return reverse("archiv:dossier_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse("archiv:dossier_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse("archiv:dossier_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse("archiv:dossier_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse("archiv:dossier_detail", kwargs={"pk": prev.id})
-        return False
-
-
-class WorkPackage(models.Model):
-    """
-    WorkPackage model represents a work package within a project.
-    Attributes:
-        wp_number (CharField): Number of the work package. Optional.
-        title (CharField): Title of the work package. Optional.
-        description (TextField): Description of the work package. Optional.
-        wp_lead (CharField): Lead of the work package. Optional. Choices are defined in WP_LEADS.
-    """
-
+class WorkPackage(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "workpackage"
     wp_number = models.CharField(
         blank=True,
         null=True,
@@ -1729,41 +1304,6 @@ class WorkPackage(models.Model):
 
     def field_dict(self):
         return model_to_dict(self)
-
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:workpackage_browse")
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:workpackage_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:workpackage_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:workpackage_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:workpackage_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:workpackage_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:workpackage_detail", kwargs={"pk": prev.id})
-        return False
 
 
 auditlog.register(Tablet)
