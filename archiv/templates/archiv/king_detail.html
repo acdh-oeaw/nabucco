@@ -1,0 +1,62 @@
+{% extends "archiv/generic_detail.html" %}
+{% load static %}
+
+{% load webpage_extras %}
+{% block title %}{{ object }}{% endblock %}
+
+{% block custom %}
+
+<div class="container">
+<div class="row">
+    <div class="col-md-6">
+        <div class="p-2">
+            <h2 class="fs-3">{{ object.get_file_display }}</h2>
+            <h3 class="fs-4">{{ object.sub_file }}</h2>
+            <dl>
+                <dt>Traditional (usually biblical) name of the king</dt>
+                <dd>{{ object.name }}</dd>
+
+                {% if object.alt_name %}
+                <dt>The name(s) of the king</dt>
+                <dd>{{ object.alt_name }}</dd>
+                {% endif %}
+
+                <dt>Abbreviation</dt>
+                <dd>{{ object.abbreviation }}</dd>
+
+                <dt>Beginning of reign</dt>
+                <dd>{{ object.begin_of_reign }}</dd>
+
+                {% if object.end_of_reign %}
+                <dt>Ending of reign</dt>
+                <dd>{{ object.end_of_reign }}</dd>
+                {% endif %}
+                
+                {% if object.description %}
+                <dt>Description</dt>
+                <dd>{{ object.description }}</dd>
+                {% endif %}
+                
+            </dl>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="p-2">
+            <h2 class="fs-4">Tablets</h2>
+            <ul>
+                {% for x in object.has_tablet.all %}
+                <li>
+                    <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+    
+
+</div>
+
+{% endblock %}

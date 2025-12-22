@@ -37,6 +37,7 @@ from .models import (
     Dossier,
     Glossary,
     Introduction,
+    King,
     LegalPurpose,
     NavicoTheme,
     Place,
@@ -708,3 +709,40 @@ class SlaveRoleDelete(DeleteView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(SlaveRoleDelete, self).dispatch(*args, **kwargs)
+
+
+class KingListView(GenericListView):
+    model = King
+    init_columns = ["id", "name", "abbreviation", "begin_of_reign", "end_of_reign"]
+    enable_merge = True
+
+
+class KingDetailView(BaseDetailView):
+    model = King
+    template_name = "archiv/king_detail.html"
+
+
+class KingCreate(BaseCreateView):
+    model = King
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(KingCreate, self).dispatch(*args, **kwargs)
+
+
+class KingUpdate(BaseUpdateView):
+    model = King
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(KingUpdate, self).dispatch(*args, **kwargs)
+
+
+class KingDelete(DeleteView):
+    model = King
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:king_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(KingDelete, self).dispatch(*args, **kwargs)

@@ -3,7 +3,7 @@ from acdh_django_widgets.widgets import MartinAntonMuellerWidget
 from dal import autocomplete
 from django.db.models import Q
 
-from .models import Archiv, Bibliography, Glossary, Place, Tablet
+from .models import Archiv, Bibliography, Glossary, King, Place, Tablet
 
 
 class ArchivListFilter(django_filters.FilterSet):
@@ -352,10 +352,13 @@ class TabletListFilter(django_filters.FilterSet):
         help_text=Tablet._meta.get_field("year").help_text,
         label=Tablet._meta.get_field("year").verbose_name,
     )
-    king = django_filters.CharFilter(
-        lookup_expr="icontains",
+    related_king = django_filters.ModelMultipleChoiceFilter(
+        queryset=King.objects.all(),
         help_text=Tablet._meta.get_field("king").help_text,
         label=Tablet._meta.get_field("king").verbose_name,
+        widget=autocomplete.Select2Multiple(
+            url="archiv-ac:king-autocomplete",
+        ),
     )
     imported = django_filters.CharFilter(
         lookup_expr="icontains",
@@ -421,7 +424,7 @@ class TabletListFilter(django_filters.FilterSet):
             "day",
             "month",
             "year",
-            "king",
+            "related_king",
             "imported",
             "julian_date_year",
             "bibliography",

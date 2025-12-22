@@ -314,4 +314,29 @@ urlpatterns = [
         views.SlaveRoleDelete.as_view(),
         name="slaverole_delete",
     ),
+    path(
+        "king/",
+        views.KingListView.as_view(),
+        name="king_browse",
+    ),
+    path(
+        "king/detail/<int:pk>",
+        views.KingDetailView.as_view(),
+        name="king_detail",
+    ),
+    path(
+        "king/create/",
+        views.KingCreate.as_view(),
+        name="king_create",
+    ),
+    path(
+        "king/edit/<int:pk>",
+        views.KingUpdate.as_view(),
+        name="king_edit",
+    ),
+    path(
+        "king/delete/<int:pk>",
+        views.KingDelete.as_view(),
+        name="king_delete",
+    ),
 ]
