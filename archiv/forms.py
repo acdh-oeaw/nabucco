@@ -220,7 +220,7 @@ class TabletFilterFormHelper(FormHelper):
                     "day",
                     "month",
                     "year",
-                    "king",
+                    "related_king",
                     "julian_date_year",
                     "bibliography",
                     "inferred_date",
@@ -253,6 +253,9 @@ class TabletForm(forms.ModelForm):
             ),
             "regional_setting": autocomplete.ModelSelect2(
                 url="archiv-ac:place-autocomplete"
+            ),
+            "related_king": autocomplete.ModelSelect2(
+                url="archiv-ac:king-autocomplete"
             ),
             "mentioned_place": autocomplete.ModelSelect2Multiple(
                 url="archiv-ac:place-autocomplete"

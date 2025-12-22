@@ -55,6 +55,61 @@ class DigeannaManager(models.Manager):
         )
 
 
+class King(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "king"
+    name = models.CharField(
+        default="Cyr",
+        max_length=250,
+        verbose_name="King",
+        help_text="Traditional (usually biblical) name of the king",
+    )
+    alt_name = models.CharField(
+        blank=True,
+        null=True,
+        max_length=250,
+        verbose_name="Names",
+        help_text="The name(s) of the king as it would be in the original language(s) of the texts.",
+    )
+    abbreviation = models.CharField(
+        default="Cyr",
+        max_length=50,
+        verbose_name="Abbreviation",
+        help_text="Abbreviation of the king's name as it should show up in the date formula",
+    )
+    begin_of_reign = models.IntegerField(
+        default=1,
+        verbose_name="Beginning of reign",
+        help_text="The year BC in which a king took up reign.",
+    )
+    end_of_reign = models.IntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Ending of reign",
+        help_text="The year BC in which a king's reign ended.",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="Describe what characterized the king's reign in Babylonia",
+    )
+
+    class Meta:
+        ordering = [
+            "begin_of_reign",
+        ]
+        verbose_name = "King"
+        verbose_name_plural = "Kings"
+
+    def __str__(self):
+        if self.end_of_reign:
+            reign_period = f"({self.begin_of_reign}–{self.end_of_reign})"
+        else:
+            reign_period = f"({self.begin_of_reign}–)"
+        return f"{self.name} {reign_period}"
+
+
 class SlaveDescriptor(CrudUrlMixin, PrevNextMixin, models.Model):
     url_namespace = "archiv"
     url_basename = "slavedescriptor"
@@ -930,6 +985,15 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         ("Nbk IV", "Nbk IV"),
         ("Xer", "Xer"),
     ]
+    related_king = models.ForeignKey(
+        "King",
+        related_name="has_tablet",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name="King",
+        help_text="King",
+    )
     king = models.CharField(
         max_length=250,
         blank=True,
