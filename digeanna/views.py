@@ -21,7 +21,7 @@ class About(TemplateView):
 
     def get_context_data(self, **kwargs):
         try:
-            kwargs["object"] = AboutTheProject.objects.get(title="DigEanna")
+            kwargs["object"] = AboutTheProject.objects.filter(title="DigEanna")[0]
         except ObjectDoesNotExist:
             kwargs["object"] = {"error": True}
         return super().get_context_data(**kwargs)

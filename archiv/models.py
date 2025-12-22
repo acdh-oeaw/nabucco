@@ -994,17 +994,6 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         verbose_name="King",
         help_text="King",
     )
-    king = models.CharField(
-        max_length=250,
-        blank=True,
-        choices=KING_CHOICES,
-        default="-",
-        verbose_name="King",
-        help_text="King (abbreviated)",
-    ).set_extra(
-        is_public=True,
-        data_lookup="King",
-    )
     imported = models.CharField(
         max_length=250,
         blank=True,

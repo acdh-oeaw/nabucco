@@ -81,7 +81,7 @@
             <dd>{{ object.period }}</dd>
 
             <dt>Babylonian Date (year-month-day): </dt>
-            <dd> {% if object.king %}{{object.king}}{% else %}XXX{% endif %}.
+            <dd> {% if object.related_king %}{{ object.related_king.abbreviation }}{% else %}XXX{% endif %}.
                 {% if object.year %}{{object.year}}{% else %}yy{% endif %}-{% if object.month %}{{object.month}}{% else %}mm{% endif %}-{% if object.day%}{{object.day}}{% else %}dd{% endif %}
             </dd>
 

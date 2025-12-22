@@ -1,17 +1,18 @@
 from rest_framework import serializers
+
 from archiv.models import (
-    Tablet,
-    Domain,
-    TransActionType,
-    LegalPurpose,
-    TextForm,
-    VanDrielFiles,
     Archiv,
     Bibliography,
-    Glossary,
-    Place,
-    Introduction,
+    Domain,
     Dossier,
+    Glossary,
+    Introduction,
+    LegalPurpose,
+    Place,
+    Tablet,
+    TextForm,
+    TransActionType,
+    VanDrielFiles,
     WorkPackage,
 )
 
