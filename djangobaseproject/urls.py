@@ -4,6 +4,7 @@ from django.urls import path
 from rest_framework import routers
 
 from archiv import api_views
+from infos import api_views as info_api_views
 
 router = routers.DefaultRouter()
 router.register(r"tablets", api_views.TabletViewSet)
@@ -19,6 +20,7 @@ router.register(r"places", api_views.PlaceViewSet)
 router.register(r"introductions", api_views.IntroductionViewSet)
 router.register(r"dossiers", api_views.DossierViewSet)
 router.register(r"workpackages", api_views.WorkPackageViewSet)
+router.register(r"abouttheproject", info_api_views.AboutTheProjectViewSet)
 
 
 urlpatterns = [

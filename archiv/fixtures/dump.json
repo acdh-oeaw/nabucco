@@ -17,22 +17,6 @@
     },
     {
         "fields": {
-            "broader_concept": null,
-            "legacy_id": "Legal - Permanent",
-            "legacy_pk": 814,
-            "level": 0,
-            "lft": 1,
-            "orig_data_csv": "{\"concept id\": 814, \"label\": \"Legal - Permanent\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Legal - Permanent\", \"related objects\": NaN}",
-            "pref_label": "Legal - Permanent",
-            "rght": 26,
-            "title": "Legal - Permanent",
-            "tree_id": 28
-        },
-        "model": "archiv.glossary",
-        "pk": 156
-    },
-    {
-        "fields": {
             "description": "<p>Geographical region in south Babylonia, including the city of Ur and other places in the surrounding area</p>",
             "lat": null,
             "legacy_id": "Ur",
@@ -83,40 +67,6 @@
     },
     {
         "fields": {
-            "description": "<p>A region in the centre-east of Mesopotamia near Elam. Its principal city is D\u0113r.</p>",
-            "lat": null,
-            "legacy_id": "D\u0113r",
-            "legacy_pk": 76,
-            "lng": null,
-            "name": "D\u0113r region",
-            "orig_data_csv": "{\"place id\": 76, \"parent id\": 4, \"place name\": \"D\\u0113r (NE Babylonia)\", \"related objects\": NaN, \"title\": \"D\\u0113r (NE Babylonia)\"}",
-            "part_of": null,
-            "place_collection": "",
-            "pleiades_url": "https://pleiades.stoa.org/places/903013",
-            "title": "D\u0113r"
-        },
-        "model": "archiv.place",
-        "pk": 375
-    },
-    {
-        "fields": {
-            "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
-            "lat": null,
-            "legacy_id": "Uruk",
-            "legacy_pk": 61,
-            "lng": null,
-            "name": "Uruk region",
-            "orig_data_csv": "{\"place id\": 61, \"parent id\": 4, \"place name\": \"Uruk\", \"related objects\": NaN, \"title\": \"Uruk\"}",
-            "part_of": null,
-            "place_collection": "",
-            "pleiades_url": "https://pleiades.stoa.org/places/912986",
-            "title": "Uruk"
-        },
-        "model": "archiv.place",
-        "pk": 3
-    },
-    {
-        "fields": {
             "broader_concept": null,
             "legacy_id": "Legal - Temporary",
             "legacy_pk": 817,
@@ -150,6 +100,29 @@
     },
     {
         "fields": {
+            "author": "",
+            "created_at": "2022-10-21T12:34:00.415Z",
+            "description": "<p>A cooperation between the KU Leuven and the University of Vienna, directed by Michael Jursa and Kathleen Abraham.</p>\r\n<p>NABUCCO began through the initiative of Kathleen Abraham at the KU Leuven with the collaboration of Michael Jursa at the University of Vienna. NABUCCO's primary aim is to make cuneiform documentary sources originating from Babylonia and dated to the Age of Empires (c. 770 BCE &ndash; 75 CE) accessible through metadata and paraphrases or 'digests' that cover the documents' contents, prosopography, and archival background. Data have been provided, in addition to the persons mentioned above, by Stefania Ermidoro, Melanie Gross, Evelien Vanderstraeten, Matthias Adelhofer and others, and over the years NABUCCO has benefited significantly from the input, intellectual and technical, of Shai Gordin. The creation of the site in its present form and location, hosted by the Austrian Academy of Science's ACDH, was largely the work of Reinhard Pirngruber. Funding has come, in different phases, from the KU Leuven, the Belgian Science Policy Office (Project PVII/14), the University of Vienna, and the Austrian Science Fund (FWF, Vienna; most recently project I 3927).</p>",
+            "github": "https://github.com/acdh-oeaw/nabucco",
+            "subtitle": "Neo Babylonian Cuneiform Corpus Project",
+            "title": "Nabucco",
+            "updated_at": "2025-12-19T11:30:13.626Z"
+        },
+        "model": "infos.abouttheproject",
+        "pk": 7
+    },
+    {
+        "fields": {
+            "description": "This WP will be conducted by the Jena project part. Using the collective biography of the Eanna scribes as a starting point for the\r\ninvestigation into their work and the Files they produced (see WP 7), WP 6 will create a prosopography of this well-defined and well documented group of individuals. The prosopography will go beyond a mere update of K\u00fcmmel\u2019s now outdated prosopographic study of the Eanna scribes (K\u00fcmmel 1979), while Bongenaar 1997, the most comprehensive prosopographic study on the temple community of Ebabbar, will serve as a useful guideline for the analysis of the Eanna material.",
+            "title": "A Prosopography of the Eanna scribes and social network analysis",
+            "wp_lead": "Jena",
+            "wp_number": "WP6"
+        },
+        "model": "archiv.workpackage",
+        "pk": 3
+    },
+    {
+        "fields": {
             "author": "Frame, Grant ",
             "editor": "",
             "journal": "",
@@ -170,6 +143,41 @@
     },
     {
         "fields": {
+            "description": "<p>A very nice place</p>",
+            "lat": null,
+            "legacy_id": "Uruk city",
+            "legacy_pk": 1408,
+            "lng": null,
+            "name": "Uruk city",
+            "orig_data_csv": "{\"place id\": 1408, \"parent id\": 61, \"place name\": \"Uruk city\", \"related objects\": 5705.0, \"title\": \"Uruk city\"}",
+            "part_of": 3,
+            "place_collection": "",
+            "pleiades_url": "https://pleiades.stoa.org/places/912986",
+            "title": "Uruk city"
+        },
+        "model": "archiv.place",
+        "pk": 62
+    },
+    {
+        "fields": {
+            "description": "in addition to sale contracts (dialogue form or objective styling; different format for real estate and movable property( debt notes can also be used to record a sale",
+            "name": "Sale",
+            "verbum_regens": "ana ... nad\u0101nu; \u0161\u00e2mu, sometimes ina mu\u1e2b\u1e2bi"
+        },
+        "model": "archiv.legalpurpose",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "description": "involves two parties",
+            "name": "Contract",
+            "verbum_regens": "various verbs"
+        },
+        "model": "archiv.textform",
+        "pk": 17
+    },
+    {
+        "fields": {
             "alt_name": "",
             "description": "<p>The protagonist of this archive, or rather this property file, is Mu&scaron;\u0113zib-Marduk/Kiribtu/S&icirc;n-n\u0101\u1e63ir&nbsp;(6 Esarhaddon-&shy;15 Kandal\u0101nu). It consists of thirty-two tablets (twenty-six unique texts) mostly in London, with strays at Yale, in Paris, Geneva, Philadelphia (Free Library) and even among the UET 4 material. The majority of the texts are title deeds for acquired real estate, and most of the promissory notes concern real estate.</p>\r\n\r\n<p>Mu&scaron;\u0113zib-Marduk owned or acquired several urban properties in Babylon and even more in Uruk; he also invested substantial amounts of money in orchards within or in the vicinity of Uruk.</p>",
             "legacy_id": "S\u00een-n\u0101\u1e63ir",
@@ -181,22 +189,6 @@
         },
         "model": "archiv.archiv",
         "pk": 39
-    },
-    {
-        "fields": {
-            "broader_concept": 156,
-            "legacy_id": "Purchases",
-            "legacy_pk": 1204,
-            "level": 1,
-            "lft": 22,
-            "orig_data_csv": "{\"concept id\": 1204, \"label\": \"Purchases\", \"hierarchy\": \"Content type\", \"type\": 172, \"title\": \"Purchase\", \"related objects\": NaN}",
-            "pref_label": "Purchases",
-            "rght": 23,
-            "title": "Purchase",
-            "tree_id": 28
-        },
-        "model": "archiv.glossary",
-        "pk": 188
     },
     {
         "fields": {
@@ -234,33 +226,36 @@
     },
     {
         "fields": {
-            "description": "Document usually begins with witnesses, contents (can) refer to unusual events, sometimes related to the cult.",
-            "file": "01",
-            "sub_file": "c. Witnessed protocol",
-            "verbum_regens": "ta\u1e2bsistu l\u0101 ma\u0161\u00ea"
+            "author": "Johannes Hackl, Michael Jursa, Ma\u0142gorzata Sandowicz, with contributions by Matthias Adelhofer",
+            "created_at": "2025-01-14T08:19:14.891Z",
+            "description": "<h2>Involved Persons</h2>\r\n<p>Hackl, Johannes (PI); Jursa, Michael (PI); Sandowicz, Malgorzata (PI); Lassen, Agnete (Cooperation Partner); Waerzeggers, Caroline (Cooperation Partner); Agut, Damien (Cooperation Partner); M&uuml;hl, Simone (Cooperation Partner); L&auml;mmerhirt, Kai (Cooperation Partner); Jim&eacute;nez, Enrique (Cooperation Partner); Helwing, Barbara (Cooperation Partner)</p>\r\n<h2>Abstract</h2>\r\n<p>The Babylonian cuneiform tablets conventionally labeled as the &lsquo;Eanna temple archive&rsquo; represent one of the most important text groups from Ancient Babylonia, and they are arguably the most multifaceted collection of archival material from the best documented period of Babylonian history, the long sixth century. Counterintuitively, and numerous preceding studies (including several by the project coordinators) notwithstanding, no truly comprehensive investigation of these texts as a body of documentary data, as an &lsquo;archive&rsquo;, has ever been attempted. DigEanna will close this knowledge gap. Building on and extending the predecessor project NaBuCCo, DigEanna will make available the data and new insights as they are gained in this on-line database.</p>",
+            "github": "https://github.com/acdh-oeaw/nabucco",
+            "subtitle": "A Digitalization of the Eanna Archive",
+            "title": "DigEanna",
+            "updated_at": "2025-12-19T11:27:12.781Z"
         },
-        "model": "archiv.vandrielfiles",
-        "pk": 3
+        "model": "infos.abouttheproject",
+        "pk": 8
     },
     {
         "fields": {
-            "description": "witnessed; made freely, under oath or subjected to ma\u0161\u02c0altu",
-            "file": "01",
-            "sub_file": "b. Statement",
+            "description": "perhaps not all such texts are (originally?) from Eanna",
+            "file": "08",
+            "sub_file": "b. Land register",
             "verbum_regens": null
         },
         "model": "archiv.vandrielfiles",
-        "pk": 2
+        "pk": 66
     },
     {
         "fields": {
-            "description": "This WP will be conducted by the Jena project part. Using the collective biography of the Eanna scribes as a starting point for the\r\ninvestigation into their work and the Files they produced (see WP 7), WP 6 will create a prosopography of this well-defined and well documented group of individuals. The prosopography will go beyond a mere update of K\u00fcmmel\u2019s now outdated prosopographic study of the Eanna scribes (K\u00fcmmel 1979), while Bongenaar 1997, the most comprehensive prosopographic study on the temple community of Ebabbar, will serve as a useful guideline for the analysis of the Eanna material.",
-            "title": "A Prosopography of the Eanna scribes and social network analysis",
-            "wp_lead": "Jena",
-            "wp_number": "WP6"
+            "description": "A study will be carried out on the topography of Eanna, which will pursue the methodological approach pioneered by Falkenstein (1941) and developed by Beaulieu (2003: 29\u201334). Keywords of the Eanna database digests will serve as focus points of this study, whose objective will be to identify and ideally locate temple parts (gates and courtyards), cultic structures (minor temples, chapels, daises), as well as workshops, storerooms, and small installations (such as the cashboxes). By linking topographic points and zones with functionaries and their activities, the study will attempt to delineate the levels of access within Eanna and areas in which guards, oblates, and priests operated. The line of research linking groups of texts with areas of activities has already proven effective in identifying functions of buildings and possible findspots of tablets within Eanna (Kleber 2021).",
+            "title": "The temple and its topographical footprint in the city",
+            "wp_lead": "Warsaw",
+            "wp_number": "WP8"
         },
         "model": "archiv.workpackage",
-        "pk": 3
+        "pk": 5
     },
     {
         "fields": {
@@ -274,66 +269,57 @@
     },
     {
         "fields": {
-            "author": "Pohl, Alfred ",
+            "author": "Cocquerillat, Denise ",
             "editor": "",
             "journal": "",
-            "legacy_id": "AnOr 9",
-            "legacy_pk": 163,
+            "legacy_id": "Cocquerillat 1968",
+            "legacy_pk": 755,
             "mentioned_archive": [],
             "mentioned_glossary_item": [],
             "mentioned_place": [],
-            "orig_data_csv": "{\"occurrence id\": 163, \"short title\": \"AnOr 9\", \"author\": \"Pohl, Alfred \", \"publication year\": \"1934\", \"title\": \"Neubabylonische Rechtsurkunden aus den Berliner Staatlichen Museen. II\", \"volume no.\": \"9\", \"pages\": NaN, \"journal\": NaN, \"related objects\": 5674.0, \"editor\": NaN, \"book\": NaN, \"related publications\": NaN}",
+            "orig_data_csv": "{\"occurrence id\": 755, \"short title\": \"Cocquerillat 1968\", \"author\": \"Cocquerillat, Denise \", \"publication year\": \"1968\", \"title\": \"Palmeraies et cultures de l'Eanna d'Uruk (559-520), ADFU 8 (Berlin)\", \"volume no.\": NaN, \"pages\": NaN, \"journal\": NaN, \"related objects\": NaN, \"editor\": NaN, \"book\": NaN, \"related publications\": NaN}",
             "pages": "",
-            "publication_year": "1934",
-            "short_title": "AnOr 9",
-            "title": "Neubabylonische Rechtsurkunden aus den Berliner Staatlichen Museen. II",
-            "volume_nr": "9"
+            "publication_year": "1968",
+            "short_title": "Cocquerillat 1968",
+            "title": "Palmeraies et cultures de l'Eanna d'Uruk (559-520), ADFU 8 (Berlin)",
+            "volume_nr": ""
         },
         "model": "archiv.bibliography",
-        "pk": 2195
+        "pk": 2168
     },
     {
         "fields": {
-            "description": "This description is not that elaborate",
-            "name": "children"
+            "description": "i.e. permanent documentation",
+            "name": "Higher-order management and policies"
         },
         "model": "archiv.domain",
-        "pk": 1
+        "pk": 9
     },
     {
         "fields": {
-            "description": "some elaborate description",
-            "name": "a to b"
+            "description": "",
+            "name": "not applicable"
         },
         "model": "archiv.transactiontype",
-        "pk": 1
+        "pk": 5
     },
     {
         "fields": {
-            "description": "this is very serious",
-            "name": "law",
-            "verbum_regens": "<p>some gibberish</p>"
+            "description": "",
+            "name": "Cadaster",
+            "verbum_regens": "..."
         },
         "model": "archiv.legalpurpose",
-        "pk": 1
+        "pk": 56
     },
     {
         "fields": {
-            "description": "",
-            "name": "change me",
-            "verbum_regens": "<p>...</p>"
+            "description": "information structured by a table with grid rulings",
+            "name": "Table",
+            "verbum_regens": "various or none"
         },
         "model": "archiv.textform",
-        "pk": 1
-    },
-    {
-        "fields": {
-            "archiv": 119,
-            "description": "",
-            "name": "generic dossier name (change me!)"
-        },
-        "model": "archiv.dossier",
-        "pk": 1
+        "pk": 3
     },
     {
         "fields": {
@@ -367,37 +353,37 @@
     },
     {
         "fields": {
-            "description": "A very nice place",
+            "description": "<p>Geographical region in south Babylonia, including the city of Uruk and other places in the surrounding area</p>",
             "lat": null,
-            "legacy_id": "Ak\u0161ak",
-            "legacy_pk": 1521,
+            "legacy_id": "Uruk",
+            "legacy_pk": 61,
             "lng": null,
-            "name": "Ak\u0161ak",
-            "orig_data_csv": "{\"place id\": 1521, \"parent id\": 76, \"place name\": \"Ak\\u0161ak\", \"related objects\": NaN, \"title\": \"Ak\\u0161ak\"}",
-            "part_of": 375,
+            "name": "Uruk region",
+            "orig_data_csv": "{\"place id\": 61, \"parent id\": 4, \"place name\": \"Uruk\", \"related objects\": NaN, \"title\": \"Uruk\"}",
+            "part_of": null,
             "place_collection": "",
-            "pleiades_url": null,
-            "title": "Ak\u0161ak"
+            "pleiades_url": "https://pleiades.stoa.org/places/912986",
+            "title": "Uruk"
         },
         "model": "archiv.place",
-        "pk": 378
+        "pk": 3
     },
     {
         "fields": {
-            "description": "<p>A very nice place</p>",
+            "description": "Add information on the location",
             "lat": null,
-            "legacy_id": "Uruk city",
-            "legacy_pk": 1408,
+            "legacy_id": "No place",
+            "legacy_pk": 1550,
             "lng": null,
-            "name": "Uruk city",
-            "orig_data_csv": "{\"place id\": 1408, \"parent id\": 61, \"place name\": \"Uruk city\", \"related objects\": 5705.0, \"title\": \"Uruk city\"}",
-            "part_of": 3,
+            "name": "No place",
+            "orig_data_csv": "{\"place id\": 1550, \"parent id\": 4, \"place name\": \"No place\", \"related objects\": 7274.0, \"title\": \"No place\"}",
+            "part_of": null,
             "place_collection": "",
-            "pleiades_url": "https://pleiades.stoa.org/places/912986",
-            "title": "Uruk city"
+            "pleiades_url": null,
+            "title": "No place"
         },
         "model": "archiv.place",
-        "pk": 62
+        "pk": 608
     },
     {
         "fields": {
@@ -469,46 +455,65 @@
     {
         "fields": {
             "archiv": 39,
-            "bibliography": "",
-            "cdli_no": "",
-            "day": "",
+            "bibliography": "Frame 2013",
+            "cdli_no": "P521863",
+            "cleaned_text": null,
+            "day": "29",
+            "direct_speech": false,
             "domain": null,
             "dossier": null,
-            "formatting": false,
-            "formatting_remarks": null,
+            "formatting": true,
+            "formatting_remarks": "Horizontal rulings; fingernail impressions",
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
+            "julian_date_day": null,
+            "julian_date_month": null,
             "julian_date_year": 660,
-            "king": "\u0160\u0161u",
+            "labasi_id": null,
             "legacy_id": "5388.0",
-            "legacy_paraphrase": null,
+            "legacy_paraphrase": "<p>Purchase of a garden:<strong> A</strong> purchases a date garden (<em>kir\u00ee</em> <em>gi\u0161immari</em>) for 3 minas and 50 shekels of silver in pieces (<em>\u0161ibirtu</em>), together with an additional payment (<em>atru</em>) of 7 shekels of silver, from <strong>B<sub>1</sub></strong>. The sold garden is the (inheritance) share (<em>zittu</em>) the seller divided (<em>z\u00e2zu</em>) with his uncle <strong>B<sub>2</sub></strong>. It is located\u00a0in the district (<em>er\u1e63etu</em>) of the Ninurta Temple inside of Uruk. Its upper side borders on (the property of) the seller\u2019s grandfather <strong>B<sub>3</sub></strong> and its upper front on (the property of) the seller\u2019s uncle <strong>B<sub>2</sub></strong>. Its lower side borders on the Ninurta Temple and its lower front on the street (<em>s\u016bqu</em>). Neither cardinal directions nor measures are given for the sides of the plot. 11 witnesses and the scribe. Fingernail impressions (<em>\u1e63upru</em>) of the seller.<br>\u00a0<br><strong>A</strong> = Mu\u0161\u0113zib-Marduk/Kiribtu; <strong>B<sub>1</sub></strong> = Ahh\u0113\u0161\u0101ya/Ha\u0161dia/\u0160ang\u00fb-Ninurta; <strong>B<sub>2</sub></strong> = Zib\u0101ya/\u0112re\u0161u; <strong>B<sub>3</sub></strong> = \u0112re\u0161u//\u0160ang\u00fb-Ninurta; Scribe = \u0160ul\u0101ya/Ibn\u0101ya<br>\u00a0</p>",
             "legacy_pk": 5388,
-            "legal_purpose": null,
+            "legal_purpose": 2,
             "mentioned_in_pub": [
                 2198
             ],
-            "mentioned_place": [],
+            "mentioned_place": [
+                273,
+                62
+            ],
             "month": "VI",
             "museum_id": "BM 118968",
+            "navico_theme": [],
             "orig_data_csv": "{\"object id\": \"5388\", \"museum no.\": \"BM 118968\", \"publication\": \"Frame 2013\", \"text number\": \"11\", \"period\": \"ENB\", \"place of issue\": \"Ur city\", \"type and content\": \"Purchases\", \"day remark\": \"-\", \"month\": \"VI\", \"month remark\": \"-\", \"year\": 8.0, \"year remark\": \"-\", \"king\": \"\\u0160\\u0161u\", \"king remark\": \"-\", \"paraphrase\": \"Purchase of a garden:<strong> A</strong> purchases a date garden (<em>kir&icirc;</em> <em>gi&scaron;immari</em>) for 3 minas and 50 shekels of silver in pieces (<em>&scaron;ibirtu</em>), together with an additional payment (<em>atru</em>) of 7 shekels of silver, from <strong>B<sub>1</sub></strong>. The sold garden is the (inheritance) share (<em>zittu</em>) the seller divided (<em>z&acirc;zu</em>) with his uncle <strong>B<sub>2</sub></strong>. It is located in the district (<em>er\\u1e63etu</em>) of the Ninurta Temple inside of Uruk. Its upper side borders on (the property of) the seller&rsquo;s grandfather <strong>B<sub>3</sub></strong> and its upper front on (the property of) the seller&rsquo;s uncle <strong>B<sub>2</sub></strong>. Its lower side borders on the Ninurta Temple and its lower front on the street (<em>s\\u016bqu</em>). Neither cardinal directions nor measures are given for the sides of the plot. 11 witnesses and the scribe. Fingernail impressions (<em>\\u1e63upru</em>) of the seller.<br />\\r\\n&nbsp;<br />\\r\\n<strong>A</strong> = Mu&scaron;\\u0113zib-Marduk/Kiribtu; <strong>B<sub>1</sub></strong> = Ahh\\u0113&scaron;\\u0101ya/Ha&scaron;dia/&Scaron;ang&ucirc;-Ninurta; <strong>B<sub>2</sub></strong> = Zib\\u0101ya/\\u0112re&scaron;u; <strong>B<sub>3</sub></strong> = \\u0112re&scaron;u//&Scaron;ang&ucirc;-Ninurta; Scribe = &Scaron;ul\\u0101ya/Ibn\\u0101ya<br />\\r\\n&nbsp;\", \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": \"Frame 2013 11\", \"archive\": \"S\\u00een-n\\u0101\\u1e63ir\", \"day (babylonian)\": 29.0, \"bibliography\": NaN, \"title\": \"BM 118968\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": \"660 BCE\", \"julian date year\": \"660\", \"place of issue remark\": NaN, \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": \"Nail impressions\", \"orientation\": \"Portrait\", \"other markings description\": \"on all four edges\", \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
-            "paraphrase": "Purchase of a garden:<strong> A</strong> purchases a date garden (<em>kir&icirc;</em> <em>gi&scaron;immari</em>) for 3 minas and 50 shekels of silver in pieces (<em>&scaron;ibirtu</em>), together with an additional payment (<em>atru</em>) of 7 shekels of silver, from <strong>B<sub>1</sub></strong>. The sold garden is the (inheritance) share (<em>zittu</em>) the seller divided (<em>z&acirc;zu</em>) with his uncle <strong>B<sub>2</sub></strong>. It is located in the district (<em>er\u1e63etu</em>) of the Ninurta Temple inside of Uruk. Its upper side borders on (the property of) the seller&rsquo;s grandfather <strong>B<sub>3</sub></strong> and its upper front on (the property of) the seller&rsquo;s uncle <strong>B<sub>2</sub></strong>. Its lower side borders on the Ninurta Temple and its lower front on the street (<em>s\u016bqu</em>). Neither cardinal directions nor measures are given for the sides of the plot. 11 witnesses and the scribe. Fingernail impressions (<em>\u1e63upru</em>) of the seller.<br />\r\n&nbsp;<br />\r\n<strong>A</strong> = Mu&scaron;\u0113zib-Marduk/Kiribtu; <strong>B<sub>1</sub></strong> = Ahh\u0113&scaron;\u0101ya/Ha&scaron;dia/&Scaron;ang&ucirc;-Ninurta; <strong>B<sub>2</sub></strong> = Zib\u0101ya/\u0112re&scaron;u; <strong>B<sub>3</sub></strong> = \u0112re&scaron;u//&Scaron;ang&ucirc;-Ninurta; Scribe = &Scaron;ul\u0101ya/Ibn\u0101ya<br />\r\n&nbsp;",
+            "paraphrase": "<p class=\"western\" lang=\"en-US\"><span style=\"color: #212529;\"><strong>Mu\u0161\u0113zib-Marduk</strong></span><span style=\"color: #212529;\">/Kiribtu(//S\u00een-n\u0101\u1e63ir)</span> purchases a share in a date grove in Uruk from <strong>A\u1e2b\u1e2b\u0113\u0161\u0101ya</strong>/\u1e2aa\u0161dia//\u0160ang\u00fb-Ninurta (<strong>A</strong>). The other share belongs to Zib\u0101ya/\u0112re\u0161u(//\u0160ang\u00fb-Ninurta), uncle of\u00a0<strong>A</strong>.</p>\r\n<p class=\"western\" lang=\"en-US\">The field is located in the (tp)Quarter of the Ninurta Temple (<em>er\u1e63et b\u012bt Ninurta</em>). It is <span style=\"color: #212529;\">adjacent to the (tp)Temple of Ninurta</span><span style=\"color: #212529;\">, </span><span style=\"color: #212529;\">the</span><span style=\"color: #212529;\"> street</span><span style=\"color: #212529;\"> and the properties of </span><span style=\"color: #212529;\">\u0112re\u0161u</span><span style=\"color: #212529;\">//\u0160angi-Ninurta and </span><span style=\"color: #212529;\">Zib\u0101ya/\u0112re\u0161u(//\u0160ang\u00fb-Ninurta)</span><span style=\"color: #212529;\">.</span></p>\r\n<p class=\"western\" lang=\"en-US\"><span style=\"color: #212529;\">3 minas and 50 shekels of silver in pieces (</span><span style=\"color: #212529;\"><em>\u0161ibirtu</em></span><span style=\"color: #212529;\">) </span><span style=\"color: #212529;\">are</span><span style=\"color: #212529;\"> declared </span><span style=\"color: #212529;\">(</span><span style=\"color: #212529;\"><em>ma\u1e2b\u012bru nab\u00fb</em></span><span style=\"color: #212529;\">) </span><span style=\"color: #212529;\">as the purchase price and 7 shekels </span><span style=\"color: #212529;\">are</span><span style=\"color: #212529;\"> added as supplementary payment (</span><span style=\"color: #212529;\"><em>atru</em></span><span style=\"color: #212529;\">). The total payment </span><span style=\"color: #212529;\">is</span><span style=\"color: #212529;\"> received. </span><strong><span style=\"color: #212529;\">A</span></strong><span style=\"color: #212529;\"> relinquishe</span><span style=\"color: #212529;\">s</span><span style=\"color: #212529;\"> any future claims </span><span style=\"color: #212529;\">on behalf of his</span><span style=\"color: #212529;\"> household.</span></p>\r\n<p class=\"western\" lang=\"en-US\"><span style=\"color: #212529;\">11 witnesses.</span></p>\r\n<p class=\"western\" lang=\"en-US\"><span style=\"color: #212529;\">Scribe: \u0160ul\u0101ya/Ibn\u0101ya.</span></p>\r\n<p class=\"western\" lang=\"en-US\"><span style=\"color: #212529;\">The document includes the clause concerning </span><span style=\"color: #212529;\">f</span><span style=\"color: #212529;\">ingernail impressions of <strong>A</strong>,</span><span style=\"color: #212529;\">\u00a0</span><span style=\"color: #212529;\">and the tablet is marked with them.</span></p>",
             "period": "ENB",
             "place_of_issue": 273,
-            "private_context": false,
+            "private_context": true,
+            "project": [
+                7,
+                8
+            ],
+            "public": true,
             "publication_name": "Frame 2013",
-            "regional_setting": null,
-            "remark": null,
+            "regional_setting": 3,
+            "related_king": null,
+            "remark": "",
             "sealings": false,
             "second_order_accounting": false,
-            "tablet_format": null,
-            "text_form": null,
+            "slave_descriptor": [],
+            "slave_role": [],
+            "tablet_format": "portrait",
+            "text_form": 17,
             "text_number": "11",
-            "transaction_type": null,
-            "transliteration": null,
-            "type_content": 188,
+            "transaction_type": 5,
+            "transliteration": "",
+            "type_content": null,
             "van_driel_files": [],
-            "work_package": [],
-            "year": ""
+            "work_package": [
+                3,
+                5
+            ],
+            "year": "08"
         },
         "model": "archiv.tablet",
         "pk": 860
@@ -518,15 +523,19 @@
             "archiv": null,
             "bibliography": "",
             "cdli_no": "",
+            "cleaned_text": null,
             "day": "",
+            "direct_speech": false,
             "domain": null,
             "dossier": null,
             "formatting": false,
             "formatting_remarks": null,
             "imported": "Melanie Gross (26/05/2016)",
             "inferred_date": "",
+            "julian_date_day": null,
+            "julian_date_month": null,
             "julian_date_year": 654,
-            "king": "\u0160\u0161u",
+            "labasi_id": null,
             "legacy_id": "5877.0",
             "legacy_paraphrase": null,
             "legacy_pk": 5877,
@@ -535,16 +544,22 @@
             "mentioned_place": [],
             "month": "II",
             "museum_id": "15 N 155",
+            "navico_theme": [],
             "orig_data_csv": "{\"object id\": \"5877\", \"museum no.\": \"15 N 155\", \"publication\": NaN, \"text number\": NaN, \"period\": \"ENB\", \"place of issue\": \"Nippur city\", \"type and content\": NaN, \"day remark\": \"-\", \"month\": \"II\", \"month remark\": \"-\", \"year\": 14.0, \"year remark\": \"?\", \"king\": \"\\u0160\\u0161u\", \"king remark\": \"-\", \"paraphrase\": NaN, \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": NaN, \"archive\": NaN, \"day (babylonian)\": 27.0, \"bibliography\": NaN, \"title\": \"15 N 155\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": \"654 BCE\", \"julian date year\": \"654\", \"place of issue remark\": NaN, \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": NaN, \"orientation\": NaN, \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
             "paraphrase": null,
             "period": "ENB",
             "place_of_issue": 449,
             "private_context": false,
+            "project": [],
+            "public": true,
             "publication_name": "",
             "regional_setting": null,
+            "related_king": null,
             "remark": null,
             "sealings": false,
             "second_order_accounting": false,
+            "slave_descriptor": [],
+            "slave_role": [],
             "tablet_format": null,
             "text_form": null,
             "text_number": "",
@@ -561,54 +576,61 @@
     {
         "fields": {
             "archiv": 119,
-            "bibliography": "",
+            "bibliography": "Cocquerillat 1968: 106, Beaulieu 2000: 32ff.",
             "cdli_no": "",
-            "labasi_id": 399,
+            "cleaned_text": null,
             "day": "",
-            "domain": 1,
-            "dossier": 1,
-            "formatting": false,
-            "formatting_remarks": null,
+            "direct_speech": false,
+            "domain": 9,
+            "dossier": null,
+            "formatting": true,
+            "formatting_remarks": "in tabular form (with 5 columns)",
             "imported": "Melanie Gross (26/05/2016)",
-            "inferred_date": "",
-            "julian_date_year": 400,
-            "julian_date_month": 12,
-            "julian_date_day": 2,
-            "king": "Nbk IV",
+            "inferred_date": "668-631",
+            "julian_date_day": null,
+            "julian_date_month": null,
+            "julian_date_year": null,
+            "labasi_id": null,
             "legacy_id": "5671.0",
-            "legacy_paraphrase": null,
+            "legacy_paraphrase": "<p>List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 \u2013 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.</p>",
             "legacy_pk": 5671,
-            "legal_purpose": 1,
+            "legal_purpose": 56,
             "mentioned_in_pub": [
-                2195
+                2168
             ],
             "mentioned_place": [],
             "month": "-",
-            "museum_id": "VAT 8496",
+            "museum_id": "VAT 08496",
+            "navico_theme": [],
             "orig_data_csv": "{\"object id\": \"5671\", \"museum no.\": \"VAT 8496\", \"publication\": \"AnOr 9\", \"text number\": \"2\", \"period\": \"ENB\", \"place of issue\": \"Uruk city\", \"type and content\": \"Multiple (list)\", \"day remark\": \"no day\", \"month\": \"-\", \"month remark\": \"no month\", \"year\": NaN, \"year remark\": \"no year\", \"king\": \"Asb\", \"king remark\": \"-\", \"paraphrase\": \"List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\\u1e63u Canal and the Harri Canal.\", \"transliteration\": NaN, \"imported\": \"Melanie Gross (26/05/2016)\", \"publication name\": \"AnOr 9 2\", \"archive\": \"Eanna temple\", \"day (babylonian)\": NaN, \"bibliography\": \"Cocquerillat 1968: 106-7 (partial transliteration).\", \"title\": \"VAT 8496\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": NaN, \"julian date year\": NaN, \"place of issue remark\": \"no place given, but it must be Uruk\", \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": \"-\", \"orientation\": \"Portrait\", \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
-            "paraphrase": "<p>List of date gardens and their gardeners in Uruk: 7 groups of altogether 47 date gardens with length measures of 40 up to 800 cubits (20 &ndash; 400 m). Out of the 47 gardens, 43 gardens are located inside of Uruk and the remaining 4 next to the city wall at the Hari\u1e63u Canal and the Harri Canal.</p>",
+            "paraphrase": "<p><span lang=\"EN-GB\">Tabulated list of measurements (<em>mi\u0161i\u1e2btu</em>) of gardens (<em>kir\u00fb</em>) in the <em>lim\u012btu</em>-region of Uruk belonging to I\u0161tar and Nan\u0101ya. Each garden is allocated to a gardener of \u2026 (text: an \u0161u ti) or <em>i\u0161\u0161akku</em>-farmer for the granaries (<em>b\u012bt kar\u00ea</em>). </span></p>\r\n<p><span lang=\"EN-GB\">1. section: 11 plots (<em>qaqqaru</em>) of gardens, measuring 1300 (cubits) in total, located above the city, allocated to Kuzub-il\u0101ni, \u0160\u016bl\u0101ya, Kudurru, Bu\u0161\u0113a?, Iq\u012b\u0161\u0101ya/B\u0113l-er\u012bba, B\u0113l-a\u1e2bu-iddin/Marduk, Ahu-lur\u0161i, Nab\u00fb-u\u0161\u0113zib, B\u0113l-\u012bpu\u0161, \u0112re\u0161u, Bullu\u1e6du and Iah-nin.</span></p>\r\n<p><span lang=\"EN-GB\">2. section: 7 gardens of the god Gilgame\u0161, measuring 1800 (cubits) in total, allocated to</span><span lang=\"EN-GB\"> Sapp</span><span lang=\"EN-GB\">\u0101ya</span><span lang=\"EN-GB\">?</span><span lang=\"EN-GB\">, </span><span lang=\"EN-GB\">Kuzub-il\u0101ni, Z\u0113ru-uk\u012bn, \u1e2aald\u016ba?, I\u0161\u00e1-ni-\u1e2ba, B\u0113l-a\u1e2bu-iddin, B\u0113l-er\u012bba. </span></p>\r\n<p><span lang=\"EN-GB\">3. section: 3 gardens, whose front sides are measuring 1100 (cubits) in total, located on the bank of the upper (tp)Royal Canal (<em>n\u0101r \u0161arri</em>), allocated to Nab\u00fb-a\u1e2bu-\u0113re\u0161/\u0160alammu, Nab\u00fb-a\u1e2b\u1e2b\u0113-iddin/Id\u00f9-[\u2026]-\u0161\u00fa, Up\u0101qu/Iun-\u0161\u00e1-a.</span></p>\r\n<p><span lang=\"EN-GB\">4. section: 4 gardens, whose front sides are measuring 700 (cubits) in total, located at the Great Gate of Adad. These gardens are recorded (<em>\u0161a\u1e6d\u0101ru</em>) on the lapis lazuli cylinder seal (<em>kunukku</em>) of U\u1e63ur-amassu. Assurbanipal took them from (thus Jankovi\u0107; Beaulieu: \u201creturned to\u201d) the Urukeans and installed (<em>\u1e63ab\u0101tu </em>\u0160) the gardeners: Tabn\u0113a/\u0160ullumu, B\u0113l-u\u0161allim/\u1e62ill\u0101ya, Nab\u00fb-u\u1e63alli/Nan\u0101ya-\u012bpu\u0161, Nab\u00fb-a\u1e2bu-\u0113re\u0161/\u0160alammu.</span></p>\r\n<p><span lang=\"EN-GB\">5. section: 8 gardens, whose front sides are are measuring 1180 (cubits) in total, located below the city, allocated to B\u0113l-\u012bpu\u0161, Nab\u00fb-u\u1e63alli, A\u1e2bu-lur\u0161i, Bu\u0161\u0113a?, Kudurru, B\u0113l-us\u0101tu, \u1e2aa\u1e2b\u1e2b\u016bru, N\u0101dinu.</span></p>\r\n<p><span lang=\"EN-GB\">6. section: 8 gardens, whose front sides are measuring 720 (cubits) in total, belonging to the temple of Ea (or (tp)B\u012bt-Ea?), allocated to \u0160um\u0101ya, Nab\u00fb-u\u0161\u0113zib, B\u0113l-a\u1e2bu-iddin/Marduk, R\u012b\u0161-il\u012b, Z\u0113ru-uk\u012bn and Kudurru, Kiribtu, \u0112re\u0161u, B\u0113l-er\u012bba.</span></p>\r\n<p><span lang=\"EN-GB\">7. section: 3 gardens inside the city, and 4 gardens at the ramp (<em>nabalkattu</em>) of the city wall by the bank of the moat (<em>\u1e2bar\u012b\u1e63u</em>) and the (tp)Ditch of Ninurta (<em>\u1e2barru \u0161a Ninurta</em>), by the city wall, behind the temple of Ninurta facing the countryside, whose front sides are measuring 800 (cubits) in total. At an inspection (<em>masnaqtu</em>) of Uruk Assurbanipal took these gardens from (thus Jankovi\u0107; Beaulieu: \u201creturned to\u201d) the Urukeans and gave them to Ninurta. They are allocated to Ib\u0101ya/Erra-suppi (behind the temple of Ninurta, by the city wall), Ub\u0101ru, Priest (<em>\u0161ang\u00fb</em>) of Ninurta (behind the temple of Ninurta), M\u016bru/Kudurru (by the (tp)Ditch of Urkay\u012btu (<em>\u1e2barru \u0161a Urkay\u012btu</em>), Nab\u00fb-u\u1e63alli/A\u1e2b\u1e2b\u0113-er\u012bba, Nan\u0101ya-\u012bpu\u0161/A\u1e2b\u1e2b\u0113-er\u012bba, A\u1e2b\u1e2b\u0113-l\u016bmur/Nab\u00fb-\u0161umu-ibni, Er\u0113b\u0161u/A\u1e2b\u1e2b\u0113-er\u012bba. </span></p>\r\n<p><span lang=\"EN-GB\">The last section is followed by an isolated mentioning of a plot of B\u012b\u0161\u0101ya/Z\u0101kiru neighboring on the New Year festival (building) facing the countryside, whose front side is measuring 300 (cubits). The list ends with the number 2 and a double mentioning of the (tp)Royal Canal (<em>n\u0101r \u0161arri</em>).</span></p>\r\n<p>\u00a0</p>\r\n<p><span lang=\"EN-GB\">See Beaulieu for collations of l. 1: \u02f9<em>mi</em>*-<em>\u0161i</em>*-<em>i\u1e2b</em>*-<em>ti</em>* GI\u0160.KIRI6.ME\u0160\u2026\u02fa, and collations in sections 4 and 7. The text is also discussed by Jankovi\u0107 2013: 338-340.</span></p>",
             "period": "ENB",
-            "place_of_issue": 62,
-            "private_context": true,
-            "direct_speech": true,
+            "place_of_issue": 608,
+            "private_context": false,
+            "project": [
+                8
+            ],
+            "public": true,
             "publication_name": "AnOr 9",
-            "regional_setting": 378,
+            "regional_setting": 3,
+            "related_king": null,
             "remark": "",
             "sealings": false,
             "second_order_accounting": false,
-            "tablet_format": null,
-            "text_form": 1,
-            "text_number": "2",
-            "transaction_type": 1,
+            "slave_descriptor": [],
+            "slave_role": [],
+            "tablet_format": "landscape",
+            "text_form": 3,
+            "text_number": "02",
+            "transaction_type": 5,
             "transliteration": "",
             "type_content": 162,
             "van_driel_files": [
-                2,
-                3
+                66
             ],
             "work_package": [
                 1,
-                3
+                5
             ],
             "year": ""
         },
@@ -620,15 +642,19 @@
             "archiv": 118,
             "bibliography": "",
             "cdli_no": "",
+            "cleaned_text": null,
             "day": "",
+            "direct_speech": false,
             "domain": null,
             "dossier": null,
             "formatting": false,
             "formatting_remarks": null,
             "imported": "Kathleen Abraham (18/04/2016)",
             "inferred_date": "",
+            "julian_date_day": null,
+            "julian_date_month": null,
             "julian_date_year": 510,
-            "king": "Dar",
+            "labasi_id": null,
             "legacy_id": "4425.0",
             "legacy_paraphrase": null,
             "legacy_pk": 4425,
@@ -639,16 +665,22 @@
             "mentioned_place": [],
             "month": "I",
             "museum_id": "BM 30838",
+            "navico_theme": [],
             "orig_data_csv": "{\"object id\": \"4425\", \"museum no.\": \"BM 30838\", \"publication\": \"Dar.\", \"text number\": \"318\", \"period\": \"Each\", \"place of issue\": \"Babylon city\", \"type and content\": \"Promissory notes ina mu\\u1e96\\u1e96i\", \"day remark\": \"-\", \"month\": \"I\", \"month remark\": \"-\", \"year\": 12.0, \"year remark\": \"-\", \"king\": \"Dar\", \"king remark\": \"-\", \"paraphrase\": \"Promissory note to pay a debt of silver and barley. Repayment according to the measure of the head of the Egibi family.<br />\\r\\n<strong>B</strong> should pay the 1/2 mina of medium quality silver, of which 1/8 is alloy, and the 38 kor of barley which are due from him, to <strong>A</strong>. Payment should be at the river (<em>ina muhhi n\\u0101ri</em>) in Til-Gula, in one instalment and according to <strong>C</strong>&rsquo;s measure, but it is not specified when it should take place. The place of delivery is further specified at the very end of the obverse, before the list of witnesses: at the lower embankment (<em>ina &scaron;apli&scaron; k\\u0101ri</em>). Names of 4 witnesses and the scribe.<br />\\r\\n<br />\\r\\n<strong>A</strong>=Marduk-b\\u0113l&scaron;unu/Arad-Marduk//&Scaron;ang&ucirc;-Ea;&nbsp;<strong>B</strong>=Nab&ucirc;-ittannu/Nab&ucirc;-z\\u0113ru-l\\u012b&scaron;ir//N\\u016br-Papsukkal; <strong>C</strong>=Marduk-n\\u0101\\u1e63ir-apli (=Marduk-n\\u0101\\u1e63ir-apli/Itti-Marduk-bal\\u0101\\u1e6du//Egibi)\", \"transliteration\": \"Transliteration available on <a href=\\\"http://www.achemenet.com/fr/item/?/3349245==Strassmaier --Inschriften von Darius&l=a&c=1&t=1.4/4/96/1/1659158\\\" target=\\\"_blank\\\">Achemenet</a>\", \"imported\": \"Kathleen Abraham (18/04/2016)\", \"publication name\": \"Dar. 318\", \"archive\": \"Egibi/N\\u016br-S\\u00een\", \"day (babylonian)\": 16.0, \"bibliography\": \"Reedition: Abraham 2004 108\", \"title\": \"BM 30838\", \"duplicate\": NaN, \"related objects\": NaN, \"julian date\": \"28/04/510 BCE\", \"julian date year\": \"510\", \"place of issue remark\": NaN, \"museum inventory no.\": NaN, \"page number\": NaN, \"join\": NaN, \"bibliography (free text)\": NaN, \"cdli no.\": NaN, \"nabucco no.\": NaN, \"other markings\": NaN, \"orientation\": NaN, \"other markings description\": NaN, \"cdli reference\": NaN, \"items and quantifiable data\": NaN, \"provenience\": NaN, \"akkadian keywords\": NaN, \"general keywords\": NaN, \"photo\": NaN, \"julian date remark\": NaN, \"provenience remark\": NaN, \"philological notes\": NaN, \"philological notes remark\": NaN, \"identifier\": NaN, \"babylonian date remark\": NaN}",
-            "paraphrase": "Promissory note to pay a debt of silver and barley. Repayment according to the measure of the head of the Egibi family.<br />\r\n<strong>B</strong> should pay the 1/2 mina of medium quality silver, of which 1/8 is alloy, and the 38 kor of barley which are due from him, to <strong>A</strong>. Payment should be at the river (<em>ina muhhi n\u0101ri</em>) in Til-Gula, in one instalment and according to <strong>C</strong>&rsquo;s measure, but it is not specified when it should take place. The place of delivery is further specified at the very end of the obverse, before the list of witnesses: at the lower embankment (<em>ina &scaron;apli&scaron; k\u0101ri</em>). Names of 4 witnesses and the scribe.<br />\r\n<br />\r\n<strong>A</strong>=Marduk-b\u0113l&scaron;unu/Arad-Marduk//&Scaron;ang&ucirc;-Ea;&nbsp;<strong>B</strong>=Nab&ucirc;-ittannu/Nab&ucirc;-z\u0113ru-l\u012b&scaron;ir//N\u016br-Papsukkal; <strong>C</strong>=Marduk-n\u0101\u1e63ir-apli (=Marduk-n\u0101\u1e63ir-apli/Itti-Marduk-bal\u0101\u1e6du//Egibi)",
+            "paraphrase": "Promissory note to pay a debt of silver and barley. Repayment according to the measure of the head of the Egibi family.<br />\r\n<strong>B</strong> should pay the 1/2 mina of medium quality silver, of which 1/8 is alloy, and the 38 kor of barley which are due from him, to <strong>A</strong>. Payment should be at the river (<em>ina muhhi n\u0101ri</em>) in Til-Gula, in one instalment and according to <strong>C</strong>\u2019s measure, but it is not specified when it should take place. The place of delivery is further specified at the very end of the obverse, before the list of witnesses: at the lower embankment (<em>ina \u0161apli\u0161 k\u0101ri</em>). Names of 4 witnesses and the scribe.<br />\r\n<br />\r\n<strong>A</strong>=Marduk-b\u0113l\u0161unu/Arad-Marduk//\u0160ang\u00fb-Ea;\u00a0<strong>B</strong>=Nab\u00fb-ittannu/Nab\u00fb-z\u0113ru-l\u012b\u0161ir//N\u016br-Papsukkal; <strong>C</strong>=Marduk-n\u0101\u1e63ir-apli (=Marduk-n\u0101\u1e63ir-apli/Itti-Marduk-bal\u0101\u1e6du//Egibi)",
             "period": "Each",
             "place_of_issue": 413,
             "private_context": false,
+            "project": [],
+            "public": true,
             "publication_name": "Dar.",
             "regional_setting": null,
+            "related_king": null,
             "remark": null,
             "sealings": false,
             "second_order_accounting": false,
+            "slave_descriptor": [],
+            "slave_role": [],
             "tablet_format": null,
             "text_form": null,
             "text_number": "318",

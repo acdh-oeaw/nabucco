@@ -354,8 +354,8 @@ class TabletListFilter(django_filters.FilterSet):
     )
     related_king = django_filters.ModelMultipleChoiceFilter(
         queryset=King.objects.all(),
-        help_text=Tablet._meta.get_field("king").help_text,
-        label=Tablet._meta.get_field("king").verbose_name,
+        help_text=Tablet._meta.get_field("related_king").help_text,
+        label=Tablet._meta.get_field("related_king").verbose_name,
         widget=autocomplete.Select2Multiple(
             url="archiv-ac:king-autocomplete",
         ),
