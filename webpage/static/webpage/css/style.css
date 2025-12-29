@@ -51,3 +51,7 @@ dd {
   color: inherit;
   text-decoration: underline dotted;
 }
+
+.footerlogo {
+  height: 60px;
+}
