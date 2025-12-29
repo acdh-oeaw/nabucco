@@ -277,7 +277,10 @@ class TabletForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user", None)
-        self.default_form = self.user.customuser.tablet_form
+        try:
+            self.default_form = self.user.customuser.tablet_form
+        except AttributeError:
+            self.default_form = "default"
         super(TabletForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
