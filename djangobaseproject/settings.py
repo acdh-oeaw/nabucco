@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "django_tables2",
     "mptt",
     "acdh_django_widgets",
+    "custom_user_app",
     "browsing",
     "infos",
     "webpage",

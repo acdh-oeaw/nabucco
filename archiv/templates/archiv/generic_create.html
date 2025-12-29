@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Create/Edit {{ class_name }}{% endblock %}
+{% block content %}
+{% include 'browsing/partials/create-edit_breadcrumb.html' %}
+
+<div class="container">
+    <h1 class="text-center pt-3">{{ h1 }}</h1>
+    <div class="pt-3">
+        {% crispy form form.helper %}
+    </div>
+</div>
+{% endblock content %}
