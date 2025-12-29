@@ -276,6 +276,8 @@ class TabletForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop("user", None)
+        self.default_form = self.user.customuser.tablet_form
         super(TabletForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
@@ -285,3 +287,47 @@ class TabletForm(forms.ModelForm):
         self.helper.add_input(
             Submit("submit", "save"),
         )
+        if self.default_form == "navico":
+            self.helper.layout = Layout(
+                Fieldset(
+                    "Identifiers",
+                    "museum_id",
+                    "publication_name",
+                    "text_number",
+                    "cdli_no",
+                ),
+                Fieldset(
+                    "Location and Dating",
+                    "place_of_issue",
+                    "regional_setting",
+                    "mentioned_place",
+                    "period",
+                    "day",
+                    "month",
+                    "year",
+                    "related_king",
+                    "julian_date_year",
+                    "julian_date_month",
+                    "julian_date_day",
+                    "inferred_date",
+                ),
+                Fieldset(
+                    "Content",
+                    "paraphrase",
+                    "legacy_paraphrase",
+                    "archiv",
+                    "text_form",
+                    "legal_purpose",
+                    "navico_theme",
+                    "slave_role",
+                    "slave_descriptor",
+                    "sealings",
+                ),
+                Fieldset(
+                    "Misc.",
+                    "bibliography",
+                    "project",
+                    "work_package",
+                    "public",
+                ),
+            )

@@ -314,19 +314,31 @@ class TabletDetailView(BaseDetailView):
 class TabletCreate(BaseCreateView):
     model = Tablet
     form_class = TabletForm
+    template_name = "archiv/generic_create.html"
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(TabletCreate, self).dispatch(*args, **kwargs)
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
 
 class TabletUpdate(BaseUpdateView):
     model = Tablet
     form_class = TabletForm
+    template_name = "archiv/generic_create.html"
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(TabletUpdate, self).dispatch(*args, **kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 
 class TabletDelete(DeleteView):
