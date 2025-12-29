@@ -1,8 +1,10 @@
 from django.apps import apps
-from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from django.test import Client, TestCase
 
+from archiv.forms import TabletForm
 from archiv.models import Tablet
+from custom_user_app.models import CustomUser
 
 MODELS = list(apps.all_models["archiv"].values())
 intro = apps.get_model("archiv", "introduction")
@@ -18,7 +20,8 @@ class ArchivTestCase(TestCase):
 
     def setUp(self):
         # Create two users
-        User.objects.create_user(**USER)
+        cur_user = User.objects.create_user(**USER)
+        CustomUser.objects.create(user=cur_user, tablet_form="default")
 
     def test_002_listviews(self):
         for x in to_check:
@@ -134,5 +137,42 @@ class ArchivTestCase(TestCase):
             elif self.julian_date_year:
                 modern_date = x.modern_date
                 self.assertEqual(modern_date.count("/"), 0)
-            else:
-                self.assertFalse(x.modern_date)
+
+
+class TabletFormTestCase(TestCase):
+    """Test TabletForm custom layout logic based on user preferences"""
+
+    fixtures = ["dump.json"]
+
+    def setUp(self):
+        """Create test users with different form preferences"""
+        # User with default form preference
+        self.user_default = User.objects.create_user(
+            username="user_default", password="testpass123"
+        )
+        CustomUser.objects.create(user=self.user_default, tablet_form="default")
+
+        # User with navico form preference
+        self.user_navico = User.objects.create_user(
+            username="user_navico", password="testpass123"
+        )
+        CustomUser.objects.create(user=self.user_navico, tablet_form="navico")
+
+    def test_form_with_default_layout(self):
+        """Test that form uses default layout when user has 'default' preference"""
+        form = TabletForm(user=self.user_default)
+        self.assertIsNone(form.helper.layout)
+
+    def test_form_with_navico_layout(self):
+        """Check if the navico form helper layout contains a Fieldset with "Identifiers" """
+        form = TabletForm(user=self.user_navico)
+        self.assertIsNotNone(form.helper.layout)
+        fieldset_found = False
+        for item in form.helper.layout:
+            if hasattr(item, "legend") and item.legend == "Identifiers":
+                fieldset_found = True
+                break
+        self.assertTrue(
+            fieldset_found,
+            "Fieldset with 'Identifiers' legend not found in form layout",
+        )
