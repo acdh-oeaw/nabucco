@@ -614,7 +614,7 @@ class DomainDelete(DeleteView):
 
 class NavicoThemeListView(GenericListView):
     model = NavicoTheme
-    init_columns = ["id", "name", "description"]
+    init_columns = ["id", "theme"]
     enable_merge = True
 
 
