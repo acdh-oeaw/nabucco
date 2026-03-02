@@ -133,7 +133,7 @@ class SlaveDescriptor(CrudUrlMixin, PrevNextMixin, models.Model):
         verbose_name_plural = "Oblate/Slave Descriptors"
 
     def __str__(self):
-        return self.description
+        return self.descriptor
 
 
 class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
