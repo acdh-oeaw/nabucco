@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% load stats_extras %}
+{% load webpage_extras %}
+{% block title %}Nippur{% endblock %}
+{% block content %}
+<style>
+    .jumbotron-background {
+        background-image: url("{% static 'nippur/img/title-image.jpg' %}");
+    }
+</style>
+<div class="my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-1 jumbotron-background">
+      <h1 class="display-1 p-5">Exploring NIPPUR</h1>
+      <h2 class="display-3 text-light">A Glimpse into its Exceptional Status Among Other Babylonian Cities During the 1st Millennium BCE </h2>
+      <p class="container lead fs-2">
+        The Project aims to advance a more comprehensive and nuanced socio-economic history of the city of Nippur during the first millennium BCE, and by extension, of Baby-lonia as a whole. Despite its traditional centrality, no truly comprehensive investigation of Nippur during this period has ever been attempted.
+      </p>
+      <div class="d-inline-flex gap-2 mb-5 pt-5">
+        <a class="btn btn-outline-light btn-lg px-4" href="{% url 'nippur:about' %}">
+          About the Project
+        </a>
+        <a class="btn btn-outline-light btn-lg px-4" href="{% url 'archiv:tablet_browse' %}?project=10">
+          Browse the Tablets
+        </a>
+      </div>
+      <p class="text-light pt-5 container">
+        Some image caption<br>
+        © some attribution
+      </p>
+    </div>
+  </div>
+  
+  <div class="text-center p-5">
+    <h2>How to quote</h2>
+    <blockquote class="blockquote">
+      <p>Johannes Hackl, Levavi Yuval (eds.), Exploring NIPPUR: A Glimpse into its Exceptional Status Among Other Babylonian Cities During the 1st Millennium BCE {% now "Y-m-d" %} <a href="https://nabucco.acdh.oeaw.ac.at/nippur">https://nabucco.acdh.oeaw.ac.at/nippur</a></p>
+    </blockquote>
+  </div>
+{% endblock %}
+
+<a href="https://commons.wikimedia.org/wiki/File:Vorderasiatisches_Museum_Berlin_056.jpg">Einsamer Schütze</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons
