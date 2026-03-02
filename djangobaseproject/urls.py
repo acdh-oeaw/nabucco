@@ -30,6 +30,7 @@ urlpatterns = [
     path("tinymce/", include("tinymce.urls")),
     path("digeanna/", include("digeanna.urls", namespace="digeanna")),
     path("navico/", include("navico.urls", namespace="navico")),
+    path("nippur/", include("nippur.urls", namespace="nippur")),
     path("news/", include("news.urls", namespace="news")),
     path("browsing/", include("browsing.urls", namespace="browsing")),
     path("info/", include("infos.urls", namespace="info")),

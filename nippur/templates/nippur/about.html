@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% load webpage_extras %}
+{% block title %}  {{ object }} {% endblock %}
+{% block content %}
+<div class="container pt-3">
+    {% if object.error %}
+    <h1>please create the project it</h1>
+    {% else %}
+    <h1 class="display-2 p-3 text-center">{{ object.title }}</h1>
+    {{ object.description|safe }}
+    {% endif %}
+</div>
+{% endblock %}
