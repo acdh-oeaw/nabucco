@@ -79,6 +79,15 @@
         </li>
         {% endfor %}
       </ul>
+
+      <h2 class="fs-4">mentioned on tablet</h2>
+      <ul>
+        {% for x in object.rvn_tablet_mentioned_place_place.all %}
+        <li>
+          <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
   {% if user.is_authenticated %}
