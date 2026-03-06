@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       POSTGRES_DB: github_actions
+      DJANGO_SECRET_KEY: whatever
     services:
       postgres:
         image: postgis/postgis:16-master
@@ -14,7 +15,6 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: github_actions
-          DJANGO_SECRET_KEY: whatever
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
