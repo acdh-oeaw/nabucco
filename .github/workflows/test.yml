@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       POSTGRES_DB: github_actions
+      DJANGO_SECRET_KEY: whatever
     services:
       postgres:
         image: postgis/postgis:16-master
