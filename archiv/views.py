@@ -387,7 +387,7 @@ class DossierDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletDelete, self).dispatch(*args, **kwargs)
+        return super(DossierDelete, self).dispatch(*args, **kwargs)
 
 
 class WorkPackageListView(GenericListView):
@@ -424,7 +424,7 @@ class WorkPackageDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletDelete, self).dispatch(*args, **kwargs)
+        return super(WorkPackageDelete, self).dispatch(*args, **kwargs)
 
 
 class VanDrielFilesListView(GenericListView):
@@ -461,7 +461,7 @@ class VanDrielFilesDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletDelete, self).dispatch(*args, **kwargs)
+        return super(VanDrielFilesDelete, self).dispatch(*args, **kwargs)
 
 
 class TextFormListView(GenericListView):
