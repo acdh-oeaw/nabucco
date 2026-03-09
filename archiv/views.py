@@ -36,7 +36,6 @@ from .models import (
     Domain,
     Dossier,
     Glossary,
-    Introduction,
     King,
     LegalPurpose,
     NavicoTheme,
@@ -66,17 +65,6 @@ class ArchivListView(GenericListView):
     table_class = ArchivTable
     init_columns = ["name", "part_of"]
     enable_merge = False
-    try:
-        archive, created = Introduction.objects.get_or_create(title="Archives")
-    except Exception as e:
-        print(e)
-        archive = e
-
-    def get_context_data(self, **kwargs):
-        context = super(ArchivListView, self).get_context_data(**kwargs)
-        if self.archive:
-            context["introduction"] = self.archive
-        return context
 
 
 class ArchivDetailView(BaseDetailView):
