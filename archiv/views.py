@@ -445,7 +445,7 @@ class VanDrielFilesUpdate(BaseUpdateView):
 class VanDrielFilesDelete(DeleteView):
     model = VanDrielFiles
     template_name = "webpage/confirm_delete.html"
-    success_url = reverse_lazy("archiv:workpackage_browse")
+    success_url = reverse_lazy("archiv:vandrielfile_browse")
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

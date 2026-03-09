@@ -113,7 +113,7 @@ class ArchivTestCase(TestCase):
                     f"API detail endpoint {url} returned {response.status_code}",
                 )
 
-    def text_010_modern_date(self):
+    def test_010_modern_date(self):
         """
         Tests the modern_date property of Tablet objects to ensure correct date format based on available Julian date components.
         The test verifies that:
@@ -128,13 +128,13 @@ class ArchivTestCase(TestCase):
         """  # noqa: E501
 
         for x in Tablet.objects.all():
-            if self.julian_date_day:
+            if x.julian_date_day:
                 modern_date = x.modern_date
                 self.assertEqual(modern_date.count("/"), 2)
-            elif self.julian_date_month:
+            elif x.julian_date_month:
                 modern_date = x.modern_date
                 self.assertEqual(modern_date.count("/"), 1)
-            elif self.julian_date_year:
+            elif x.julian_date_year:
                 modern_date = x.modern_date
                 self.assertEqual(modern_date.count("/"), 0)
 
