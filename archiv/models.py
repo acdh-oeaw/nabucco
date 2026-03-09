@@ -765,7 +765,7 @@ class Place(CrudUrlMixin, PrevNextMixin, models.Model):
     def save(self, *args, **kwargs):
         if self.legacy_id and not self.name:
             self.name = self.legacy_id
-        super(Place, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def field_dict(self):
         return model_to_dict(self)
