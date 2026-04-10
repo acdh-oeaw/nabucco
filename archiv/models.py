@@ -844,7 +844,7 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name="Type and content",
+        verbose_name="Type and content (legacy)",
         help_text="select corresponding type of document",
     ).set_extra(
         is_public=True,

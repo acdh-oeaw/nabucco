@@ -444,4 +444,7 @@ class TabletListFilter(django_filters.FilterSet):
             "direct_speech",
             "remark",
             "project",
+            "navico_theme",
+            "slave_role",
+            "slave_descriptor",
         ]
