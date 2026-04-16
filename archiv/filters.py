@@ -1,7 +1,8 @@
 import django_filters
 from acdh_django_widgets.widgets import MartinAntonMuellerWidget
 from dal import autocomplete
-from django.db.models import Q
+from django.db import models
+from django.db.models import F, Func, Q, Value
 
 from .models import Archiv, Bibliography, Glossary, King, Place, Tablet
 
@@ -301,6 +302,28 @@ class TabletListFilter(django_filters.FilterSet):
             q |= Q(**{lookup: x})
         return queryset.filter(q)
 
+    paraphrase_plain = django_filters.CharFilter(
+        method="plain_text_filtering",
+        field_name="paraphrase",
+        help_text="Search paraphrase ignoring HTML markup (e.g. 'foobar' matches foo<strong>bar</strong>)",
+        label="Paraphrase (plain text search)",
+    )
+
+    def plain_text_filtering(self, queryset, name, value):
+        annotated = queryset.annotate(
+            stripped_paraphrase=Func(
+                F(name),
+                Value("<[^>]+>"),
+                Value(""),
+                Value("g"),
+                function="regexp_replace",
+                output_field=models.TextField(),
+            )
+        )
+        for term in value.split():
+            annotated = annotated.filter(stripped_paraphrase__icontains=term)
+        return annotated
+
     transliteration = django_filters.CharFilter(
         lookup_expr="icontains",
         help_text=Tablet._meta.get_field("transliteration").help_text,
@@ -414,6 +437,7 @@ class TabletListFilter(django_filters.FilterSet):
             "mentioned_place",
             "type_content",
             "paraphrase",
+            "paraphrase_plain",
             "legacy_paraphrase",
             "transliteration",
             "archiv",

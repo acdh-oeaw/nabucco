@@ -194,6 +194,7 @@ class TabletFilterFormHelper(FormHelper):
                 AccordionGroup(
                     "Paraphrase search",
                     "paraphrase",
+                    "paraphrase_plain",
                     "legacy_paraphrase",
                     "paraphrase_negative",
                     "paraphrase_custom",
