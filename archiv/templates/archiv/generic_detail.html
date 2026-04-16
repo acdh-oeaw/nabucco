@@ -39,5 +39,14 @@
     </div>
 </div>
 {% endblock custom %}
+{% if user.is_authenticated %}
+{% if object.get_delete_url %}
+<div class="text-end pe-5 pt-5 fs-3 ">
+    <a class="btn btn-danger" href="{{ object.get_delete_url }}">
+        <i class="bi bi bi-trash pe-2"></i>Delete the object
+    </a>
+</div>
+{% endif %}
+{% endif %}
 
 {% endblock content%}

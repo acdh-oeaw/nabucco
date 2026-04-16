@@ -1,7 +1,7 @@
 import html
 
 from django.db import models
-from django.urls import reverse_lazy
+from django.urls import NoReverseMatch, reverse, reverse_lazy
 from next_prev import next_in_order, prev_in_order
 
 
@@ -88,10 +88,14 @@ class CrudUrlMixin(models.Model):
 
     def get_delete_url(self):
         pk_kwarg = self._get_pk_field_name()
-        return reverse_lazy(
-            f"{self.url_namespace}:{self._get_url_basename()}{self.delete_suffix}",
-            kwargs={pk_kwarg: self._get_pk_value()},
-        )
+        try:
+            return_url = reverse(
+                f"{self.url_namespace}:{self._get_url_basename()}{self.delete_suffix}",
+                kwargs={pk_kwarg: self._get_pk_value()},
+            )
+        except NoReverseMatch:
+            return False
+        return return_url
 
 
 def decode_html_entities(text):

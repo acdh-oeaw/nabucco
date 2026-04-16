@@ -68,7 +68,7 @@ urlpatterns = [
     ),
     path("place/create/", views.PlaceCreate.as_view(), name="place_create"),
     path("place/edit/<int:pk>", views.PlaceUpdate.as_view(), name="place_edit"),
-    path("place/delete/<int:pk>", views.PlaceDelete.as_view(), name="place_delete"),
+    # path("place/delete/<int:pk>", views.PlaceDelete.as_view(), name="place_delete"),
     path("digeanna/", views.DigeannaListView.as_view(), name="digeanna_browse"),
     path("tablet/", views.TabletListView.as_view(), name="tablet_browse"),
     path(
@@ -260,11 +260,6 @@ urlpatterns = [
         name="navicotheme_edit",
     ),
     path(
-        "navico-theme/delete/<int:pk>",
-        views.NavicoThemeDelete.as_view(),
-        name="navicotheme_delete",
-    ),
-    path(
         "slavedescriptor/",
         views.SlaveDescriptorListView.as_view(),
         name="slavedescriptor_browse",
@@ -285,11 +280,6 @@ urlpatterns = [
         name="slavedescriptor_edit",
     ),
     path(
-        "slavedescriptor/delete/<int:pk>",
-        views.SlaveDescriptorDelete.as_view(),
-        name="slavedescriptor_delete",
-    ),
-    path(
         "slaverole/",
         views.SlaveRoleListView.as_view(),
         name="slaverole_browse",
@@ -308,11 +298,6 @@ urlpatterns = [
         "slaverole/edit/<int:pk>",
         views.SlaveRoleUpdate.as_view(),
         name="slaverole_edit",
-    ),
-    path(
-        "slaverole/delete/<int:pk>",
-        views.SlaveRoleDelete.as_view(),
-        name="slaverole_delete",
     ),
     path(
         "king/",

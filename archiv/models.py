@@ -3,9 +3,7 @@ from auditlog.registry import auditlog
 from browsing.utils import model_to_dict
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.urls import reverse_lazy
 from mptt.models import MPTTModel, TreeForeignKey
-from next_prev import next_in_order, prev_in_order
 from tinymce.models import HTMLField
 
 from archiv.utils import CrudUrlMixin, PrevNextMixin, decode_html_entities
@@ -357,41 +355,6 @@ class VanDrielFiles(CrudUrlMixin, PrevNextMixin, models.Model):
         file_nr = self.file.split(".")[0]
         sub_file_id = self.sub_file.split(".")[0]
         return f"{file_nr.lstrip('0')} {sub_file_id}"
-
-    @classmethod
-    def get_listview_url(self):
-        return reverse_lazy("archiv:vandrielfile_browse")
-
-    @classmethod
-    def get_createview_url(self):
-        return reverse_lazy("archiv:vandrielfile_create")
-
-    def get_absolute_url(self):
-        return reverse_lazy("archiv:vandrielfile_detail", kwargs={"pk": self.id})
-
-    def get_delete_url(self):
-        return reverse_lazy("archiv:vandrielfile_delete", kwargs={"pk": self.id})
-
-    def get_edit_url(self):
-        return reverse_lazy("archiv:vandrielfile_edit", kwargs={"pk": self.id})
-
-    def get_next(self):
-        try:
-            next = next_in_order(self)
-        except ValueError:
-            return False
-        if next:
-            return reverse_lazy("archiv:vandrielfile_detail", kwargs={"pk": next.id})
-        return False
-
-    def get_prev(self):
-        try:
-            prev = prev_in_order(self)
-        except ValueError:
-            return False
-        if prev:
-            return reverse_lazy("archiv:vandrielfile_detail", kwargs={"pk": prev.id})
-        return False
 
 
 class Archiv(CrudUrlMixin, PrevNextMixin, models.Model):
