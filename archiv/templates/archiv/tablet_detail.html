@@ -95,7 +95,9 @@
             <dd>{{ object.modern_date }}</dd>
             {% endif %}
           </dl>
-        <h3>Digeanna</h3>
+        
+        {% if object.is_digeanna_tablet %}
+          <h3>Digeanna</h3>
           <dl>
             {% if user.is_authenticated %}
             {% if object.remark %}
@@ -183,30 +185,33 @@
             <dd>{{ object.private_context }}</dd>
             {% endif %}
           </dl>
+        {% endif %}
         
-        <h3>Navico</h3>
-        <dl>
-          {% if object.navico_theme.all %}
-          <dt>Theme</dt>
-          {% for x in object.navico_theme.all %}
-          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
-          {% endfor %}
-          {% endif %}
+        {% if object.is_navico_tablet %}
+          <h3>Navico</h3>
+          <dl>
+            {% if object.navico_theme.all %}
+            <dt>Theme</dt>
+            {% for x in object.navico_theme.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
 
-          {% if object.slave_role.all %}
-          <dt>Oblate/Slave Role</dt>
-          {% for x in object.slave_role.all %}
-          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
-          {% endfor %}
-          {% endif %}
+            {% if object.slave_role.all %}
+            <dt>Oblate/Slave Role</dt>
+            {% for x in object.slave_role.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
 
-          {% if object.slave_descriptor.all %}
-          <dt>Oblate/Slave Descriptor</dt>
-          {% for x in object.slave_descriptor.all %}
-          <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
-          {% endfor %}
-          {% endif %}
-        </dl>
+            {% if object.slave_descriptor.all %}
+            <dt>Oblate/Slave Descriptor</dt>
+            {% for x in object.slave_descriptor.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
+          </dl>
+        {% endif %}
         {% if user.is_authenticated and object.orig_data_csv%}
         <hr />
         <details>
