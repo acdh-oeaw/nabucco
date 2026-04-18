@@ -31,6 +31,29 @@ FILE_CATEGORIES = [
     ("12", "12. Unclassified"),
 ]
 
+DIGEANNA_FIELDS = [
+    "remark",
+    "work_package",
+    "work_package",
+    "van_driel_files",
+    "text_form",
+    "legal_purpose",
+    "transaction_type",
+    "second_order_accounting",
+    "domain",
+    "formatting",
+    "formatting_remarks",
+    "tablet_format",
+    "sealings",
+    "private_context",
+]
+
+NAVICO_FIELDS = [
+    "navico_theme",
+    "slave_role",
+    "slave_descriptor",
+]
+
 
 def set_extra(self, **kwargs):
     self.extra = kwargs
@@ -1192,6 +1215,30 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
 
     def field_dict(self):
         return model_to_dict(self)
+
+    def is_digeanna_tablet(self):
+        m2m_field_names = {f.name for f in self._meta.many_to_many}
+        for field_name in DIGEANNA_FIELDS:
+            if field_name in m2m_field_names:
+                if getattr(self, field_name).exists():
+                    return True
+            else:
+                value = getattr(self, field_name)
+                if value is not None and value is not False and value != "":
+                    return True
+        return False
+
+    def is_navico_tablet(self):
+        m2m_field_names = {f.name for f in self._meta.many_to_many}
+        for field_name in NAVICO_FIELDS:
+            if field_name in m2m_field_names:
+                if getattr(self, field_name).exists():
+                    return True
+            else:
+                value = getattr(self, field_name)
+                if value is not None and value is not False and value != "":
+                    return True
+        return False
 
     def labasi_detail_view(self):
         if self.labasi_id:
