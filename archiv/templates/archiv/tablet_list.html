@@ -31,6 +31,7 @@
                 </div>
                 {% crispy filter.form filter.form.helper %}
                 {% include 'browsing/partials/column_selector.html' %}
+                {% include 'browsing/partials/page_size_selector.html' %}
                 <div class="d-grid gap-2 pt-2" aria-label="Search or reset search">
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a class="btn btn-secondary" href=".">Reset</a>
