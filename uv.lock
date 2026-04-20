@@ -12,7 +12,7 @@ resolution-markers = [
 
 [[package]]
 name = "acdh-django-browsing"
-version = "4.0.0"
+version = "4.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "crispy-bootstrap5" },
@@ -22,9 +22,9 @@ dependencies = [
     { name = "django-tables2" },
     { name = "tablib" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ac/2a/8f8139bf2426ccfd3b160b2204162474cfa5e842947778d4950153a32aef/acdh_django_browsing-4.0.0.tar.gz", hash = "sha256:fcddbb6e4b7ecccad8331ff72cf602d4fbff72e9af223857674a5600c292eb4f", size = 10107, upload-time = "2026-04-19T08:11:25.119Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e5/f0/443d8db999e6c0a9dbe1a4bf27feed1232a7ab1eb3c13e704f20e10d052a/acdh_django_browsing-4.1.1.tar.gz", hash = "sha256:7a9a15179ebb4f9ff49873737c69bb3f2280b1b55b08e54558d7a2f2f01a9301", size = 10734, upload-time = "2026-04-20T10:07:08.42Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/eb/da/92e239a93b4abe272d71785a3844d6862864336892072c67d85f2988e975/acdh_django_browsing-4.0.0-py3-none-any.whl", hash = "sha256:2893ec087c3622e37be694abb5df8907ad1e681a670033565869fc2e23f676d5", size = 15298, upload-time = "2026-04-19T08:11:25.888Z" },
+    { url = "https://files.pythonhosted.org/packages/25/31/346f2741cb947be991ecceadd0a5e78121d852a64684ee8e19866adc7486/acdh_django_browsing-4.1.1-py3-none-any.whl", hash = "sha256:ca3235a610fd44818d9932f71575944dd14abb2f5aee16393a01a14a4ec67a74", size = 16194, upload-time = "2026-04-20T10:07:07.242Z" },
 ]
 
 [[package]]
