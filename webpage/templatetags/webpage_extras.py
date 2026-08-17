@@ -1,4 +1,5 @@
 from django import template
+from django.core.exceptions import FieldDoesNotExist
 
 from webpage.metadata import PROJECT_METADATA as PM
 
@@ -19,9 +20,8 @@ def get_verbose_name(instance, field_name):
     """
     try:
         label = instance._meta.get_field(field_name).verbose_name
-    except Exception as e:
+    except (AttributeError, FieldDoesNotExist, TypeError, ValueError):
         label = None
-        print(e.message)
     if label:
         return f"{label}"
     else:
@@ -37,9 +37,8 @@ def get_help_text(instance, field_name):
     """
     try:
         label = instance._meta.get_field(field_name).help_text
-    except Exception as e:
+    except (AttributeError, FieldDoesNotExist, TypeError, ValueError):
         label = None
-        print(e.message)
     if label:
         return f"{label}"
     else:
