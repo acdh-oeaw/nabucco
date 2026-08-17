@@ -76,6 +76,55 @@ class DigeannaManager(models.Manager):
         )
 
 
+class PeriodObject(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "period"
+    name = models.CharField(
+        max_length=250,
+        verbose_name="Period name",
+        help_text="Full name of the period, e.g. Neo-Babylonian",
+    )
+    abbreviation = models.CharField(
+        max_length=250,
+        verbose_name="Abbreviation",
+        help_text="Period abbreviation, e.g. nB",
+    )
+    beginning = models.CharField(
+        max_length=250,
+        verbose_name="Beginning of period",
+        help_text="The year or century BC of the start of the period",
+        blank=True,
+        null=True,
+    )
+    ending = models.CharField(
+        max_length=250,
+        verbose_name="End of period",
+        help_text="The year or century BC of the end of the period",
+        blank=True,
+        null=True,
+    )
+    description = models.TextField(
+        max_length=250,
+        verbose_name="Description",
+        help_text="Describe characteristics, notable events of the period, its start, or end",
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Period"
+        verbose_name_plural = "Periods"
+
+    def __str__(self):
+        if self.name:
+            return self.name
+        else:
+            return f"Period ID {self.id}"
+
+
 class King(CrudUrlMixin, PrevNextMixin, models.Model):
     url_namespace = "archiv"
     url_basename = "king"
@@ -108,6 +157,15 @@ class King(CrudUrlMixin, PrevNextMixin, models.Model):
         null=True,
         verbose_name="Ending of reign",
         help_text="The year BC in which a king's reign ended.",
+    )
+    period_object = models.ForeignKey(
+        "PeriodObject",
+        related_name="has_king",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Period",
+        help_text="select period related to the king",
     )
     description = models.TextField(
         blank=True,
@@ -925,6 +983,15 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
     ).set_extra(
         is_public=True,
         data_lookup="Period",
+    )
+    period_object = models.ForeignKey(
+        "PeriodObject",
+        related_name="has_tablet",
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name="Period",
+        help_text="select period in which the tablet was issued",
     )
     day = models.CharField(
         max_length=250,

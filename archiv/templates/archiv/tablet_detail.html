@@ -78,7 +78,7 @@
             {% endif %}
 
             <dt>Period</dt>
-            <dd>{{ object.period }}</dd>
+            <dd><a href="{{ object.period_object.get_absolute_url }}">{{ object.period_object }}</a></dd>
 
             <dt>Babylonian Date (year-month-day): </dt>
             <dd> {% if object.related_king %}{{ object.related_king.abbreviation }}{% else %}XXX{% endif %}.

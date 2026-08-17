@@ -208,7 +208,7 @@ class TabletFilterFormHelper(FormHelper):
                 ),
                 AccordionGroup(
                     "Date search",
-                    "period",
+                    "period_object",
                     "day",
                     "month",
                     "year",
@@ -326,7 +326,7 @@ class TabletForm(forms.ModelForm):
                     "place_of_issue",
                     "regional_setting",
                     "mentioned_place",
-                    "period",
+                    "period_object",
                     "day",
                     "month",
                     "year",

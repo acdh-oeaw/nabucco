@@ -1,0 +1,70 @@
+{% extends "archiv/generic_detail.html" %}
+{% load static %}
+
+{% load webpage_extras %}
+{% block title %}{{ object }}{% endblock %}
+
+{% block custom %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="p-2">
+                <h2 class="fs-3">{{ object.get_file_display }}</h2>
+                <h3 class="fs-4">{{ object.sub_file }}</h2>
+                <dl>
+                    <dt>Period name</dt>
+                    <dd>{{ object.name }}</dd>
+
+                    <dt>Abbreviation</dt>
+                    <dd>{{ object.abbreviation }}</dd>
+                    {% if object.beginning %}
+                    <dt>Beginning of period</dt>
+                    <dd>{{ object.beginning }}</dd>
+                    {% endif %}
+
+                    {% if object.ending %}
+                    <dt>End of period</dt>
+                    <dd>{{ object.ending }}</dd>
+                    {% endif %}
+                    
+                    {% if object.description %}
+                    <dt>Description</dt>
+                    <dd>{{ object.description }}</dd>
+                    {% endif %}
+                    
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="p-2">
+                        <h2 class="fs-4">Tablets</h2>
+                        <ul>
+                            {% for x in object.has_tablet.all %}
+                            <li>
+                                <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-2">
+                        <h2 class="fs-4">Kings</h2>
+                        <ul>
+                            {% for x in object.has_king.all %}
+                            <li>
+                                <a href="{{ x.get_absolute_url }}">{{ x }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

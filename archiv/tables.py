@@ -6,7 +6,6 @@ from .models import Archiv, Bibliography, Dossier, Glossary, Place, Tablet
 
 
 class DossierTable(tables.Table):
-
     name = tables.LinkColumn(verbose_name="Name")
     merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
 
@@ -21,7 +20,6 @@ class DossierTable(tables.Table):
 
 
 class ArchivTable(tables.Table):
-
     name = tables.LinkColumn(verbose_name="Name")
     merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
 
@@ -35,7 +33,6 @@ class ArchivTable(tables.Table):
 
 
 class BibliographyTable(tables.Table):
-
     title = tables.LinkColumn()
     merge = MergeColumn(verbose_name="keep | remove", accessor="pk")
     mentioned_place = tables.columns.ManyToManyColumn()
@@ -96,5 +93,5 @@ class TabletTable(tables.Table):
             "type_content",
             "archiv",
             "place_of_issue",
-            "period",
+            "period_object",
         )
