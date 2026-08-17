@@ -356,17 +356,17 @@ class TabletListFilter(django_filters.FilterSet):
         label=Tablet._meta.get_field("text_number").verbose_name,
     )
     day = django_filters.CharFilter(
-        lookup_expr="icontains",
+        lookup_expr="exact",
         help_text=Tablet._meta.get_field("day").help_text,
         label=Tablet._meta.get_field("day").verbose_name,
     )
     month = django_filters.CharFilter(
-        lookup_expr="icontains",
+        lookup_expr="exact",
         help_text=Tablet._meta.get_field("month").help_text,
         label=Tablet._meta.get_field("month").verbose_name,
     )
     year = django_filters.CharFilter(
-        lookup_expr="icontains",
+        lookup_expr="exact",
         help_text=Tablet._meta.get_field("year").help_text,
         label=Tablet._meta.get_field("year").verbose_name,
     )
