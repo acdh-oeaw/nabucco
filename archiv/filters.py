@@ -268,7 +268,7 @@ class TabletListFilter(django_filters.FilterSet):
     )
 
     def additive_filtering(self, queryset, name, value):
-        lookup = "__".join([name, "contains"])
+        lookup = f"{name}__contains"
         for x in value.split():
             queryset = queryset.filter(**{lookup: x})
         return queryset
@@ -282,7 +282,7 @@ class TabletListFilter(django_filters.FilterSet):
     )
 
     def negative_filtering(self, queryset, name, value):
-        lookup = "__".join([name, "contains"])
+        lookup = f"{name}__contains"
         for x in value.split():
             queryset = queryset.exclude(**{lookup: x})
         return queryset
@@ -296,7 +296,7 @@ class TabletListFilter(django_filters.FilterSet):
     )
 
     def custom_filtering(self, queryset, name, value):
-        lookup = "__".join([name, "contains"])
+        lookup = f"{name}__contains"
         q = Q()
         for x in value.split():
             q |= Q(**{lookup: x})

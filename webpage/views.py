@@ -30,7 +30,7 @@ class ImprintView(TemplateView):
         context = super().get_context_data(**kwargs)
         try:
             imprint_url = f"{settings.ACDH_IMPRINT_URL}{settings.REDMINE_ID}"
-        except Exception as e:
+        except AttributeError as e:
             context["imprint_body"] = e
             return context
         r = requests.get(imprint_url)
