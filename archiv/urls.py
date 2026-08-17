@@ -324,4 +324,29 @@ urlpatterns = [
         views.KingDelete.as_view(),
         name="king_delete",
     ),
+    path(
+        "period/",
+        views.PeriodObjectListView.as_view(),
+        name="period_browse",
+    ),
+    path(
+        "period/detail/<int:pk>",
+        views.PeriodObjectDetailView.as_view(),
+        name="period_detail",
+    ),
+    path(
+        "period/create/",
+        views.PeriodObjectCreate.as_view(),
+        name="period_create",
+    ),
+    path(
+        "period/edit/<int:pk>",
+        views.PeriodObjectUpdate.as_view(),
+        name="period_edit",
+    ),
+    path(
+        "period/delete/<int:pk>",
+        views.PeriodObjectDelete.as_view(),
+        name="period_delete",
+    ),
 ]

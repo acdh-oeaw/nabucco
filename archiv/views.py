@@ -39,6 +39,7 @@ from .models import (
     King,
     LegalPurpose,
     NavicoTheme,
+    PeriodObject,
     Place,
     SlaveDescriptor,
     SlaveRole,
@@ -289,7 +290,7 @@ class TabletListView(GenericListView):
         "type_content",
         "archiv",
         "place_of_issue",
-        "period",
+        "period_object",
     ]
     enable_merge = True
 
@@ -713,7 +714,14 @@ class SlaveRoleDelete(DeleteView):
 
 class KingListView(GenericListView):
     model = King
-    init_columns = ["id", "name", "abbreviation", "begin_of_reign", "end_of_reign"]
+    init_columns = [
+        "id",
+        "name",
+        "abbreviation",
+        "begin_of_reign",
+        "end_of_reign",
+        "period_object",
+    ]
     enable_merge = True
 
 
@@ -740,6 +748,43 @@ class KingUpdate(BaseUpdateView):
 
 class KingDelete(DeleteView):
     model = King
+    template_name = "webpage/confirm_delete.html"
+    success_url = reverse_lazy("archiv:king_browse")
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class PeriodObjectListView(GenericListView):
+    model = PeriodObject
+    init_columns = ["id", "name", "abbreviation", "beginning", "ending"]
+    enable_merge = False
+
+
+class PeriodObjectDetailView(BaseDetailView):
+    model = PeriodObject
+    template_name = "archiv/period_detail.html"
+
+
+class PeriodObjectCreate(BaseCreateView):
+    model = PeriodObject
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class PeriodObjectUpdate(BaseUpdateView):
+    model = PeriodObject
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class PeriodObjectDelete(DeleteView):
+    model = PeriodObject
     template_name = "webpage/confirm_delete.html"
     success_url = reverse_lazy("archiv:king_browse")
 

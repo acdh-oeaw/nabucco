@@ -355,11 +355,6 @@ class TabletListFilter(django_filters.FilterSet):
         help_text=Tablet._meta.get_field("text_number").help_text,
         label=Tablet._meta.get_field("text_number").verbose_name,
     )
-    period = django_filters.CharFilter(
-        lookup_expr="icontains",
-        help_text=Tablet._meta.get_field("period").help_text,
-        label=Tablet._meta.get_field("period").verbose_name,
-    )
     day = django_filters.CharFilter(
         lookup_expr="icontains",
         help_text=Tablet._meta.get_field("day").help_text,
@@ -444,7 +439,7 @@ class TabletListFilter(django_filters.FilterSet):
             "mentioned_in_pub",
             "publication_name",
             "text_number",
-            "period",
+            "period_object",
             "day",
             "month",
             "year",
