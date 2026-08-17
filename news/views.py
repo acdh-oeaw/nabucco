@@ -1,11 +1,12 @@
-from django.contrib.auth.decorators import login_required
-from django.views.generic.list import ListView
-from django.utils.decorators import method_decorator
 from browsing.utils import (
-    BaseDetailView,
     BaseCreateView,
+    BaseDetailView,
     BaseUpdateView,
 )
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic.list import ListView
+
 from news.models import NewsEntry
 
 
@@ -24,7 +25,7 @@ class NewsEntryCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(NewsEntryCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class NewsEntryUpdate(BaseUpdateView):
@@ -33,4 +34,4 @@ class NewsEntryUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(NewsEntryUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)

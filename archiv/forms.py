@@ -10,7 +10,7 @@ from .models import Archiv, Bibliography, Glossary, Place, Tablet
 
 class ArchivFilterFormHelper(FormHelper):
     def __init__(self, *args, **kwargs):
-        super(ArchivFilterFormHelper, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.form_class = "genericFilterForm"
         self.form_method = "GET"
@@ -35,7 +35,7 @@ class ArchivForm(forms.ModelForm):
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
 
     def __init__(self, *args, **kwargs):
-        super(ArchivForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = "form-horizontal"
@@ -48,7 +48,7 @@ class ArchivForm(forms.ModelForm):
 
 class BibliographyFilterFormHelper(FormHelper):
     def __init__(self, *args, **kwargs):
-        super(BibliographyFilterFormHelper, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.form_class = "genericFilterForm"
         self.form_method = "GET"
@@ -87,7 +87,7 @@ class BibliographyForm(forms.ModelForm):
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
 
     def __init__(self, *args, **kwargs):
-        super(BibliographyForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = "form-horizontal"
@@ -100,7 +100,7 @@ class BibliographyForm(forms.ModelForm):
 
 class GlossaryFilterFormHelper(FormHelper):
     def __init__(self, *args, **kwargs):
-        super(GlossaryFilterFormHelper, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.form_class = "genericFilterForm"
         self.form_method = "GET"
@@ -128,7 +128,7 @@ class GlossaryForm(forms.ModelForm):
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
 
     def __init__(self, *args, **kwargs):
-        super(GlossaryForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = "form-horizontal"
@@ -141,7 +141,7 @@ class GlossaryForm(forms.ModelForm):
 
 class PlaceFilterFormHelper(FormHelper):
     def __init__(self, *args, **kwargs):
-        super(PlaceFilterFormHelper, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.form_class = "genericFilterForm"
         self.form_method = "GET"
@@ -163,7 +163,7 @@ class PlaceForm(forms.ModelForm):
         exclude = ["orig_data_csv", "legacy_id", "legacy_pk"]
 
     def __init__(self, *args, **kwargs):
-        super(PlaceForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = "form-horizontal"
@@ -176,7 +176,7 @@ class PlaceForm(forms.ModelForm):
 
 class TabletFilterFormHelper(FormHelper):
     def __init__(self, *args, **kwargs):
-        super(TabletFilterFormHelper, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.form_class = "genericFilterForm"
         self.form_method = "GET"
@@ -303,7 +303,7 @@ class TabletForm(forms.ModelForm):
             self.default_form = self.user.customuser.tablet_form
         except AttributeError:
             self.default_form = "default"
-        super(TabletForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = True
         self.helper.form_class = "form-horizontal"

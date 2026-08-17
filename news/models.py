@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.db import models
 from django.urls import reverse_lazy
-from tinymce.models import HTMLField
 from next_prev import next_in_order, prev_in_order
+from tinymce.models import HTMLField
 
 
 class NewsEntry(models.Model):

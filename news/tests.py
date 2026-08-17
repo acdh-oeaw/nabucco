@@ -1,7 +1,6 @@
 from django.apps import apps
-from django.test import TestCase, Client
 from django.contrib.auth.models import User
-
+from django.test import Client, TestCase
 
 MODELS = list(apps.all_models["news"].values())
 to_check = [x for x in MODELS]
