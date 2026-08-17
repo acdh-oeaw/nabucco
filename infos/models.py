@@ -34,7 +34,7 @@ class ProjectInst(models.Model):
         verbose_name = "Institution involved in the Project"
 
     def __str__(self):
-        return "{}".format(self.name)
+        return f"{self.name}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -100,7 +100,7 @@ class TeamMember(models.Model):
         verbose_name = "Team Member"
 
     def __str__(self):
-        return "{}".format(self.name)
+        return f"{self.name}"
 
     def field_dict(self):
         return model_to_dict(self)
@@ -165,7 +165,7 @@ class AboutTheProject(models.Model):
         verbose_name = "About the Project"
 
     def __str__(self):
-        return "{}".format(self.title)
+        return f"{self.title}"
 
     def field_dict(self):
         return model_to_dict(self)

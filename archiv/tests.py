@@ -125,7 +125,7 @@ class ArchivTestCase(TestCase):
             None
         Raises:
             AssertionError: If any of the date format validations fail
-        """  # noqa: E501
+        """
 
         for x in Tablet.objects.all():
             if x.julian_date_day:

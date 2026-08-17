@@ -205,7 +205,7 @@ class NavicoTheme(CrudUrlMixin, PrevNextMixin, models.Model):
         blank=True,
         null=True,
         verbose_name="Description",
-        help_text="Description of the theme: what sphere of in life a slave does it pertain to? what is the historical significance?",  # noqa: E501
+        help_text="Description of the theme: what sphere of in life a slave does it pertain to? what is the historical significance?",
     )
 
     class Meta:
@@ -751,7 +751,7 @@ class Place(CrudUrlMixin, PrevNextMixin, models.Model):
     def save(self, *args, **kwargs):
         if self.legacy_id and not self.name:
             self.name = self.legacy_id
-        super(Place, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def field_dict(self):
         return model_to_dict(self)
@@ -813,7 +813,7 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         null=True,
         blank=True,
         verbose_name="Regional setting",
-        help_text="select the inferred region where the content of the text is set, if there is no place of issue given",  # noqa: E501
+        help_text="select the inferred region where the content of the text is set, if there is no place of issue given",
     )
     mentioned_place = models.ManyToManyField(
         "Place",
@@ -849,7 +849,7 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         blank=True,
         null=True,
         verbose_name="Legacy paraphrase",
-        help_text="first paraphrase created for NaBuCCo of a text that has subsequently been reworked in a new paraphrase",  # noqa: E501
+        help_text="first paraphrase created for NaBuCCo of a text that has subsequently been reworked in a new paraphrase",
     )
     transliteration = models.TextField(
         blank=True,
@@ -1077,7 +1077,7 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
     second_order_accounting = models.BooleanField(
         default=False,
         verbose_name="second-order accounting",
-        help_text="Does the text belong to or contain elements of second-order accounting, i.e. referring to other documents or similar?",  # noqa: E501
+        help_text="Does the text belong to or contain elements of second-order accounting, i.e. referring to other documents or similar?",
     )
     domain = models.ForeignKey(
         Domain,

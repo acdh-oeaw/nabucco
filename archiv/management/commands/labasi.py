@@ -1,7 +1,7 @@
-import requests
 import pandas as pd
-from django.core.management.base import BaseCommand
+import requests
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.management.base import BaseCommand
 
 from archiv.models import Tablet
 

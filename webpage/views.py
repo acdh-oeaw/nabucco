@@ -50,7 +50,7 @@ class GenericWebpageView(TemplateView):
     template_name = "webpage/index.html"
 
     def get_context_data(self, **kwargs):
-        context = super(GenericWebpageView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["apps"] = settings.INSTALLED_APPS
         return context
 

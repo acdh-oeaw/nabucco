@@ -1,5 +1,6 @@
 import django_tables2 as tables
-from .models import AboutTheProject, TeamMember, ProjectInst
+
+from .models import AboutTheProject, ProjectInst, TeamMember
 
 
 class AboutTheProjectTable(tables.Table):

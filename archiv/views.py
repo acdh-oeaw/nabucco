@@ -78,7 +78,7 @@ class ArchivCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(ArchivCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class ArchivUpdate(BaseUpdateView):
@@ -87,7 +87,7 @@ class ArchivUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(ArchivUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class ArchivDelete(DeleteView):
@@ -97,7 +97,7 @@ class ArchivDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(ArchivDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class BibliographyListView(GenericListView):
@@ -125,7 +125,7 @@ class BibliographyCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(BibliographyCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class BibliographyUpdate(BaseUpdateView):
@@ -134,7 +134,7 @@ class BibliographyUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(BibliographyUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class BibliographyDelete(DeleteView):
@@ -144,7 +144,7 @@ class BibliographyDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(BibliographyDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class GlossaryListView(GenericListView):
@@ -171,7 +171,7 @@ class GlossaryCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(GlossaryCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class GlossaryUpdate(BaseUpdateView):
@@ -180,7 +180,7 @@ class GlossaryUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(GlossaryUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class GlossaryDelete(DeleteView):
@@ -190,7 +190,7 @@ class GlossaryDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(GlossaryDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class PlaceListView(GenericListView):
@@ -205,7 +205,7 @@ class PlaceListView(GenericListView):
     enable_merge = True
 
     def get_context_data(self, **kwargs):
-        context = super(PlaceListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         return context
 
 
@@ -220,7 +220,7 @@ class PlaceCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(PlaceCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class PlaceUpdate(BaseUpdateView):
@@ -229,7 +229,7 @@ class PlaceUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(PlaceUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class PlaceDelete(DeleteView):
@@ -239,7 +239,7 @@ class PlaceDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(PlaceDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DigeannaListView(GenericListView):
@@ -263,7 +263,7 @@ class DigeannaListView(GenericListView):
     enable_merge = True
 
     def get_queryset(self, **kwargs):
-        qs = super(DigeannaListView, self).get_queryset()
+        qs = super().get_queryset()
         qs = qs.filter(
             Q(archiv=119)
             | Q(place_of_issue__name__icontains="ururk")
@@ -306,7 +306,7 @@ class TabletCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -321,7 +321,7 @@ class TabletUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -336,7 +336,7 @@ class TabletDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TabletDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DossierListView(GenericListView):
@@ -357,7 +357,7 @@ class DossierCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(DossierCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DossierUpdate(BaseUpdateView):
@@ -365,7 +365,7 @@ class DossierUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(DossierUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DossierDelete(DeleteView):
@@ -375,7 +375,7 @@ class DossierDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(DossierDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class WorkPackageListView(GenericListView):
@@ -394,7 +394,7 @@ class WorkPackageCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(WorkPackageCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class WorkPackageUpdate(BaseUpdateView):
@@ -402,7 +402,7 @@ class WorkPackageUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(WorkPackageUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class WorkPackageDelete(DeleteView):
@@ -412,7 +412,7 @@ class WorkPackageDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(WorkPackageDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class VanDrielFilesListView(GenericListView):
@@ -431,7 +431,7 @@ class VanDrielFilesCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(VanDrielFilesCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class VanDrielFilesUpdate(BaseUpdateView):
@@ -439,7 +439,7 @@ class VanDrielFilesUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(VanDrielFilesUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class VanDrielFilesDelete(DeleteView):
@@ -449,7 +449,7 @@ class VanDrielFilesDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(VanDrielFilesDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class TextFormListView(GenericListView):
@@ -468,7 +468,7 @@ class TextFormCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TextFormCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class TextFormUpdate(BaseUpdateView):
@@ -476,7 +476,7 @@ class TextFormUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TextFormUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class TextFormDelete(DeleteView):
@@ -486,7 +486,7 @@ class TextFormDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TextFormDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class LegalPurposeListView(GenericListView):
@@ -505,7 +505,7 @@ class LegalPurposeCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(LegalPurposeCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class LegalPurposeUpdate(BaseUpdateView):
@@ -513,7 +513,7 @@ class LegalPurposeUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(LegalPurposeUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class LegalPurposeDelete(DeleteView):
@@ -523,7 +523,7 @@ class LegalPurposeDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(LegalPurposeDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class TransActionTypeListView(GenericListView):
@@ -542,7 +542,7 @@ class TransActionTypeCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TransActionTypeCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class TransActionTypeUpdate(BaseUpdateView):
@@ -550,7 +550,7 @@ class TransActionTypeUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TransActionTypeUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class TransActionTypeDelete(DeleteView):
@@ -560,7 +560,7 @@ class TransActionTypeDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(TransActionTypeDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DomainListView(GenericListView):
@@ -579,7 +579,7 @@ class DomainCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(DomainCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DomainUpdate(BaseUpdateView):
@@ -587,7 +587,7 @@ class DomainUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(DomainUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class DomainDelete(DeleteView):
@@ -597,7 +597,7 @@ class DomainDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(DomainDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class NavicoThemeListView(GenericListView):
@@ -616,7 +616,7 @@ class NavicoThemeCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(NavicoThemeCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class NavicoThemeUpdate(BaseUpdateView):
@@ -624,7 +624,7 @@ class NavicoThemeUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(NavicoThemeUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class NavicoThemeDelete(DeleteView):
@@ -634,7 +634,7 @@ class NavicoThemeDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(NavicoThemeDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class SlaveDescriptorListView(GenericListView):
@@ -653,7 +653,7 @@ class SlaveDescriptorCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(SlaveDescriptorCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class SlaveDescriptorUpdate(BaseUpdateView):
@@ -661,7 +661,7 @@ class SlaveDescriptorUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(SlaveDescriptorUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class SlaveDescriptorDelete(DeleteView):
@@ -671,7 +671,7 @@ class SlaveDescriptorDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(SlaveDescriptorDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class SlaveRoleListView(GenericListView):
@@ -690,7 +690,7 @@ class SlaveRoleCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(SlaveRoleCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class SlaveRoleUpdate(BaseUpdateView):
@@ -698,7 +698,7 @@ class SlaveRoleUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(SlaveRoleUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class SlaveRoleDelete(DeleteView):
@@ -708,7 +708,7 @@ class SlaveRoleDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(SlaveRoleDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class KingListView(GenericListView):
@@ -727,7 +727,7 @@ class KingCreate(BaseCreateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(KingCreate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class KingUpdate(BaseUpdateView):
@@ -735,7 +735,7 @@ class KingUpdate(BaseUpdateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(KingUpdate, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class KingDelete(DeleteView):
@@ -745,4 +745,4 @@ class KingDelete(DeleteView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-        return super(KingDelete, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
