@@ -30,13 +30,13 @@ def group_count(queryset, field):
             label = str(obj) if obj else None
         else:
             label = value
-
-        result.append(
-            {
-                "value": value,
-                "label": label,
-                "count": row["count"],
-            }
-        )
+        if value and label:
+            result.append(
+                {
+                    "value": value,
+                    "label": label,
+                    "count": row["count"],
+                }
+            )
 
     return result
