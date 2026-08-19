@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "tinymce",
     "news",
     "fixture_magic",
+    "stats",
 ]
 
 REST_FRAMEWORK = {
