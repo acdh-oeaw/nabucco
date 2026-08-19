@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.conf.urls import include
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
@@ -36,5 +38,11 @@ urlpatterns = [
     path("info/", include("infos.urls", namespace="info")),
     path("archiv/", include("archiv.urls", namespace="archiv")),
     path("archiv-ac/", include("archiv.dal_urls", namespace="archiv-ac")),
+    path("stats/", include("stats.urls", namespace="stats")),
     path("", include("webpage.urls", namespace="webpage")),
 ]
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )

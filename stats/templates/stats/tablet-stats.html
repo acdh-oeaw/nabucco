@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% load webpage_extras %}
+{% block title %}  Tablet Dashboard {% endblock %}
+{% block content %}
+<div class="container pt-3">
+    <h1 class="display-2 p-3 text-center">Tablet Dashboard</h1>    <span id="url" class="visually-hidden" aria-hidden="true">{% url 'stats:tablet-stats-data' %}{% querystring %}</span>
+    <div id="vis-container" class="row"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'stats/tablet-dashboard.js' %}"></script>
+{% endblock %}
