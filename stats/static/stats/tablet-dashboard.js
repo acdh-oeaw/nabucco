@@ -18,7 +18,7 @@ const PALETTE = [
 
 function renderChart(key, rows) {
   const col = document.createElement("div");
-  col.className = "col-12 col-lg-6 mb-4";
+  col.className = "col-12 col-lg-6 mb-5";
 
   const heading = document.createElement("h2");
   heading.textContent = titleFromKey(key);
