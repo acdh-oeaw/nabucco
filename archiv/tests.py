@@ -2,6 +2,7 @@ from django.apps import apps
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 
+from archiv.filters import TabletListFilter
 from archiv.forms import TabletForm
 from archiv.models import Tablet
 from custom_user_app.models import CustomUser
@@ -176,3 +177,22 @@ class TabletFormTestCase(TestCase):
             fieldset_found,
             "Fieldset with 'Identifiers' legend not found in form layout",
         )
+
+
+class TabletMuseumIdFilterTestCase(TestCase):
+    def setUp(self):
+        self.tablet = Tablet.objects.create(museum_id="AO 06786")
+
+    def test_museum_id_filter_ignores_leading_zeros_after_space(self):
+        filtered = TabletListFilter(
+            {"museum_id": "AO 006786"}, queryset=Tablet.objects.all()
+        ).qs
+
+        self.assertIn(self.tablet, filtered)
+
+    def test_fulltext_filter_ignores_leading_zeros_after_space(self):
+        filtered = TabletListFilter(
+            {"ft_search": "AO 6786"}, queryset=Tablet.objects.all()
+        ).qs
+
+        self.assertIn(self.tablet, filtered)
