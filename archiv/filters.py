@@ -1,3 +1,5 @@
+import re
+
 import django_filters
 from acdh_django_widgets.widgets import MartinAntonMuellerWidget
 from dal import autocomplete
@@ -219,7 +221,7 @@ class TabletListFilter(django_filters.FilterSet):
         label=Tablet._meta.get_field("legacy_id").verbose_name,
     )
     museum_id = django_filters.CharFilter(
-        lookup_expr="icontains",
+        method="museum_id_filter",
         help_text=Tablet._meta.get_field("museum_id").help_text,
         label=Tablet._meta.get_field("museum_id").verbose_name,
     )
@@ -301,6 +303,20 @@ class TabletListFilter(django_filters.FilterSet):
         for x in value.split():
             q |= Q(**{lookup: x})
         return queryset.filter(q)
+
+    def museum_id_filter(self, queryset, name, value):
+        normalized_value = re.sub(r"(?<=\s)0+", "", value)
+        queryset = queryset.annotate(
+            normalized_museum_id=Func(
+                F(name),
+                Value(r"(?<=\s)0+"),
+                Value(""),
+                Value("g"),
+                function="regexp_replace",
+                output_field=models.CharField(),
+            )
+        )
+        return queryset.filter(normalized_museum_id__icontains=normalized_value)
 
     paraphrase_plain = django_filters.CharFilter(
         method="plain_text_filtering",
@@ -411,12 +427,25 @@ class TabletListFilter(django_filters.FilterSet):
     )
 
     def search_fulltext(self, queryset, field_name, value):
-        search_term = value
+        search_term = re.sub(r"(?<=\s)0+", "", value)
         search_fields = self._meta.model.search_fields()
         q = Q()
         for field in search_fields:
-            lookup = f"{field}__icontains"
-            q |= Q(**{lookup: search_term})
+            if field == "museum_id":
+                queryset = queryset.annotate(
+                    normalized_museum_id=Func(
+                        F(field),
+                        Value(r"(?<=\s)0+"),
+                        Value(""),
+                        Value("g"),
+                        function="regexp_replace",
+                        output_field=models.CharField(),
+                    )
+                )
+                q |= Q(normalized_museum_id__icontains=search_term)
+            else:
+                lookup = f"{field}__icontains"
+                q |= Q(**{lookup: value})
         return queryset.filter(q)
 
     class Meta:
