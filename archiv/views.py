@@ -259,8 +259,9 @@ class DigeannaListView(GenericListView):
         "legal_purpose",
         "archiv",
         "place_of_issue",
-        "period",
+        "period_object",
     ]
+    exclude_columns = ["period"]
     enable_merge = True
 
     def get_queryset(self, **kwargs):
