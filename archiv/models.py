@@ -52,6 +52,9 @@ NAVICO_FIELDS = [
     "navico_theme",
     "slave_role",
     "slave_descriptor",
+    "navico_action",
+    "participation_status",
+    "designation_status",
 ]
 
 
@@ -1324,7 +1327,7 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         help_text="select the descriptors used for the oblate/slave",
         related_name="related_tablets",
     )
-    navio_action = models.ManyToManyField(
+    navico_action = models.ManyToManyField(
         NavicoAction,
         blank=True,
         verbose_name="Action/Activity",
