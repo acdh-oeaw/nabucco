@@ -21,17 +21,15 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - name: checkout the repo  
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
     - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@v7
+      uses: astral-sh/setup-uv@v10.3.0
     - name: Update apt package index
       run: sudo apt-get update
     - name: GDAL
       run: sudo apt-get install -y postgresql-common libpq-dev python3-gdal
     - name: add coverage
       run: uv add coverage
-    - name: install dependencies
-      run: uv sync --locked
     - name: Run migrations
       run: uv run manage.py migrate
     - name: Run tests
@@ -39,7 +37,7 @@ jobs:
     - name: Create Coverage Report
       run: uv run coverage xml
     - name: "Upload coverage to Codecov"
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v7
       with:
         token: ${{secrets.CODECOV_TOKEN}}
         files: ./coverage.xml
