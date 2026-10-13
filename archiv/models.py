@@ -277,7 +277,7 @@ class SlaveDescriptor(CrudUrlMixin, PrevNextMixin, models.Model):
     url_namespace = "archiv"
     url_basename = "slavedescriptor"
     descriptor = models.CharField(
-        verbose_name="Oblate/Slave Descriptor",
+        verbose_name="Personal Descriptor",
         max_length=250,
         help_text="designation of a specific descriptor used in a text for an oblate/slave",
     )
@@ -292,8 +292,8 @@ class SlaveDescriptor(CrudUrlMixin, PrevNextMixin, models.Model):
         ordering = [
             "descriptor",
         ]
-        verbose_name = "Oblate/Slave Descriptor"
-        verbose_name_plural = "Oblate/Slave Descriptors"
+        verbose_name = "Personal Descriptor"
+        verbose_name_plural = "Personal Descriptors"
 
     def __str__(self):
         return self.descriptor
@@ -329,8 +329,8 @@ class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
         ordering = [
             "role",
         ]
-        verbose_name = "Oblate/Slave Role"
-        verbose_name_plural = "Oblate/Slave Roles"
+        verbose_name = "Role"
+        verbose_name_plural = "Roles"
 
     def __str__(self):
         return f"{self.role} ({self.active_passive})"
