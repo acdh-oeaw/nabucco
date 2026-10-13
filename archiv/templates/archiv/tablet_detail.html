@@ -210,6 +210,27 @@
             <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
             {% endfor %}
             {% endif %}
+
+            {% if object.navico_action.all %}
+            <dt>Action/Activity</dt>
+            {% for x in object.navico_action.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
+
+            {% if object.participation_status.all %}
+            <dt>Participation Status</dt>
+            {% for x in object.participation_status.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
+
+            {% if object.designation_status.all %}
+            <dt>Designation Status</dt>
+            {% for x in object.designation_status.all %}
+            <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
+            {% endfor %}
+            {% endif %}
           </dl>
         {% endif %}
         {% if user.is_authenticated and object.orig_data_csv%}
