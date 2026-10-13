@@ -76,6 +76,87 @@ class DigeannaManager(models.Manager):
         )
 
 
+class NavicoAction(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "navicoaction"
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Action/Activity",
+        help_text="the designation of the action or activity",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="Describe the context, participation status or related activities",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Action"
+        verbose_name_plural = "Actions"
+
+    def __str__(self):
+        return self.name
+
+
+class StatusParticipation(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "statusparticipation"
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Participation Status",
+        help_text="Status of a slave/oblate from between active to passive in a given text",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="Describe the facets of the status",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Participation Status"
+        verbose_name_plural = "Participation Status"
+
+    def __str__(self):
+        return self.name
+
+
+class StatusDesignation(CrudUrlMixin, PrevNextMixin, models.Model):
+    url_namespace = "archiv"
+    url_basename = "statusdesignation"
+    name = models.CharField(
+        max_length=250,
+        default="change me",
+        verbose_name="Designation",
+        help_text="Status designations of slaves/oblates in a given text",
+    )
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Description",
+        help_text="Define the designation or add explanatory information",
+    )
+
+    class Meta:
+        ordering = [
+            "name",
+        ]
+        verbose_name = "Status Designation"
+        verbose_name_plural = "Status Designations"
+
+    def __str__(self):
+        return self.name
+
+
 class PeriodObject(CrudUrlMixin, PrevNextMixin, models.Model):
     url_namespace = "archiv"
     url_basename = "period"
@@ -1241,6 +1322,27 @@ class Tablet(CrudUrlMixin, PrevNextMixin, models.Model):
         blank=True,
         verbose_name="Slave descriptor",
         help_text="select the descriptors used for the oblate/slave",
+        related_name="related_tablets",
+    )
+    navio_action = models.ManyToManyField(
+        NavicoAction,
+        blank=True,
+        verbose_name="Action/Activity",
+        help_text="the designation of the action or activity",
+        related_name="related_tablets",
+    )
+    participation_status = models.ManyToManyField(
+        StatusParticipation,
+        blank=True,
+        verbose_name="Participation Status",
+        help_text="Status of a slave/oblate from between active to passive in a given text",
+        related_name="related_tablets",
+    )
+    designation_status = models.ManyToManyField(
+        StatusDesignation,
+        blank=True,
+        verbose_name="Designation Status",
+        help_text="Status designations of slaves/oblates in a given text",
         related_name="related_tablets",
     )
 

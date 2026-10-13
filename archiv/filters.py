@@ -495,4 +495,7 @@ class TabletListFilter(django_filters.FilterSet):
             "navico_theme",
             "slave_role",
             "slave_descriptor",
+            "navio_action",
+            "participation_status",
+            "designation_status",
         ]
