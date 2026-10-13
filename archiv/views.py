@@ -11,6 +11,8 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import DeleteView
 
+from archiv.crud_registry import crud
+
 from .filters import (
     ArchivListFilter,
     BibliographyListFilter,
@@ -38,11 +40,14 @@ from .models import (
     Glossary,
     King,
     LegalPurpose,
+    NavicoAction,
     NavicoTheme,
     PeriodObject,
     Place,
     SlaveDescriptor,
     SlaveRole,
+    StatusDesignation,
+    StatusParticipation,
     Tablet,
     TextForm,
     TransActionType,
@@ -57,6 +62,10 @@ from .tables import (
     PlaceTable,
     TabletTable,
 )
+
+crud.register(NavicoAction, init_columns=["name", "description"])
+crud.register(StatusParticipation, init_columns=["name", "description"])
+crud.register(StatusDesignation, init_columns=["name", "description"])
 
 
 class ArchivListView(GenericListView):
