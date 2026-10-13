@@ -198,14 +198,14 @@
             {% endif %}
 
             {% if object.slave_role.all %}
-            <dt>Oblate/Slave Role</dt>
+            <dt>Role</dt>
             {% for x in object.slave_role.all %}
             <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
             {% endfor %}
             {% endif %}
 
             {% if object.slave_descriptor.all %}
-            <dt>Oblate/Slave Descriptor</dt>
+            <dt>Personal Descriptor</dt>
             {% for x in object.slave_descriptor.all %}
             <dd><a href="{{ x.get_absolute_url }}">{{ x }}</a></dd>
             {% endfor %}
