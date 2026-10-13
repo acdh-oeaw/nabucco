@@ -687,7 +687,7 @@ class SlaveDescriptorDelete(DeleteView):
 
 class SlaveRoleListView(GenericListView):
     model = SlaveRole
-    init_columns = ["id", "role", "description", "active_passive"]
+    init_columns = ["id", "role", "description"]
     enable_merge = True
 
 

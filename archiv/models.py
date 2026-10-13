@@ -313,17 +313,6 @@ class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
         verbose_name="Description",
         help_text="concisely describe the role and its significance in a text",
     )
-    active_passive = models.CharField(
-        max_length=50,
-        choices=(
-            ("active", "active role"),
-            ("passive", "passive role"),
-            ("ambiguous", "ambiguous role"),
-        ),
-        default="active",
-        help_text="Does the role pertain to an active or passive action in a text?",
-        verbose_name="Active/Passive",
-    )
 
     class Meta:
         ordering = [
@@ -333,7 +322,7 @@ class SlaveRole(CrudUrlMixin, PrevNextMixin, models.Model):
         verbose_name_plural = "Roles"
 
     def __str__(self):
-        return f"{self.role} ({self.active_passive})"
+        return f"{self.role}"
 
 
 class NavicoTheme(CrudUrlMixin, PrevNextMixin, models.Model):
