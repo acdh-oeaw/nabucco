@@ -1267,7 +1267,7 @@ wheels = [
 
 [[package]]
 name = "nabucco"
-version = "7.37.0"
+version = "7.38.0"
 source = { virtual = "." }
 dependencies = [
     { name = "acdh-django-browsing" },
