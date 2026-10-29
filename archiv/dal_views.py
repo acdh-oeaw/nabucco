@@ -8,11 +8,61 @@ from .models import (
     Dossier,
     Glossary,
     King,
+    NavicoAction,
     Place,
+    SlaveDescriptor,
+    SlaveRole,
+    StatusDesignation,
+    StatusParticipation,
     Tablet,
     VanDrielFiles,
     WorkPackage,
 )
+
+
+class StatusDesignationAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = StatusDesignation.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs
+
+
+class StatusParticipationAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = StatusParticipation.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs
+
+
+class NavicoActionAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = NavicoAction.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs
+
+
+class SlaveRoleAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = SlaveRole.objects.all()
+
+        if self.q:
+            qs = qs.filter(role__icontains=self.q)
+        return qs
+
+
+class SlaveDescriptorAC(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = SlaveDescriptor.objects.all()
+
+        if self.q:
+            qs = qs.filter(descriptor__icontains=self.q)
+        return qs
 
 
 class KingAC(autocomplete.Select2QuerySetView):
