@@ -1,7 +1,7 @@
 [project]
 name = "nabucco"
-version = "0.1.0"
-description = "Add your description here"
+version = "7.37.0"
+description = "NaBuCCo – A Neo-Babylonian Cuneiform Corpus"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
