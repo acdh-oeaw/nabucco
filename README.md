@@ -30,7 +30,7 @@
 
 To run the image you should provide an `.env` file to pass in needed environment variables; see `nabucco/settings.py` for possible varibles:
 
-`docker run -it --network="host" --rm --env-file .env nabucco:latest`
+`docker run -it --network="host" --rm --env-file default.env nabucco:latest`
 
 ## notes
 
