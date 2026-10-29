@@ -40,4 +40,29 @@ urlpatterns = [
     path(
         "tablet-autocomplete/", dal_views.TabletAC.as_view(), name="tablet-autocomplete"
     ),
+    path(
+        "descriptor-autocomplete/",
+        dal_views.SlaveDescriptorAC.as_view(),
+        name="descriptor-autocomplete",
+    ),
+    path(
+        "role-autocomplete/",
+        dal_views.SlaveRoleAC.as_view(),
+        name="role-autocomplete",
+    ),
+    path(
+        "navico-action/",
+        dal_views.NavicoActionAC.as_view(),
+        name="navico-action",
+    ),
+    path(
+        "participation-status/",
+        dal_views.StatusParticipationAC.as_view(),
+        name="participation-status",
+    ),
+    path(
+        "designation-status/",
+        dal_views.StatusDesignationAC.as_view(),
+        name="designation-status",
+    ),
 ]

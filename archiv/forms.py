@@ -298,6 +298,21 @@ class TabletForm(forms.ModelForm):
             "van_driel_files": autocomplete.ModelSelect2Multiple(
                 url="archiv-ac:vandrielfiles-autocomplete"
             ),
+            "slave_descriptor": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:descriptor-autocomplete"
+            ),
+            "slave_role": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:role-autocomplete"
+            ),
+            "navico_action": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:navico-action"
+            ),
+            "participation_status": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:participation-status"
+            ),
+            "designation_status": autocomplete.ModelSelect2Multiple(
+                url="archiv-ac:designation-status"
+            ),
         }
 
     def __init__(self, *args, **kwargs):
