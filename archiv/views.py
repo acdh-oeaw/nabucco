@@ -63,9 +63,9 @@ from .tables import (
     TabletTable,
 )
 
-crud.register(NavicoAction, init_columns=["name", "description"])
-crud.register(StatusParticipation, init_columns=["name", "description"])
-crud.register(StatusDesignation, init_columns=["name", "description"])
+crud.register(NavicoAction, init_columns=["id", "name", "description"])
+crud.register(StatusParticipation, init_columns=["id", "name", "description"])
+crud.register(StatusDesignation, init_columns=["id", "name", "description"])
 
 
 class ArchivListView(GenericListView):
