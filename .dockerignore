@@ -23,3 +23,9 @@ Dockerfile
 server.py
 .git
 venv
+.venv
+.ruff_cache
+.github
+*.sql
+*.ipynb
+*.env

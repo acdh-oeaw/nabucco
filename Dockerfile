@@ -1,4 +1,9 @@
-FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+FROM ghcr.io/astral-sh/uv:python3.14-bookworm-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    UV_COMPILE_BYTECODE=1 \
+    UV_NO_DEV=1
 
 # install nginx postgres and gdal
 RUN apt-get update -y && apt-get upgrade -y && apt-get install nginx vim \

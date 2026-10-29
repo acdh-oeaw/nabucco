@@ -3,7 +3,7 @@ name = "nabucco"
 version = "7.37.0"
 description = "NaBuCCo – A Neo-Babylonian Cuneiform Corpus"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
     "acdh-django-browsing>=4.0.0",
     "acdh-django-widgets>=0.1.0",
